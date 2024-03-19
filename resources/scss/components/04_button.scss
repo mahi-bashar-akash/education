@@ -1,0 +1,11 @@
+.btn-theme {
+    background-color: var(--theme) !important;
+    color: var(--bs-white) !important;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        transition: 0.3s all ease-in-out;
+        background-color: var(--dark-theme) !important;
+    }
+
+}

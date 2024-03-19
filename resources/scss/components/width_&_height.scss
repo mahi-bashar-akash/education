@@ -1,0 +1,15 @@
+$iteration: 2560;
+
+$base-value: 1px;
+
+@for $i from 1 through $iteration {
+
+    .wpx-#{$i} {
+        width: $base-value * $i !important;
+    }
+
+    .hpx-#{$i} {
+        height: $base-value * $i !important;
+    }
+
+}
