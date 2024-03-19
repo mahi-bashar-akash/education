@@ -5,3 +5,23 @@
 .bg-theme {
     background: var(--theme) !important;
 }
+
+.bg-light-gray-hover {
+    transition: 0.3s all ease-in-out;
+    color: var(--light-gray) !important;
+    &:hover {
+        color: var(--bs-white) !important;
+        transition: 0.3s all ease-in-out;
+        background: var(--light-gray) !important;
+    }
+}
+
+.bg-theme-hover {
+    transition: 0.3s all ease-in-out;
+    color: var(--theme) !important;
+    &:hover {
+        color: var(--bs-white) !important;
+        transition: 0.3s all ease-in-out;
+        background: var(--theme) !important;
+    }
+}
