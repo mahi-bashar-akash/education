@@ -252,7 +252,7 @@ export default {
 
     methods: {
         testimonial() {
-            $('.owl-carousel').owlCarousel({
+            $('.testimonial-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
                 nav: false,

@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-sm-6 text-sm-center">
                     <a href="javascript:void(0)" class="text-decoration-none text-light-gray mb-3 d-block">
-                        All rights reserved by theme development
+                        All rights reserved by Mahi Bashar Akash
                     </a>
                 </div>
             </div>
