@@ -178,33 +178,35 @@
         <!-- next level learning -->
         <section class="w-100 py-5">
             <div class="container text-center text-light-gray">
-                <div class="fs-1 mb-3"> Next level Learning </div>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4 justify-content-center">
-                    <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                        <i class="bi bi-eyeglasses fs-1"></i>
-                        <div class="fs-4 fw-medium">
-                            Expert Teacher
+                <div class="py-5">
+                    <div class="fs-1 mb-3"> Next level Learning </div>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4 justify-content-center">
+                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
+                            <i class="bi bi-eyeglasses fs-1"></i>
+                            <div class="fs-4 fw-medium">
+                                Expert Teacher
+                            </div>
+                            <div class="mt-3 fw-medium">
+                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
+                            </div>
                         </div>
-                        <div class="mt-3 fw-medium">
-                            Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
+                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
+                            <i class="bi bi-award fs-1"></i>
+                            <div class="fs-4 fw-medium">
+                                Earn a Certificate
+                            </div>
+                            <div class="mt-3 fw-medium">
+                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
+                            </div>
                         </div>
-                    </div>
-                    <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                        <i class="bi bi-award fs-1"></i>
-                        <div class="fs-4 fw-medium">
-                            Earn a Certificate
-                        </div>
-                        <div class="mt-3 fw-medium">
-                            Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
-                        </div>
-                    </div>
-                    <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                        <i class="bi bi-people fs-1"></i>
-                        <div class="fs-4 fw-medium">
-                            Learn & collaborate
-                        </div>
-                        <div class="mt-3 fw-medium">
-                            Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
+                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
+                            <i class="bi bi-people fs-1"></i>
+                            <div class="fs-4 fw-medium">
+                                Learn & collaborate
+                            </div>
+                            <div class="mt-3 fw-medium">
+                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -224,6 +226,175 @@
                     <button type="button" class="btn btn-warning rounded-pill px-4">
                         Get Explore
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest blogs & news -->
+        <section class="w-100 py-5">
+            <div class="container">
+                <div class="py-5">
+                    <div class="mb-3 fs-1 text-center">
+                        Latest blogs & news
+                    </div>
+                    <div class="blogs-carousel owl-carousel owl-theme">
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 1">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item p-3">
+                            <div class="border p-0">
+                                <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                                <div class="pt-3 px-3">
+                                    <div class="w-100 d-flex justify-content-between align-items-center">
+                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
+                                            Admin
+                                        </div>
+                                        <div class="text-secondary text-opacity-75">
+                                            17, march, 2025
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
+                                    Secret Tips & Tricks to Master Electricity
+                                </div>
+                                <div class="pb-3 px-3">
+                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                        <span class="text-secondary">
+                                            Read more
+                                        </span>
+                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -248,9 +419,11 @@ export default {
 
     mounted() {
         this.testimonial();
+        this.blogs();
     },
 
     methods: {
+
         testimonial() {
             $('.testimonial-carousel').owlCarousel({
                 loop: true,
@@ -269,7 +442,29 @@ export default {
                     }
                 }
             })
+        },
+
+        blogs() {
+            $('.blogs-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:2
+                    },
+                    1000:{
+                        items:3
+                    }
+                }
+            })
         }
+
     }
 
 }
