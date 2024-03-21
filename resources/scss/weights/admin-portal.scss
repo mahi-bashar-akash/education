@@ -124,10 +124,10 @@
 
                 }
 
-                &:hover {
+                &:hover, &.router-link-active {
                     color: var(--light-gray);
                     transition: 0.3s all ease-in-out;
-                    background: var(--lightest-gray);
+                    background-color: var(--lightest-gray);
                 }
 
             }

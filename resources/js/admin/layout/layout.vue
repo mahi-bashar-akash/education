@@ -3,56 +3,56 @@
     <div class="admin-wrapper">
         <div class="admin-sidebar" :class="{ 'active' : sidebarActive }">
             <div class="admin-sidebar-header">
-                <a href="javascript:void(0)" class="text-decoration-none text-light-gray" @click="remove">
+                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray" @click="remove">
                     <span class="none-res-text fw-medium">Education.io</span>
                     <span class="res-text fw-medium">E</span>
-                </a>
+                </router-link>
                 <button type="button" class="btn-icon sidebar-close" @click="remove">
                     <i class="bi bi-x-lg"></i>
                 </button>
             </div>
             <div class="admin-sidebar-body">
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                <router-link :to="{name: 'dashboard'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-speedometer"></i>
                     <span class="ms-2"> Dashboard </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'professors'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-person"></i>
                     <span class="ms-2"> Professors </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'students'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-people"></i>
                     <span class="ms-2"> Students </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'courses'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-mortarboard"></i>
                     <span class="ms-2"> Courses </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'library'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-journal-bookmark"></i>
                     <span class="ms-2"> Library </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'departments'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-building"></i>
                     <span class="ms-2"> Departments </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'stuff'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-people"></i>
-                    <span class="ms-2"> Stuffs </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                    <span class="ms-2"> Stuff </span>
+                </router-link>
+                <router-link :to="{name: 'holiday'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-gift"></i>
                     <span class="ms-2"> Holiday </span>
-                </a>
-                <a href="javascript:void(0)" class="sidebar-link" @click="remove">
+                </router-link>
+                <router-link :to="{name: 'fees'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-currency-dollar"></i>
                     <span class="ms-2"> Fees </span>
-                </a>
+                </router-link>
             </div>
         </div>
         <div class="admin-content">
             <div class="admin-content-header">
-                <button type="button" class="btn-icon sidebar-toggle" @click="sidebarToggle">
+                <button type="button" class="btn p-0 btn-icon sidebar-toggle" @click="sidebarToggle">
                     <i class="bi bi-justify-left"></i>
                 </button>
                 <span class="d-flex align-items-center">
@@ -68,14 +68,14 @@
                         </button>
                         <span class="dropdown-menu dropdown-menu-end mt-3 p-0 overflow-hidden">
                             <span>
-                                <a href="javascript:void(0)" class="dropdown-item">
+                                <router-link :to="{name: 'profile'}" class="dropdown-item">
                                     Profile
-                                </a>
+                                </router-link>
                             </span>
                             <span>
-                                <a href="javascript:void(0)" class="dropdown-item">
+                                <button type="button" class="dropdown-item">
                                     Logout
-                                </a>
+                                </button>
                             </span>
                         </span>
                     </span>
