@@ -16,6 +16,10 @@
                     <i class="bi bi-speedometer"></i>
                     <span class="ms-2"> Dashboard </span>
                 </router-link>
+                <router-link :to="{name: 'events'}" class="sidebar-link" @click="remove">
+                    <i class="bi bi-calendar4-event"></i>
+                    <span class="ms-2"> Event management </span>
+                </router-link>
                 <router-link :to="{name: 'professors'}" class="sidebar-link" @click="remove">
                     <i class="bi bi-person"></i>
                     <span class="ms-2"> Professors </span>

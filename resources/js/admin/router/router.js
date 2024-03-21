@@ -10,6 +10,7 @@ import {createRouter, createWebHistory} from "vue-router";
 
 import layout from "../layout/layout.vue";
 import dashboard from "../pages/dashboard.vue";
+import events from "../pages/events.vue";
 import professors from "../pages/professors.vue";
 import students from "../pages/students.vue";
 import courses from "../pages/courses.vue";
@@ -33,6 +34,12 @@ const routes = [
                 name: 'dashboard',
                 component: dashboard,
                 meta: { title: TITLE + ' - dashboard' }
+            },
+            {
+                path: ROOT_URL + 'events',
+                name: 'events',
+                component: events,
+                meta: { title: TITLE + ' - events' }
             },
             {
                 path: ROOT_URL + 'professors',

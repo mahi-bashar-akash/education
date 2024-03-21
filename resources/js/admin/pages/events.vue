@@ -5,8 +5,8 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb fs-5">
                 <li class="breadcrumb-item">
-                    <router-link :to="{name: 'departments'}" class="text-decoration-none text-light-gray">
-                        Departments
+                    <router-link :to="{name: 'events'}" class="text-decoration-none text-light-gray">
+                        Event management
                     </router-link>
                 </li>
             </ol>
@@ -19,8 +19,8 @@
                     </router-link>
                 </li>
                 <li class="breadcrumb-item">
-                    <router-link :to="{name: 'departments'}" class="text-decoration-none text-light-gray">
-                        Departments
+                    <router-link :to="{name: 'events'}" class="text-decoration-none text-light-gray">
+                        Event management
                     </router-link>
                 </li>
             </ol>
@@ -32,17 +32,11 @@
 <script>
 
 export default {
-
-    data() {
-
-        return {}
-
+    data(){
+        return{  }
     },
-
     mounted() {  },
-
     methods: {  }
-
 }
 
 </script>
