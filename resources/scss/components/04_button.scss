@@ -1,3 +1,29 @@
+.btn-light-gray {
+    background-color: var(--light-gray) !important;
+    color: var(--bs-white) !important;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        transition: 0.3s all ease-in-out;
+        background-color: var(--bs-gray-700) !important;
+    }
+
+}
+
+.btn-outline-theme {
+    background-color: var(--bs-white) !important;
+    border: 1px solid var(--light-gray) !important;
+    color: var(--light-gray) !important;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        transition: 0.3s all ease-in-out;
+        background-color: var(--light-gray) !important;
+        color: var(--bs-white) !important;
+    }
+
+}
+
 .btn-theme {
     background-color: var(--theme) !important;
     color: var(--bs-white) !important;
@@ -6,6 +32,20 @@
     &:hover {
         transition: 0.3s all ease-in-out;
         background-color: var(--dark-theme) !important;
+    }
+
+}
+
+.btn-outline-theme {
+    background-color: var(--bs-white) !important;
+    border: 1px solid var(--theme) !important;
+    color: var(--theme) !important;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+        transition: 0.3s all ease-in-out;
+        background-color: var(--theme) !important;
+        color: var(--bs-white) !important;
     }
 
 }

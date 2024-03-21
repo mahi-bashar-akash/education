@@ -3,9 +3,9 @@
     <div class="admin-wrapper">
         <div class="admin-sidebar" :class="{ 'active' : sidebarActive }">
             <div class="admin-sidebar-header">
-                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray" @click="remove">
-                    <span class="none-res-text fw-medium">Education.io</span>
-                    <span class="res-text fw-medium">E</span>
+                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5" @click="remove">
+                    <span class="none-res-text">Education.io</span>
+                    <span class="res-text">E</span>
                 </router-link>
                 <button type="button" class="btn-icon sidebar-close" @click="remove">
                     <i class="bi bi-x-lg"></i>
@@ -56,7 +56,7 @@
         </div>
         <div class="admin-content">
             <div class="admin-content-header">
-                <button type="button" class="btn p-0 btn-icon sidebar-toggle" @click="sidebarToggle">
+                <button type="button" class="btn border-0 p-0 btn-icon sidebar-toggle" @click="sidebarToggle">
                     <i class="bi bi-justify-left"></i>
                 </button>
                 <span class="d-flex align-items-center">

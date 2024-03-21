@@ -27,6 +27,84 @@
         </nav>
     </div>
 
+    <!-- professors search and new -->
+    <div class="row justify-content-between">
+        <div class="col-sm-6 col-xl-3 mb-3">
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-3">
+            <select name="event-type" class="form-select rounded-1 shadow-none border-light">
+                <option value="select-option">Select visible data</option>
+                <option value="10"> 10 </option>
+                <option value="20"> 20 </option>
+                <option value="30"> 30 </option>
+                <option value="40"> 40 </option>
+                <option value="50"> 50 </option>
+            </select>
+        </div>
+        <div class="col-12 col-xl-6 text-end mb-3">
+            <button type="button" class="btn btn-light-gray rounded-1">
+                New Event
+            </button>
+        </div>
+    </div>
+
+    <!-- event list -->
+    <div class="card rounded-1 border-light">
+        <div class="card-body card-list scrollbar">
+            <div class="px-2">
+
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4">
+
+                    <!-- card -->
+                    <div class="p-2" v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                        <div class="card p-0 border border">
+                            <div class="card-header py-2 px-2 bg-secondary-subtle border-0">
+                                <div class="p-1 text-theme fw-semibold">
+                                    <div class="truncate-to-1-line">
+                                        Title
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body border-0 p-0">
+                                <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
+                                    Event image
+                                </div>
+                                <div class="mb-2 text-light-gray pt-2 px-3">
+                                    Date
+                                </div>
+                                <div class="text-secondary text-opacity-75 pt-2 px-3">
+                                    Time
+                                </div>
+                            </div>
+                            <div class="card-footer py-2 px-3 border-0 bg-white">
+                                <div class="row justify-content-between align-items-center">
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-theme w-100">
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="btn btn-outline-theme w-100">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
