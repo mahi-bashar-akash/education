@@ -1,8 +1,5 @@
 .dropdown {
     .dropdown-menu {
-        @media screen and (min-width: 991px) {
-            width: 200px;
-        }
         .dropdown-item {
             font-size: 14px !important;
             color: var(--light-gray) !important;
@@ -12,7 +9,8 @@
 
             &:hover, &.router-link-active {
                 transition: 0.3s all ease-in-out;
-                color: var(--theme) !important;
+                background: var(--lightest-gray) !important;
+                color: var(--light-gray) !important;
             }
         }
     }

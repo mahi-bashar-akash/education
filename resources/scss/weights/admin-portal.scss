@@ -1,0 +1,183 @@
+.admin-wrapper {
+    display: flex;
+
+    .admin-sidebar {
+        width: 250px;
+        height: 100vh;
+
+        @media screen and (max-width: 991px) {
+            width: 60px;
+        }
+
+        @media screen and (max-width: 576px) {
+            position: fixed;
+            left: -260px;
+            top: 0;
+            bottom: 0;
+            width: 250px;
+            height: 100%;
+            background: var(--bs-white);
+            z-index: 30;
+            transition: 0.3s all ease-in-out;
+
+            &.active {
+                transition: 0.3s all ease-in-out;
+                left: 0;
+            }
+
+        }
+
+        @media screen and (max-width: 412px) {
+            left: -100%;
+            width: 100%;
+        }
+
+        .admin-sidebar-header {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+
+            @media screen and (max-width: 991px) {
+                justify-content: center;
+            }
+
+            @media screen and (max-width: 576px) {
+                justify-content: space-between;
+            }
+
+            .none-res-text {
+                font-size: 18px;
+                display: inline-block;
+
+                @media screen and (max-width: 991px) {
+                    display: none;
+                }
+
+                @media screen and (max-width: 576px) {
+                    display: inline-block;
+                }
+
+            }
+
+            .res-text {
+                font-size: 18px;
+                display: none;
+
+                @media screen and (max-width: 991px) {
+                    display: inline-block;
+                }
+
+                @media screen and (max-width: 576px) {
+                    display: none;
+                }
+
+            }
+
+            .sidebar-close {
+                display: none;
+
+                @media screen and (max-width: 576px) {
+                    display: inline-block;
+                }
+
+            }
+
+        }
+
+        .admin-sidebar-body {
+            width: 100%;
+            height: calc(100vh - 70px);
+            padding: 10px;
+
+            .sidebar-link {
+                display: block;
+                padding: 10px;
+                color: var(--light-gray);
+                transition: 0.3s all ease-in-out;
+                text-decoration: none;
+                border-radius: 5px;
+
+                @media screen and (max-width: 991px) {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                @media screen and (max-width: 576px) {
+                    display: block;
+                    justify-content: normal;
+                    align-items: normal;
+                }
+
+                span {
+
+                    @media screen and (max-width: 991px) {
+                        display: none;
+                    }
+
+                    @media screen and (max-width: 576px) {
+                        display: inline-block;
+                    }
+
+                }
+
+                &:hover {
+                    color: var(--light-gray);
+                    transition: 0.3s all ease-in-out;
+                    background: var(--lightest-gray);
+                }
+
+            }
+
+        }
+
+    }
+
+    .admin-content {
+        width: calc(100% - 250px);
+        height: 100vh;
+
+        @media screen and (max-width: 991px) {
+            width: calc(100% - 60px);
+        }
+
+        @media screen and (max-width: 576px) {
+            width: 100%;
+        }
+
+        .admin-content-header {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            border-bottom: 1px solid var(--bs-border-color);
+            padding: 10px;
+
+            @media screen and (max-width: 576px) {
+                justify-content: space-between;
+            }
+
+            .sidebar-toggle {
+                display: none;
+
+                @media screen and (max-width: 576px) {
+                    display: inline-block;
+                }
+
+            }
+
+        }
+
+        .admin-content-body {
+            width: 100%;
+            height: calc(100vh - 70px);
+            background: var(--lightest-gray);
+        }
+
+    }
+
+}

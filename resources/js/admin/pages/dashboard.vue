@@ -1,6 +1,6 @@
 <template>
 
-    this is dashboard content
+
 
 </template>
 

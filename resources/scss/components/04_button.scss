@@ -9,3 +9,22 @@
     }
 
 }
+
+.btn-icon {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    transition: 0.3s all ease-in-out;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+    &:hover {
+        background: var(--lightest-gray) !important;
+        transition: 0.3s all ease-in-out;
+    }
+
+}
