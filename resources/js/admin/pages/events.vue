@@ -51,7 +51,7 @@
             </select>
         </div>
         <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-light-gray rounded-1">
+            <button type="button" class="btn btn-theme rounded-1">
                 New Event
             </button>
         </div>
@@ -62,7 +62,7 @@
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4">
+                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
                     <div class="p-2" v-for="each in [1,2,3]">
