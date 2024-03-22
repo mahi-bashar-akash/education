@@ -27,7 +27,7 @@
         </nav>
     </div>
 
-    <!-- professors search and new -->
+    <!-- professor search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -49,12 +49,12 @@
         </div>
         <div class="col-12 col-xl-6 text-end mb-3">
             <button type="button" class="btn btn-light-gray rounded-1">
-                New Event
+                New Professor
             </button>
         </div>
     </div>
 
-    <!-- event list -->
+    <!-- professor list -->
     <div class="card rounded-1 border-light">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
@@ -62,37 +62,64 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <div class="p-2" v-for="each in [1,2,3]">
                         <div class="card p-0 border border">
                             <div class="card-header py-2 px-2 bg-secondary-subtle border-0">
-                                <div class="p-1 text-theme fw-semibold">
-                                    <div class="truncate-to-1-line">
-                                        Title
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <div class="p-1 text-theme fw-semibold">
+                                            <div class="truncate-to-1-line">
+                                                Professor name
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Transfer certificate
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Health performance
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        view schedule
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Event image
+                                    Professor image
                                 </div>
                                 <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Date
+                                    Department name:
                                 </div>
-                                <div class="text-secondary text-opacity-75 pt-2 px-3">
-                                    Time
-                                </div>
-                            </div>
-                            <div class="card-footer py-2 px-3 border-0 bg-white">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-theme w-100">
-                                            Edit
-                                        </button>
+                                <div class="text-secondary text-opacity-75 py-2 px-3">
+                                    <div class="mb-2">
+                                        Schedule:
                                     </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-outline-theme w-100">
-                                            Delete
-                                        </button>
+                                    <div class="mb-2">
+                                        saturday ( 10:00 am <i class="bi bi-dash"></i> 12:00 am )
+                                    </div>
+                                    <div class="mb-2">
+                                        BBA <i class="bi bi-arrow-right-short"></i> Major Accounting
                                     </div>
                                 </div>
                             </div>

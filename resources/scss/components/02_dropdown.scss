@@ -11,7 +11,7 @@
             &:hover, &.router-link-active {
                 transition: 0.3s all ease-in-out;
                 background: var(--lightest-gray) !important;
-                color: var(--light-gray) !important;
+                color: var(--theme) !important;
             }
         }
     }

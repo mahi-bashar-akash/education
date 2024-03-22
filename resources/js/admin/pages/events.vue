@@ -65,12 +65,40 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <div class="p-2" v-for="each in [1,2,3]">
                         <div class="card p-0 border border">
                             <div class="card-header py-2 px-2 bg-secondary-subtle border-0">
-                                <div class="p-1 text-theme fw-semibold">
-                                    <div class="truncate-to-1-line">
-                                        Title
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <div class="p-1 text-theme fw-semibold">
+                                            <div class="truncate-to-1-line">
+                                                Event name
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 text-end">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        read more
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -79,23 +107,14 @@
                                     Event image
                                 </div>
                                 <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Date
+                                    Date: 01, january, 2025
                                 </div>
-                                <div class="text-secondary text-opacity-75 pt-2 px-3">
-                                    Time
+                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
+                                    Time: 10:00 am - 12:00 pm
                                 </div>
-                            </div>
-                            <div class="card-footer py-2 px-3 border-0 bg-white">
-                                <div class="row justify-content-between align-items-center">
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-theme w-100">
-                                            Edit
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button type="button" class="btn btn-outline-theme w-100">
-                                            Delete
-                                        </button>
+                                <div class="mb-2 text-light-gray my-2 px-3">
+                                    <div class="truncate-to-2-line">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet asperiores dolorem, eius sunt voluptatum.
                                     </div>
                                 </div>
                             </div>
