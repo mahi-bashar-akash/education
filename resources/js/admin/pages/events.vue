@@ -2,136 +2,142 @@
 
     <!-- breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb fs-5">
-                <li class="breadcrumb-item">
+        <div aria-label="breadcrumb">
+            <div class="breadcrumb fs-5">
+                <div class="breadcrumb-item">
                     <router-link :to="{name: 'events'}" class="text-decoration-none text-light-gray">
                         Event management
                     </router-link>
-                </li>
-            </ol>
-        </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
+                </div>
+            </div>
+        </div>
+        <div style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+            <div class="breadcrumb">
+                <div class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
                         Dashboard
                     </router-link>
-                </li>
-                <li class="breadcrumb-item">
+                </div>
+                <div class="breadcrumb-item">
                     <router-link :to="{name: 'events'}" class="text-decoration-none text-light-gray">
                         Event management
                     </router-link>
-                </li>
-            </ol>
-        </nav>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- event search and new -->
+    <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
-                <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                <div class="shadow">
+                    <input type="text" name="keyword" class="form-control rounded-0 ps-5 shadow-none border-0" required autocomplete="new-search" placeholder="Search here">
+                </div>
                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                     <i class="bi bi-search"></i>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
-            <select name="event-type" class="form-select rounded-1 shadow-none border-light">
-                <option value="select-option">Select event option</option>
-                <option value="conferences">Conferences</option>
-                <option value="trade-shows">Trade shows</option>
-                <option value="networking-events">Networking events</option>
-                <option value="workshops">Workshops</option>
-                <option value="team-building-events">Team building events</option>
-                <option value="product-launch-events">Product launch events</option>
-                <option value="charity-events">Charity events</option>
-                <option value="internal-corporate-events">Internal corporate events</option>
-            </select>
+            <div class="shadow">
+                <select name="event-type" class="form-select rounded-0 shadow-none border-0">
+                    <option value="select-option">Select event option</option>
+                    <option value="conferences">Conferences</option>
+                    <option value="trade-shows">Trade shows</option>
+                    <option value="networking-events">Networking events</option>
+                    <option value="workshops">Workshops</option>
+                    <option value="team-building-events">Team building events</option>
+                    <option value="product-launch-events">Product launch events</option>
+                    <option value="charity-events">Charity events</option>
+                    <option value="internal-corporate-events">Internal corporate events</option>
+                </select>
+            </div>
         </div>
-        <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-theme rounded-1 wpx-90">
+        <div class="col-12 col-xl-6 d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
                 New
             </button>
         </div>
     </div>
 
-    <!-- desktop event list -->
-    <div class="card rounded-1 border-light d-none d-xl-block">
+    <!-- desktop and laptop screen list -->
+    <div class="card rounded-0 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
             <table class="table">
                 <thead>
-                <tr>
-                    <th class="checkbox">
-                        <input type="checkbox" class="form-check-input">
-                    </th>
-                    <th class="name">
-                        Name.
-                    </th>
-                    <th class="date">
-                        Date.
-                    </th>
-                    <th class="time">
-                        Start Time.
-                    </th>
-                    <th class="time">
-                        End Time.
-                    </th>
-                    <th class="action">
-                        Action
-                    </th>
-                </tr>
+                    <tr>
+                        <th class="checkbox">
+                            <input type="checkbox" class="form-check-input">
+                        </th>
+                        <th class="default-width">
+                            Name.
+                        </th>
+                        <th class="default-width">
+                            Date.
+                        </th>
+                        <th class="default-width">
+                            Start Time.
+                        </th>
+                        <th class="default-width">
+                            End Time.
+                        </th>
+                        <th class="action">
+                            Action
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
-                    <td class="checkbox">
-                        <input type="checkbox" class="form-check-input">
-                    </td>
-                    <td class="name">
-                        Event name
-                    </td>
-                    <td class="date">
-                        01, January, 2025
-                    </td>
-                    <td class="time">
-                        Event Start Date
-                    </td>
-                    <td class="time">
-                        Event End Date
-                    </td>
-                    <td>
-                        <div class="dropdown">
-                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        read more
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        Edit
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        Delete
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
+                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                        <td class="checkbox">
+                            <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td class="default-width">
+                            <div class="truncate-to-1-line">
+                                Event name
+                            </div>
+                        </td>
+                        <td class="default-width">
+                            01, January, 2025
+                        </td>
+                        <td class="default-width">
+                            Event Start Date
+                        </td>
+                        <td class="default-width">
+                            Event End Date
+                        </td>
+                        <td class="action">
+                            <div class="dropdown">
+                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                    <li>
+                                        <a href="javascript:void(0)" class="dropdown-item">
+                                            read more
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="dropdown-item">
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="dropdown-item">
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- event list -->
-    <div class="card rounded-1 border-light d-xl-none">
+    <!-- tablet and mobile screen list -->
+    <div class="card rounded-0 border-0 d-xl-none shadow">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
@@ -139,8 +145,8 @@
 
                     <!-- card -->
                     <div class="p-2" v-for="each in [1,2,3]">
-                        <div class="card p-0 border border">
-                            <div class="card-header py-2 px-2 bg-secondary-subtle border-0">
+                        <div class="card p-0 rounded-0 border">
+                            <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
@@ -175,7 +181,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body border-0 p-0">
+                            <div class="card-body rounded-0 border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
                                     Event image
                                 </div>
@@ -199,6 +205,37 @@
             </div>
         </div>
     </div>
+
+    <!-- pagination -->
+    <nav class="mt-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">
+                    1
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    2
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    3
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 </template>
 

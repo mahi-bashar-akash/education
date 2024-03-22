@@ -19,7 +19,8 @@ $base-value: 1px;
 
     &::-webkit-scrollbar {
         background-color: transparent;
-        width: 5px;
+        width: 5px !important;
+        height: 5px !important;
     }
 
     &::-webkit-scrollbar-thumb {

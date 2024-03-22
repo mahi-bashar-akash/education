@@ -15,26 +15,6 @@
                     min-width: 60px;
                 }
 
-                &.name {
-                    width: 250px;
-                    min-width: 250px;
-                }
-
-                &.date, &.time, &.role, &.category {
-                    width: 170px;
-                    min-width: 170px
-                }
-
-                &.payment {
-                    width: 90px;
-                    min-width: 90px;
-                }
-
-                &.status {
-                    width: 90px;
-                    min-width: 90px;
-                }
-
                 &.default-width {
                     width: 220px;
                     min-width: 220px;
@@ -87,9 +67,15 @@
                 color: var(--bs-secondary);
 
                 .face, .item {
-                    width: 45px;
-                    height: 45px;
+                    width: 35px;
+                    height: 35px;
                     border-radius: 50%;
+                    background-color: var(--lightest-gray);
+                    font-size: 12px !important;
+                    color: var(--bs-white);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
 
                 &.checkbox {
@@ -97,58 +83,9 @@
                     min-width: 60px;
                 }
 
-                &.id {
-                    width: 90px;
-                    min-width: 90px;
-                }
-
-                &.name {
-                    width: 270px;
-                    min-width: 300px;
-                }
-
-                &.payment, &.price, &.quantity {
-                    width: 90px;
-                    min-width: 90px;
-                }
-
-                &.date, &.role {
-                    width: 170px;
-                    min-width: 170px
-                }
-
-                &.status {
-                    width: 90px;
-                    min-width: 90px;
-                }
-
-                &.default-width {
-                    width: 220px;
-                    min-width: 220px;
-                }
-
                 &.action {
-                    width: 120px;
-                    min-width: 120px;
-
-                    .btn-icon {
-                        background-color: transparent;
-                        width: 45px;
-                        height: 45px;
-                        border-radius: 50%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border: none;
-                        outline: none;
-
-                        &:hover {
-                            background-color: var(--bs-border-color);
-                            box-shadow: 0 0 4px 0 var(--bs-border-color);
-                        }
-
-                    }
-
+                    width: 60px;
+                    min-width: 60px
                 }
 
                 &.face {

@@ -31,31 +31,97 @@
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
-                <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                <div class="shadow">
+                    <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                </div>
                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                     <i class="bi bi-search"></i>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
-            <select name="event-type" class="form-select rounded-1 shadow-none border-light">
-                <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
-            </select>
+            <div class="shadow">
+                <select name="event-type" class="form-select rounded-1 shadow-none border-light">
+                    <option value="select-option">Select visible data</option>
+                    <option value="10"> 10 </option>
+                    <option value="20"> 20 </option>
+                    <option value="30"> 30 </option>
+                    <option value="40"> 40 </option>
+                    <option value="50"> 50 </option>
+                </select>
+            </div>
         </div>
         <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-light-gray rounded-1">
-                New Fees
+            <button type="button" class="btn btn-theme wpx-90 rounded-1">
+                New
             </button>
         </div>
     </div>
 
-    <!-- fees list -->
-    <div class="card rounded-1 border-light">
+    <!-- desktop and laptop screen list -->
+    <div class="card rounded-1 border-light d-none d-xl-block shadow">
+        <div class="card-body card-list scrollbar">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </th>
+                    <th class="default-width">
+                        Name.
+                    </th>
+                    <th class="default-width">
+                        Roll or Id.
+                    </th>
+                    <th class="default-width">
+                        Fees Type.
+                    </th>
+                    <th class="default-width">
+                        Status.
+                    </th>
+                    <th class="default-width">
+                        Date.
+                    </th>
+                    <th class="default-width">
+                        Amount
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <td class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </td>
+                    <td class="default-width">
+                        <div class="truncate-to-1-line">
+                            <div class="d-flex align-items-center">
+                                <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=Student+Name`" class="face" alt="avatar"> <div class="ms-2"> Student name </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="default-width">
+                        18191101025
+                    </td>
+                    <td class="default-width">
+                        Annual
+                    </td>
+                    <td class="default-width">
+                        Paid
+                    </td>
+                    <td class="default-width">
+                        02, february, 2025
+                    </td>
+                    <td class="default-width">
+                        5000 TK
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- tablet and mobile screen list -->
+    <div class="card rounded-1 border-light d-xl-none shadow">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
@@ -122,6 +188,37 @@
             </div>
         </div>
     </div>
+
+    <!-- pagination -->
+    <nav class="mt-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">
+                    1
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    2
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    3
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 </template>
 

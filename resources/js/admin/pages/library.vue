@@ -27,35 +27,122 @@
         </nav>
     </div>
 
-    <!-- library search and new -->
+    <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
-                <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                <div class="shadow">
+                    <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                </div>
                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                     <i class="bi bi-search"></i>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
-            <select name="event-type" class="form-select rounded-1 shadow-none border-light">
-                <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
-            </select>
+            <div class="shadow">
+                <select name="event-type" class="form-select rounded-1 shadow-none border-light">
+                    <option value="select-option">Select visible data</option>
+                    <option value="10"> 10 </option>
+                    <option value="20"> 20 </option>
+                    <option value="30"> 30 </option>
+                    <option value="40"> 40 </option>
+                    <option value="50"> 50 </option>
+                </select>
+            </div>
         </div>
         <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-light-gray rounded-1">
-                New Library
+            <button type="button" class="btn btn-theme wpx-90 rounded-1">
+                New
             </button>
         </div>
     </div>
 
-    <!-- library list -->
-    <div class="card rounded-1 border-light">
+    <!-- desktop and laptop screen list -->
+    <div class="card rounded-1 border-light d-none d-xl-block shadow">
+        <div class="card-body card-list scrollbar">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </th>
+                    <th class="default-width">
+                        Name.
+                    </th>
+                    <th class="default-width">
+                        Subject.
+                    </th>
+                    <th class="default-width">
+                        Price.
+                    </th>
+                    <th class="default-width">
+                        Department
+                    </th>
+                    <th class="default-width">
+                        Status
+                    </th>
+                    <th class="action">
+                        Action
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <td class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </td>
+                    <td class="default-width">
+                        <div class="truncate-to-1-line">
+                            Library asset name
+                        </div>
+                    </td>
+                    <td class="default-width">
+                        Subject Name
+                    </td>
+                    <td class="default-width">
+                        10000 TK
+                    </td>
+                    <td class="default-width">
+                        Department name
+                    </td>
+                    <td class="default-width">
+                        <div class="text-success text-opacity-75">
+                            In Stock
+                        </div>
+                    </td>
+                    <td class="action">
+                        <div class="dropdown">
+                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        Read more
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        Delete
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- tablet and mobile screen list -->
+    <div class="card rounded-1 border-light d-xl-none shadow">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
@@ -113,6 +200,37 @@
             </div>
         </div>
     </div>
+
+    <!-- pagination -->
+    <nav class="mt-3">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">
+                    1
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    2
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    3
+                </a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
 </template>
 
