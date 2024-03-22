@@ -51,14 +51,87 @@
             </select>
         </div>
         <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-theme rounded-1">
-                New Event
+            <button type="button" class="btn btn-theme rounded-1 wpx-90">
+                New
             </button>
         </div>
     </div>
 
+    <!-- desktop event list -->
+    <div class="card rounded-1 border-light d-none d-xl-block">
+        <div class="card-body card-list scrollbar">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </th>
+                    <th class="name">
+                        Name.
+                    </th>
+                    <th class="date">
+                        Date.
+                    </th>
+                    <th class="time">
+                        Start Time.
+                    </th>
+                    <th class="time">
+                        End Time.
+                    </th>
+                    <th class="action">
+                        Action
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <td class="checkbox">
+                        <input type="checkbox" class="form-check-input">
+                    </td>
+                    <td class="name">
+                        Event name
+                    </td>
+                    <td class="date">
+                        01, January, 2025
+                    </td>
+                    <td class="time">
+                        Event Start Date
+                    </td>
+                    <td class="time">
+                        Event End Date
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        read more
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        Edit
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="dropdown-item">
+                                        Delete
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <!-- event list -->
-    <div class="card rounded-1 border-light">
+    <div class="card rounded-1 border-light d-xl-none">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 

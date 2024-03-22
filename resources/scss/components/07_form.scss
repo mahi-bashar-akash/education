@@ -1,0 +1,128 @@
+.form-textarea {
+    width: 100%;
+    border: 1px solid var(--bs-border-color);
+    outline: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+
+    &:focus, &:active {
+        transition: 0.3s all ease-in-out;
+        border: 1px solid var(--theme) !important;
+    }
+
+}
+
+.form-check-input[type=checkbox] {
+    position: relative;
+    border: 2px solid var(--bs-border-color);
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    margin: 0 .6em 0 0;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 15px;
+    width: 15px;
+    -webkit-appearance: none;
+    opacity: .5;
+    box-shadow: 0 0 0 0 !important;
+
+    &[type=checkbox]:hover {
+        opacity: 1;
+    }
+
+    &[type=checkbox]:checked {
+        border: 2px solid transparent;
+        background-color: var(--theme);
+        opacity: 1;
+
+        &[type=checkbox]:before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 50%;
+            width: 5px;
+            border: solid #FFF;
+            height: 8px;
+            border-width: 0 2px 2px 0;
+            margin: -1px -1px 0 -1px;
+            transform: rotate(45deg) translate(-50%, -50%);
+            z-index: 2;
+        }
+
+    }
+
+    &[type=checkbox]:before {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: 7px;
+        height: 14px;
+        border: transparent;
+        border-width: 0 2px 2px 0;
+        margin: -1px -1px 0 -1px;
+        transform: rotate(45deg) translate(-50%, -50%);
+        z-index: 2;
+    }
+
+}
+
+.form-check-input[type=radio] {
+    position: relative;
+    border: 2px solid var(--bs-border-color);
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 20px;
+    width: 20px;
+    -webkit-appearance: none;
+    opacity: .5;
+    box-shadow: 0 0 0 0 !important;
+
+    &[type=radio]:hover {
+        opacity: 1;
+    }
+
+    &[type=radio]:checked {
+        border: 2px solid transparent;
+        background-color: var(--theme);
+        opacity: 1;
+
+        &[type=radio]:before {
+            content: "";
+            position: absolute;
+            right: 3px;
+            top: 11.5px;
+            width: 12px;
+            height: 12px;
+            background-color: #FFF !important;
+            border-radius: 50%;
+            background: var(--white);
+            margin: -1px -1px 0;
+            transform: rotate(45deg) translate(-53%, -53%);
+            z-index: 2;
+        }
+
+    }
+
+    &[type=radio]:before {
+        content: '';
+        position: absolute;
+        right: 50%;
+        top: 50%;
+        width: 7px;
+        height: 14px;
+        border: transparent;
+        border-width: 0 2px 2px 0;
+        margin: -1px -1px 0 -1px;
+        transform: rotate(45deg) translate(-50%, -50%);
+        z-index: 2;
+    }
+
+}

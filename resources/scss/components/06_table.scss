@@ -1,0 +1,193 @@
+.table {
+    width: 100%;
+    border-spacing: 0;
+
+    thead {
+        tr {
+            th {
+                padding: 10px 0;
+                text-align: start;
+                border: none;
+                outline: none;
+
+                &.checkbox {
+                    width: 60px;
+                    min-width: 60px;
+                }
+
+                &.name {
+                    width: 250px;
+                    min-width: 250px;
+                }
+
+                &.date, &.time, &.role, &.category {
+                    width: 170px;
+                    min-width: 170px
+                }
+
+                &.payment {
+                    width: 90px;
+                    min-width: 90px;
+                }
+
+                &.status {
+                    width: 90px;
+                    min-width: 90px;
+                }
+
+                &.default-width {
+                    width: 220px;
+                    min-width: 220px;
+                }
+
+                &.action {
+                    width: 60px;
+                    min-width: 60px
+                }
+
+                &:first-child {
+                    padding-left: 18px;
+                }
+
+                &:last-child {
+                    padding-right: 18px;
+                }
+
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            &:hover {
+                transition: 0.3s all ease-in-out;
+
+                td {
+                    background-color: var(--bs-light);
+                    transition: 0.3s all ease-in-out;
+
+                    &:first-child {
+                        border-top-left-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                    }
+
+                    &:last-child {
+                        border-top-right-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+                }
+            }
+
+            td {
+                padding: 10px 0;
+                vertical-align: middle;
+                outline: none;
+                border-bottom: none;
+                transition: 0.3s all ease-in-out;
+                color: var(--bs-secondary);
+
+                .face, .item {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                }
+
+                &.checkbox {
+                    width: 60px;
+                    min-width: 60px;
+                }
+
+                &.id {
+                    width: 90px;
+                    min-width: 90px;
+                }
+
+                &.name {
+                    width: 270px;
+                    min-width: 300px;
+                }
+
+                &.payment, &.price, &.quantity {
+                    width: 90px;
+                    min-width: 90px;
+                }
+
+                &.date, &.role {
+                    width: 170px;
+                    min-width: 170px
+                }
+
+                &.status {
+                    width: 90px;
+                    min-width: 90px;
+                }
+
+                &.default-width {
+                    width: 220px;
+                    min-width: 220px;
+                }
+
+                &.action {
+                    width: 120px;
+                    min-width: 120px;
+
+                    .btn-icon {
+                        background-color: transparent;
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: none;
+                        outline: none;
+
+                        &:hover {
+                            background-color: var(--bs-border-color);
+                            box-shadow: 0 0 4px 0 var(--bs-border-color);
+                        }
+
+                    }
+
+                }
+
+                &.face {
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
+
+                &:first-child {
+                    padding-left: 20px;
+                }
+
+                &:last-child {
+                    padding-right: 20px;
+                }
+
+            }
+        }
+    }
+
+    tfoot {
+        th {
+            padding: 10px 0;
+            vertical-align: middle;
+            outline: none;
+            border-bottom: none;
+            transition: 0.3s all ease-in-out;
+            color: var(--bs-secondary);
+
+            &:first-child {
+                padding-left: 20px;
+            }
+
+            &:last-child {
+                padding-right: 20px;
+            }
+
+        }
+    }
+
+}
