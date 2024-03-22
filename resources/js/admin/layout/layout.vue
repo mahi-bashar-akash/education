@@ -85,7 +85,7 @@
                     </span>
                 </span>
             </div>
-            <div class="admin-content-body">
+            <div class="admin-content-body scrollbar">
                 <router-view/>
             </div>
         </div>

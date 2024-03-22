@@ -178,11 +178,24 @@
             padding: 15px 20px 0;
 
             .card {
+
                 .card-body {
+
                     &.card-list {
                         height: calc(100vh - 210px);
+
+                        @media screen and (max-width: 1199px) {
+                            height: calc(100vh - 270px);
+                        }
+
+                        @media screen and (max-width: 575px) {
+                            height: calc(100vh - 360px);
+                        }
+
                     }
+
                 }
+
             }
 
         }

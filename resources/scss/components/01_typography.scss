@@ -38,17 +38,3 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
-.scrollbar {
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-        background-color: transparent;
-        width: 5px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background: var(--light-gray);
-        height: 5px !important;
-    }
-}
