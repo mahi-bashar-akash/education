@@ -32,7 +32,64 @@
         </nav>
     </div>
 
+    <!-- form --- action -->
+    <form class="row">
 
+        <div class="col-lg-6">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="event-name" class="form-label"> Event name </label>
+                        <input id="event-name" type="text" name="event-name" class="form-control shadow-none rounded-0" required autocomplete="new-event-name">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="event-date" class="form-label">	Event date </label>
+                        <input id="event-date" type="text" name="event-date" class="form-control shadow-none rounded-0" required autocomplete="new-event-name">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="event-start-time" class="form-label"> Event start time </label>
+                        <input id="event-name" type="text" name="event-start" class="form-control shadow-none rounded-0" required autocomplete="new-event-name">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="event-end-time" class="form-label">	Event end time </label>
+                        <input id="event-name" type="text" name="event-end" class="form-control shadow-none rounded-0" required autocomplete="new-event-name">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="event-end-time" class="form-label">	Event end time </label>
+                        <input id="event-name" type="text" name="event-end" class="form-control shadow-none rounded-0" required autocomplete="new-event-name">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <label for="" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white">
+                <input type="file" name="" hidden="hidden">
+                <span class="d-">
+                    Click to upload Image
+                </span>
+            </label>
+
+        </div>
+
+    </form>
 
 </template>
 

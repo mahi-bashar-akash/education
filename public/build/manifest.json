@@ -22,7 +22,7 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-CUpPV-WM.js",
+    "file": "assets/app-BvpilM-h.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
@@ -38,7 +38,7 @@
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-BNxUPzJZ.css",
+    "file": "assets/stylesheet-DobjWGIU.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }
