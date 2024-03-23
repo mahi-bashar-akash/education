@@ -30,14 +30,7 @@
     <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
-            <div class="position-relative">
-                <div class="shadow">
-                    <input type="text" name="keyword" class="form-control rounded-0 ps-5 shadow-none border-0" required autocomplete="new-search" placeholder="Search here">
-                </div>
-                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
-                    <i class="bi bi-search"></i>
-                </div>
-            </div>
+            <search/>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="shadow">
@@ -206,53 +199,32 @@
         </div>
     </div>
 
+    <!-- preloader -->
+    <preloader/>
+
+    <!-- no data -->
+    <noDataFounded/>
+
     <!-- pagination -->
-    <nav class="mt-3">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-            </li>
-            <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">
-                    1
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                    2
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                    3
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <pagination/>
 
 </template>
 
 <script>
+import search from "../components/search.vue";
+import preloader from "../components/preloader.vue";
+import noDataFounded from "../components/no-data-founded.vue";
+import pagination from "../components/pagination.vue";
 
 export default {
-
-    data() {
-
-        return {}
-
+    components: {
+        search, preloader, noDataFounded, pagination
     },
-
+    data() {
+        return {  }
+    },
     mounted() {  },
-
     methods: {  }
-
 }
 
 </script>

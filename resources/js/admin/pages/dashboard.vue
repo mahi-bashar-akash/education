@@ -15,8 +15,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 row-cols-xxl-4">
 
         <!-- event -->
-        <div class="mb-3">
-
+        <div class="mb-4">
             <router-link :to="{name: 'events'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -33,7 +32,7 @@
         </div>
 
         <!-- professor -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'professors'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -50,7 +49,7 @@
         </div>
 
         <!-- student -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'students'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -67,7 +66,7 @@
         </div>
 
         <!-- course -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'courses'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -84,7 +83,7 @@
         </div>
 
         <!-- library -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'library'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -101,7 +100,7 @@
         </div>
 
         <!-- department -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'departments'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -118,7 +117,7 @@
         </div>
 
         <!-- stuff -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'stuff'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -135,7 +134,7 @@
         </div>
 
         <!-- holiday -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'holiday'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
@@ -152,7 +151,7 @@
         </div>
 
         <!-- fees -->
-        <div class="mb-3">
+        <div class="mb-4">
             <router-link :to="{name: 'fees'}" class="text-decoration-none">
                 <div class="bg-white shadow text-center py-5">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
