@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <router-link :to="{name: 'holidayManagement'}" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
                 New
-            </button>
+            </router-link>
         </div>
     </div>
 

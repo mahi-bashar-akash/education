@@ -1,7 +1,7 @@
 <template>
 
     <div class="admin-wrapper">
-        <div class="admin-sidebar" :class="{ 'active' : sidebarActive }">
+        <aside class="admin-sidebar" :class="{ 'active' : sidebarActive }">
             <div class="admin-sidebar-header">
                 <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5" @click="remove">
                     <span class="none-res-text">Education.io</span>
@@ -53,8 +53,8 @@
                     <span class="ms-2"> Fees </span>
                 </router-link>
             </div>
-        </div>
-        <div class="admin-content">
+        </aside>
+        <section class="admin-content">
             <div class="admin-content-header">
                 <button type="button" class="btn border-0 p-0 btn-icon sidebar-toggle" @click="sidebarToggle">
                     <i class="bi bi-justify-left"></i>
@@ -85,10 +85,10 @@
                     </span>
                 </span>
             </div>
-            <div class="admin-content-body scrollbar">
+            <section class="admin-content-body scrollbar">
                 <router-view/>
-            </div>
-        </div>
+            </section>
+        </section>
     </div>
 
 </template>
