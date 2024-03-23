@@ -32,7 +32,7 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
                 <div class="shadow">
-                    <input type="text" name="keyword" class="form-control rounded-1 ps-5 shadow-none border-light" required autocomplete="new-search" placeholder="Search here">
+                    <input type="text" name="keyword" class="form-control rounded-0 ps-5 shadow-none border-0" required autocomplete="new-search" placeholder="Search here">
                 </div>
                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                     <i class="bi bi-search"></i>
@@ -41,7 +41,7 @@
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="shadow">
-                <select name="event-type" class="form-select rounded-1 shadow-none border-light">
+                <select name="event-type" class="form-select rounded-0 shadow-none border-0">
                     <option value="select-option">Select visible data</option>
                     <option value="10"> 10 </option>
                     <option value="20"> 20 </option>
@@ -51,15 +51,15 @@
                 </select>
             </div>
         </div>
-        <div class="col-12 col-xl-6 text-end mb-3">
-            <button type="button" class="btn btn-theme rounded-1 wpx-90">
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
                 New
             </button>
         </div>
     </div>
 
     <!-- desktop and laptop screen list -->
-    <div class="card rounded-1 border-light d-none d-xl-block shadow">
+    <div class="card rounded-0 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
             <table class="table">
                 <thead>
@@ -141,7 +141,7 @@
     </div>
 
     <!-- tablet and mobile screen list -->
-    <div class="card rounded-1 border-light d-xl-none shadow">
+    <div class="card rounded-0 border-0 d-xl-none shadow">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
