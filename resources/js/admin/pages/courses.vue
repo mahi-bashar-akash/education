@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageCourseModalOpen">
                 New
             </button>
         </div>
@@ -73,7 +73,7 @@
                         Duration.
                     </th>
                     <th class="default-width">
-                        Estimated class.
+                        Professor.
                     </th>
                     <th class="action">
                         Action
@@ -81,7 +81,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
                         <td class="checkbox">
                             <input type="checkbox" class="form-check-input">
                         </td>
@@ -100,7 +100,7 @@
                             1 year 6 month
                         </td>
                         <td class="default-width">
-                            65 class
+                            professor name
                         </td>
                         <td class="action">
                             <div class="dropdown">
@@ -109,19 +109,14 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                     <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
-                                            Read more
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
+                                        <button type="button" class="dropdown-item" @click="manageCourseModalOpen">
                                             Edit
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
+                                        <button type="button" class="dropdown-item" @click="deleteCourseModalOpen">
                                             Delete
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -147,7 +142,7 @@
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Course Title
+                                                Course Name
                                             </div>
                                         </div>
                                     </div>
@@ -158,14 +153,14 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageCourseModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteCourseModalOpen">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -176,18 +171,14 @@
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
                                     Course image
                                 </div>
-                                <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Course description:
-                                    <div class="mt-2">
-                                        <div class="truncate-to-2-line">
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda cumque delectus distinctio illum recusandae ullam.
-                                        </div>
-                                        <div class="mt-2 pb-2">
-                                            <a href="javascript:void(0)" class="text-decoration-none text-theme">
-                                                Read more
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="mb-2 text-light-gray pt-3 pb-2 px-3">
+                                    Course Duration
+                                </div>
+                                <div class="text-secondary text-opacity-75 pb-3 px-3">
+                                    Professor name
+                                </div>
+                                <div class="text-light-gray pb-3 px-3">
+                                    Student Enroll capacity
                                 </div>
                             </div>
                         </div>
@@ -208,6 +199,109 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage course modal -->
+    <div class="modal fade" id="manageCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create course
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageCourseModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group mb-3">
+                        <label for="upload-image" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                            <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
+                            Click to upload Image
+                        </label>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="student-enroll-capacity" class="form-label"> Student enroll capacity </label>
+                        <input id="student-enroll-capacity" v-model="formData.studentEnrollCapacity" type="text" name="student-enroll-capacity" class="form-control" required autocomplete="new-student-enroll-capacity">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label"> Name </label>
+                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required autocomplete="new-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="professor" class="form-label">Select professor</label>
+                        <select name="professor" id="professor" class="form-select">
+                            <option :value="0">Select professor option</option>
+                            <option v-for="each in professorDataList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="price" class="form-label"> Price </label>
+                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control" required autocomplete="new-price">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="duration" class="form-label"> Duration </label>
+                        <input id="duration" v-model="formData.duration" type="text" name="duration" class="form-control" required autocomplete="new-duration">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label"> Description </label>
+                        <textarea id="description" class="form-textarea" name="description" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110" @click="manageCourseModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete event modal -->
+    <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete course
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteCourseModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteCourseModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -221,10 +315,51 @@ export default {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            formData: {
+                studentEnrollCapacity: '',
+                updateImage: '',
+                name: '',
+                description: '',
+            },
+            professorDataList: [
+                { id: '1', name: 'John Smith' },
+                { id: '2', name: 'Danial Wilson' },
+                { id: '3', name: 'John Wilson' },
+                { id: '4', name: 'Smith John' },
+            ]
+        }
     },
     mounted() {  },
-    methods: {  }
+    methods: {
+
+        /* Function to manage event modal open */
+        manageCourseModalOpen(){
+            const myModal = new bootstrap.Modal("#manageCourseModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage event modal close */
+        manageCourseModalClose(){
+            let myModalEl = document.getElementById('manageCourseModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete event modal open */
+        deleteCourseModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteEventModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete event modal close */
+        deleteCourseModalClose(){
+            let myModalEl = document.getElementById('deleteEventModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+    }
 }
 
 </script>

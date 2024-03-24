@@ -33,9 +33,13 @@ import fees from "../pages/fees.vue";
 import profile from "../pages/profile.vue";
 
 const TITLE = window.core.APP_NAME
+
 const ROOT_URL = "/admin/";
+
 const routes = [
+
     { path: ROOT_URL, name: 'layout', component: layout,
+
         children: [
 
             { path: ROOT_URL + 'dashboard', name: 'dashboard', component: dashboard, meta: { title: TITLE + ' - dashboard' } },
@@ -61,12 +65,17 @@ const routes = [
             { path: ROOT_URL + 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
 
         ]
+
     },
+
 ];
 
 const router = createRouter({
+
     history: createWebHistory(),
+
     routes
+
 })
 
 export default router;
