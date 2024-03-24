@@ -78,37 +78,37 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in holidayDataList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">
-                            Holiday name
+                            {{each.name}}
                         </div>
                     </td>
                     <td class="default-width">
-                        Type of holiday
+                        {{each.type}}
                     </td>
                     <td class="default-width">
-                        Start Date
+                        {{each.startDate}}
                     </td>
                     <td class="default-width">
-                        End Date
+                        {{each.endDate}}
                     </td>
                     <td class="action">
                         <div class="dropdown">
                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen">
+                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen(each.id)">
                                         Edit
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen">
+                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen(each.id)">
                                         Delete
                                     </button>
                                 </li>
@@ -129,14 +129,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in holidayDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Holiday Name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -147,12 +147,12 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen(each.id)">
                                                         Edit
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen(each.id)">
                                                         Delete
                                                     </button>
                                                 </li>
@@ -163,16 +163,16 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Holiday Image
+                                    Holiday Image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-3 pb-2 px-3">
-                                    Holiday Type:
+                                    Holiday Type: {{each.type}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Start Date:
+                                    Start Date: {{each.startDate}}
                                 </div>
                                 <div class="text-light-gray pb-3 px-3">
-                                    End Date:
+                                    End Date: {{each.endDate}}
                                 </div>
                             </div>
                         </div>
@@ -302,6 +302,9 @@ export default {
                 endDate: '',
                 description: '',
             },
+            holidayDataList: [
+                { id: '1', name: 'Festival', type: 'National Holiday', startDate: '31 July 1998', endDate: '31 July 1998' }
+            ]
         }
     },
     mounted() {

@@ -67,6 +67,9 @@
                         Department.
                     </th>
                     <th class="default-width">
+                        Education.
+                    </th>
+                    <th class="default-width">
                         Email.
                     </th>
                     <th class="default-width">
@@ -81,35 +84,38 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in professorDataList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">
                             <div class="d-flex align-items-center">
-                                <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=Professor+Name`" class="face" alt="avatar"> <div class="ms-2"> Professor name </div>
+                                <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=`+each.name" class="face" alt="avatar"> <div class="ms-2"> {{each.name}} </div>
                             </div>
                         </div>
                     </td>
                     <td class="default-width">
-                        Accounting
+                        {{each.department}}
                     </td>
                     <td class="default-width">
-                        professor@gmail.com
+                        {{each.education}}
                     </td>
                     <td class="default-width">
-                        0123456789
+                        {{each.email}}
                     </td>
                     <td class="default-width">
-                        01, January, 2025
+                        {{each.phoneNumber}}
+                    </td>
+                    <td class="default-width">
+                        {{each.joiningDate}}
                     </td>
                     <td class="action">
                         <div class="dropdown">
                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                 <li>
                                     <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
                                         Edit
@@ -137,14 +143,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in professorDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Professor name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -153,20 +159,15 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        Transfer certificate
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        Health performance
-                                                    </a>
-                                                </li>
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                                 <li>
                                                     <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
                                                         Edit
+                                                    </button>
+                                                </li>
+                                                <li>
+                                                    <button type="button" class="dropdown-item" @click="deleteProfessorModalOpen">
+                                                        Delete
                                                     </button>
                                                 </li>
                                             </ul>
@@ -176,22 +177,22 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Professor image
+                                    Professor image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Department name:
+                                    Department name: {{each.department}}
                                 </div>
                                 <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
-                                    Education:
+                                    Education: {{each.education}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Phone Number:
+                                    Phone Number: {{each.phoneNumber}}
                                 </div>
                                 <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
-                                    Email:
+                                    Email: {{each.email}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Joining Date:
+                                    Joining Date: {{each.joiningDate}}
                                 </div>
                             </div>
                         </div>
@@ -244,6 +245,11 @@
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input id="email" type="email" v-model="formData.email" name="email" class="form-control" required autocomplete="new-email">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="education" class="form-label">Education</label>
+                        <input id="education" type="text" v-model="formData.education" name="education" class="form-control" required autocomplete="new-education">
                     </div>
 
                     <div class="form-group mb-3">
@@ -333,6 +339,7 @@ export default {
                 email: '',
                 phoneNumber: '',
                 joiningDate: '',
+                education: '',
             },
             departmentListData: [
                 { id: '1', name: 'accounting' },
@@ -344,6 +351,9 @@ export default {
                 { id: '7', name: 'computer application' },
                 { id: '8', name: 'Human resource management' },
             ],
+            professorDataList: [
+                { id: '1', name: 'Mahi Bashar Akash', education: 'BBA, MBA', department: 'Accounting', email: 'mahibashar2023@gmail.com', phoneNumber: '01400125289', joiningDate: '01, January, 2025' }
+            ]
         }
     },
     mounted() {

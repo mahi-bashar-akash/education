@@ -84,31 +84,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in feesDataList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">
                             <div class="d-flex align-items-center">
-                                <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=Student+Name`" class="face" alt="avatar"> <div class="ms-2"> Student name </div>
+                                <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=`+each.name" class="face" alt="avatar"> <div class="ms-2"> {{each.name}} </div>
                             </div>
                         </div>
                     </td>
                     <td class="default-width">
-                        18191101025
+                        {{each.roll}}
                     </td>
                     <td class="default-width">
-                        Annual
+                        {{each.feesType}}
                     </td>
                     <td class="default-width">
-                        Paid
+                        {{each.feesStatus}}
                     </td>
                     <td class="default-width">
-                        02, february, 2025
+                        {{each.date}}
                     </td>
                     <td class="default-width">
-                        5000 TK
+                        {{each.amount}} TK
                     </td>
                     <td class="action">
                         <div class="dropdown">
@@ -117,12 +117,12 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="manageFeesModalOpen">
+                                    <button type="button" class="dropdown-item" @click="manageFeesModalOpen(each.id)">
                                         Edit
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="deleteFeesModalOpen">
+                                    <button type="button" class="dropdown-item" @click="deleteFeesModalOpen(each.id)">
                                         Delete
                                     </button>
                                 </li>
@@ -143,7 +143,7 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in [1]">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
@@ -354,7 +354,10 @@ export default {
                 feesAmount: '',
                 paymentType: '0',
                 paymentStatus: '0',
-            }
+            },
+            feesDataList: [
+                { id: '1', name: 'Mahi Bashar Akash', roll: '18191101025', feesType: 'Annual', feesStatus: 'Paid', date: '01, January, 2025', amount: '10000', }
+            ]
         }
     },
     mounted() {  },

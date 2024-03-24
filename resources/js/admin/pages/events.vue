@@ -81,30 +81,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
+                    <tr v-for="each in eventDataList">
                         <td class="checkbox">
                             <input type="checkbox" class="form-check-input">
                         </td>
                         <td class="default-width">
                             <div class="truncate-to-1-line">
-                                Event name
+                                {{each.name}}
                             </div>
                         </td>
                         <td class="default-width">
-                            01, January, 2025
+                            {{each.date}}
                         </td>
                         <td class="default-width">
-                            Event Start Date
+                            {{each.startTime}}
                         </td>
                         <td class="default-width">
-                            Event End Date
+                            {{each.endTime}}
                         </td>
                         <td class="action">
                             <div class="dropdown">
                                 <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                     <li>
                                         <button type="button" class="dropdown-item" @click="manageEventModalOpen">
                                             Edit
@@ -132,14 +132,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in eventDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Event name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -148,14 +148,14 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="manageEventModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="manageEventModalOpen(each.id)">
                                                         Edit
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteEventModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="deleteEventModalOpen(each.id)">
                                                         Delete
                                                     </button>
                                                 </li>
@@ -166,18 +166,13 @@
                             </div>
                             <div class="card-body rounded-0 border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Event image
+                                    Event image {{each.id}}
                                 </div>
-                                <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Date: 01, january, 2025
+                                <div class="mb-2 text-light-gray pt-3 px-3">
+                                    Date: {{each.date}}
                                 </div>
-                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
-                                    Time: 10:00 am - 12:00 pm
-                                </div>
-                                <div class="mb-2 text-light-gray my-2 px-3">
-                                    <div class="truncate-to-2-line">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet asperiores dolorem, eius sunt voluptatum.
-                                    </div>
+                                <div class="mb-2 text-secondary text-opacity-75 px-3 pb-2">
+                                    Time: {{each.startTime}} - {{each.endTime}}
                                 </div>
                             </div>
                         </div>
@@ -345,6 +340,9 @@ export default {
             periodData: [
                 { id: '1', period: 'am' },
                 { id: '2', period: 'pm' },
+            ],
+            eventDataList: [
+                { id: '1', name: 'Celebrate convocation', date: '01, January, 2025', startTime: '01:00 pm', endTime: '03:00 pm' },
             ]
         }
     },

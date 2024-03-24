@@ -84,43 +84,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in departmentDateList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
-                        Accounting
+                        {{each.name}}
                     </td>
                     <td class="default-width">
-                        Head of accounting department.
+                        {{each.headOfDepartment}}
                     </td>
                     <td class="default-width">
-                        0123456789
+                        {{each.phoneNumber}}
                     </td>
                     <td class="default-width">
-                        accounting@gmail.com
+                        {{each.email}}
                     </td>
                     <td class="default-width">
-                        2023
+                        {{each.startDate}}
                     </td>
                     <td class="default-width">
-                        21
+                        {{each.stuffCapacity}}
                     </td>
                     <td class="action">
                         <div class="dropdown">
                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item" @click="manageDepartmentModalOpen">
+                                    <button type="button" class="dropdown-item" @click="manageDepartmentModalOpen(each.id)">
                                         Edit
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item" @click="deleteDepartmentModalOpen">
+                                    <button type="button" class="dropdown-item" @click="deleteDepartmentModalOpen(each.id)">
                                         Delete
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -139,14 +139,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in departmentDateList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Department Name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -155,14 +155,14 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item" @click="manageDepartmentModalOpen">
+                                                    <a href="javascript:void(0)" class="dropdown-item" @click="manageDepartmentModalOpen(each.id)">
                                                         Edit
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item" @click="deleteDepartmentModalOpen">
+                                                    <a href="javascript:void(0)" class="dropdown-item" @click="deleteDepartmentModalOpen(each.id)">
                                                         Delete
                                                     </a>
                                                 </li>
@@ -173,22 +173,22 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Department Image
+                                    Department Image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-3 pb-2 px-3">
-                                    Department Head
+                                    {{each.name}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Phone Number: 01239823757
+                                    Phone Number: {{each.phoneNumber}}
                                 </div>
                                 <div class="text-light-gray pb-3 px-3">
-                                    Email: department@gmail.com
+                                    Email: {{each.email}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Starting year: 1999
+                                    Starting year: {{each.startDate}}
                                 </div>
                                 <div class="text-light-gray pb-3 px-3">
-                                    Stuff capacity: 21
+                                    Stuff capacity: {{each.stuffCapacity}}
                                 </div>
                             </div>
                         </div>
@@ -228,7 +228,7 @@
 
                     <div class="form-group mb-3">
                         <label for="head-of-department" class="form-label">Head Of Department</label>
-                        <input id="head-of-department" type="text" v-model="formData.headerOfDepartment" name="head-of-department" class="form-control" required autocomplete="new-head-of-department">
+                        <input id="head-of-department" type="text" v-model="formData.headOfDepartment" name="head-of-department" class="form-control" required autocomplete="new-head-of-department">
                     </div>
 
                     <div class="form-group mb-3">
@@ -327,9 +327,12 @@ export default {
                 startDate: '',
                 stuffCapacity: '',
                 phoneNumber: '',
-                headerOfDepartment: '',
+                headOfDepartment: '',
                 description: '',
-            }
+            },
+            departmentDateList: [
+                { id: '1', name: 'Accounting', email: 'accounting@gmail.com', startDate: '01, January, 2025', stuffCapacity: '21', phoneNumber: '01400125289', headOfDepartment: 'Mahi Bashar Akash', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis ipsum iure laborum sunt veritatis?' },
+            ]
         }
     },
     mounted() {

@@ -84,47 +84,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                    <tr v-for="each in studentDataList">
                         <td class="checkbox">
                             <input type="checkbox" class="form-check-input">
                         </td>
                         <td class="default-width">
-                            01, january, 2024
+                            {{each.admissionDate}}
                         </td>
                         <td class="default-width">
                             <div class="truncate-to-1-line">
                                 <div class="d-flex align-items-center">
-                                    <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=Student+Name`" class="face" alt="avatar"> <div class="ms-2"> Student name </div>
+                                    <img :src="`https://ui-avatars.com/api/?font-size=0.35&name=`+each.name" class="face" alt="avatar"> <div class="ms-2"> {{each.name}} </div>
                                 </div>
                             </div>
                         </td>
                         <td class="default-width">
-                            18191101025
+                            {{each.roll}}
                         </td>
                         <td class="default-width">
-                            0123456789
+                            {{each.phoneNumber}}
                         </td>
                         <td class="default-width">
-                            student@gmail.com
+                            {{each.email}}
                         </td>
                         <td class="default-width">
-                            Full Stack Web development
+                            {{each.enrollCourse}}
                         </td>
                         <td class="action">
                             <div class="dropdown">
                                 <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden border rounded-0">
                                     <li>
-                                        <a href="javascript:void(0)" class="dropdown-item" @click="manageStudentModalOpen">
+                                        <button type="button" class="dropdown-item" @click="manageStudentModalOpen(each.id)">
                                             Edit
-                                        </a>
+                                        </button>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)" class="dropdown-item" @click="deleteStudentModalOpen">
+                                        <button type="button" class="dropdown-item" @click="deleteStudentModalOpen(each.id)">
                                             Delete
-                                        </a>
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -143,14 +143,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in studentDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Student name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -159,16 +159,16 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden border rounded-0">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageStudentModalOpen(each.id)">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteStudentModalOpen(each.id)">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -177,19 +177,19 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Student image
+                                    Student image {{each.id}}
                                 </div>
                                 <div class="text-light-gray pt-3 pb-2 px-3">
-                                    Department name: Business Administration
+                                    Admission Date: {{each.admissionDate}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-2 px-3">
-                                    ID: 18191101025
+                                    Roll: {{each.roll}}
                                 </div>
                                 <div class="text-light-gray pb-2 px-3">
-                                    Intake: 47th ( Section: 01 )
+                                    Email: {{each.email}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Program: Bachelor of Business Administration
+                                    Enroll Course: {{each.enrollCourse}}
                                 </div>
                             </div>
                         </div>
@@ -339,6 +339,9 @@ export default {
                 { id: '5', name: 'Cyber Security' },
                 { id: '6', name: 'Business Administration' },
                 { id: '7', name: 'Digital Marketing' },
+            ],
+            studentDataList: [
+                { id: '1', admissionDate: '01, February, 2025', name: 'Mahi Bashar Akash', roll: '18191101025', phoneNumber: '01645820007', email: 'mahibashar2023@gmail.com', enrollCourse: 'Bachelor of Business Administration' },
             ],
         }
     },

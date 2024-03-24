@@ -64,6 +64,9 @@
                         Name.
                     </th>
                     <th class="default-width">
+                        Author.
+                    </th>
+                    <th class="default-width">
                         Subject.
                     </th>
                     <th class="default-width">
@@ -81,27 +84,35 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in libraryDataList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">
-                            Library asset name
+                            {{each.name}}
                         </div>
                     </td>
                     <td class="default-width">
-                        Subject Name
+                        <div class="truncate-to-1-line">
+                            {{each.author}}
+                        </div>
                     </td>
                     <td class="default-width">
-                        10000 TK
+                        {{each.subject}}
                     </td>
                     <td class="default-width">
-                        Department name
+                        {{each.price}} TK
                     </td>
                     <td class="default-width">
-                        <div class="text-success text-opacity-75">
+                        {{each.department}}
+                    </td>
+                    <td class="default-width">
+                        <div class="text-success text-opacity-75" v-if="each.status === 1">
                             In Stock
+                        </div>
+                        <div class="text-danger text-opacity-75" v-if="each.status === 2">
+                            Out of Stock
                         </div>
                     </td>
                     <td class="action">
@@ -137,14 +148,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in libraryDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Library asset name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -155,12 +166,12 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen(each.id)">
                                                         Edit
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen(each.id)">
                                                         Delete
                                                     </button>
                                                 </li>
@@ -171,22 +182,22 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    library asset image
+                                    library asset image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-3 px-3">
-                                    Author: Elon Mask
+                                    Author: {{each.author}}
                                 </div>
                                 <div class="mb-2 text-secondary text-opacity-75 px-3">
-                                    Subject: Taxation
+                                    Subject: {{each.subject}}
                                 </div>
                                 <div class="mb-2 text-light-gray px-3">
-                                    Department name: Accounting
+                                    Department name: {{each.department}}
                                 </div>
                                 <div class="mb-2 text-secondary text-opacity-75 px-3">
-                                    Price: 10000 TK
+                                    Price: {{each.price}} TK
                                 </div>
                                 <div class="mb-2 text-light-gray px-3">
-                                    Status: in Stock
+                                    Status: <span v-if="each.status === 1"> In Stock </span> <span v-if="each.status === 2"> Out of Stock </span>
                                 </div>
                             </div>
                         </div>
@@ -342,6 +353,9 @@ export default {
                 { id: '3', name: 'Marketing' },
                 { id: '4', name: 'Management' },
                 { id: '5', name: 'Economic' },
+            ],
+            libraryDataList: [
+                { id: '1', name: 'Technical Author', author: 'Mahi Bashar Akash', subject: 'Designing', price: '1000', department: 'Creative Graphic Design', status: 1 },
             ]
         }
     },

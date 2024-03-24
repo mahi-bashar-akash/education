@@ -27,6 +27,115 @@
         </nav>
     </div>
 
+    <div class="row mt-3 mt-md-5">
+        <div class="d-flex justify-content-center align-items-start">
+            <div class="col-xl-9">
+                <div class="row">
+                    <div class="col-xl-5 p-2">
+                        <div class="card rounded-0 border-0">
+                            <div class="card-header bg-white rounded-0 border-0">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <form class="pt-3">
+                                        <!-- avatar upload -->
+                                        <label for="upload-image" class="form-label wpx-150 hpx-150 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer">
+                                            <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                                            <span class="d-block">
+                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
+                                            </span>
+                                        </label>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- profile information -->
+                                <div class="mt-3 px-3">
+                                    <div class="mb-2 text-light-gray">Name: </div>
+                                    <div class="mb-2 text-light-gray"> Mahi Bashar Akash </div>
+                                    <div class="mb-2 text-light-gray">Email: </div>
+                                    <div class="mb-2 text-light-gray"> mahibashar2023@gmail.com </div>
+                                    <div class="mb-2 text-light-gray">Phone Number: </div>
+                                    <div class="mb-2 text-light-gray"> 01645820007 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 p-2">
+                        <div class="card rounded-0 border-0 h-100">
+
+                            <!-- group btn -->
+                            <div class="card-header bg-white rounded-0 border-0 d-flex justify-content-start align-items-center pt-3">
+                                <button type="button" class="btn btn-theme wpx-140 rounded-0 me-1" @click="setTab(1)">
+                                    Edit Information
+                                </button>
+                                <button type="button" class="btn btn-theme wpx-140 rounded-0 me-1" @click="setTab(2)">
+                                    Change Password
+                                </button>
+                            </div>
+
+                            <!-- update profile -->
+                            <div class="card-body h-100" v-if="tab === 1">
+                                <form>
+                                    <div class="form-group mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input id="name" type="text" name="name" class="form-control" v-model="passwordParam.currentPassword" required autocomplete="new-name">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="phone-number" class="form-label">Phone number</label>
+                                        <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                                    </div>
+                                    <div class="w-100">
+                                        <button type="button" class="btn btn-theme wpx-150 rounded-0">
+                                            Update profile
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- update password -->
+                            <div class="card-body h-100" v-if="tab === 2">
+                                <form>
+                                    <div class="form-group mb-3">
+                                        <label for="current-password" class="form-label">Current password</label>
+                                        <input id="current-password" type="password" name="current-password" v-model="passwordParam.currentPassword" class="form-control" required autocomplete="current-password">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="new-password" class="form-label">New password</label>
+                                        <div class="position-relative">
+                                            <input id="password" :type="passwordFieldType" name="password" class="form-control" v-model="passwordParam.password" required autocomplete="new-password">
+                                            <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
+                                                <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
+                                                <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="confirm-password" class="form-label">Confirm password</label>
+                                        <div class="position-relative">
+                                            <input id="password" :type="passwordConfirmationFieldType" name="password" class="form-control" v-model="passwordParam.passwordConfirm" required autocomplete="new-confirm-password">
+                                            <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
+                                                <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
+                                                <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100">
+                                        <button type="button" class="btn btn-theme wpx-150 rounded-0">
+                                            Update password
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -35,13 +144,40 @@ export default {
 
     data() {
 
-        return {}
+        return {
+            tab: 1,
+            password: '',
+            passwordFieldType: 'password',
+            passwordConfirmationFieldType: 'password',
+            passwordParam: {
+                currentPassword: '',
+                password: '',
+                passwordConfirm: '',
+            },
+        }
 
     },
 
     mounted() {  },
 
-    methods: {  }
+    methods: {
+
+        /* Function to set tab */
+        setTab(tab){
+            this.tab = tab
+        },
+
+        /* Function to password visibility */
+        passwordVisibility() {
+            this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+        },
+
+        /* Function to password confirm visibility */
+        passwordConfirmVisibility() {
+            this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
+        },
+
+    }
 
 }
 

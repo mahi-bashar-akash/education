@@ -81,40 +81,40 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="each in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                    <tr v-for="each in CourseDataList">
                         <td class="checkbox">
                             <input type="checkbox" class="form-check-input">
                         </td>
                         <td class="default-width">
                             <div class="truncate-to-1-line">
-                                Frontend developer
+                                {{each.name}}
                             </div>
                         </td>
                         <td class="default-width">
-                            +360 Student
+                            {{each.enroll}} Student
                         </td>
                         <td class="default-width">
-                            10000 TK
+                            {{each.price}} TK
                         </td>
                         <td class="default-width">
-                            1 year 6 month
+                            {{each.duration}}
                         </td>
                         <td class="default-width">
-                            professor name
+                            {{each.professor}}
                         </td>
                         <td class="action">
                             <div class="dropdown">
                                 <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="bi bi-three-dots-vertical"></i>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                     <li>
-                                        <button type="button" class="dropdown-item" @click="manageCourseModalOpen">
+                                        <button type="button" class="dropdown-item" @click="manageCourseModalOpen(each.id)">
                                             Edit
                                         </button>
                                     </li>
                                     <li>
-                                        <button type="button" class="dropdown-item" @click="deleteCourseModalOpen">
+                                        <button type="button" class="dropdown-item" @click="deleteCourseModalOpen(each.id)">
                                             Delete
                                         </button>
                                     </li>
@@ -135,14 +135,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in CourseDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Course Name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -151,14 +151,14 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="manageCourseModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="manageCourseModalOpen(each.id)">
                                                         Edit
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteCourseModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="deleteCourseModalOpen(each.id)">
                                                         Delete
                                                     </button>
                                                 </li>
@@ -169,16 +169,19 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Course image
+                                    Course image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-3 pb-2 px-3">
-                                    Course Duration
+                                    Course Duration: {{each.duration}}
                                 </div>
-                                <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Professor name
+                                <div class="mb-2 text-secondary text-opacity-75 px-3">
+                                    Course Duration: {{each.duration}}
                                 </div>
-                                <div class="text-light-gray pb-3 px-3">
-                                    Student Enroll capacity
+                                <div class="mb-2 text-light-gray px-3">
+                                    Professor: {{each.professor}}
+                                </div>
+                                <div class="text-secondary text-opacity-75 pb-2 px-3">
+                                    Student Enroll capacity: {{each.enroll}}
                                 </div>
                             </div>
                         </div>
@@ -316,6 +319,9 @@ export default {
     },
     data() {
         return {
+            CourseDataList: [
+                { id: '1', name: 'Full Stack Web Developer', enroll: '+360', price: '12000', duration: '1 year 6 month', professor: 'Mahi Bashar Akash' },
+            ],
             formData: {
                 studentEnrollCapacity: '',
                 updateImage: '',
@@ -327,7 +333,7 @@ export default {
                 { id: '2', name: 'Danial Wilson' },
                 { id: '3', name: 'John Wilson' },
                 { id: '4', name: 'Smith John' },
-            ]
+            ],
         }
     },
     mounted() {  },

@@ -3,8 +3,8 @@
     "file": "assets/vue-router-DUn1kput.css",
     "src": "_vue-router-!~{004}~.js"
   },
-  "_vue-router-LOml-7OK.js": {
-    "file": "assets/vue-router-LOml-7OK.js",
+  "_vue-router-ojLh-LOr.js": {
+    "file": "assets/vue-router-ojLh-LOr.js",
     "css": [
       "assets/vue-router-DUn1kput.css"
     ],
@@ -22,23 +22,23 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-Boat_q21.js",
+    "file": "assets/app-DIr7DAOX.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_vue-router-LOml-7OK.js"
+      "_vue-router-ojLh-LOr.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-C_KqmVTn.js",
+    "file": "assets/app-DzPi3b42.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_vue-router-LOml-7OK.js"
+      "_vue-router-ojLh-LOr.js"
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-i8S2QqDj.css",
+    "file": "assets/stylesheet-D6ukH_Hs.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }

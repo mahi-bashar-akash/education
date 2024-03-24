@@ -81,26 +81,26 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
+                <tr v-for="each in stuffDataList">
                     <td class="checkbox">
                         <input type="checkbox" class="form-check-input">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">
-                            Stuff name
+                            {{each.name}}
                         </div>
                     </td>
                     <td class="default-width">
-                        Designation
+                        {{each.designation}}
                     </td>
                     <td class="default-width">
-                        0123456789
+                        {{each.phoneNumber}}
                     </td>
                     <td class="default-width">
-                        stuff@gmail.com
+                        {{each.email}}
                     </td>
                     <td class="default-width">
-                        01, january, 1999
+                        {{each.joiningDate}}
                     </td>
                     <td class="action">
                         <div class="dropdown">
@@ -109,12 +109,12 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="manageStuffModalOpen">
+                                    <button type="button" class="dropdown-item" @click="manageStuffModalOpen(each.id)">
                                         Edit
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" class="dropdown-item" @click="deleteStuffModalOpen">
+                                    <button type="button" class="dropdown-item" @click="deleteStuffModalOpen(each.id)">
                                         Delete
                                     </button>
                                 </li>
@@ -135,14 +135,14 @@
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
                     <!-- card -->
-                    <div class="p-2" v-for="each in [1,2,3]">
+                    <div class="p-2" v-for="each in stuffDataList">
                         <div class="card p-0 rounded-0 border">
                             <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
                                             <div class="truncate-to-1-line">
-                                                Stuff Name
+                                                {{each.name}}
                                             </div>
                                         </div>
                                     </div>
@@ -153,12 +153,12 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="manageStuffModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="manageStuffModalOpen(each.id)">
                                                         Edit
                                                     </button>
                                                 </li>
                                                 <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteStuffModalOpen">
+                                                    <button type="button" class="dropdown-item" @click="deleteStuffModalOpen(each.id)">
                                                         Delete
                                                     </button>
                                                 </li>
@@ -169,19 +169,19 @@
                             </div>
                             <div class="card-body border-0 p-0">
                                 <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Stuff Image
+                                    Stuff Image {{each.id}}
                                 </div>
                                 <div class="mb-3 text-secondary text-opacity-75 pt-3 px-3">
-                                    Designation: Frontend Developer
+                                    Designation: {{each.designation}}
                                 </div>
                                 <div class="text-light-gray pb-3 px-3">
-                                    Phone Number: 01239823757
+                                    Phone Number: {{each.phoneNumber}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    Email: department@gmail.com
+                                    Email: {{each.email}}
                                 </div>
                                 <div class="text-light-gray pb-3 px-3">
-                                    Joining Date: 01, january, 2025
+                                    Joining Date: {{each.joiningDate}}
                                 </div>
                             </div>
                         </div>
@@ -330,7 +330,10 @@ export default {
                 { id: '6', name: 'statistic' },
                 { id: '7', name: 'computer application' },
                 { id: '8', name: 'Human resource management' },
-            ]
+            ],
+            stuffDataList: [
+                { id: '1', name: 'Bajirau Singham', designation: 'Police Officer', phoneNumber: '991', email: 'singham@gmail.com', joiningDate: '01, January, 2025' },
+            ],
         }
     },
     mounted() {
