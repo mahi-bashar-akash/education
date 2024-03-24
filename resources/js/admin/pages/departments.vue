@@ -140,8 +140,8 @@
 
                     <!-- card -->
                     <div class="p-2" v-for="each in [1,2,3]">
-                        <div class="card p-0 border border">
-                            <div class="card-header py-2 px-2 bg-secondary-subtle border-0">
+                        <div class="card p-0 rounded-0 border">
+                            <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
