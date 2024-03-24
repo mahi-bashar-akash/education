@@ -2,6 +2,17 @@
     color: var(--light-gray) !important;
 }
 
+.text-light-gray-hover {
+    transition: 0.3s all ease-in-out;
+    color: var(--light-gray) !important;
+
+    &:hover {
+        transition: 0.3s all ease-in-out;
+        color: var(--theme) !important;
+    }
+
+}
+
 .text-theme {
     color: var(--theme) !important;
 }

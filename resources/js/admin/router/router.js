@@ -3,6 +3,22 @@ import {createRouter, createWebHistory} from "vue-router";
 /*
 |
 |--------------------------------------------------------------------------
+| Admin Auth Pages
+|--------------------------------------------------------------------------
+|
+*/
+
+import authLayout from "../auth/layout/layout.vue";
+
+import login from "../auth/pages/login.vue";
+
+import register from "../auth/pages/register.vue";
+
+import forget from "../auth/pages/forget.vue";
+
+/*
+|
+|--------------------------------------------------------------------------
 | Admin Pages
 |--------------------------------------------------------------------------
 |
@@ -34,9 +50,25 @@ import profile from "../pages/profile.vue";
 
 const TITLE = window.core.APP_NAME
 
+const AUTH_ROOT_URL = "/admin/auth/";
+
 const ROOT_URL = "/admin/";
 
 const routes = [
+
+    { path: AUTH_ROOT_URL , name: 'authLayout', component: authLayout,
+
+        children: [
+
+            { path: AUTH_ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
+
+            { path: AUTH_ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
+
+            { path: AUTH_ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - forget' } },
+
+        ]
+
+    },
 
     { path: ROOT_URL, name: 'layout', component: layout,
 

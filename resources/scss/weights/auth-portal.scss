@@ -1,0 +1,9 @@
+.auth-portal {
+    background-color: var(--lightest-gray);
+    .auth-content {
+        width: 576px;
+        @media screen and (max-width: 576px) {
+            width: 100%;
+        }
+    }
+}
