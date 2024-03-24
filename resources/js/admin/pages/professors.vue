@@ -282,7 +282,7 @@
             <div class="modal-content rounded-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                        Delete event
+                        Delete professor
                     </h1>
                     <button type="button" class="btn-close shadow-none" @click="deleteProfessorModalClose"></button>
                 </div>
@@ -377,7 +377,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to event-date */
+        /* Function to professor joining date */
         flatpickrConfigDate() {
             flatpickr("#joining-date", {
                 altFormat: 'j M Y',

@@ -106,11 +106,6 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                     <li>
-                                        <button type="button" class="dropdown-item" @click="showEventData">
-                                            read more
-                                        </button>
-                                    </li>
-                                    <li>
                                         <button type="button" class="dropdown-item" @click="manageEventModalOpen">
                                             Edit
                                         </button>
@@ -389,11 +384,6 @@ export default {
             let myModalEl = document.getElementById('deleteEventModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
-        },
-
-        /* Function to show event data */
-        showEventData(){
-            this.$router.push( { name: 'eventManagement' } )
         },
 
         /* Function to event-date */

@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageStudentModalOpen">
                 New
             </button>
         </div>
@@ -61,6 +61,9 @@
                             <input type="checkbox" class="form-check-input">
                         </th>
                         <th class="default-width">
+                            Admission date
+                        </th>
+                        <th class="default-width">
                             Name.
                         </th>
                         <th class="default-width">
@@ -73,7 +76,7 @@
                             Email.
                         </th>
                         <th class="default-width">
-                            Department.
+                            Enroll Course
                         </th>
                         <th class="action">
                             Action
@@ -84,6 +87,9 @@
                     <tr v-for="each in [1,2,3,4,5,6,7,8,9,10]">
                         <td class="checkbox">
                             <input type="checkbox" class="form-check-input">
+                        </td>
+                        <td class="default-width">
+                            01, january, 2024
                         </td>
                         <td class="default-width">
                             <div class="truncate-to-1-line">
@@ -102,7 +108,7 @@
                             student@gmail.com
                         </td>
                         <td class="default-width">
-                            Accounting
+                            Full Stack Web development
                         </td>
                         <td class="action">
                             <div class="dropdown">
@@ -111,23 +117,13 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                     <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
-                                            Transfer certificate
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
-                                            Health performance
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
-                                            view schedule
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)" class="dropdown-item">
+                                        <a href="javascript:void(0)" class="dropdown-item" @click="manageStudentModalOpen">
                                             Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="dropdown-item" @click="deleteStudentModalOpen">
+                                            Delete
                                         </a>
                                     </li>
                                 </ul>
@@ -166,27 +162,12 @@
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
                                                     <a href="javascript:void(0)" class="dropdown-item">
-                                                        Educational performance
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        Health performance
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        Transfer certificate
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        Admission cancel
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
                                                         Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                        Delete
                                                     </a>
                                                 </li>
                                             </ul>
@@ -202,7 +183,7 @@
                                     Department name: Business Administration
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-2 px-3">
-                                        ID: 18191101025
+                                    ID: 18191101025
                                 </div>
                                 <div class="text-light-gray pb-2 px-3">
                                     Intake: 47th ( Section: 01 )
@@ -228,6 +209,108 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage student modal -->
+    <div class="modal fade" id="manageStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0 d-flex justify-content-between">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create student
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageStudentModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <label for="upload-image" class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
+                                <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                                <span class="d-block">
+                                    <i class="bi bi-cloud-arrow-down-fill fs-3"></i>
+                                </span>
+                                Click to upload image
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control" required autocomplete="new-email">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="department" class="form-label">Select Enroll</label>
+                        <select name="department" id="department" class="form-select">
+                            <option :value="0">Select Enroll Course</option>
+                            <option v-for="each in enrollCourseDataList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="phone-number" class="form-label">Phone number</label>
+                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admission-date" class="form-label">Admission date</label>
+                        <input id="admission-date" type="text" v-model="formData.joiningDate" name="admission-date" class="form-control" required autocomplete="new-admission-date">
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110 me-2" @click="manageStudentModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete student modal -->
+    <div class="modal fade" id="deleteStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete student
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteStudentModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteStudentModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -235,16 +318,73 @@ import search from "../components/search.vue";
 import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
+import flatpickr from "flatpickr";
 
 export default {
     components: {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            formData: {
+                name: '',
+                email: '',
+                phoneNumber: '',
+            },
+            enrollCourseDataList: [
+                { id: '1', name: 'Creative Graphic Design' },
+                { id: '2', name: 'Frontend Web Developer' },
+                { id: '3', name: 'Backend Web Developer' },
+                { id: '4', name: 'Full Stack Web Developer' },
+                { id: '5', name: 'Cyber Security' },
+                { id: '6', name: 'Business Administration' },
+                { id: '7', name: 'Digital Marketing' },
+            ],
+        }
     },
-    mounted() {  },
-    methods: {  }
+    mounted() {
+        this.flatpickrConfigDate();
+    },
+    methods: {
+
+        /* Function to professor joining date */
+        flatpickrConfigDate() {
+            flatpickr("#admission-date", {
+                altFormat: 'j M Y',
+                altInput: true,
+                minDate: "today",
+                dateFormat: 'Y-m-d',
+                disableMobile: true,
+            })
+        },
+
+        /* Function to manage professor modal open */
+        manageStudentModalOpen(){
+            const myModal = new bootstrap.Modal("#manageStudentModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage professor modal close */
+        manageStudentModalClose(){
+            let myModalEl = document.getElementById('manageStudentModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete event modal open */
+        deleteStudentModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteStudentModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete event modal close */
+        deleteStudentModalClose(){
+            let myModalEl = document.getElementById('deleteStudentModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+    }
 }
 
 </script>

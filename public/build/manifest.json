@@ -3,8 +3,8 @@
     "file": "assets/vue-router-DUn1kput.css",
     "src": "_vue-router-!~{004}~.js"
   },
-  "_vue-router-LOml-7OK.js": {
-    "file": "assets/vue-router-LOml-7OK.js",
+  "_vue-router-Bs0L2YiD.js": {
+    "file": "assets/vue-router-Bs0L2YiD.js",
     "css": [
       "assets/vue-router-DUn1kput.css"
     ],
@@ -22,19 +22,19 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-D5D3rDjx.js",
+    "file": "assets/app-BwMvsJFy.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_vue-router-LOml-7OK.js"
+      "_vue-router-Bs0L2YiD.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-C_KqmVTn.js",
+    "file": "assets/app-59SYhYEH.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_vue-router-LOml-7OK.js"
+      "_vue-router-Bs0L2YiD.js"
     ]
   },
   "resources/scss/stylesheet.scss": {
