@@ -310,33 +310,33 @@ export default {
     },
     methods: {
 
-        /* Function to manage department modal open */
+        /* Function to manage holiday modal open */
         manageHolidayModalOpen(){
             const myModal = new bootstrap.Modal("#manageHolidayModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage department modal close */
+        /* Function to manage holiday modal close */
         manageHolidayModalClose(){
             let myModalEl = document.getElementById('manageHolidayModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete department modal open */
+        /* Function to delete holiday modal open */
         deleteHolidayModalOpen(){
             const myModal = new bootstrap.Modal("#deleteHolidayModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete department modal close */
+        /* Function to delete holiday modal close */
         deleteHolidayModalClose(){
             let myModalEl = document.getElementById('deleteHolidayModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to event-date */
+        /* Function to holiday start date */
         flatpickrConfigStartDate() {
             flatpickr("#start-date", {
                 altFormat: 'j M Y',
@@ -347,7 +347,7 @@ export default {
             })
         },
 
-        /* Function to event-date */
+        /* Function to holiday end date */
         flatpickrConfigEndDate() {
             flatpickr("#end-date", {
                 altFormat: 'j M Y',

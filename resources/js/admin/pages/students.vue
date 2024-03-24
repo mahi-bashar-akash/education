@@ -347,7 +347,7 @@ export default {
     },
     methods: {
 
-        /* Function to professor joining date */
+        /* Function to student joining date */
         flatpickrConfigDate() {
             flatpickr("#admission-date", {
                 altFormat: 'j M Y',
@@ -358,26 +358,26 @@ export default {
             })
         },
 
-        /* Function to manage professor modal open */
+        /* Function to manage student modal open */
         manageStudentModalOpen(){
             const myModal = new bootstrap.Modal("#manageStudentModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage professor modal close */
+        /* Function to manage student modal close */
         manageStudentModalClose(){
             let myModalEl = document.getElementById('manageStudentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete event modal open */
+        /* Function to delete student modal open */
         deleteStudentModalOpen(){
             const myModal = new bootstrap.Modal("#deleteStudentModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete event modal close */
+        /* Function to delete student modal close */
         deleteStudentModalClose(){
             let myModalEl = document.getElementById('deleteStudentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)

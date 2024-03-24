@@ -338,33 +338,33 @@ export default {
     },
     methods: {
 
-        /* Function to manage department modal open */
+        /* Function to manage stuff modal open */
         manageStuffModalOpen(){
             const myModal = new bootstrap.Modal("#manageStuffModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage department modal close */
+        /* Function to manage stuff modal close */
         manageStuffModalClose(){
             let myModalEl = document.getElementById('manageStuffModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete department modal open */
+        /* Function to delete stuff modal open */
         deleteStuffModalOpen(){
             const myModal = new bootstrap.Modal("#deleteStuffModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete department modal close */
+        /* Function to delete stuff modal close */
         deleteStuffModalClose(){
             let myModalEl = document.getElementById('deleteStuffModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to event-date */
+        /* Function to stuff joining date */
         flatpickrConfigDate() {
             flatpickr("#joining-date", {
                 altFormat: 'j M Y',

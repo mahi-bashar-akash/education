@@ -364,13 +364,13 @@ export default {
             modal.hide();
         },
 
-        /* Function to delete event modal open */
+        /* Function to delete professor modal open */
         deleteProfessorModalOpen(){
             const myModal = new bootstrap.Modal("#deleteProfessorModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete event modal close */
+        /* Function to delete professor modal close */
         deleteProfessorModalClose(){
             let myModalEl = document.getElementById('deleteProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)

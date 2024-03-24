@@ -363,7 +363,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to event-date */
+        /* Function to department start-date */
         flatpickrConfigDate() {
             flatpickr("#start-date", {
                 altFormat: 'j M Y',

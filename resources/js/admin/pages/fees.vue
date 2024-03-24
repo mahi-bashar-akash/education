@@ -360,26 +360,26 @@ export default {
     mounted() {  },
     methods: {
 
-        /* Function to manage department modal open */
+        /* Function to manage fees modal open */
         manageFeesModalOpen(){
             const myModal = new bootstrap.Modal("#manageFeesModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage department modal close */
+        /* Function to manage fees modal close */
         manageFeesModalClose(){
             let myModalEl = document.getElementById('manageFeesModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete department modal open */
+        /* Function to delete fees modal open */
         deleteFeesModalOpen(){
             const myModal = new bootstrap.Modal("#deleteFeesModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete department modal close */
+        /* Function to delete fees modal close */
         deleteFeesModalClose(){
             let myModalEl = document.getElementById('deleteFeesModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)

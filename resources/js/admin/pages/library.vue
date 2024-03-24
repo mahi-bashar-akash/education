@@ -348,26 +348,26 @@ export default {
     mounted() {  },
     methods: {
 
-        /* Function to manage event modal open */
+        /* Function to manage library modal open */
         manageLibraryAssetModalOpen(){
             const myModal = new bootstrap.Modal("#manageLibraryAssetModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage event modal close */
+        /* Function to manage library modal close */
         manageLibraryAssetModalClose(){
             let myModalEl = document.getElementById('manageLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete event modal open */
+        /* Function to delete library modal open */
         deleteLibraryAssetModalOpen(){
             const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete event modal close */
+        /* Function to delete library modal close */
         deleteLibraryAssetModalClose(){
             let myModalEl = document.getElementById('deleteLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
