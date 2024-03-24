@@ -226,12 +226,12 @@
 
                     <div class="form-group mb-3">
                         <label for="joining-date" class="form-label">Joining Date</label>
-                        <input id="joining-date" type="text" name="join-date" class="form-control" required autocomplete="new-joining-date">
+                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="join-date" class="form-control" required autocomplete="new-joining-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">department</label>
-                        <select name="department" id="department" class="form-select">
+                        <select name="department" id="department" class="form-select" v-model="formData.department">
                             <option :value="0">Select department option</option>
                             <option v-for="each in departmentDataList" :value="each.id"> {{each.name}} </option>
                         </select>
@@ -315,10 +315,9 @@ export default {
             formData: {
                 name: '',
                 email: '',
-                startDate: '',
-                stuffCapacity: '',
+                joiningDate: '',
+                department: '',
                 phoneNumber: '',
-                headerOfDepartment: '',
                 description: '',
             },
 

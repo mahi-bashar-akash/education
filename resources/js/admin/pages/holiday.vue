@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageHolidayModalOpen">
                 New
             </button>
         </div>
@@ -103,14 +103,14 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen">
                                         Edit
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen">
                                         Delete
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -147,14 +147,14 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -193,6 +193,93 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage holiday modal -->
+    <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create holiday
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageHolidayModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="types" class="form-label">Types</label>
+                        <input id="types" type="text" v-model="formData.types" name="types" class="form-control" required autocomplete="new-types">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="start-date" class="form-label">Start Date</label>
+                        <input id="start-date" type="text" v-model="formData.startDate" name="start-date" class="form-control" required autocomplete="new-start-date">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="end-date" class="form-label">End Date</label>
+                        <input id="end-date" type="text" v-model="formData.endDate" name="end-date" class="form-control" required autocomplete="new-end-date">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="description" id="description" class="form-textarea" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110" @click="manageHolidayModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete holiday modal -->
+    <div class="modal fade" id="deleteHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete holiday
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteHolidayModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteHolidayModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -200,16 +287,78 @@ import search from "../components/search.vue";
 import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
+import flatpickr from "flatpickr";
 
 export default {
     components: {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            formData: {
+                name: '',
+                types: '',
+                startDate: '',
+                endDate: '',
+                description: '',
+            },
+        }
     },
-    mounted() {  },
-    methods: {  }
+    mounted() {
+        this.flatpickrConfigStartDate();
+        this.flatpickrConfigEndDate();
+    },
+    methods: {
+
+        /* Function to manage department modal open */
+        manageHolidayModalOpen(){
+            const myModal = new bootstrap.Modal("#manageHolidayModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage department modal close */
+        manageHolidayModalClose(){
+            let myModalEl = document.getElementById('manageHolidayModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete department modal open */
+        deleteHolidayModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteHolidayModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete department modal close */
+        deleteHolidayModalClose(){
+            let myModalEl = document.getElementById('deleteHolidayModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to event-date */
+        flatpickrConfigStartDate() {
+            flatpickr("#start-date", {
+                altFormat: 'j M Y',
+                altInput: true,
+                minDate: "today",
+                dateFormat: 'Y-m-d',
+                disableMobile: true,
+            })
+        },
+
+        /* Function to event-date */
+        flatpickrConfigEndDate() {
+            flatpickr("#end-date", {
+                altFormat: 'j M Y',
+                altInput: true,
+                minDate: "today",
+                dateFormat: 'Y-m-d',
+                disableMobile: true,
+            })
+        },
+
+    }
 }
 
 </script>
