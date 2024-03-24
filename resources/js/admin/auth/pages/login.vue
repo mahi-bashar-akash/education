@@ -1,8 +1,5 @@
 <template>
 
-    <div class="mb-2 fs-5 text-center">
-        {{APP_NAME}}
-    </div>
     <form>
         <div class="form-group mb-3">
             <label for="email" class="form-label">Email</label>
@@ -18,11 +15,22 @@
                 </div>
             </div>
         </div>
-        <div class="mb-2">
-            <label for="remember-me" class="form-label">
-                <input id="remember-me" type="checkbox" class="form-check-input">
-                Remember me
-            </label>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <label for="remember-me" class="form-label">
+                        <input id="remember-me" type="checkbox" class="form-check-input">
+                        Remember me
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="mb-2">
+                    <router-link :to="{name: 'forget'}" class="text-decoration-none text-theme">
+                        Forget password?
+                    </router-link>
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-theme rounded-0 wpx-90">

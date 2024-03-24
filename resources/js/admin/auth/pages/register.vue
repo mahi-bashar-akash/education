@@ -1,8 +1,5 @@
 <template>
-
-    <div class="mb-2 fs-5 text-center">
-        {{APP_NAME}}
-    </div>
+    
     <form>
         <div class="form-group mb-3">
             <label for="name" class="form-label">Name</label>
