@@ -34,7 +34,7 @@
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="shadow">
-                <select name="event-type" class="form-select rounded-0 shadow-none border-0">
+                <select name="event-type" class="form-select">
                     <option value="select-option">Select visible data</option>
                     <option value="10"> 10 </option>
                     <option value="20"> 20 </option>
@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <router-link :to="{name: 'professorManagement'}" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageProfessorModalOpen">
                 New
-            </router-link>
+            </button>
         </div>
     </div>
 
@@ -71,6 +71,9 @@
                     </th>
                     <th class="default-width">
                         Phone.
+                    </th>
+                    <th class="default-width">
+                        Joining Date.
                     </th>
                     <th class="action">
                         Action
@@ -98,6 +101,9 @@
                     <td class="default-width">
                         0123456789
                     </td>
+                    <td class="default-width">
+                        01, January, 2025
+                    </td>
                     <td class="action">
                         <div class="dropdown">
                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,24 +111,14 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        Transfer certificate
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        Health performance
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        view schedule
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
                                         Edit
-                                    </a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item" @click="deleteProfessorModalOpen">
+                                        Delete
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -169,14 +165,9 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        view schedule
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -190,16 +181,17 @@
                                 <div class="mb-2 text-light-gray pt-2 px-3">
                                     Department name:
                                 </div>
-                                <div class="text-secondary text-opacity-75 py-2 px-3">
-                                    <div class="mb-2">
-                                        Schedule:
-                                    </div>
-                                    <div class="mb-2">
-                                        saturday ( 10:00 am <i class="bi bi-dash"></i> 12:00 am )
-                                    </div>
-                                    <div class="mb-2">
-                                        BBA <i class="bi bi-arrow-right-short"></i> Major Accounting
-                                    </div>
+                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
+                                    Education:
+                                </div>
+                                <div class="mb-2 text-light-gray pt-2 px-3">
+                                    Phone Number:
+                                </div>
+                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
+                                    Email:
+                                </div>
+                                <div class="mb-2 text-light-gray pt-2 px-3">
+                                    Joining Date:
                                 </div>
                             </div>
                         </div>
@@ -220,6 +212,107 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage professor modal -->
+    <div class="modal fade" id="manageProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0 d-flex justify-content-between">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create Professor
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageProfessorModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <label for="upload-image" class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
+                                <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                                <span class="d-block">
+                                    <i class="bi bi-cloud-arrow-down-fill fs-3"></i>
+                                </span>
+                                Click to upload image
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control" required autocomplete="new-email">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="department" class="form-label">Select Department</label>
+                        <select name="department" id="department" class="form-select">
+                            <option v-for="each in departmentListData" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="phone-number" class="form-label">Phone number</label>
+                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="joining-date" class="form-label">Joining date</label>
+                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="joining-date" class="form-control" required autocomplete="new-joining-date">
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110 me-2" @click="manageProfessorModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete professor modal -->
+    <div class="modal fade" id="deleteProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete event
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteProfessorModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteProfessorModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -227,16 +320,75 @@ import search from "../components/search.vue";
 import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
+import flatpickr from "flatpickr";
 
 export default {
     components: {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            formData: {
+                name: '',
+                email: '',
+                phoneNumber: '',
+                joiningDate: '',
+            },
+            departmentListData: [
+                { id: '1', name: 'accounting' },
+                { id: '2', name: 'finance' },
+                { id: '3', name: 'marketing' },
+                { id: '4', name: 'management' },
+                { id: '5', name: 'economic' },
+                { id: '6', name: 'statistic' },
+                { id: '7', name: 'computer application' },
+                { id: '8', name: 'Human resource management' },
+            ],
+        }
     },
-    mounted() {  },
-    methods: {  }
+    mounted() {
+        this.flatpickrConfigDate();
+    },
+    methods: {
+
+        /* Function to manage professor modal open */
+        manageProfessorModalOpen(){
+            const myModal = new bootstrap.Modal("#manageProfessorModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage professor modal close */
+        manageProfessorModalClose(){
+            let myModalEl = document.getElementById('manageProfessorModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete event modal open */
+        deleteProfessorModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteProfessorModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete event modal close */
+        deleteProfessorModalClose(){
+            let myModalEl = document.getElementById('deleteProfessorModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to event-date */
+        flatpickrConfigDate() {
+            flatpickr("#joining-date", {
+                altFormat: 'j M Y',
+                altInput: true,
+                minDate: "today",
+                dateFormat: 'Y-m-d',
+                disableMobile: true,
+            })
+        },
+
+    }
 }
 
 </script>

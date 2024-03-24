@@ -34,7 +34,7 @@
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="shadow">
-                <select name="event-type" class="form-select rounded-0 shadow-none border-0">
+                <select name="event-type" class="form-select">
                     <option value="select-option">Select visible data</option>
                     <option value="10"> 10 </option>
                     <option value="20"> 20 </option>
@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <router-link :to="{name: 'studentManagement'}" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
                 New
-            </router-link>
+            </button>
         </div>
     </div>
 

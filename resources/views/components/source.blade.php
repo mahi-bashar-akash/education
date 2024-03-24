@@ -5,3 +5,7 @@
 <link rel="stylesheet" href="{{asset('/source-code/owl.carousel/dist/assets/owl.carousel.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('/source-code/owl.carousel/dist/assets/owl.theme.default.min.css')}}">
+
+<link rel="stylesheet" href="{{asset('/source-code/flatpickr/dist/flatpickr.min.css')}}">
+
+<script src="{{asset('/source-code/flatpickr/dist/flatpickr.min.js')}}" type="application/javascript"></script>
