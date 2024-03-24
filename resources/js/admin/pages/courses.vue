@@ -266,7 +266,7 @@
     </div>
 
     <!-- delete course modal -->
-    <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -333,28 +333,28 @@ export default {
     mounted() {  },
     methods: {
 
-        /* Function to manage event modal open */
+        /* Function to manage course modal open */
         manageCourseModalOpen(){
             const myModal = new bootstrap.Modal("#manageCourseModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to manage event modal close */
+        /* Function to manage course modal close */
         manageCourseModalClose(){
             let myModalEl = document.getElementById('manageCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete event modal open */
+        /* Function to delete course modal open */
         deleteCourseModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteEventModal", { keyboard: false } );
+            const myModal = new bootstrap.Modal("#deleteCourseModal", { keyboard: false } );
             myModal.show();
         },
 
-        /* Function to delete event modal close */
+        /* Function to delete course modal close */
         deleteCourseModalClose(){
-            let myModalEl = document.getElementById('deleteEventModal');
+            let myModalEl = document.getElementById('deleteCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
