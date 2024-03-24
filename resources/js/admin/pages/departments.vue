@@ -275,7 +275,7 @@
             <div class="modal-content rounded-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                        Delete course
+                        Delete department
                     </h1>
                     <button type="button" class="btn-close shadow-none" @click="deleteDepartmentModalClose"></button>
                 </div>
