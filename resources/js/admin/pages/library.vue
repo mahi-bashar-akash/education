@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageLibraryAssetModalOpen">
                 New
             </button>
         </div>
@@ -111,19 +111,14 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        Read more
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen">
                                         Edit
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen">
                                         Delete
-                                    </a>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -160,14 +155,14 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -181,8 +176,17 @@
                                 <div class="mb-2 text-light-gray pt-3 px-3">
                                     Author: Elon Mask
                                 </div>
-                                <div class="text-secondary text-opacity-75 pb-3 px-3">
-                                    section: Science and technology
+                                <div class="mb-2 text-secondary text-opacity-75 px-3">
+                                    Subject: Taxation
+                                </div>
+                                <div class="mb-2 text-light-gray px-3">
+                                    Department name: Accounting
+                                </div>
+                                <div class="mb-2 text-secondary text-opacity-75 px-3">
+                                    Price: 10000 TK
+                                </div>
+                                <div class="mb-2 text-light-gray px-3">
+                                    Status: in Stock
                                 </div>
                             </div>
                         </div>
@@ -203,6 +207,113 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage library asset modal -->
+    <div class="modal fade" id="manageLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create library asset
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageLibraryAssetModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group mb-3">
+                        <label for="upload-image" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                            <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
+                            Click to upload Image
+                        </label>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="name" class="form-label"> Name </label>
+                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required autocomplete="new-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="subject" class="form-label"> Subject </label>
+                        <input id="subject" v-model="formData.subject" type="text" name="subject" class="form-control" required autocomplete="new-subject">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="author-name" class="form-label"> Author name </label>
+                        <input id="author-name" v-model="formData.authorName" type="text" name="author-name" class="form-control" required autocomplete="new-author-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="department" class="form-label">Select department</label>
+                        <select name="department" id="department" class="form-select" v-model="formData.department">
+                            <option :value="0">Select Department option</option>
+                            <option v-for="each in departmentListData" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="price" class="form-label"> Price </label>
+                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control" required autocomplete="new-price">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="status" class="form-label"> Status </label>
+                        <select name="" id="" class="form-select" v-model="formData.status">
+                            <option :value="0">Select status option</option>
+                            <option :value="1">In Stock</option>
+                            <option :value="2">Out of Stock</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110" @click="manageLibraryAssetModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete library asset modal -->
+    <div class="modal fade" id="deleteLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete library asset
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteLibraryAssetModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteLibraryAssetModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -216,10 +327,54 @@ export default {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            formData: {
+                updateImage: '',
+                subject: '',
+                authorName: '',
+                department: '0',
+                price: '',
+                status: '0',
+            },
+            departmentListData: [
+                { id: '1', name: 'Accounting' },
+                { id: '2', name: 'Finance' },
+                { id: '3', name: 'Marketing' },
+                { id: '4', name: 'Management' },
+                { id: '5', name: 'Economic' },
+            ]
+        }
     },
     mounted() {  },
-    methods: {  }
+    methods: {
+
+        /* Function to manage event modal open */
+        manageLibraryAssetModalOpen(){
+            const myModal = new bootstrap.Modal("#manageLibraryAssetModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage event modal close */
+        manageLibraryAssetModalClose(){
+            let myModalEl = document.getElementById('manageLibraryAssetModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete event modal open */
+        deleteLibraryAssetModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete event modal close */
+        deleteLibraryAssetModalClose(){
+            let myModalEl = document.getElementById('deleteLibraryAssetModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+    }
 }
 
 </script>
