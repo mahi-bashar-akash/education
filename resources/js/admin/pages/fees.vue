@@ -45,7 +45,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageFeesModalOpen">
                 New
             </button>
         </div>
@@ -78,6 +78,9 @@
                     <th class="default-width">
                         Amount
                     </th>
+                    <th class="action">
+                        Action
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -106,6 +109,25 @@
                     </td>
                     <td class="default-width">
                         5000 TK
+                    </td>
+                    <td class="action">
+                        <div class="dropdown">
+                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
+                                <li>
+                                    <button type="button" class="dropdown-item" @click="manageFeesModalOpen">
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item" @click="deleteFeesModalOpen">
+                                        Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 </tbody>
@@ -139,14 +161,14 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageFeesModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteFeesModalOpen">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -191,6 +213,105 @@
     <!-- pagination -->
     <pagination/>
 
+    <!-- manage fees modal -->
+    <div class="modal fade" id="manageFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form class="modal-content px-3 py-2 rounded-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Create fees
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageFeesModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group mb-3">
+                        <label for="department" class="form-label">Select Student</label>
+                        <select name="department" id="department" class="form-select" required autocomplete="new-select-student" v-model="formData.department">
+                            <option :value="0">Select student option</option>
+                            <option v-for="each in studentDataList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="fees-type" class="form-label">Select Fees type</label>
+                        <select name="fees-type" id="fees-type" class="form-select" required autocomplete="new-select-fees-type" v-model="formData.feesType">
+                            <option :value="0">Select fees type</option>
+                            <option v-for="each in feesTypeDataList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="fees-amount" class="form-label">Fees amount</label>
+                        <input id="fees-amount" type="text" name="fees-amount" class="form-control" required autocomplete="new-fees-amount" v-model="formData.feesAmount">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="payment-type" class="form-label">Payment type</label>
+                        <select name="payment-type" id="payment-type" class="form-select" required autocomplete="new-payment-type" v-model="formData.paymentType">
+                            <option :value="0">Select payment type</option>
+                            <option v-for="each in paymentTypeList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="payment-status" class="form-label">Payment status</label>
+                        <select name="payment-status" id="payment-status" class="form-select" required autocomplete="new-payment-status" v-model="formData.paymentStatus">
+                            <option :value="0">Select payment status</option>
+                            <option v-for="each in paymentStatusList" :value="each.id"> {{each.name}} </option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary rounded-0 wpx-110" @click="manageFeesModalClose">
+                        Close
+                    </button>
+                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete fees modal -->
+    <div class="modal fade" id="deleteFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete fees
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteFeesModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteFeesModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -204,10 +325,68 @@ export default {
         search, preloader, noDataFounded, pagination
     },
     data() {
-        return {  }
+        return {
+            studentDataList: [
+                { id: '1', name: 'John Smith', roll: '18191101025' },
+                { id: '2', name: 'Denny Wilson', roll: '18191101026' },
+                { id: '3', name: 'Denial Furies', roll: '18191101027' },
+                { id: '4', name: 'Fas and Furious', roll: '18191101028' },
+                { id: '5', name: 'Sansi Monsi', roll: '18191101029' },
+            ],
+            feesTypeDataList: [
+                { id: '1', name: 'Annual' },
+                { id: '2', name: 'Exam' },
+                { id: '3', name: 'Other' },
+            ],
+            paymentTypeList: [
+                { id: '1', name: 'Cash' },
+                { id: '2', name: 'Cheque' },
+                { id: '3', name: 'Other' },
+            ],
+            paymentStatusList: [
+                { id: '1', name: 'Paid' },
+                { id: '2', name: 'Unpaid' },
+                { id: '3', name: 'Pending' },
+            ],
+            formData: {
+                department: '0',
+                feesType: '0',
+                feesAmount: '',
+                paymentType: '0',
+                paymentStatus: '0',
+            }
+        }
     },
     mounted() {  },
-    methods: {  }
+    methods: {
+
+        /* Function to manage department modal open */
+        manageFeesModalOpen(){
+            const myModal = new bootstrap.Modal("#manageFeesModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to manage department modal close */
+        manageFeesModalClose(){
+            let myModalEl = document.getElementById('manageFeesModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete department modal open */
+        deleteFeesModalOpen(){
+            const myModal = new bootstrap.Modal("#deleteFeesModal", { keyboard: false } );
+            myModal.show();
+        },
+
+        /* Function to delete department modal close */
+        deleteFeesModalClose(){
+            let myModalEl = document.getElementById('deleteFeesModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+    }
 }
 
 </script>

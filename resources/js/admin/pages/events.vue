@@ -150,19 +150,14 @@
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
-                                                        read more
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="manageEventModalOpen">
                                                         Edit
-                                                    </a>
+                                                    </button>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)" class="dropdown-item">
+                                                    <button type="button" class="dropdown-item" @click="deleteEventModalOpen">
                                                         Delete
-                                                    </a>
+                                                    </button>
                                                 </li>
                                             </ul>
                                         </div>
