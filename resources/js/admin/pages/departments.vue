@@ -269,7 +269,7 @@
         </div>
     </div>
 
-    <!-- delete course modal -->
+    <!-- delete department modal -->
     <div class="modal fade" id="deleteDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-0 py-2 px-3">
