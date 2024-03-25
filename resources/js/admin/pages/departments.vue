@@ -176,7 +176,7 @@
                                     Department Image {{each.id}}
                                 </div>
                                 <div class="mb-2 text-light-gray pt-3 pb-2 px-3">
-                                    {{each.name}}
+                                    {{each.headOfDepartment}}
                                 </div>
                                 <div class="text-secondary text-opacity-75 pb-3 px-3">
                                     Phone Number: {{each.phoneNumber}}
