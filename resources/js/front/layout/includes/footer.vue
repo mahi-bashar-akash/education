@@ -14,16 +14,16 @@
                         We’ve got the solution: world-class training and development programs developed by top universities.
                     </div>
                     <div class="d-flex align-items-center justify-content-start mt-3 gap-4">
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a href="javascript:void(0)" class="nav-link">
+                        <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
                             <i class="bi bi-youtube"></i>
                         </a>
                     </div>
@@ -32,19 +32,19 @@
                     <div class="fs-5 mb-3">
                         Browse Popular Topics
                     </div>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Human Resources
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Data Science Free Courses
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Speaking English
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Artificial Intelligence
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         C Programming
                     </a>
                 </div>
@@ -52,19 +52,19 @@
                     <div class="fs-5 mb-3">
                         Resources
                     </div>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Documentation
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Forums
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Available Courses
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Become An Instructor
                     </a>
-                    <a href="javascript:void(0)" class="nav-link mb-3">
+                    <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-3">
                         Events
                     </a>
                 </div>
@@ -74,12 +74,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <a href="javascript:void(0)" class="text-decoration-none text-light-gray mb-3 d-block">
+                    <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover mb-3 d-block">
                         © Copyrights 2023 theme development
                     </a>
                 </div>
                 <div class="col-sm-6 text-sm-center">
-                    <a href="javascript:void(0)" class="text-decoration-none text-light-gray mb-3 d-block">
+                    <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover mb-3 d-block">
                         All rights reserved by Mahi Bashar Akash
                     </a>
                 </div>

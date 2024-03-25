@@ -1,5 +1,9 @@
 .front-portal {
 
+    .margin-top-105 {
+        margin-top: 105px;
+    }
+
     .header {
         transition: 0.3s all ease-in-out;
         padding: 12px 0;
@@ -85,9 +89,13 @@
                                 transition: 0.3s all ease-in-out;
                                 box-shadow: 0 0 12px 0 var(--bs-border-color);
                             }
+
                         }
+
                     }
+
                 }
+
             }
 
             .navbar-toggler {
@@ -98,7 +106,9 @@
                 &:hover {
                     box-shadow: 0 0 12px 0 var(--bs-border-color);
                 }
+
             }
+
         }
 
     }
@@ -154,17 +164,6 @@
             opacity: 0.5;
         }
 
-    }
-
-    .footer{
-        .nav-link {
-            color: var(--light-gray) !important;
-            transition: 0.3s all ease-in-out;
-            &:hover {
-                transition: 0.3s all ease-in-out;
-                color: var(--theme) !important;
-            }
-        }
     }
 
 }

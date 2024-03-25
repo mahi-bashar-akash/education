@@ -99,11 +99,13 @@
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
                                 <div class="bg-light p-3 text-light-gray text-center">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                    excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                    modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                    tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
-                                    quo sit ullam ut voluptatum!
+                                    <q>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        quo sit ullam ut voluptatum!
+                                    </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
                                     <img :src="`/images/clients/face-1.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
@@ -118,11 +120,13 @@
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
                                 <div class="bg-light p-3 text-light-gray text-center">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                    excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                    modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                    tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
-                                    quo sit ullam ut voluptatum!
+                                    <q>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        quo sit ullam ut voluptatum!
+                                    </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
                                     <img :src="`/images/clients/face-2.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
@@ -137,11 +141,13 @@
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
                                 <div class="bg-light p-3 text-light-gray text-center">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                    excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                    modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                    tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
-                                    quo sit ullam ut voluptatum!
+                                    <q>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        quo sit ullam ut voluptatum!
+                                    </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
                                     <img :src="`/images/clients/face-3.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
@@ -175,44 +181,6 @@
             </div>
         </section>
 
-        <!-- next level learning -->
-        <section class="w-100 py-5">
-            <div class="container text-center text-light-gray">
-                <div class="py-5">
-                    <div class="fs-1 mb-3"> Next level Learning </div>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 mt-4 justify-content-center">
-                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                            <i class="bi bi-eyeglasses fs-1"></i>
-                            <div class="fs-4 fw-medium">
-                                Expert Teacher
-                            </div>
-                            <div class="mt-3 fw-medium">
-                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
-                            </div>
-                        </div>
-                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                            <i class="bi bi-award fs-1"></i>
-                            <div class="fs-4 fw-medium">
-                                Earn a Certificate
-                            </div>
-                            <div class="mt-3 fw-medium">
-                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
-                            </div>
-                        </div>
-                        <div class="mb-3 d-flex justify-content-center align-items-center flex-column">
-                            <i class="bi bi-people fs-1"></i>
-                            <div class="fs-4 fw-medium">
-                                Learn & collaborate
-                            </div>
-                            <div class="mt-3 fw-medium">
-                                Accelerate your learning with live Q&As, project deep-dives, curated lessons, and expert guidance.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- get explore -->
         <section class="w-100 py-5 explore-content" :style="{ background: 'url(' + buildSkillsWallpaper + ')' }">
             <div class="container text-center text-white">
@@ -220,7 +188,7 @@
                     <div class="bg-theme mb-3 px-3 py-2 rounded-2">
                         Get Instant Access to the Free
                     </div>
-                    <div class="fs-1 col-lg-5 mb-4">
+                    <div class="fs-2 col-lg-5 mb-4">
                         Lets build skills with our professional 2500+ courses
                     </div>
                     <button type="button" class="btn btn-warning rounded-pill px-4">
@@ -420,9 +388,30 @@ export default {
     mounted() {
         this.testimonial();
         this.blogs();
+        this.banners();
     },
 
     methods: {
+
+        banners() {
+            $('.banner-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsive:{
+                    0:{
+                        items:1
+                    },
+                    600:{
+                        items:1
+                    },
+                    1000:{
+                        items:1
+                    }
+                }
+            })
+        },
 
         testimonial() {
             $('.testimonial-carousel').owlCarousel({

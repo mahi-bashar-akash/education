@@ -1,6 +1,8 @@
 <template>
     <Header/>
-    <router-view/>
+    <div class="front-portal">
+        <router-view/>
+    </div>
     <Footer/>
 </template>
 
