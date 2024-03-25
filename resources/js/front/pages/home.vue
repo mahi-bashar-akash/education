@@ -3,7 +3,7 @@
     <div class="cursor-content">
 
         <!-- hero content -->
-        <section class="w-100 hero-content d-flex align-items-center justify-content-center" :style="{ background: 'url(' + imageUrl + ')' }">
+        <section class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center" :style="{ background: 'url(' + imageUrl + ')' }">
             <div class="svg-content">
                 <svg id="svg" viewBox="0, 0, 400,27.708333333333336" fill="#fff">
                     <g id="svgg">

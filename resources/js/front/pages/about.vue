@@ -314,94 +314,19 @@
                         Our teams
                     </div>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-                        <div class="p-3">
+
+                        <div class="p-3" v-for="each in teamDataList">
                             <div class="border p-0">
-                                <img :src="`/images/faces/team-1.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 1">
-                                <div class="fs-4 mt-3 text-center">
-                                    Arnold Barnerd
+                                <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover" alt="face 1">
+                                <div class="fs-4 pt-2 text-center">
+                                    {{each.name}}
                                 </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
+                                <div class="text-center text-light-gray pb-3">
                                     Instructor, Math
                                 </div>
                             </div>
                         </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-2.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 2">
-                                <div class="fs-4 mt-3 text-center">
-                                    Mike Fermalin
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-3.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 3">
-                                <div class="fs-4 mt-3 text-center">
-                                    Harnold Min
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-4.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 4">
-                                <div class="fs-4 mt-3 text-center">
-                                    Andrew Inon
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-5.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 5">
-                                <div class="fs-4 mt-3 text-center">
-                                    kin Joan
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-6.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 6">
-                                <div class="fs-4 mt-3 text-center">
-                                    Kinda Mona
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-7.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 7">
-                                <div class="fs-4 mt-3 text-center">
-                                    Aronic Kenan
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/faces/team-8.jpg`" class="w-100 hpx-310 object-fit-cover" alt="face 8">
-                                <div class="fs-4 mt-3 text-center">
-                                    Mike Fermalin
-                                </div>
-                                <div class="small fw-medium text-center text-secondary text-opacity-50 pb-3">
-                                    Instructor, Math
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -500,7 +425,18 @@
 
 export default {
     data(){
-        return{  }
+        return{
+            teamDataList: [
+                { id: '1', filePath: '/images/faces/team-1.jpg', name: 'Arnold Barnerd' },
+                { id: '2', filePath: '/images/faces/team-2.jpg', name: 'Mike Fermalin' },
+                { id: '3', filePath: '/images/faces/team-3.jpg', name: 'Harnold Min' },
+                { id: '4', filePath: '/images/faces/team-4.jpg', name: 'Andrew Inon' },
+                { id: '5', filePath: '/images/faces/team-5.jpg', name: 'kin Joan' },
+                { id: '6', filePath: '/images/faces/team-6.jpg', name: 'Kinda Mona' },
+                { id: '7', filePath: '/images/faces/team-7.jpg', name: 'Aronic Kenan' },
+                { id: '8', filePath: '/images/faces/team-8.jpg', name: 'Mike Fermalin' },
+            ]
+        }
     },
     mounted() {
         this.brands();
