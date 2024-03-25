@@ -109,27 +109,27 @@
                     <div class="brand-carousel owl-carousel owl-theme text-light-gray">
                         <div class="item">
                             <div class="p-5">
-                                <img :src="`/images/brands/brand-1.png`" class="img-fluid" alt="brand">
+                                <img :src="`/images/brands/brand-1.png`" class="img-fluid image-effect" alt="brand">
                             </div>
                         </div>
                         <div class="item">
                             <div class="p-5">
-                                <img :src="`/images/brands/brand-2.png`" class="img-fluid" alt="brand">
+                                <img :src="`/images/brands/brand-2.png`" class="img-fluid image-effect" alt="brand">
                             </div>
                         </div>
                         <div class="item">
                             <div class="p-5">
-                                <img :src="`/images/brands/brand-3.png`" class="img-fluid" alt="brand">
+                                <img :src="`/images/brands/brand-3.png`" class="img-fluid image-effect" alt="brand">
                             </div>
                         </div>
                         <div class="item">
                             <div class="p-5">
-                                <img :src="`/images/brands/brand-4.png`" class="img-fluid" alt="brand">
+                                <img :src="`/images/brands/brand-4.png`" class="img-fluid image-effect" alt="brand">
                             </div>
                         </div>
                         <div class="item">
                             <div class="p-5">
-                                <img :src="`/images/brands/brand-5.png`" class="img-fluid" alt="brand">
+                                <img :src="`/images/brands/brand-5.png`" class="img-fluid image-effect" alt="brand">
                             </div>
                         </div>
                     </div>
@@ -146,8 +146,10 @@
                     </div>
                     <div class="blogs-carousel owl-carousel owl-theme">
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 1">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 1">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -172,8 +174,10 @@
                             </div>
                         </div>
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 2">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -198,8 +202,10 @@
                             </div>
                         </div>
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 2">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -224,8 +230,10 @@
                             </div>
                         </div>
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 2">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -250,8 +258,10 @@
                             </div>
                         </div>
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 2">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -276,8 +286,10 @@
                             </div>
                         </div>
                         <div class="item p-3">
-                            <div class="border p-0">
-                                <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 3">
+                            <div class="card rounded-3 overflow-hidden border p-0">
+                                <div class="overflow-hidden">
+                                    <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="brand 2">
+                                </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
@@ -317,7 +329,9 @@
 
                         <div class="p-3" v-for="each in teamDataList">
                             <div class="border p-0">
-                                <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover" alt="face 1">
+                                <div class="overflow-hidden">
+                                    <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover image-effect" alt="face 1">
+                                </div>
                                 <div class="fs-4 pt-2 text-center">
                                     {{each.name}}
                                 </div>

@@ -1,6 +1,6 @@
 <template>
     <Header/>
-    <div class="front-portal">
+    <div class="front-portal scrollbar">
         <router-view/>
     </div>
     <Footer/>

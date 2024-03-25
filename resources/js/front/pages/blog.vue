@@ -35,13 +35,21 @@
 
             </div>
         </div>
+
+        <!-- pagination -->
+        <pagination/>
+
     </div>
 
 </template>
 
 <script>
+import pagination from "../components/pagination.vue";
 
 export default {
+    components: {
+        pagination
+    },
     data(){
         return{
             blogDataList: [

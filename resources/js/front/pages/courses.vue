@@ -159,7 +159,9 @@
                                     <div class="card border-0 shadow-sm p-0 overflow-hidden">
                                         <div class="card-body p-0">
                                             <div class="position-relative">
-                                                <img :src="each.filePath" class="img-fluid" alt="course">
+                                                <div class="overflow-hidden">
+                                                    <img :src="each.filePath" class="img-fluid object-fit-cover image-effect" alt="course">
+                                                </div>
                                                 <div class="position-absolute top-0 start-0 p-3">
                                                     <div class="rounded-3 bg-warning text-dark fw-medium py-1 px-3">
                                                         {{each.price}} TK
