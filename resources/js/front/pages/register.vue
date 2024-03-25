@@ -7,6 +7,7 @@
                     <div class="col-12 col-md-7 col-xl-5 bg-white p-3">
                         <div class="border p-4">
                             <div class="mb-3 fs-5 text-center">
+                                <img :src="`/images/logo.png`" class="wpx-35 hpx-35" alt="favicon">
                                 {{APP_NAME}}
                             </div>
                             <form>

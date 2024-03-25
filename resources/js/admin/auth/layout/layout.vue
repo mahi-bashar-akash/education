@@ -4,6 +4,7 @@
             <div class="auth-content p-3">
                 <div class="border p-4 p-md-5 bg-white">
                     <div class="mb-2 fs-5 text-center">
+                        <img :src="`/images/logo.png`" class="wpx-35 hpx-35" alt="favicon">
                         {{APP_NAME}}
                     </div>
                     <router-view/>

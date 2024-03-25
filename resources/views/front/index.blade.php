@@ -20,7 +20,7 @@
 </head>
 
 {{-- front portal content --}}
-<body class="front-portal">
+<body class="front-portal scrollbar">
     <div id="app"></div>
 </body>
 
