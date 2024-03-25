@@ -36,7 +36,7 @@
 
                 <!-- address -->
                 <div class="p-3">
-                    <div class="border w-100 bg-theme-hover text-center py-5 h-100">
+                    <div class="border w-100 bg-light-gray-hover text-center py-5 h-100">
                         <div class="mb-3">
                             <i class="bi bi-geo-alt fs-3"></i>
                         </div>
@@ -59,27 +59,33 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="name" class="form-control bg-secondary-subtle py-2 ps-3" required autocomplete="new-name" placeholder="Your name">
+                        <input type="text" name="name" class="form-control bg-light border-light py-2 ps-3" required autocomplete="new-name" placeholder="Your name">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="email" name="email" class="form-control bg-secondary-subtle py-2 ps-3" required autocomplete="new-email" placeholder="Your email">
+                        <input type="email" name="email" class="form-control bg-light border-light py-2 ps-3" required autocomplete="new-email" placeholder="Your email">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="phone-number" class="form-control bg-secondary-subtle py-2 ps-3" required autocomplete="new-phone-number" placeholder="Your phone number">
+                        <input type="text" name="phone-number" class="form-control bg-light border-light py-2 ps-3" required autocomplete="new-phone-number" placeholder="Your phone number">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="subject" class="form-control bg-secondary-subtle py-2 ps-3" required autocomplete="new-subject" placeholder="Subject">
+                        <input type="text" name="subject" class="form-control bg-light border-light py-2 ps-3" required autocomplete="new-subject" placeholder="Subject">
                     </div>
                     <div class="col-12 mb-3">
-                        <textarea name="message" cols="30" rows="5" class="form-textarea bg-secondary-subtle py-2 ps-3" required autocomplete="new-message" placeholder="Write a message"></textarea>
+                        <textarea name="message" cols="30" rows="10" class="form-textarea bg-light border-light py-2 ps-3" required autocomplete="new-message" placeholder="Write a message"></textarea>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="w-100 py-5">
+            <div class="mapouter w-100 border-0">
+                <div class="gmap_canvas w-100 border-0">
+                    <iframe class="gmap_iframe w-100 hpx-450 border-0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                </div>
+            </div>
+        </section>
+
     </div>
-
-
 
 </template>
 

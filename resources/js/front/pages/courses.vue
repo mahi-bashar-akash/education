@@ -217,7 +217,7 @@
 </template>
 
 <script>
-import pagination from "../../admin/components/pagination.vue";
+import pagination from "../components/pagination.vue";
 
 export default {
     components: {

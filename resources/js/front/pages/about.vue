@@ -12,7 +12,7 @@
                     <div class="p-3">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-backpack4 fs-1"></i>
-                            <div class="mt-3 fs-2 fw-medium">
+                            <div class="fs-2 fw-medium">
                                 1790
                             </div>
                             <div class="mt-1">
@@ -25,7 +25,7 @@
                     <div class="p-3">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-award fs-1"></i>
-                            <div class="mt-3 fs-2 fw-medium">
+                            <div class="fs-2 fw-medium">
                                 16+
                             </div>
                             <div class="mt-1">
@@ -38,7 +38,7 @@
                     <div class="p-3">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-laptop fs-1"></i>
-                            <div class="mt-3 fs-2 fw-medium">
+                            <div class="fs-2 fw-medium">
                                 33k+
                             </div>
                             <div class="mt-1">
@@ -51,7 +51,7 @@
                     <div class="p-3">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-graph-up-arrow fs-1"></i>
-                            <div class="mt-3 fs-2 fw-medium">
+                            <div class="fs-2 fw-medium">
                                 321
                             </div>
                             <div class="mt-1">

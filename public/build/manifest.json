@@ -1,12 +1,12 @@
 {
-  "_pagination-!~{004}~.js": {
-    "file": "assets/pagination-DUn1kput.css",
-    "src": "_pagination-!~{004}~.js"
+  "_vue-router-!~{004}~.js": {
+    "file": "assets/vue-router-DUn1kput.css",
+    "src": "_vue-router-!~{004}~.js"
   },
-  "_pagination-DK-m36ed.js": {
-    "file": "assets/pagination-DK-m36ed.js",
+  "_vue-router-Dlzs093u.js": {
+    "file": "assets/vue-router-Dlzs093u.js",
     "css": [
-      "assets/pagination-DUn1kput.css"
+      "assets/vue-router-DUn1kput.css"
     ],
     "assets": [
       "assets/bootstrap-icons-BtvjY1KL.woff2",
@@ -22,23 +22,23 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-BOH_xzOB.js",
+    "file": "assets/app-DEn6Qtf0.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_pagination-DK-m36ed.js"
+      "_vue-router-Dlzs093u.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-wxSwLiXD.js",
+    "file": "assets/app-CMWaEj17.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_pagination-DK-m36ed.js"
+      "_vue-router-Dlzs093u.js"
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-eS_jnb9J.css",
+    "file": "assets/stylesheet-DCAN9J-k.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }

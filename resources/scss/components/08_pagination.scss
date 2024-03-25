@@ -1,4 +1,4 @@
-.pagination {
+.admin-pagination {
 
     .page-item {
         transition: 0.3s all ease-in-out;
@@ -20,6 +20,44 @@
             border: 1px solid var(--theme) !important;
             margin: 0 5px;
             border-radius: 0 !important;
+            font-size: 12px;
+            box-shadow: 0 0 0 0 !important;
+
+            &:hover, &:active {
+                transition: 0.3s all ease-in-out;
+                background-color: var(--theme) !important;
+                border: 1px solid var(--theme) !important;
+                color: var(--bs-white) !important;
+            }
+
+        }
+
+    }
+
+}
+
+.front-pagination {
+
+    .page-item {
+        transition: 0.3s all ease-in-out;
+
+        &.active .page-link {
+            transition: 0.3s all ease-in-out;
+            background-color: var(--theme) !important;
+            border: 1px solid var(--theme) !important;
+            color: var(--bs-white) !important;
+        }
+
+        .page-link {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--theme) !important;
+            border: 1px solid var(--theme) !important;
+            margin: 0 5px;
+            border-radius: 8px !important;
             font-size: 12px;
             box-shadow: 0 0 0 0 !important;
 

@@ -1,7 +1,7 @@
 <template>
 
     <nav class="mt-3">
-        <ul class="admin-pagination pagination justify-content-center">
+        <ul class="front-pagination pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="javascript:void(0)">
                     <i class="bi bi-chevron-left"></i>

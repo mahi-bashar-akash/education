@@ -34,10 +34,21 @@
                     <div class="col-xl-5 p-2">
                         <div class="card rounded-0 border-0">
                             <div class="card-header bg-white rounded-0 border-0">
+
+                                <!-- group of button -->
+                                <div class="card-header bg-white rounded-0 border-0 d-flex justify-content-start align-items-center pt-3">
+                                    <button type="button" class="btn btn-theme rounded-0 me-1" @click="setTab(1)">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-theme rounded-0 me-1" @click="setTab(2)">
+                                        <i class="bi bi-shield"></i>
+                                    </button>
+                                </div>
+
                                 <div class="d-flex justify-content-center align-items-center">
                                     <form class="pt-3">
                                         <!-- avatar upload -->
-                                        <label for="upload-image" class="form-label wpx-150 hpx-150 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer">
+                                        <label for="upload-image" class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer">
                                             <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
                                             <span class="d-block">
                                                 <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
@@ -45,35 +56,27 @@
                                         </label>
                                     </form>
                                 </div>
+
                             </div>
                             <div class="card-body">
                                 <!-- profile information -->
                                 <div class="mt-3 px-3">
-                                    <div class="mb-2 text-light-gray">Name: </div>
-                                    <div class="mb-2 text-light-gray"> Mahi Bashar Akash </div>
-                                    <div class="mb-2 text-light-gray">Email: </div>
-                                    <div class="mb-2 text-light-gray"> mahibashar2023@gmail.com </div>
-                                    <div class="mb-2 text-light-gray">Phone Number: </div>
-                                    <div class="mb-2 text-light-gray"> 01645820007 </div>
+                                    <div class="mb-2 text-light-gray fw-bold">Name: </div>
+                                    <div class="mb-2 text-light-gray-hover"> Mahi Bashar Akash </div>
+                                    <div class="mb-2 text-light-gray fw-bold">Email: </div>
+                                    <div class="mb-2 text-light-gray-hover"> mahibashar2023@gmail.com </div>
+                                    <div class="mb-2 text-light-gray fw-bold">Phone Number: </div>
+                                    <div class="mb-2 text-light-gray-hover"> 01645820007 </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-7 p-2">
-                        <div class="card rounded-0 border-0 h-100">
-
-                            <!-- group btn -->
-                            <div class="card-header bg-white rounded-0 border-0 d-flex justify-content-start align-items-center pt-3">
-                                <button type="button" class="btn btn-theme wpx-140 rounded-0 me-1" @click="setTab(1)">
-                                    Edit Information
-                                </button>
-                                <button type="button" class="btn btn-theme wpx-140 rounded-0 me-1" @click="setTab(2)">
-                                    Change Password
-                                </button>
-                            </div>
+                        <div class="card rounded-0 border-0">
 
                             <!-- update profile -->
-                            <div class="card-body h-100" v-if="tab === 1">
+                            <div class="card-body" v-if="tab === 1">
+                                <div class="fs-5 mb-3">Edit Profile</div>
                                 <form>
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
@@ -96,7 +99,8 @@
                             </div>
 
                             <!-- update password -->
-                            <div class="card-body h-100" v-if="tab === 2">
+                            <div class="card-body" v-if="tab === 2">
+                                <div class="fs-5 mb-3">Change password</div>
                                 <form>
                                     <div class="form-group mb-3">
                                         <label for="current-password" class="form-label">Current password</label>
