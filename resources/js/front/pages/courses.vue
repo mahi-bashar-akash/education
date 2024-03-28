@@ -11,14 +11,14 @@
 
                                 <div class="mb-3">
                                     <label for="free" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="free" type="checkbox" name="course" class="form-check-input">
+                                        <input id="free" type="checkbox" name="course" class="form-checkbox">
                                         Free ( 11 )
                                     </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="paid" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="paid" type="checkbox" name="course" class="form-check-input">
+                                        <input id="paid" type="checkbox" name="course" class="form-checkbox">
                                         Paid ( 14 )
                                     </label>
                                 </div>
@@ -29,21 +29,21 @@
 
                                 <div class="mb-3">
                                     <label for="technology" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="technology" type="checkbox" name="category" class="form-check-input">
+                                        <input id="technology" type="checkbox" name="category" class="form-checkbox">
                                         Technology ( 11 )
                                     </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="business" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="business" type="checkbox" name="category" class="form-check-input">
+                                        <input id="business" type="checkbox" name="category" class="form-checkbox">
                                         Business ( 07 )
                                     </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="development" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="development" type="checkbox" name="category" class="form-check-input">
+                                        <input id="development" type="checkbox" name="category" class="form-checkbox">
                                         Development ( 11 )
                                     </label>
                                 </div>
@@ -54,21 +54,21 @@
 
                                 <div class="mb-3">
                                     <label for="jimmy-jason" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="jimmy-jason" type="checkbox" name="instructor" class="form-check-input">
+                                        <input id="jimmy-jason" type="checkbox" name="instructor" class="form-checkbox">
                                         Jimmy Jason ( 11 )
                                     </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="harnold" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="harnold" type="checkbox" name="instructor" class="form-check-input">
+                                        <input id="harnold" type="checkbox" name="instructor" class="form-checkbox">
                                         Harnold ( 07 )
                                     </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="eric-madny" class="form-label d-block cursor-pointer text-light-gray-hover">
-                                        <input id="eric-madny" type="checkbox" name="instructor" class="form-check-input">
+                                        <input id="eric-madny" type="checkbox" name="instructor" class="form-checkbox">
                                         Eric Madny ( 11 )
                                     </label>
                                 </div>
@@ -80,7 +80,7 @@
 
                                 <div class="mb-3">
                                     <label for="star-5" class="form-label d-flex align-items-center cursor-pointer">
-                                        <input id="star-5" type="checkbox" name="rating" class="form-check-input me-2">
+                                        <input id="star-5" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
                                         <i class="bi bi-star-fill text-warning me-1"></i>
                                         <i class="bi bi-star-fill text-warning me-1"></i>
@@ -94,7 +94,7 @@
 
                                 <div class="mb-3">
                                     <label for="star-3" class="form-label d-flex align-items-center cursor-pointer">
-                                        <input id="star-3" type="checkbox" name="rating" class="form-check-input me-2">
+                                        <input id="star-3" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
                                         <i class="bi bi-star-fill text-warning me-1"></i>
                                         <i class="bi bi-star-fill text-warning me-1"></i>
@@ -108,7 +108,7 @@
 
                                 <div class="mb-3">
                                     <label for="star-2" class="form-label d-flex align-items-center cursor-pointer">
-                                        <input id="star-2" type="checkbox" name="rating" class="form-check-input me-2">
+                                        <input id="star-2" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
                                         <i class="bi bi-star-fill text-warning me-1"></i>
                                         <i class="bi bi-star-fill text-warning me-1"></i>
@@ -126,7 +126,7 @@
 
                                 <div class="mb-3">
                                     <label for="beginner" class="form-label d-flex align-items-center cursor-pointer text-light-gray-hover">
-                                        <input id="beginner" type="checkbox" name="level" class="form-check-input me-2">
+                                        <input id="beginner" type="checkbox" name="level" class="form-checkbox me-2">
                                         Beginner
                                         <span class="ms-2">( 11 )</span>
                                     </label>
@@ -134,7 +134,7 @@
 
                                 <div class="mb-3">
                                     <label for="advanced" class="form-label d-flex align-items-center cursor-pointer text-light-gray-hover">
-                                        <input id="advanced" type="checkbox" name="level" class="form-check-input me-2">
+                                        <input id="advanced" type="checkbox" name="level" class="form-checkbox me-2">
                                         Advanced
                                         <span class="ms-2">( 07 )</span>
                                     </label>

@@ -58,7 +58,7 @@
                 <thead>
                 <tr>
                     <th class="checkbox">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-checkbox">
                     </th>
                     <th class="default-width">
                         Name.
@@ -86,7 +86,7 @@
                 <tbody>
                 <tr v-for="each in professorDataList">
                     <td class="checkbox">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-checkbox">
                     </td>
                     <td class="default-width">
                         <div class="truncate-to-1-line">

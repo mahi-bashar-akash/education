@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-6 mb-2">
                                         <label for="remember-me" class="form-label">
-                                            <input id="remember-me" type="checkbox" name="" class="form-check-input">
+                                            <input id="remember-me" type="checkbox" name="remember-me" class="form-checkbox">
                                             Remember me
                                         </label>
                                     </div>
@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-theme wpx-90 rounded-0">
+                                    <button type="submit" class="btn btn-theme wpx-90 rounded-0" @click="goRoute">
                                         Sign In
                                     </button>
                                 </div>
@@ -74,6 +74,11 @@ export default {
         passwordVisibility() {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
+
+        /* push me in profile */
+        goRoute() {
+            this.$router.push( { name: 'profile' } )
+        }
 
     }
 }

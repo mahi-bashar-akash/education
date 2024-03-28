@@ -19,7 +19,7 @@
             <div class="col-md-6">
                 <div class="mb-2">
                     <label for="remember-me" class="form-label">
-                        <input id="remember-me" type="checkbox" class="form-check-input">
+                        <input id="remember-me" type="checkbox" class="form-checkbox">
                         Remember me
                     </label>
                 </div>
