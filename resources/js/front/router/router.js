@@ -18,6 +18,9 @@ import login from "../pages/login.vue";
 import register from "../pages/register.vue";
 import forget from "../pages/forget.vue";
 
+import profileLayout from "../pages/profile/layout/layout.vue";
+import profile from "../pages/profile/pages/profile.vue";
+
 const TITLE = window.core.APP_NAME
 
 const ROOT_URL = "/";
@@ -38,6 +41,12 @@ const routes = [
             { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
             { path: ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
             { path: ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - forget' } },
+
+            { path: ROOT_URL, name: 'profileLayout', component: profileLayout,
+                children: [
+                    { path: 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
+                ]
+            }
 
         ]
 

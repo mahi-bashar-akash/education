@@ -57,7 +57,7 @@
                 <div class="mb-3 fs-1 text-light-gray text-center">
                     Drop Us Line
                 </div>
-                <div class="row">
+                <form class="row">
                     <div class="col-md-6 mb-3">
                         <input type="text" name="name" class="form-control bg-light border-light py-2 ps-3" required autocomplete="new-name" placeholder="Your name">
                     </div>
@@ -73,7 +73,12 @@
                     <div class="col-12 mb-3">
                         <textarea name="message" cols="30" rows="10" class="form-textarea bg-light border-light py-2 ps-3" required autocomplete="new-message" placeholder="Write a message"></textarea>
                     </div>
-                </div>
+                    <div class="col-12 mb-3">
+                        <button type="submit" class="btn btn-theme wpx-90 rounded-0">
+                            Submit
+                        </button>
+                    </div>
+                </form>
             </div>
         </section>
 
