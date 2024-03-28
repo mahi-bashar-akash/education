@@ -8,21 +8,28 @@
                             <div class="d-flex justify-content-center align-items-center">
                                 <form>
                                     <div class="mb-3">
-                                        <label for="upload-image" class="form-label hpx-175 wpx-175 border d-flex justify-content-center align-items-center rounded-circle cursor-pointer">
+                                        <label for="upload-image" class="form-label hpx-175 wpx-175 border d-flex justify-content-center align-items-center rounded-circle cursor-pointer d-none">
                                             <input id="upload-image" type="file" name="upload-image" class="form-control" required autocomplete="upload-image" accept="image/*" hidden="hidden">
                                             Click to "Upload Image"
                                         </label>
+                                        <div class="hpx-175 wpx-175 rounded-circle overflow-hidden">
+                                            <img :src="`/images/clients/face-1.png`" class="object-fit-cover img-fluid" alt="avatar">
+                                        </div>
                                     </div>
                                 </form>
                             </div>
-
-                            <div class="fs-5 mb-2">Group of links</div>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-2"> profile </a>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-2"> professors </a>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-2"> Course list </a>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover mb-2"> My course </a>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover"> Fees </a>
-
+                            <router-link :to="{name: 'profile'}" class="nav-link text-light-gray-hover mb-2">
+                                Profile
+                            </router-link>
+                            <router-link :to="{name: 'myCourse'}" class="nav-link text-light-gray-hover mb-2">
+                                My course
+                            </router-link>
+                            <router-link :to="{name: 'myFees'}" class="nav-link text-light-gray-hover mb-2">
+                                Fees
+                            </router-link>
+                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
+                                Logout
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-8">
