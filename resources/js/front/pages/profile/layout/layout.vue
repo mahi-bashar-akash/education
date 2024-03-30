@@ -25,7 +25,7 @@
                                 My course
                             </router-link>
                             <router-link :to="{name: 'myFees'}" class="nav-link text-light-gray-hover mb-2">
-                                Fees
+                                My fees
                             </router-link>
                             <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
                                 Logout
