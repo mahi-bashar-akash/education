@@ -1,38 +1,88 @@
-/* --- --- --- root --- --- --- */
+/* --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    Theme Name  :   Education io
+	Theme URI   :   https://education.thethemeai.com/
+	Description :   The Multi-Purpose One Page Template
+	Author      :   Mahi Bashar Akash
+	Author URI  :   https://github.com/mahibashardeveloper
+	Version     :   1.0
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- */
+
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 00 root
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/00_root";
 
-/* --- --- --- typography --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 01 typography
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/01_typography";
 
-/* --- --- --- dropdown --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 02 dropdown
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/02_dropdown";
 
-/* --- --- --- background --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 03 background
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/03_background";
 
-/* --- --- --- button --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 04 button
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/04_button";
 
-/* --- --- --- accordion --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 05 accordion
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/05_accordion";
 
-/* --- --- --- table --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 06 table
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/06_table";
 
-/* --- --- --- form --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 07 form
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/07_form";
 
-/* --- --- --- pagination --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- 08 pagination
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/08_pagination";
 
-/* --- --- --- width & height --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- width & height
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "components/width_&_height";
 
-/* --- --- --- front-portal --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- front portal
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "weights/front-portal";
 
-/* --- --- --- admin-portal --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- admin portal
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "weights/admin-portal";
 
-/* --- --- --- auth-portal --- --- --- */
+/* --- --- --- --- --- --- --- --- --- ---
+--- --- --- auth portal
+--- --- --- --- --- --- --- --- --- --- */
+
 @import "weights/auth-portal";

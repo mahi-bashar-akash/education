@@ -30,7 +30,7 @@
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-C1ekDRlx.js",
+    "file": "assets/app-D01ThS91.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
@@ -38,7 +38,7 @@
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-DjhX3s7I.css",
+    "file": "assets/stylesheet-qAy0AGOv.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }

@@ -1,0 +1,14 @@
+.accordion {
+    .accordion-item {
+        .accordion-header {
+            .accordion-button {
+                &:after {
+                    background-image: none !important;
+                }
+            }
+        }
+        .accordion-body {
+
+        }
+    }
+}
