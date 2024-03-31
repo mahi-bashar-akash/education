@@ -53,70 +53,80 @@
     <!-- desktop and laptop screen list -->
     <div class="card rounded-3 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="checkbox">
-                            <input type="checkbox" class="form-checkbox">
-                        </th>
-                        <th class="default-width">
-                            Name.
-                        </th>
-                        <th class="default-width">
-                            Date.
-                        </th>
-                        <th class="default-width">
-                            Start Time.
-                        </th>
-                        <th class="default-width">
-                            End Time.
-                        </th>
-                        <th class="action">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="each in eventDataList">
-                        <td class="checkbox">
-                            <input type="checkbox" class="form-checkbox">
-                        </td>
-                        <td class="default-width">
-                            <div class="truncate-to-1-line">
-                                {{each.name}}
-                            </div>
-                        </td>
-                        <td class="default-width">
-                            {{each.date}}
-                        </td>
-                        <td class="default-width">
-                            {{each.startTime}}
-                        </td>
-                        <td class="default-width">
-                            {{each.endTime}}
-                        </td>
-                        <td class="action">
-                            <div class="dropdown">
-                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
-                                    <li>
-                                        <button type="button" class="dropdown-item" @click="manageEventModalOpen">
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="dropdown-item" @click="deleteEventModalOpen">
-                                            Delete
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageEventModalOpen"
+                :deleteModalFunction="deleteEventModalOpen"
+            />
+<!--            <table class="table">-->
+<!--                <thead>-->
+<!--                    <tr>-->
+<!--                        <th class="checkbox">-->
+<!--                            <input type="checkbox" class="form-checkbox">-->
+<!--                        </th>-->
+<!--                        <th class="default-width">-->
+<!--                            Name.-->
+<!--                        </th>-->
+<!--                        <th class="default-width">-->
+<!--                            Date.-->
+<!--                        </th>-->
+<!--                        <th class="default-width">-->
+<!--                            Start Time.-->
+<!--                        </th>-->
+<!--                        <th class="default-width">-->
+<!--                            End Time.-->
+<!--                        </th>-->
+<!--                        <th class="action">-->
+<!--                            Action-->
+<!--                        </th>-->
+<!--                    </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                    <tr v-for="each in eventDataList">-->
+<!--                        <td class="checkbox">-->
+<!--                            <input type="checkbox" class="form-checkbox">-->
+<!--                        </td>-->
+<!--                        <td class="default-width">-->
+<!--                            <div class="truncate-to-1-line">-->
+<!--                                {{each.name}}-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td class="default-width">-->
+<!--                            {{each.date}}-->
+<!--                        </td>-->
+<!--                        <td class="default-width">-->
+<!--                            {{each.startTime}}-->
+<!--                        </td>-->
+<!--                        <td class="default-width">-->
+<!--                            {{each.endTime}}-->
+<!--                        </td>-->
+<!--                        <td class="action">-->
+<!--                            <div class="dropdown">-->
+<!--                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                                    <i class="bi bi-three-dots-vertical"></i>-->
+<!--                                </button>-->
+<!--                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">-->
+<!--                                    <li>-->
+<!--                                        <button type="button" class="dropdown-item" @click="manageEventModalOpen">-->
+<!--                                            Edit-->
+<!--                                        </button>-->
+<!--                                    </li>-->
+<!--                                    <li>-->
+<!--                                        <button type="button" class="dropdown-item" @click="deleteEventModalOpen">-->
+<!--                                            Delete-->
+<!--                                        </button>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
         </div>
     </div>
 
@@ -293,13 +303,19 @@ import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
 import flatpickr from "flatpickr";
+import tableContent from "../components/table.vue";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination, newBtn
+        search, preloader, noDataFounded, pagination, newBtn, tableContent
     },
     data() {
         return {
+            tableHeaders: ['Checkbox', 'Name', 'Date', 'Start Time', 'End Time', 'Action'],
+            tableRows: [
+                { id: 1, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm' },
+                { id: 2, name: 'Jane Doe', date: '2024-03-30', startTime: '10:00 am', endTime: '11:00 am' }
+            ],
             formData: {
                 updateImage: '',
                 eventName: '',
