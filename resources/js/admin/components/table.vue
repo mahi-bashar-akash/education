@@ -12,7 +12,7 @@
         <tbody>
         <tr v-for="row in rows" :key="row.id">
             <td v-for="(value, key, index) in row" :key="key" :class="columnClasses[key]">
-                <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox" v-model="rowChecked[row.id]">
+                <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox" :checked="checkIfAllChecked(row.id)">
                 <span v-else>{{ value }}</span>
             </td>
             <td class="action">
@@ -54,21 +54,24 @@ export default {
     data() {
         return {
             allChecked: false,
-            rowChecked: {}
+            rowChecked: []
         };
     },
     watch: {
         allChecked(value) {
-            this.rows.forEach(row => {
-                this.$set(this.rowChecked, row.id, value);
-            });
-        },
-        rowChecked: {
-            deep: true,
-            handler(newVal) {
-                const checkedCount = Object.values(newVal).filter(checked => checked).length;
-                this.allChecked = checkedCount === this.rows.length;
+            if (value) {
+                this.rows.map(row => {
+                    this.rowChecked.push(row.id)
+                });
+            } else {
+                this.rowChecked = [];
             }
+        },
+    },
+    methods: {
+        checkIfAllChecked(id) {
+            console.log(this.rowChecked.find(rowId => rowId == id))
+            return this.rowChecked.find(rowId => rowId == id);
         }
     }
 }
