@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        <tr v-for="row in rows" :key="row.id" @click="toggleRowSelection(row.id)">
+        <tr v-for="row in rows" :key="row.id">
             <td v-for="(value, key, index) in row" :key="key" :class="columnClasses[key]">
                 <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox eachEventCheck" :checked="checkIfChecked(row.id)" @change="toggleCheck($event, row.id)">
                 <span v-else>
@@ -64,17 +64,8 @@ export default {
         };
     },
     methods: {
-        toggleCheckAll(e) {
-            if (e.target.checked) {
-                this.rows.forEach((v) => {
-                    if (!this.selected.includes(v.id)) {
-                        this.selected.push(v.id);
-                    }
-                });
-            } else {
-                this.selected = [];
-            }
-        },
+
+        /* Function to check as single that all are checked or not checked */
         isAllChecked() {
             let uncheck = 0;
             const eachEventCheck = document.querySelectorAll('.eachEventCheck');
@@ -89,6 +80,21 @@ export default {
                 this.allChecked = true;
             }
         },
+
+        /* Function to toggle check all */
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.rows.forEach((v) => {
+                    if (!this.selected.includes(v.id)) {
+                        this.selected.push(v.id);
+                    }
+                });
+            } else {
+                this.selected = [];
+            }
+        },
+
+        /* Function to toggle check */
         toggleCheck(e, id) {
             if (e.target.checked) {
                 if (!this.selected.includes(id)) {
@@ -102,14 +108,8 @@ export default {
             }
             this.isAllChecked();
         },
-        toggleRowSelection(id) {
-            if (this.selected.includes(id)) {
-                let index = this.selected.indexOf(id);
-                this.selected.splice(index, 1);
-            } else {
-                this.selected.push(id);
-            }
-        },
+
+        /* Function to checkIfChecked */
         checkIfChecked(id) {
             return this.selected.includes(id);
         },
