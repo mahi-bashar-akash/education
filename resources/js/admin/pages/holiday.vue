@@ -33,26 +33,22 @@
             <search/>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
-            <div class="shadow">
-                <select name="event-type" class="form-select">
-                    <option value="select-option">Select visible data</option>
-                    <option value="10"> 10 </option>
-                    <option value="20"> 20 </option>
-                    <option value="30"> 30 </option>
-                    <option value="40"> 40 </option>
-                    <option value="50"> 50 </option>
-                </select>
-            </div>
+            <select name="event-type" class="form-select">
+                <option value="select-option">Select visible data</option>
+                <option value="10"> 10 </option>
+                <option value="20"> 20 </option>
+                <option value="30"> 30 </option>
+                <option value="40"> 40 </option>
+                <option value="50"> 50 </option>
+            </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageHolidayModalOpen">
-                New
-            </button>
+            <newBtn @click="manageHolidayModalOpen" />
         </div>
     </div>
 
     <!-- desktop and laptop screen list -->
-    <div class="card rounded-1 border-light d-none d-xl-block shadow">
+    <div class="card rounded-3 border-light d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
             <table class="table">
                 <thead>
@@ -122,7 +118,7 @@
     </div>
 
     <!-- tablet and mobile screen list -->
-    <div class="card rounded-0 border-light d-xl-none shadow">
+    <div class="card rounded-3 border-light d-xl-none shadow">
         <div class="card-body card-list scrollbar">
             <div class="px-2">
 
@@ -287,11 +283,12 @@ import search from "../components/search.vue";
 import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
+import newBtn from "../components/new.vue";
 import flatpickr from "flatpickr";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination
+        search, preloader, noDataFounded, pagination, newBtn
     },
     data() {
         return {

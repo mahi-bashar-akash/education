@@ -7,7 +7,7 @@
     border: 1px solid var(--bs-border-color) !important;
     outline: none;
     box-shadow: 0 0 0 0 !important;
-    border-radius: 0 !important;
+    border-radius: 12px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;
@@ -21,7 +21,7 @@
     border: 1px solid var(--bs-border-color);
     outline: none;
     box-shadow: 0 0 0 0 !important;
-    border-radius: 0 !important;
+    border-radius: 12px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;
@@ -35,7 +35,7 @@
     border: 1px solid var(--bs-border-color);
     outline: none;
     padding: 10px 15px;
-    border-radius: 0 !important;
+    border-radius: 12px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;

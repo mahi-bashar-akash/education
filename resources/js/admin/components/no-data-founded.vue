@@ -1,6 +1,6 @@
 <template>
 
-    <div class="card rounded-0 border-0 d-none">
+    <div class="card rounded-3 border-0 d-none">
         <div class="card-body card-list scrollbar d-flex justify-content-center align-items-center flex-column">
             <div class="mb-2">
                 <i class="bi bi-database-exclamation fs-2 text-theme"></i>

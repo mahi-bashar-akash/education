@@ -17,7 +17,7 @@
         <!-- event -->
         <div class="mb-4">
             <router-link :to="{name: 'events'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         1295
                     </div>
@@ -34,7 +34,7 @@
         <!-- professor -->
         <div class="mb-4">
             <router-link :to="{name: 'professors'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         1209
                     </div>
@@ -51,7 +51,7 @@
         <!-- student -->
         <div class="mb-4">
             <router-link :to="{name: 'students'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         1114
                     </div>
@@ -68,7 +68,7 @@
         <!-- course -->
         <div class="mb-4">
             <router-link :to="{name: 'courses'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         109
                     </div>
@@ -85,7 +85,7 @@
         <!-- library -->
         <div class="mb-4">
             <router-link :to="{name: 'library'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         97
                     </div>
@@ -102,7 +102,7 @@
         <!-- department -->
         <div class="mb-4">
             <router-link :to="{name: 'departments'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         73
                     </div>
@@ -119,7 +119,7 @@
         <!-- stuff -->
         <div class="mb-4">
             <router-link :to="{name: 'stuff'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         123
                     </div>
@@ -136,7 +136,7 @@
         <!-- holiday -->
         <div class="mb-4">
             <router-link :to="{name: 'holiday'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         365
                     </div>
@@ -153,7 +153,7 @@
         <!-- fees -->
         <div class="mb-4">
             <router-link :to="{name: 'fees'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5">
+                <div class="bg-white shadow text-center py-5 rounded-4">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
                         9,870,000 tk
                     </div>
