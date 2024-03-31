@@ -1,19 +1,25 @@
 <template>
     <table :class="tableClass">
         <thead>
-        <tr>
-            <th v-for="(header, index) in headers" :key="index" :class="headerClasses[index]">
-                <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox" v-model="allChecked">
-                <span v-else-if="index === headers.length - 1 && header === 'Action'">Action</span>
-                <span v-else>{{ header }}</span>
-            </th>
-        </tr>
+            <tr>
+                <th v-for="(header, index) in headers" :key="index" :class="headerClasses[index]">
+                    <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox" v-model="allChecked" @change="toggleCheckAll">
+                    <span v-else-if="index === headers.length - 1 && header === 'Action'">
+                        Action
+                    </span>
+                    <span v-else>
+                        {{ header }}
+                    </span>
+                </th>
+            </tr>
         </thead>
         <tbody>
-        <tr v-for="row in rows" :key="row.id">
+        <tr v-for="row in rows" :key="row.id" @click="toggleRowSelection(row.id)">
             <td v-for="(value, key, index) in row" :key="key" :class="columnClasses[key]">
-                <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox" :checked="checkIfAllChecked(row.id)">
-                <span v-else>{{ value }}</span>
+                <input v-if="index === checkboxColumnIndex" type="checkbox" class="form-checkbox eachEventCheck" :checked="checkIfChecked(row.id)" @change="toggleCheck($event, row.id)">
+                <span v-else>
+                    {{ value }}
+                </span>
             </td>
             <td class="action">
                 <div class="dropdown">
@@ -28,7 +34,7 @@
                         </li>
                         <li>
                             <button type="button" class="dropdown-item rounded-3" @click="deleteModalFunction">
-                            Delete
+                                Delete
                             </button>
                         </li>
                     </ul>
@@ -54,25 +60,59 @@ export default {
     data() {
         return {
             allChecked: false,
-            rowChecked: []
+            selected: []
         };
     },
-    watch: {
-        allChecked(value) {
-            if (value) {
-                this.rows.map(row => {
-                    this.rowChecked.push(row.id)
+    methods: {
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.rows.forEach((v) => {
+                    if (!this.selected.includes(v.id)) {
+                        this.selected.push(v.id);
+                    }
                 });
             } else {
-                this.rowChecked = [];
+                this.selected = [];
             }
         },
-    },
-    methods: {
-        checkIfAllChecked(id) {
-            console.log(this.rowChecked.find(rowId => rowId == id))
-            return this.rowChecked.find(rowId => rowId == id);
-        }
+        isAllChecked() {
+            let uncheck = 0;
+            const eachEventCheck = document.querySelectorAll('.eachEventCheck');
+            for (const elm of eachEventCheck) {
+                if (elm.checked === false) {
+                    uncheck++;
+                }
+            }
+            if (uncheck > 0) {
+                this.allChecked = false;
+            } else {
+                this.allChecked = true;
+            }
+        },
+        toggleCheck(e, id) {
+            if (e.target.checked) {
+                if (!this.selected.includes(id)) {
+                    this.selected.push(id);
+                }
+            } else {
+                let index = this.selected.indexOf(id);
+                if (index !== -1) {
+                    this.selected.splice(index, 1);
+                }
+            }
+            this.isAllChecked();
+        },
+        toggleRowSelection(id) {
+            if (this.selected.includes(id)) {
+                let index = this.selected.indexOf(id);
+                this.selected.splice(index, 1);
+            } else {
+                this.selected.push(id);
+            }
+        },
+        checkIfChecked(id) {
+            return this.selected.includes(id);
+        },
     }
 }
 </script>

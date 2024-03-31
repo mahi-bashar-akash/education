@@ -250,6 +250,8 @@ export default {
             tableHeaders: ['Checkbox', 'Name', 'Date', 'Start Time', 'End Time', 'Action'],
             tableRows: [
                 { id: 1, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm' },
+                { id: 2, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm' },
+                { id: 3, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm' },
             ],
             formData: {
                 updateImage: '',
