@@ -3,7 +3,7 @@ import {createRouter, createWebHistory} from "vue-router";
 /*
 |
 |--------------------------------------------------------------------------
-| Home Pages
+| Front Pages
 |--------------------------------------------------------------------------
 |
 */
@@ -18,6 +18,14 @@ import login from "../pages/login.vue";
 import register from "../pages/register.vue";
 import forget from "../pages/forget.vue";
 
+/*
+|
+|--------------------------------------------------------------------------
+| Profile Pages
+|--------------------------------------------------------------------------
+|
+*/
+
 import profileLayout from "../pages/profile/layout/layout.vue";
 import profile from "../pages/profile/pages/profile.vue";
 import myCourse from "../pages/profile/pages/my-course.vue";
@@ -28,13 +36,9 @@ const TITLE = window.core.APP_NAME
 const ROOT_URL = "/";
 
 const routes = [
-
     {
-
         path: ROOT_URL, name: 'layout', component: layout,
-
         children: [
-
             { path: ROOT_URL + 'home', name: 'home', component: home, meta: { title: TITLE + ' - home' } },
             { path: ROOT_URL + 'about', name: 'about', component: about, meta: { title: TITLE + ' - about' } },
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
@@ -43,7 +47,6 @@ const routes = [
             { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
             { path: ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
             { path: ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - forget' } },
-
             { path: ROOT_URL, name: 'profileLayout', component: profileLayout,
                 children: [
                     { path: 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
@@ -51,11 +54,8 @@ const routes = [
                     { path: 'my-fees', name: 'myFees', component: myFees, meta: { title: TITLE + ' - my fees' } },
                 ]
             }
-
         ]
-
     },
-
 ];
 
 const router = createRouter({
