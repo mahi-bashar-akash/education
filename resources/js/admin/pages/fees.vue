@@ -212,7 +212,7 @@
     <!-- manage fees modal -->
     <div class="modal fade" id="manageFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content px-3 py-2 rounded-0">
+            <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Create fees
@@ -260,10 +260,10 @@
 
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary rounded-0 wpx-110" @click="manageFeesModalClose">
+                    <button type="button" class="btn btn-secondary rounded-3 wpx-110" @click="manageFeesModalClose">
                         Close
                     </button>
-                    <button type="button" class="btn btn-theme rounded-0 wpx-110">
+                    <button type="button" class="btn btn-theme rounded-3 wpx-110">
                         Save
                     </button>
                 </div>
@@ -274,7 +274,7 @@
     <!-- delete fees modal -->
     <div class="modal fade" id="deleteFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 py-2 px-3">
+            <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Delete fees
@@ -294,12 +294,12 @@
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
-                        <button type="button" class="btn btn-secondary rounded-0 w-100" @click="deleteFeesModalClose">
+                        <button type="button" class="btn btn-secondary rounded-3 w-100" @click="deleteFeesModalClose">
                             Close
                         </button>
                     </div>
                     <div class="col-5">
-                        <button type="button" class="btn btn-theme rounded-0 w-100">
+                        <button type="button" class="btn btn-theme rounded-3 w-100">
                             Confirm
                         </button>
                     </div>
