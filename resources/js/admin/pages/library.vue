@@ -50,89 +50,16 @@
     <!-- desktop and laptop screen list -->
     <div class="card rounded-3 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </th>
-                    <th class="default-width">
-                        Name.
-                    </th>
-                    <th class="default-width">
-                        Author.
-                    </th>
-                    <th class="default-width">
-                        Subject.
-                    </th>
-                    <th class="default-width">
-                        Price.
-                    </th>
-                    <th class="default-width">
-                        Department
-                    </th>
-                    <th class="default-width">
-                        Status
-                    </th>
-                    <th class="action">
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="each in libraryDataList">
-                    <td class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </td>
-                    <td class="default-width">
-                        <div class="truncate-to-1-line">
-                            {{each.name}}
-                        </div>
-                    </td>
-                    <td class="default-width">
-                        <div class="truncate-to-1-line">
-                            {{each.author}}
-                        </div>
-                    </td>
-                    <td class="default-width">
-                        {{each.subject}}
-                    </td>
-                    <td class="default-width">
-                        {{each.price}} TK
-                    </td>
-                    <td class="default-width">
-                        {{each.department}}
-                    </td>
-                    <td class="default-width">
-                        <div class="text-success text-opacity-75" v-if="each.status === 1">
-                            In Stock
-                        </div>
-                        <div class="text-danger text-opacity-75" v-if="each.status === 2">
-                            Out of Stock
-                        </div>
-                    </td>
-                    <td class="action">
-                        <div class="dropdown">
-                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen">
-                                        Edit
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen">
-                                        Delete
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageLibraryAssetModalOpen"
+                :deleteModalFunction="deleteLibraryAssetModalOpen"
+            />
         </div>
     </div>
 
@@ -329,13 +256,18 @@ import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
+import tableContent from "../components/table.vue";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination, newBtn
+        search, preloader, noDataFounded, pagination, newBtn, tableContent
     },
     data() {
         return {
+            tableHeaders: ['Checkbox', 'Name', 'Author', 'Subject', 'Price', 'Department', 'Status', 'Action'],
+            tableRows: [
+                { id: '1', name: 'Technical Author', author: 'Mahi Bashar Akash', subject: 'Designing', price: '1000', department: 'Creative Graphic Design', status: 'In Stock' },
+            ],
             formData: {
                 updateImage: '',
                 subject: '',

@@ -1,5 +1,5 @@
 <template>
-    
+
     <form>
         <div class="form-group mb-3">
             <label for="name" class="form-label">Name</label>
@@ -34,7 +34,7 @@
             <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number">
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-theme rounded-0 wpx-90">
+            <button type="submit" class="btn btn-theme wpx-90">
                 Register
             </button>
         </div>

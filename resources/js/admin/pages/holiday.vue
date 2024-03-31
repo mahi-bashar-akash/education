@@ -50,70 +50,18 @@
     <!-- desktop and laptop screen list -->
     <div class="card rounded-3 border-light d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </th>
-                    <th class="default-width">
-                        Name.
-                    </th>
-                    <th class="default-width">
-                        Type.
-                    </th>
-                    <th class="default-width">
-                        Start Date.
-                    </th>
-                    <th class="default-width">
-                        End Date.
-                    </th>
-                    <th class="action">
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="each in holidayDataList">
-                    <td class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </td>
-                    <td class="default-width">
-                        <div class="truncate-to-1-line">
-                            {{each.name}}
-                        </div>
-                    </td>
-                    <td class="default-width">
-                        {{each.type}}
-                    </td>
-                    <td class="default-width">
-                        {{each.startDate}}
-                    </td>
-                    <td class="default-width">
-                        {{each.endDate}}
-                    </td>
-                    <td class="action">
-                        <div class="dropdown">
-                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="manageHolidayModalOpen(each.id)">
-                                        Edit
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="deleteHolidayModalOpen(each.id)">
-                                        Delete
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageHolidayModalOpen"
+                :deleteModalFunction="deleteHolidayModalOpen"
+            />
+
         </div>
     </div>
 
@@ -285,13 +233,18 @@ import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
 import flatpickr from "flatpickr";
+import tableContent from "../components/table.vue";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination, newBtn
+        search, preloader, noDataFounded, pagination, newBtn, tableContent
     },
     data() {
         return {
+            tableHeaders: ['Checkbox', 'Name', 'Type', 'Start date', 'End date', 'Action'],
+            tableRows: [
+                { id: '1', name: 'Festival', type: 'National Holiday', startDate: '31 July 1998', endDate: '31 July 1998' }
+            ],
             formData: {
                 name: '',
                 types: '',

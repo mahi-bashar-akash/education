@@ -266,7 +266,7 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Department', 'Education', 'Email', 'Phone', 'Joining date', 'Action'],
             tableRows: [
-                { id: '1', name: 'Mahi Bashar Akash', education: 'BBA, MBA', department: 'Accounting', email: 'mahibashar2023@gmail.com', phoneNumber: '01400125289', joiningDate: '01, January, 2025' },
+                { id: '1', name: 'Alpha', education: 'BBA', department: 'Accounting', email: 'mahibashar2023@gmail.com', phoneNumber: '01400125289', joiningDate: '01, January, 2025' },
             ],
             formData: {
                 name: '',

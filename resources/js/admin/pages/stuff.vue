@@ -50,76 +50,18 @@
     <!-- desktop and laptop screen list -->
     <div class="card rounded-3 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </th>
-                    <th class="default-width">
-                        Name.
-                    </th>
-                    <th class="default-width">
-                        Designation.
-                    </th>
-                    <th class="default-width">
-                        Phone.
-                    </th>
-                    <th class="default-width">
-                        Email.
-                    </th>
-                    <th class="default-width">
-                        Joining Date.
-                    </th>
-                    <th class="action">
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="each in stuffDataList">
-                    <td class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </td>
-                    <td class="default-width">
-                        <div class="truncate-to-1-line">
-                            {{each.name}}
-                        </div>
-                    </td>
-                    <td class="default-width">
-                        {{each.designation}}
-                    </td>
-                    <td class="default-width">
-                        {{each.phoneNumber}}
-                    </td>
-                    <td class="default-width">
-                        {{each.email}}
-                    </td>
-                    <td class="default-width">
-                        {{each.joiningDate}}
-                    </td>
-                    <td class="action">
-                        <div class="dropdown">
-                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="manageStuffModalOpen(each.id)">
-                                        Edit
-                                    </button>
-                                </li>
-                                <li>
-                                    <button type="button" class="dropdown-item" @click="deleteStuffModalOpen(each.id)">
-                                        Delete
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageStuffModalOpen"
+                :deleteModalFunction="deleteStuffModalOpen"
+            />
+
         </div>
     </div>
 
@@ -302,13 +244,18 @@ import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
 import flatpickr from "flatpickr";
+import tableContent from "../components/table.vue";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination, newBtn
+        search, preloader, noDataFounded, pagination, newBtn, tableContent
     },
     data() {
         return {
+            tableHeaders: ['Checkbox', 'Name', 'Designation', 'Phone', 'Email', 'Joining Date', 'Action'],
+            tableRows: [
+                { id: '1', name: 'Bajirau Singham', description: 'Police Officer', phoneNumber: '01400125289', email: 'accounting@gmail.com', joiningDate: '01, January, 2025' },
+            ],
             formData: {
                 name: '',
                 email: '',

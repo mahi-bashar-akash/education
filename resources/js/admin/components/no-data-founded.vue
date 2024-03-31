@@ -15,7 +15,7 @@
                     Click “New” to create new course.
                 </div>
             </div>
-            <button type="button" class="btn btn-theme rounded-0 wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
+            <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0">
                 New
             </button>
         </div>

@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-theme rounded-0 wpx-90">
+            <button type="submit" class="btn btn-theme wpx-90">
                 Login
             </button>
         </div>

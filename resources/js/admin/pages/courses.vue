@@ -50,76 +50,16 @@
     <!-- desktop and laptop screen list -->
     <div class="card rounded-3 border-0 d-none d-xl-block shadow">
         <div class="card-body card-list scrollbar">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="checkbox">
-                        <input type="checkbox" class="form-checkbox">
-                    </th>
-                    <th class="default-width">
-                        Name.
-                    </th>
-                    <th class="default-width">
-                        Enroll.
-                    </th>
-                    <th class="default-width">
-                        Price.
-                    </th>
-                    <th class="default-width">
-                        Duration.
-                    </th>
-                    <th class="default-width">
-                        Professor.
-                    </th>
-                    <th class="action">
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="each in CourseDataList">
-                        <td class="checkbox">
-                            <input type="checkbox" class="form-checkbox">
-                        </td>
-                        <td class="default-width">
-                            <div class="truncate-to-1-line">
-                                {{each.name}}
-                            </div>
-                        </td>
-                        <td class="default-width">
-                            {{each.enroll}} Student
-                        </td>
-                        <td class="default-width">
-                            {{each.price}} TK
-                        </td>
-                        <td class="default-width">
-                            {{each.duration}}
-                        </td>
-                        <td class="default-width">
-                            {{each.professor}}
-                        </td>
-                        <td class="action">
-                            <div class="dropdown">
-                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-three-dots-vertical"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
-                                    <li>
-                                        <button type="button" class="dropdown-item" @click="manageCourseModalOpen(each.id)">
-                                            Edit
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="dropdown-item" @click="deleteCourseModalOpen(each.id)">
-                                            Delete
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageCourseModalOpen"
+                :deleteModalFunction="deleteCourseModalOpen"
+            />
         </div>
     </div>
 
@@ -309,13 +249,18 @@ import preloader from "../components/preloader.vue";
 import noDataFounded from "../components/no-data-founded.vue";
 import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
+import tableContent from "../components/table.vue";
 
 export default {
     components: {
-        search, preloader, noDataFounded, pagination, newBtn
+        search, preloader, noDataFounded, pagination, newBtn, tableContent
     },
     data() {
         return {
+            tableHeaders: ['Checkbox', 'Name', 'Enroll', 'Price', 'Duration', 'Professor', 'Action'],
+            tableRows: [
+                { id: '1', name: 'Full Stack Web Developer', enroll: '+360', price: '12000', duration: '1 year 6 month', professor: 'Mahi Bashar Akash' },
+            ],
             CourseDataList: [
                 { id: '1', name: 'Full Stack Web Developer', enroll: '+360', price: '12000', duration: '1 year 6 month', professor: 'Mahi Bashar Akash' },
             ],
