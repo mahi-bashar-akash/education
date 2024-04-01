@@ -16,7 +16,7 @@
                                     <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email">
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-theme rounded-0 wpx-150" @click="tab = 'reset'">
+                                    <button type="submit" class="btn btn-theme wpx-150" @click="tab = 'reset'">
                                         Forget password
                                     </button>
                                 </div>
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-theme rounded-0 wpx-90">
+                                    <button type="submit" class="btn btn-theme wpx-90">
                                         Reset
                                     </button>
                                 </div>

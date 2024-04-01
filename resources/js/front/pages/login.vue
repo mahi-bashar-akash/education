@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-theme wpx-90 rounded-0" @click="goRoute">
+                                    <button type="submit" class="btn btn-theme wpx-90" @click="goRoute">
                                         Sign In
                                     </button>
                                 </div>
