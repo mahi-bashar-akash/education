@@ -129,7 +129,8 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded v-if="!loading && tableRows.length === 0"/>
+    <!-- no data -->
+    <noDataFounded v-if="!loading && tableRows.length === 0" :newModalFunction="manageEventModalOpen"/>
 
     <!-- pagination -->
     <pagination v-if="!loading && tableRows.length > 0"/>
