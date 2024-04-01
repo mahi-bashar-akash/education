@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="card rounded-3 border-0 shadow" v-if="!loading">
+    <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
         <div class="card-body card-list scrollbar">
 
             <!-- desktop and laptop screen list -->
@@ -132,10 +132,10 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded/>
+    <noDataFounded v-if="!loading && tableRows.length === 0"/>
 
     <!-- pagination -->
-    <pagination v-if="!loading"/>
+    <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage student modal -->
     <div class="modal fade" id="manageStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
