@@ -72,8 +72,8 @@
 
                     <!-- card -->
                     <div class="p-2" v-for="each in professorDataList">
-                        <div class="card p-0 rounded-0 border">
-                            <div class="card-header rounded-0 py-2 px-2 bg-secondary-subtle border-0">
+                        <div class="card p-0 rounded-3 border">
+                            <div class="card-header rounded-3 py-2 px-2 bg-secondary-subtle border-0">
                                 <div class="row align-items-center">
                                     <div class="col-9">
                                         <div class="p-1 text-theme fw-semibold">
@@ -87,7 +87,7 @@
                                             <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-0 border">
+                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-3 border">
                                                 <li>
                                                     <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
                                                         Edit
@@ -199,10 +199,10 @@
 
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-secondary rounded-3 wpx-110 me-2" @click="manageProfessorModalClose">
+                    <button type="button" class="btn btn-secondary wpx-110 me-2" @click="manageProfessorModalClose">
                         Close
                     </button>
-                    <button type="button" class="btn btn-theme rounded-3 wpx-110">
+                    <button type="button" class="btn btn-theme wpx-110">
                         Save
                     </button>
                 </div>

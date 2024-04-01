@@ -32,15 +32,15 @@
             <div class="col-xl-9">
                 <div class="row">
                     <div class="col-xl-5 p-2">
-                        <div class="card rounded-0 border-0">
-                            <div class="card-header bg-white rounded-0 border-0">
+                        <div class="card rounded-3 border-0">
+                            <div class="card-header bg-white rounded-3 border-0">
 
                                 <!-- group of button -->
-                                <div class="card-header bg-white rounded-0 border-0 d-flex justify-content-start align-items-center pt-3">
-                                    <button type="button" class="btn btn-theme rounded-0 me-1" @click="setTab(1)">
+                                <div class="card-header bg-white rounded-3 border-0 d-flex justify-content-start align-items-center pt-3">
+                                    <button type="button" class="btn btn-theme me-1" @click="setTab(1)">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
-                                    <button type="button" class="btn btn-theme rounded-0 me-1" @click="setTab(2)">
+                                    <button type="button" class="btn btn-theme me-1" @click="setTab(2)">
                                         <i class="bi bi-shield"></i>
                                     </button>
                                 </div>
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-xl-7 p-2">
-                        <div class="card rounded-0 border-0">
+                        <div class="card rounded-3 border-0">
 
                             <!-- update profile -->
                             <div class="card-body" v-if="tab === 1">
@@ -91,7 +91,7 @@
                                         <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number">
                                     </div>
                                     <div class="w-100">
-                                        <button type="button" class="btn btn-theme wpx-150 rounded-0">
+                                        <button type="button" class="btn btn-theme wpx-150">
                                             Update profile
                                         </button>
                                     </div>
@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
                                     <div class="w-100">
-                                        <button type="button" class="btn btn-theme wpx-150 rounded-0">
+                                        <button type="button" class="btn btn-theme wpx-150">
                                             Update password
                                         </button>
                                     </div>

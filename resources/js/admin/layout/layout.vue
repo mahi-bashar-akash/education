@@ -70,7 +70,7 @@
                         <button type="button" class="user-avatar border-0 bg-transparent" data-bs-toggle="dropdown" aria-expanded="false">
                             <img :src="`/images/clients/face-1.png`" class="img-fluid wpx-35 hpx-35 rounded-circle" alt="avatar">
                         </button>
-                        <span class="dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-0 border">
+                        <span class="dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-3 border">
                             <span>
                                 <router-link :to="{name: 'profile'}" class="dropdown-item">
                                     Profile
