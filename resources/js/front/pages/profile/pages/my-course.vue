@@ -17,9 +17,9 @@
 
     <div class="profile-no-data-card bg-white shadow scrollbar p-3 rounded-3">
         <div class="accordion" id="accordionExample">
-            <div class="accordion-item mb-3 shadow border-0 rounded-0" v-for="each in courseDataList">
+            <div class="accordion-item mb-3 shadow border-0 rounded-3" v-for="each in courseDataList">
                 <h2 class="accordion-header">
-                    <button class="accordion-button shadow-none rounded-0 fw-medium bg-theme-hover" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+each.id" aria-expanded="true" :aria-controls="'collapse'+each.id">
+                    <button class="accordion-button shadow-none rounded-3 fw-medium bg-theme-hover" type="button" data-bs-toggle="collapse" :data-bs-target="'#collapse'+each.id" aria-expanded="true" :aria-controls="'collapse'+each.id">
                         {{each.courseName}}
                     </button>
                 </h2>
@@ -132,7 +132,7 @@ export default {
                         { id: '17', lessonName: 'Laravel PHP Framework' },
                         { id: '18', lessonName: 'Ajax' },
                         { id: '19', lessonName: 'Payment Gateway' },
-                        { id: '20', lessonName: 'ECommerce Project With Laravel Vue API' },
+                        { id: '20', lessonName: 'E-commerce Project With Laravel Vue API' },
                     ],
                 },
                 { id: '4', courseName: 'Digital Marketing',
