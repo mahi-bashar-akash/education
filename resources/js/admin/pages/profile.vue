@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="col-xl-7 p-2">
-                        <div class="card rounded-3 border-0">
+                        <div class="card rounded-3 border-0 p-3">
 
                             <!-- update profile -->
                             <div class="card-body" v-if="tab === 1">
