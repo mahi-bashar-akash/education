@@ -47,26 +47,25 @@
         </div>
     </div>
 
-    <!-- desktop and laptop screen list -->
-    <div class="card rounded-3 border-0 d-none d-xl-block shadow">
+    <div class="card rounded-3 border-0 shadow" v-if="!loading">
         <div class="card-body card-list scrollbar">
-            <tableContent
-                :headers="tableHeaders"
-                :rows="tableRows"
-                tableClass="table"
-                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                :checkboxColumnIndex="0"
-                :editModalFunction="manageCourseModalOpen"
-                :deleteModalFunction="deleteCourseModalOpen"
-            />
-        </div>
-    </div>
 
-    <!-- tablet and mobile screen list -->
-    <div class="card rounded-3 border-0 d-xl-none shadow">
-        <div class="card-body card-list scrollbar">
-            <div class="px-2">
+            <!-- desktop and laptop screen list -->
+            <div class="d-none d-xl-block">
+                <tableContent
+                    :headers="tableHeaders"
+                    :rows="tableRows"
+                    tableClass="table"
+                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                    :checkboxColumnIndex="0"
+                    :editModalFunction="manageCourseModalOpen"
+                    :deleteModalFunction="deleteCourseModalOpen"
+                />
+            </div>
+
+            <!-- tablet and mobile screen list -->
+            <div class="px-2 d-xl-none">
 
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
@@ -126,17 +125,18 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
     <!-- preloader -->
-    <preloader/>
+    <preloader v-if="loading"/>
 
     <!-- no data -->
     <noDataFounded/>
 
     <!-- pagination -->
-    <pagination/>
+    <pagination v-if="!loading"/>
 
     <!-- manage course modal -->
     <div class="modal fade" id="manageCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -276,9 +276,14 @@ export default {
                 { id: '3', name: 'John Wilson' },
                 { id: '4', name: 'Smith John' },
             ],
+            loading: true,
         }
     },
-    mounted() {  },
+    mounted() {
+        setTimeout( () => {
+            this.loading = false
+        }, 2000)
+    },
     methods: {
 
         /* Function to manage course modal open */

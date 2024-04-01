@@ -47,26 +47,25 @@
         </div>
     </div>
 
-    <!-- desktop and laptop screen list -->
-    <div class="card rounded-3 border-0 d-none d-xl-block shadow">
+    <div class="card rounded-3 border-0 shadow" v-if="!loading">
         <div class="card-body card-list scrollbar">
-            <tableContent
-                :headers="tableHeaders"
-                :rows="tableRows"
-                tableClass="table"
-                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                :checkboxColumnIndex="0"
-                :editModalFunction="manageDepartmentModalOpen"
-                :deleteModalFunction="deleteDepartmentModalOpen"
-            />
-        </div>
-    </div>
 
-    <!-- tablet and mobile screen list -->
-    <div class="card rounded-3 border-0 d-xl-none shadow">
-        <div class="card-body card-list scrollbar">
-            <div class="px-2">
+            <!-- desktop and laptop screen list -->
+            <div class="d-none d-xl-block">
+                <tableContent
+                    :headers="tableHeaders"
+                    :rows="tableRows"
+                    tableClass="table"
+                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                    :checkboxColumnIndex="0"
+                    :editModalFunction="manageDepartmentModalOpen"
+                    :deleteModalFunction="deleteDepartmentModalOpen"
+                />
+            </div>
+
+            <!-- tablet and mobile screen list -->
+            <div class="px-2 d-xl-none">
 
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
@@ -129,17 +128,18 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
     <!-- preloader -->
-    <preloader/>
+    <preloader v-if="loading"/>
 
     <!-- no data -->
     <noDataFounded/>
 
     <!-- pagination -->
-    <pagination/>
+    <pagination v-if="!loading"/>
 
     <!-- manage department modal -->
     <div class="modal fade" id="manageDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -270,10 +270,14 @@ export default {
             },
             departmentDateList: [
                 { id: '1', name: 'Accounting', email: 'accounting@gmail.com', startDate: '01, January, 2025', stuffCapacity: '21', phoneNumber: '01400125289', headOfDepartment: 'Mahi Bashar Akash', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis ipsum iure laborum sunt veritatis?' },
-            ]
+            ],
+            loading: true,
         }
     },
     mounted() {
+        setTimeout( () => {
+            this.loading = false
+        }, 2000)
         this.flatpickrConfigDate();
     },
     methods: {

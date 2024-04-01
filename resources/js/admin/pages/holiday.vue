@@ -47,28 +47,26 @@
         </div>
     </div>
 
-    <!-- desktop and laptop screen list -->
-    <div class="card rounded-3 border-light d-none d-xl-block shadow">
+
+    <div class="card rounded-3 border-light shadow" v-if="!loading">
         <div class="card-body card-list scrollbar">
 
-            <tableContent
-                :headers="tableHeaders"
-                :rows="tableRows"
-                tableClass="table"
-                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                :checkboxColumnIndex="0"
-                :editModalFunction="manageHolidayModalOpen"
-                :deleteModalFunction="deleteHolidayModalOpen"
-            />
+            <!-- desktop and laptop screen list -->
+            <div class="d-none d-xl-block">
+                <tableContent
+                    :headers="tableHeaders"
+                    :rows="tableRows"
+                    tableClass="table"
+                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                    :checkboxColumnIndex="0"
+                    :editModalFunction="manageHolidayModalOpen"
+                    :deleteModalFunction="deleteHolidayModalOpen"
+                />
+            </div>
 
-        </div>
-    </div>
-
-    <!-- tablet and mobile screen list -->
-    <div class="card rounded-3 border-light d-xl-none shadow">
-        <div class="card-body card-list scrollbar">
-            <div class="px-2">
+            <!-- tablet and mobile screen list -->
+            <div class="px-2 d-xl-none">
 
                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
@@ -125,17 +123,18 @@
                 </div>
 
             </div>
+
         </div>
     </div>
 
     <!-- preloader -->
-    <preloader/>
+    <preloader v-if="loading"/>
 
     <!-- no data -->
     <noDataFounded/>
 
     <!-- pagination -->
-    <pagination/>
+    <pagination v-if="!loading"/>
 
     <!-- manage holiday modal -->
     <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -254,10 +253,14 @@ export default {
             },
             holidayDataList: [
                 { id: '1', name: 'Festival', type: 'National Holiday', startDate: '31 July 1998', endDate: '31 July 1998' }
-            ]
+            ],
+            loading: true,
         }
     },
     mounted() {
+        setTimeout( () => {
+            this.loading = false
+        }, 2000)
         this.flatpickrConfigStartDate();
         this.flatpickrConfigEndDate();
     },

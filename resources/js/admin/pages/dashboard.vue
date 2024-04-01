@@ -16,10 +16,15 @@
 
         <!-- event -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'events'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        1295
+                        {{countParam.event_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-calendar4-event fs-3 text-theme"></i>
@@ -29,14 +34,20 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
         <!-- professor -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'professors'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        1209
+                        {{countParam.professor_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-person fs-3 text-theme"></i>
@@ -46,14 +57,20 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
         <!-- student -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'students'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        1114
+                        {{countParam.student_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -67,10 +84,15 @@
 
         <!-- course -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'courses'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        109
+                        {{countParam.course_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-mortarboard fs-3 text-theme"></i>
@@ -84,10 +106,15 @@
 
         <!-- library -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'library'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        97
+                        {{countParam.library_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-journal-bookmark fs-3 text-theme"></i>
@@ -101,10 +128,15 @@
 
         <!-- department -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'departments'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        73
+                        {{countParam.department_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-building fs-3 text-theme"></i>
@@ -114,14 +146,20 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
         <!-- stuff -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'stuff'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        123
+                        {{countParam.stuff_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -131,14 +169,20 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
         <!-- holiday -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'holiday'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        365
+                        {{countParam.holiday_count}}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-gift fs-3 text-theme"></i>
@@ -148,14 +192,20 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
         <!-- fees -->
         <div class="mb-4">
+
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
             <router-link :to="{name: 'fees'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center py-5 rounded-4">
+                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        9,870,000 tk
+                        {{countParam.fees_count}} tk
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-currency-dollar fs-3 text-theme"></i>
@@ -165,6 +215,7 @@
                     </div>
                 </div>
             </router-link>
+
         </div>
 
     </div>
@@ -177,11 +228,28 @@ export default {
 
     data() {
 
-        return {}
+        return {
+            countParam: {
+                event_count: '1295',
+                professor_count: '1209',
+                student_count: '1114',
+                course_count: '109',
+                library_count: '97',
+                department_count: '73',
+                stuff_count: '123',
+                holiday_count: '365',
+                fees_count: '9,870,000',
+            },
+            loading: true,
+        }
 
     },
 
-    mounted() {  },
+    mounted() {
+        setTimeout( () => {
+            this.loading = false
+        }, 2000)
+    },
 
     methods: {  }
 
