@@ -55,14 +55,17 @@
 
     <noDataFound/>
 
+    <preloader/>
+
 </template>
 
 <script>
 import noDataFound from "../components/no-data-found.vue";
+import preloader from "../components/preloader.vue";
 
 export default {
     components: {
-        noDataFound
+        noDataFound, preloader
     },
     data() {
         return {
