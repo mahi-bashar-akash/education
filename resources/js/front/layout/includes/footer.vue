@@ -75,12 +75,12 @@
             <div class="row">
                 <div class="col-sm-6">
                     <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover mb-3 d-block">
-                        © Copyrights 2023 theme development
+                        © Copyrights 2025 theme development
                     </a>
                 </div>
-                <div class="col-sm-6 text-sm-center">
-                    <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover mb-3 d-block">
-                        All rights reserved by Mahi Bashar Akash
+                <div class="col-sm-6 d-flex justify-content-sm-end">
+                    <a href="https://www.redishketch.com" class="text-decoration-none text-light-gray mb-3 d-flex align-items-center">
+                        All rights reserved by <span class="text-theme ms-2">Redishketch</span>
                     </a>
                 </div>
             </div>

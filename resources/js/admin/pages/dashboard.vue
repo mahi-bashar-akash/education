@@ -17,7 +17,7 @@
         <!-- event -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -40,7 +40,7 @@
         <!-- professor -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -63,7 +63,7 @@
         <!-- student -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -85,7 +85,7 @@
         <!-- course -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -107,7 +107,7 @@
         <!-- library -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -129,7 +129,7 @@
         <!-- department -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -152,7 +152,7 @@
         <!-- stuff -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -175,7 +175,7 @@
         <!-- holiday -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
@@ -198,7 +198,7 @@
         <!-- fees -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center" v-if="loading">
+            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 

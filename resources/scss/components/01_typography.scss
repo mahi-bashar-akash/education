@@ -29,6 +29,10 @@
     cursor: context-menu;
 }
 
+.cursor-loading {
+    cursor: wait;
+}
+
 .truncate-to-1-line {
     display: -webkit-box;
     -webkit-line-clamp: 1;
