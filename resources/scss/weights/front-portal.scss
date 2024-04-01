@@ -178,8 +178,23 @@
 
     }
 
-    .profile-no-data-card {
-        height: calc(100vh - 400px);
+    .profile {
+
+        .nav-link {
+            transition: 0.3s all ease-in-out;
+            color: var(--light-gray) !important;
+
+            &:hover, &.router-link-active, &.router-link-exact-active {
+                transition: 0.3s all ease-in-out;
+                color: var(--theme) !important;
+            }
+
+        }
+
+        .profile-no-data-card {
+            height: calc(100vh - 400px);
+        }
+
     }
 
 }

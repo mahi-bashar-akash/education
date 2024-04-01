@@ -1,10 +1,10 @@
 <template>
-    <div class="cursor-content margin-top-105">
+    <div class="cursor-content margin-top-105 profile">
         <section class="w-100 py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="w-100 p-3 shadow">
+                        <div class="w-100 p-3 shadow rounded-3">
                             <div class="d-flex justify-content-center align-items-center">
                                 <form>
                                     <div class="mb-3">
@@ -18,16 +18,16 @@
                                     </div>
                                 </form>
                             </div>
-                            <router-link :to="{name: 'profile'}" class="nav-link text-light-gray-hover mb-2">
+                            <router-link :to="{name: 'profile'}" class="nav-link mb-2">
                                 Profile
                             </router-link>
-                            <router-link :to="{name: 'myCourse'}" class="nav-link text-light-gray-hover mb-2">
+                            <router-link :to="{name: 'myCourse'}" class="nav-link mb-2">
                                 My course
                             </router-link>
-                            <router-link :to="{name: 'myFees'}" class="nav-link text-light-gray-hover mb-2">
+                            <router-link :to="{name: 'myFees'}" class="nav-link mb-2">
                                 My fees
                             </router-link>
-                            <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
+                            <a href="javascript:void(0)" class="nav-link">
                                 Logout
                             </a>
                         </div>
