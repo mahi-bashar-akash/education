@@ -12,6 +12,7 @@ import layout from "../layout/layout.vue";
 import home from "../pages/home.vue";
 import about from "../pages/about.vue";
 import courses from "../pages/courses.vue";
+import singleCourse from "../pages/single-course.vue";
 import blog from "../pages/blog.vue";
 import contact from "../pages/contact.vue";
 import login from "../pages/login.vue";
@@ -42,6 +43,7 @@ const routes = [
             { path: ROOT_URL + 'home', name: 'home', component: home, meta: { title: TITLE + ' - home' } },
             { path: ROOT_URL + 'about', name: 'about', component: about, meta: { title: TITLE + ' - about' } },
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
+            { path: ROOT_URL + 'single-course', name: 'singleCourse', component: singleCourse, meta: { title: TITLE + ' - single course' } },
             { path: ROOT_URL + 'blogs', name: 'blog', component: blog, meta: { title: TITLE + ' - blog' } },
             { path: ROOT_URL + 'contact', name: 'contact', component: contact, meta: { title: TITLE + ' - contact' } },
             { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },

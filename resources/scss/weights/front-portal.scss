@@ -168,11 +168,16 @@
     }
 
     .image-effect {
-        transform: scale(1);
-        transition: 0.3s all ease-in-out;
 
         &:hover {
-            transform: scale(1.2);
+            img {
+                transform: scale(1.2);
+                transition: 0.3s all ease-in-out;
+            }
+        }
+
+        img {
+            transform: scale(1);
             transition: 0.3s all ease-in-out;
         }
 
@@ -195,6 +200,21 @@
             height: calc(100vh - 400px);
         }
 
+    }
+
+    .background-before {
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+        &:before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(33, 33, 114, 0.6);
+        }
     }
 
 }

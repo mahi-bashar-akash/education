@@ -155,12 +155,12 @@
                         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 
                             <div class="p-2" v-for="each in courseDataList">
-                                <a href="javascript:void(0)" class="text-decoration-none">
+                                <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)" class="text-decoration-none image-effect">
                                     <div class="card border-0 shadow-sm p-0 overflow-hidden">
                                         <div class="card-body p-0">
                                             <div class="position-relative">
                                                 <div class="overflow-hidden">
-                                                    <img :src="each.filePath" class="img-fluid object-fit-cover image-effect" alt="course">
+                                                    <img :src="each.filePath" class="img-fluid object-fit-cover" alt="course">
                                                 </div>
                                                 <div class="position-absolute top-0 start-0 p-3">
                                                     <div class="rounded-3 bg-warning text-dark fw-medium py-1 px-3">
@@ -202,7 +202,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </router-link>
                             </div>
 
                         </div>

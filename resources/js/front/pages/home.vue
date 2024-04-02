@@ -206,10 +206,10 @@
                         Latest blogs & news
                     </div>
                     <div class="blogs-carousel owl-carousel owl-theme">
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 1">
+                                    <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 1">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -234,10 +234,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -262,10 +262,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 3">
+                                    <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 3">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -290,10 +290,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 4">
+                                    <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 4">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -318,10 +318,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -346,10 +346,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item p-3">
+                        <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100 image-effect" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">

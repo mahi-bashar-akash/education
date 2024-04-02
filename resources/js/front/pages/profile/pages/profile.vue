@@ -10,6 +10,18 @@
         </div>
     </nav>
 
+    <div class="d-flex align-items-center justify-content-start">
+        <button type="button" class="btn btn-theme">
+            Edit profile
+        </button>
+        <button type="button" class="btn btn-theme">
+            Edit password
+        </button>
+        <button type="button" class="btn btn-theme">
+            Edit A
+        </button>
+    </div>
+
     <form class="mb-3 bg-white shadow p-4 rounded-3">
         <div class="mb-2 fs-5">Edit profile</div>
         <div class="row">
