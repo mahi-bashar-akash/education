@@ -51,84 +51,16 @@
     <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
         <div class="card-body card-list scrollbar">
 
-            <!-- desktop and laptop screen list -->
-            <div class="d-none d-xl-block">
-                <tableContent
-                    :headers="tableHeaders"
-                    :rows="tableRows"
-                    tableClass="table"
-                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                    :checkboxColumnIndex="0"
-                    :editModalFunction="manageProfessorModalOpen"
-                    :deleteModalFunction="deleteProfessorModalOpen"
-                />
-            </div>
-
-            <!-- tablet and mobile screen list -->
-            <div class="px-2 d-xl-none">
-
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
-
-                    <!-- card -->
-                    <div class="p-2" v-for="each in professorDataList">
-                        <div class="card p-0 rounded-3 border">
-                            <div class="card-header rounded-3 py-2 px-2 bg-secondary-subtle border-0">
-                                <div class="row align-items-center">
-                                    <div class="col-9">
-                                        <div class="p-1 text-theme fw-semibold">
-                                            <div class="truncate-to-1-line">
-                                                {{each.name}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-end">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-3 border">
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="manageProfessorModalOpen">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteProfessorModalOpen">
-                                                        Delete
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body border-0 p-0">
-                                <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Professor image {{each.id}}
-                                </div>
-                                <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Department name: {{each.department}}
-                                </div>
-                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
-                                    Education: {{each.education}}
-                                </div>
-                                <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Phone Number: {{each.phoneNumber}}
-                                </div>
-                                <div class="mb-2 text-secondary text-opacity-75 pt-2 px-3">
-                                    Email: {{each.email}}
-                                </div>
-                                <div class="mb-2 text-light-gray pt-2 px-3">
-                                    Joining Date: {{each.joiningDate}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageProfessorModalOpen"
+                :deleteModalFunction="deleteProfessorModalOpen"
+            />
 
         </div>
     </div>

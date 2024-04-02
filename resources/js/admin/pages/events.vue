@@ -53,75 +53,17 @@
     <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
         <div class="card-body card-list scrollbar">
 
-            <!-- desktop and laptop screen list -->
-            <div class="d-none d-xl-block">
-                <tableContent
-                    :headers="tableHeaders"
-                    :rows="tableRows"
-                    tableClass="table"
-                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                    :checkboxColumnIndex="0"
-                    :editModalFunction="manageEventModalOpen"
-                    :deleteModalFunction="deleteEventModalOpen"
-                />
-            </div>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageEventModalOpen"
+                :deleteModalFunction="deleteEventModalOpen"
+            />
 
-            <!-- tablet and mobile screen list -->
-            <div class="px-2 d-xl-none">
-
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
-
-                    <!-- card -->
-                    <div class="p-2" v-for="each in eventDataList">
-                        <div class="card p-0 rounded-3 border">
-                            <div class="card-header rounded-3 py-2 px-2 bg-secondary-subtle border-0">
-                                <div class="row align-items-center">
-                                    <div class="col-9">
-                                        <div class="p-1 text-theme fw-semibold">
-                                            <div class="truncate-to-1-line">
-                                                {{each.name}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-end">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden rounded-3 border">
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="manageEventModalOpen(each.id)">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteEventModalOpen(each.id)">
-                                                        Delete
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body rounded-3 border-0 p-0">
-                                <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    Event image {{each.id}}
-                                </div>
-                                <div class="mb-2 text-light-gray pt-3 px-3">
-                                    Date: {{each.date}}
-                                </div>
-                                <div class="mb-2 text-secondary text-opacity-75 px-3 pb-2">
-                                    Time: {{each.startTime}} - {{each.endTime}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
         </div>
     </div>
 

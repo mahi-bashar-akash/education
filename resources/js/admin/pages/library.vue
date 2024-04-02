@@ -50,84 +50,16 @@
     <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
         <div class="card-body card-list scrollbar">
 
-            <!-- desktop and laptop screen list -->
-            <div class="d-none d-xl-block">
-                <tableContent
-                    :headers="tableHeaders"
-                    :rows="tableRows"
-                    tableClass="table"
-                    :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                    :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                    :checkboxColumnIndex="0"
-                    :editModalFunction="manageLibraryAssetModalOpen"
-                    :deleteModalFunction="deleteLibraryAssetModalOpen"
-                />
-            </div>
-
-            <!-- tablet and mobile screen list -->
-            <div class="px-2 d-xl-none">
-
-                <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
-
-                    <!-- card -->
-                    <div class="p-2" v-for="each in libraryDataList">
-                        <div class="card p-0 rounded-3 border">
-                            <div class="card-header rounded-3 py-2 px-2 bg-secondary-subtle border-0">
-                                <div class="row align-items-center">
-                                    <div class="col-9">
-                                        <div class="p-1 text-theme fw-semibold">
-                                            <div class="truncate-to-1-line">
-                                                {{each.name}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 text-end">
-                                        <div class="dropdown">
-                                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end p-0 mt-1 overflow-hidden">
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="manageLibraryAssetModalOpen(each.id)">
-                                                        Edit
-                                                    </button>
-                                                </li>
-                                                <li>
-                                                    <button type="button" class="dropdown-item" @click="deleteLibraryAssetModalOpen(each.id)">
-                                                        Delete
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body border-0 p-0">
-                                <div class="hpx-150 d-flex justify-content-center align-items-center text-light-gray border-bottom">
-                                    library asset image {{each.id}}
-                                </div>
-                                <div class="mb-2 text-light-gray pt-3 px-3">
-                                    Author: {{each.author}}
-                                </div>
-                                <div class="mb-2 text-secondary text-opacity-75 px-3">
-                                    Subject: {{each.subject}}
-                                </div>
-                                <div class="mb-2 text-light-gray px-3">
-                                    Department name: {{each.department}}
-                                </div>
-                                <div class="mb-2 text-secondary text-opacity-75 px-3">
-                                    Price: {{each.price}} TK
-                                </div>
-                                <div class="mb-2 text-light-gray px-3">
-                                    Status: <span v-if="each.status === 1"> In Stock </span> <span v-if="each.status === 2"> Out of Stock </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+            <tableContent
+                :headers="tableHeaders"
+                :rows="tableRows"
+                tableClass="table"
+                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
+                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
+                :checkboxColumnIndex="0"
+                :editModalFunction="manageLibraryAssetModalOpen"
+                :deleteModalFunction="deleteLibraryAssetModalOpen"
+            />
 
         </div>
     </div>
