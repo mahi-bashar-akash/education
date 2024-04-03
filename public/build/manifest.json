@@ -3,8 +3,8 @@
     "file": "assets/index-DUn1kput.css",
     "src": "_index-!~{004}~.js"
   },
-  "_index-Brl2kPYS.js": {
-    "file": "assets/index-Brl2kPYS.js",
+  "_index-BK5UQY7l.js": {
+    "file": "assets/index-BK5UQY7l.js",
     "css": [
       "assets/index-DUn1kput.css"
     ],
@@ -22,23 +22,23 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-k_X0Ne3O.js",
+    "file": "assets/app-DcmgcUh9.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_index-Brl2kPYS.js"
+      "_index-BK5UQY7l.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-DUUx_y-A.js",
+    "file": "assets/app-CJgw6PKD.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_index-Brl2kPYS.js"
+      "_index-BK5UQY7l.js"
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-DSy11jAp.css",
+    "file": "assets/stylesheet-6ecAxi6Y.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }

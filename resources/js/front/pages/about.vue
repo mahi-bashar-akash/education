@@ -352,9 +352,9 @@
                         Frequently asked questions
                     </div>
                     <div class="accordion" id="accordionExample">
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What are the benefits of an Education.io
                                 </button>
                             </h2>
@@ -364,9 +364,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     What are the fundamentals of Education.io
                                 </button>
                             </h2>
@@ -376,9 +376,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                     Why Education.io has best language management system
                                 </button>
                             </h2>
@@ -388,9 +388,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                     Why is collaborative language is so important
                                 </button>
                             </h2>
@@ -400,9 +400,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border shadow-none overflow-hidden rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                     Organize the content of Education.io
                                 </button>
                             </h2>
@@ -412,9 +412,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item mb-3 border shadow-none rounded-3">
+                        <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed shadow-none rounded-3 fw-medium bg-light-gray-hover" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     What is the reason you need an Education.io
                                 </button>
                             </h2>

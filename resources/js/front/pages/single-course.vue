@@ -24,9 +24,9 @@
             </div>
         </section>
 
-        <section class="w-100 py-5">
+        <section class="w-100 pt-5">
             <div class="container">
-                <div class="col-lg-5 py-5">
+                <div class="col-lg-7">
                     <div class="fs-2">
                         Course Overview
                     </div>
@@ -40,35 +40,205 @@
             </div>
         </section>
 
-        <section class="w-100 py-5">
+        <section class="w-100 pt-5">
             <div class="container">
-                <div class="col-lg-5">
+                <div class="col-lg-7">
                     <div class="fs-2 mb-3">
                         What you will learn
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                         Become a UX designer.
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                     Become a UX designer.
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                     You will be able to add UX designer to your CV
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                     You will be able to add UX designer to your CV
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                     Build & test a full website design.
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 text-light-gray-hover">
                         <i class="bi bi-check me-2"></i>
                     Build & test a full website design.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-100 pt-5">
+            <div class="container">
+                <div class="col-lg-7">
+                    <div class="row align-items-center">
+                        <div class="col-6 fs-2">Course content</div>
+                        <div class="col-3 text-end">
+                            <i class="bi bi-card-text me-2"></i>
+                            Lessons
+                        </div>
+                        <div class="col-3 text-end">
+                            <i class="bi bi-clock me-2"></i>
+                            6h 40m
+                        </div>
+                    </div>
+                    <div class="accordion mt-3" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Introduction
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    5h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    4h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    3h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Analysis
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    5h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    4h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    3h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Practical
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    5h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    4h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="py-1">
+                                        <a href="javascript:void(0)" class="text-decoration-none text-light-gray-hover">
+                                            <div class="row">
+                                                <div class="col-9">
+                                                    <i class="bi bi-play-circle-fill me-2"></i>
+                                                    Greetings and introductions
+                                                </div>
+                                                <div class="col-3 text-end">
+                                                    3h
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
