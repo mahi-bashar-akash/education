@@ -2,7 +2,7 @@
     <div class="cursor-content margin-top-105">
         <section class="container">
             <div class="row py-3 align-items-start">
-                <div class="col-md-3 text-light-gray py-1 px-3">
+                <div class="col-lg-3 text-light-gray py-1 px-3">
                     <div class="bg-light shadow-sm p-3">
                         <form>
 
@@ -145,7 +145,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-9 py-1 px-3">
+                <div class="col-lg-9 py-1 px-3">
 
                     <div class="p-3 bg-light text-light-gray-hover shadow-sm w-100 rounded-3">
                         We found 78 courses for you
