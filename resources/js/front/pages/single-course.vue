@@ -424,8 +424,56 @@
                 </div>
 
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-4 h-100 sticky-top">
+                        <div class="py-5">
+                            <div class="card border overflow-hidden">
+                                <div class="card-header bg-white rounded-0 border-0 p-0">
+                                    <img :src="`/images/course/courses-1.jpg`" class="w-100 hpx-350 object-fit-cover" alt="avatar">
+                                </div>
+                                <div class="card-body bg-white rounded-0 border-0 p-0">
+                                    <div class="row">
+                                        <div class="col-6 d-flex align-items-center ps-4 py-2">
+                                            <span class="fs-3">$49.99</span>
+                                            <span class="ms-2 fs-5 text-secondary">$102</span>
+                                        </div>
+                                        <div class="col-6 d-flex justify-content-end pe-4 py-2">
+                                            <button type="button" class="btn btn-icon">
+                                                <i class="bi bi-share-fill"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="px-2 mb-3">
+                                        <button type="button" class="btn btn-outline-theme w-100">Add to cart</button>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white rounded-0 border-0 p-3">
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3"> <i class="bi bi-clock-history me-2"></i> Duration</div>
+                                        <div class="col-sm-6 mb-3 text-sm-end">52 mins</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3"> <i class="bi bi-sliders me-2"></i> Level</div>
+                                        <div class="col-sm-6 mb-3 text-sm-end">Expert</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3"> <i class="bi bi-card-text me-2"></i> Lectures</div>
+                                        <div class="col-sm-6 mb-3 text-sm-end">4 Lectures</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3"> <i class="bi bi-translate me-2"></i> Language</div>
+                                        <div class="col-sm-6 mb-3 text-sm-end">English</div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 mb-3"> <i class="bi bi-person me-2"></i> Enrolled</div>
+                                        <div class="col-sm-6 mb-3 text-sm-end">4 Students</div>
+                                    </div>
 
+
+
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

@@ -3,7 +3,7 @@
         <section class="container">
             <div class="row py-3 align-items-start">
                 <div class="col-lg-3 text-light-gray py-1 px-3">
-                    <div class="bg-light shadow-sm p-3">
+                    <div class="bg-light shadow-sm rounded-3 p-3">
                         <form>
 
                             <div>
@@ -147,69 +147,103 @@
                 </div>
                 <div class="col-lg-9 py-1 px-3">
 
-                    <div class="p-3 bg-light text-light-gray-hover shadow-sm w-100 rounded-3">
-                        We found 78 courses for you
+                    <div class="px-3 py-2 bg-light shadow-sm w-100 rounded-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-7">
+                                <div class="text-light-gray-hover">
+                                    We found 78 courses for you
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="position-relative">
+                                    <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                    <input type="text" name="keyword" class="form-control ps-5" required placeholder="Search Here" autocomplete="new-keyword">
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="p-1">
-                        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+                    <!-- no data founded -->
+                    <div class="course-content p-3 scrollbar d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 mt-3" v-if="!loading && courseDataList.length === 0">
+                        <div class="text-center">
+                            <div class="mb-2">
+                                <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                            </div>
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                    </div>
 
-                            <div class="p-2" v-for="each in courseDataList">
-                                <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)" class="text-decoration-none image-effect">
-                                    <div class="card border-0 shadow-sm p-0 overflow-hidden">
-                                        <div class="card-body p-0">
-                                            <div class="position-relative">
-                                                <div class="overflow-hidden">
-                                                    <img :src="each.filePath" class="img-fluid object-fit-cover" alt="course">
-                                                </div>
-                                                <div class="position-absolute top-0 start-0 p-3">
-                                                    <div class="rounded-3 bg-warning text-dark fw-medium py-1 px-3">
-                                                        {{each.price}} TK
+                        <div class="course-content p-3 scrollbar bg-light mt-3 shadow-sm w-100 rounded-3" v-if="!loading && courseDataList.length > 0">
+
+                            <!-- data list -->
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
+
+                                <div class="p-2" v-for="each in courseDataList">
+                                    <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)" class="text-decoration-none image-effect">
+                                        <div class="card border-0 shadow-sm p-0 overflow-hidden">
+                                            <div class="card-body p-0">
+                                                <div class="position-relative">
+                                                    <div class="overflow-hidden">
+                                                        <img :src="each.filePath" class="img-fluid object-fit-cover" alt="course">
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="p-3">
-                                                <small class="d-block text-light-gray">
-                                                    By {{each.author}}
-                                                </small>
-                                                <div class="fs-4 mt-2 text-light-gray-hover">
-                                                    <div class="truncate-to-2-line">
-                                                        {{each.name}}
-                                                    </div>
-                                                </div>
-                                                <div class="mt-2">
-                                                    <div class="d-flex align-items-center">
-                                                        <i class="bi bi-star-fill text-warning me-1"></i>
-                                                        <i class="bi bi-star-fill text-warning me-1"></i>
-                                                        <i class="bi bi-star-fill text-warning me-1"></i>
-                                                        <i class="bi bi-star-fill text-warning me-1"></i>
-                                                        <i class="bi bi-star-fill text-warning me-1"></i>
-                                                        <span> ( 4.5 ) </span>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-3">
-                                                    <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-opacity-50 text-secondary">
-                                                            <i class="bi bi-clock me-2"></i>
-                                                            {{each.duration}}
+                                                    <div class="position-absolute top-0 start-0 p-3">
+                                                        <div class="rounded-3 bg-warning text-dark fw-medium py-1 px-3">
+                                                            {{each.price}} TK
                                                         </div>
-                                                        <div class="text-opacity-50 text-secondary">
-                                                            <i class="bi bi-person me-2"></i>
-                                                            {{each.enrollCount}} Students
+                                                    </div>
+                                                </div>
+                                                <div class="p-3">
+                                                    <small class="d-block text-light-gray">
+                                                        By {{each.author}}
+                                                    </small>
+                                                    <div class="fs-4 mt-2 text-light-gray-hover">
+                                                        <div class="truncate-to-2-line">
+                                                            {{each.name}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="bi bi-star-fill text-warning me-1"></i>
+                                                            <i class="bi bi-star-fill text-warning me-1"></i>
+                                                            <i class="bi bi-star-fill text-warning me-1"></i>
+                                                            <i class="bi bi-star-fill text-warning me-1"></i>
+                                                            <i class="bi bi-star-fill text-warning me-1"></i>
+                                                            <span> ( 4.5 ) </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <div class="text-opacity-50 text-secondary">
+                                                                <i class="bi bi-clock me-2"></i>
+                                                                {{each.duration}}
+                                                            </div>
+                                                            <div class="text-opacity-50 text-secondary">
+                                                                <i class="bi bi-person me-2"></i>
+                                                                {{each.enrollCount}} Students
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </router-link>
+                                    </router-link>
+                                </div>
+
                             </div>
 
                         </div>
-                    </div>
 
                     <!-- pagination -->
-                    <pagination/>
+                    <pagination v-if="!loading && courseDataList.length > 0"/>
+
+                    <!-- loading -->
+                    <div class="course-content scrollbar mt-3 d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 rounded-3" v-if="loading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
 
                 </div>
             </div>
@@ -234,10 +268,15 @@ export default {
                 { id: '4', filePath: '/images/course/courses-4.jpg', author: 'Sophia Jones', name: '2025 Complete AngularJs framework Bootcamp From Zero to Hero in AngularJs', price: '50', duration: '4 month', enrollCount: '90' },
                 { id: '5', filePath: '/images/course/courses-5.jpg', author: 'William Brown', name: '2025 Complete Laravel Framework Bootcamp From Zero to Hero in Laravel Framework', price: '120', duration: '2 month', enrollCount: '740' },
                 { id: '6', filePath: '/images/course/courses-6.jpg', author: 'Emma Miller', name: '2025 Complete Vanilla Javascript Bootcamp From Zero to Hero in Vanilla Javascript', price: '140', duration: '7 month', enrollCount: '340' },
-            ]
+            ],
+            loading: true,
         }
     },
-    mounted() {  },
+    mounted() {
+        setTimeout( () => {
+            this.loading = false
+        }, 3000)
+    },
     methods: {  }
 }
 
