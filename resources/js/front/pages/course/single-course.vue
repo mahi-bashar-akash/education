@@ -310,7 +310,7 @@
                     </div>
                     <div class="col-lg-4 h-100">
                         <div class="py-5">
-                            <div class="card border overflow-hidden rounded-3">
+                            <div class="card border-0 overflow-hidden rounded-4 shadow">
                                 <div class="card-header bg-white rounded-0 border-0 p-0">
                                     <div class="position-relative">
                                         <img :src="`/images/course/courses-1.jpg`"

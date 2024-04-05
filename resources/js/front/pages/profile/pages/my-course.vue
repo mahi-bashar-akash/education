@@ -19,14 +19,15 @@
 
     <div class="profile-no-data-card bg-white shadow scrollbar p-3 rounded-3">
 
-        <div class="p-3" v-for="each in courseDataList">
-            <div class="fs-5 mb-2">
-                {{each.courseName}}
+        <div class="mb-3" v-for="each in courseDataList">
+            <div class="p-3 border rounded-top-3">
+                Course name: {{each.courseName}}
             </div>
-            <div class="row row-cols-1 row-cols-md-2">
-                <a href="javascript:void(0)" class="ps-3 py-2 text-decoration-none text-light-gray-hover" v-for="subEach in each.lesson">
-                    {{subEach.lessonName}}
-                </a>
+            <div class="border px-3 pt-3 rounded-bottom-3">
+                <div class="row mb-3" v-for="subEach in each.lesson">
+                    <div class="col-sm-6">Lesson: {{subEach.lessonName}}</div>
+                    <div class="col-sm-6 text-sm-end">Duration: 1 hour</div>
+                </div>
             </div>
         </div>
 
