@@ -336,8 +336,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div class="px-2 mb-3">
-                                        <button type="button" class="btn btn-outline-theme w-100">Add to cart</button>
+                                    <div class="mb-3">
+                                        <button type="button" class="btn btn-outline-theme py-3 rounded-pill w-100">Add to cart</button>
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-6"><i class="bi bi-clock-history me-2"></i> Duration
