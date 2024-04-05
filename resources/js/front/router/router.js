@@ -11,9 +11,10 @@ import {createRouter, createWebHistory} from "vue-router";
 import layout from "../layout/layout.vue";
 import home from "../pages/home.vue";
 import about from "../pages/about.vue";
-import courses from "../pages/courses.vue";
-import singleCourse from "../pages/single-course.vue";
-import blog from "../pages/blog.vue";
+import courses from "../pages/course/courses.vue";
+import singleCourse from "../pages/course/single-course.vue";
+import blog from "../pages/blog/blog.vue";
+import singleBlog from "../pages/blog/single-blog.vue";
 import contact from "../pages/contact.vue";
 import login from "../pages/login.vue";
 import register from "../pages/register.vue";
@@ -45,6 +46,7 @@ const routes = [
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
             { path: ROOT_URL + 'single-course', name: 'singleCourse', component: singleCourse, meta: { title: TITLE + ' - single course' } },
             { path: ROOT_URL + 'blogs', name: 'blog', component: blog, meta: { title: TITLE + ' - blog' } },
+            { path: ROOT_URL + 'single-blogs', name: 'singleBlog', component: singleBlog, meta: { title: TITLE + ' - single blog' } },
             { path: ROOT_URL + 'contact', name: 'contact', component: contact, meta: { title: TITLE + ' - contact' } },
             { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
             { path: ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
