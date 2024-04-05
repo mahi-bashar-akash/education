@@ -1,15 +1,9 @@
 <template>
 
     <!-- breadcrumb -->
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb fs-5">
-            <li class="breadcrumb-item">
-                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
-                    Dashboard
-                </router-link>
-            </li>
-        </ol>
-    </nav>
+    <div class="d-sm-flex justify-content-between align-items-center">
+        <breadcrumb moduleName="Dashboard"/>
+    </div>
 
     <!-- dashboard -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 row-cols-xxl-4">
@@ -259,8 +253,13 @@
 </template>
 
 <script>
+import breadcrumb from '../components/breadcrumb.vue';
 
 export default {
+
+    components: {
+        breadcrumb
+    },
 
     data() {
 
