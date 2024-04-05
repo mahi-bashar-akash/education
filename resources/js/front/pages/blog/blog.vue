@@ -5,7 +5,7 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 
                 <div class="p-3" v-for="each in blogDataList">
-                    <div class="card shadow-sm rounded-3 overflow-hidden bg-light border-0 p-0 image-effect">
+                    <div class="card shadow rounded-3 overflow-hidden bg-light border-0 p-0 image-effect">
                         <div class="card-body p-0 rounded-3">
                             <div class="overflow-hidden hpx-250">
                                 <img :src="each.filePath" class="img-fluid object-fit-cover w-100" alt="brand 2">
@@ -24,12 +24,12 @@
                                 {{ each.title }}
                             </div>
                             <div class="pb-3 px-3">
-                                <a href="javascript:void(0)" class="text-decoration-none">
+                                <router-link :to="{name: 'singleBlog'}" class="text-decoration-none">
                                     <span class="text-secondary">
                                         Read more
                                     </span>
                                     <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>

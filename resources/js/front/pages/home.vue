@@ -224,177 +224,32 @@
                         Latest blogs & news
                     </div>
                     <div class="blogs-carousel owl-carousel owl-theme">
-                        <div class="item p-3 image-effect">
+                        <div class="item p-3 image-effect" v-for="each in blogDataList">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-1.jpg`"
+                                    <img :src="each.filePath"
                                          class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 1">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
                                         <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
+                                            {{each.author}}
                                         </div>
                                         <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
+                                            {{each.date}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
+                                    {{each.title}}
                                 </div>
                                 <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
+                                    <router-link :to="{name: 'singleBlog'}" class="text-decoration-none">
                                         <span class="text-secondary">
                                             Read more
                                         </span>
                                         <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item p-3 image-effect">
-                            <div class="border p-0">
-                                <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-2.jpg`"
-                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
-                                </div>
-                                <div class="pt-3 px-3">
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
-                                        </div>
-                                        <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
-                                </div>
-                                <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
-                                        <span class="text-secondary">
-                                            Read more
-                                        </span>
-                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item p-3 image-effect">
-                            <div class="border p-0">
-                                <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-3.jpg`"
-                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 3">
-                                </div>
-                                <div class="pt-3 px-3">
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
-                                        </div>
-                                        <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
-                                </div>
-                                <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
-                                        <span class="text-secondary">
-                                            Read more
-                                        </span>
-                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item p-3 image-effect">
-                            <div class="border p-0">
-                                <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-4.jpg`"
-                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 4">
-                                </div>
-                                <div class="pt-3 px-3">
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
-                                        </div>
-                                        <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
-                                </div>
-                                <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
-                                        <span class="text-secondary">
-                                            Read more
-                                        </span>
-                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item p-3 image-effect">
-                            <div class="border p-0">
-                                <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-5.jpg`"
-                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
-                                </div>
-                                <div class="pt-3 px-3">
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
-                                        </div>
-                                        <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
-                                </div>
-                                <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
-                                        <span class="text-secondary">
-                                            Read more
-                                        </span>
-                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item p-3 image-effect">
-                            <div class="border p-0">
-                                <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-6.jpg`"
-                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
-                                </div>
-                                <div class="pt-3 px-3">
-                                    <div class="w-100 d-flex justify-content-between align-items-center">
-                                        <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                            Admin
-                                        </div>
-                                        <div class="text-secondary text-opacity-75">
-                                            17, march, 2025
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    Secret Tips & Tricks to Master Electricity
-                                </div>
-                                <div class="pb-3 px-3">
-                                    <a href="javascript:void(0)" class="text-decoration-none">
-                                        <span class="text-secondary">
-                                            Read more
-                                        </span>
-                                        <i class="bi bi-arrow-right ms-2 text-dark"></i>
-                                    </a>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -417,6 +272,50 @@ export default {
             imageUrl: '/images/hero-background.jpg',
             certificateWallpaper: '/images/certificate-wallpaper.jpeg',
             buildSkillsWallpaper: '/images/build-skills-background.jpg',
+            blogDataList: [
+                {
+                    id: '1',
+                    filePath: '/images/blogs/blog-1.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, January, 2025'
+                },
+                {
+                    id: '2',
+                    filePath: '/images/blogs/blog-2.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, february, 2026'
+                },
+                {
+                    id: '3',
+                    filePath: '/images/blogs/blog-3.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, march, 2027'
+                },
+                {
+                    id: '4',
+                    filePath: '/images/blogs/blog-4.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, april, 2028'
+                },
+                {
+                    id: '5',
+                    filePath: '/images/blogs/blog-5.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, may, 2029'
+                },
+                {
+                    id: '6',
+                    filePath: '/images/blogs/blog-6.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, may, 2030'
+                },
+            ],
         }
 
     },

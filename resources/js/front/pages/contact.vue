@@ -59,25 +59,19 @@
                 </div>
                 <form class="row">
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="name" class="form-control bg-light border-light py-2 ps-3" required
-                               autocomplete="new-name" placeholder="Your name">
+                        <input type="text" name="name" class="form-control rounded-0 border-light py-3 ps-4 bg-light" required autocomplete="new-name" placeholder="Your name">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="email" name="email" class="form-control bg-light border-light py-2 ps-3" required
-                               autocomplete="new-email" placeholder="Your email">
+                        <input type="email" name="email" class="form-control rounded-0 border-light py-3 ps-4 bg-light" required autocomplete="new-email" placeholder="Your email">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="phone-number" class="form-control bg-light border-light py-2 ps-3"
-                               required autocomplete="new-phone-number" placeholder="Your phone number">
+                        <input type="text" name="phone-number" class="form-control rounded-0 border-light py-3 ps-4 bg-light" required autocomplete="new-phone-number" placeholder="Your phone number">
                     </div>
                     <div class="col-md-6 mb-3">
-                        <input type="text" name="subject" class="form-control bg-light border-light py-2 ps-3" required
-                               autocomplete="new-subject" placeholder="Subject">
+                        <input type="text" name="subject" class="form-control rounded-0 border-light py-3 ps-4 bg-light" required autocomplete="new-subject" placeholder="Subject">
                     </div>
                     <div class="col-12 mb-3">
-                        <textarea name="message" cols="30" rows="10"
-                                  class="form-textarea bg-light border-light py-2 ps-3" required
-                                  autocomplete="new-message" placeholder="Write a message"></textarea>
+                        <textarea name="message" cols="30" rows="10" class="form-textarea rounded-0 border-light py-3 ps-4 bg-light" required autocomplete="new-message" placeholder="Write a message"></textarea>
                     </div>
                     <div class="col-12 mb-3">
                         <button type="submit" class="btn btn-theme wpx-90">

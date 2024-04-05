@@ -2,6 +2,7 @@
 
     <div class="cursor-content margin-top-105">
 
+        <!-- course title and description -->
         <section class="w-100 img-fluid object-fit-cover py-5 background-before"
                  :style="{ background: 'url(' + imageUrl + ')' }">
             <div class="container position-relative">
@@ -45,6 +46,7 @@
                             </div>
                         </div>
 
+                        <!-- what you will learn -->
                         <div class="pt-5">
                             <div class="fs-4 mb-3">
                                 What you will learn
@@ -75,6 +77,7 @@
                             </div>
                         </div>
 
+                        <!-- course content -->
                         <div class="pt-5">
                             <div class="row align-items-center">
                                 <div class="col-lg-6 fs-4 mb-3 mb-lg-0">
@@ -265,18 +268,21 @@
                             </div>
                         </div>
 
+                        <!-- course instructor -->
                         <div class="pt-5">
                             <div class="fw-medium fs-4 mb-3">
                                 Course Instructor
                             </div>
-                            <div class="d-flex align-items-center justify-content-start">
-                                <img :src="`/images/clients/face-1.png`"
-                                     class="wpx-125 hpx-125 rounded-circle object-fit-cover" alt="course instructor">
-                                <div class="ms-2">
+                            <div class="d-sm-flex align-items-center justify-content-start">
+                                <span class="d-flex justify-content-center align-items-center mb-3">
+                                    <img :src="`/images/clients/face-1.png`"
+                                         class="wpx-125 hpx-125 rounded-circle object-fit-cover" alt="course instructor">
+                                </span>
+                                <div class="ms-2 mb-3">
                                     <div class="fs-5 mb-1">Alena Hedge</div>
                                     <div
-                                        class="text-light-gray d-flex align-items-center justify-content-start flex-wrap mb-2">
-                                        <div class="d-flex align-items-center me-3">
+                                        class="text-light-gray d-sm-flex align-items-center justify-content-start flex-wrap mb-2">
+                                        <div class="d-flex align-items-center me-3 mb-3">
                                             <i class="bi bi-star-fill text-warning me-1"></i>
                                             <i class="bi bi-star-fill text-warning me-1"></i>
                                             <i class="bi bi-star-fill text-warning me-1"></i>
@@ -284,11 +290,11 @@
                                             <i class="bi bi-star-fill text-warning me-1"></i>
                                             <span class="fw-bold"> ( 4 . 6 ) </span>
                                         </div>
-                                        <div class="me-3">
+                                        <div class="me-3 mb-3">
                                             <i class="bi bi-play-circle-fill me-2"></i>
                                             10 Tutorials
                                         </div>
-                                        <div>
+                                        <div class="mb-3">
                                             <i class="bi bi-people me-2"></i>
                                             134 Students
                                         </div>
@@ -333,26 +339,26 @@
                                     <div class="px-2 mb-3">
                                         <button type="button" class="btn btn-outline-theme w-100">Add to cart</button>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-3"><i class="bi bi-clock-history me-2"></i> Duration
+                                    <div class="row mb-3">
+                                        <div class="col-6"><i class="bi bi-clock-history me-2"></i> Duration
                                         </div>
-                                        <div class="col-sm-6 mb-3 text-sm-end">52 mins</div>
+                                        <div class="col-6 text-end">52 mins</div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-6"><i class="bi bi-sliders me-2"></i> Level</div>
+                                        <div class="col-6 text-end text-secondary">Expert</div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-6"><i class="bi bi-card-text me-2"></i> Lectures</div>
+                                        <div class="col-6 text-end text-secondary">4 Lectures</div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-6"><i class="bi bi-translate me-2"></i> Language</div>
+                                        <div class="col-6 text-end text-secondary">English</div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-6 mb-3"><i class="bi bi-sliders me-2"></i> Level</div>
-                                        <div class="col-sm-6 mb-3 text-sm-end text-secondary">Expert</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-3"><i class="bi bi-card-text me-2"></i> Lectures</div>
-                                        <div class="col-sm-6 mb-3 text-sm-end text-secondary">4 Lectures</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-3"><i class="bi bi-translate me-2"></i> Language</div>
-                                        <div class="col-sm-6 mb-3 text-sm-end text-secondary">English</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6 mb-3"><i class="bi bi-person me-2"></i> Enrolled</div>
-                                        <div class="col-sm-6 mb-3 text-sm-end text-secondary">4 Students</div>
+                                        <div class="col-6"><i class="bi bi-person me-2"></i> Enrolled</div>
+                                        <div class="col-6 text-end text-secondary">4 Students</div>
                                     </div>
                                 </div>
                             </div>
