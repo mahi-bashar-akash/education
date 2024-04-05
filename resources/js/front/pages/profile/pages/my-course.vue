@@ -18,26 +18,18 @@
     </nav>
 
     <div class="profile-no-data-card bg-white shadow scrollbar p-3 rounded-3">
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item mb-3 shadow border-0 rounded-3" v-for="each in courseDataList">
-                <h2 class="accordion-header">
-                    <button class="accordion-button shadow-none rounded-3 fw-medium bg-theme-hover" type="button"
-                            data-bs-toggle="collapse" :data-bs-target="'#collapse'+each.id" aria-expanded="true"
-                            :aria-controls="'collapse'+each.id">
-                        {{ each.courseName }}
-                    </button>
-                </h2>
-                <div :id="'collapse'+each.id" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
-                     v-for="subEach in each.lesson">
-                    <div class="accordion-body py-2">
-                        <a href="javascript:void(0)"
-                           class="text-decoration-none text-light-gray-hover d-block line-height-2">
-                            lesson {{ subEach.id }} : {{ subEach.lessonName }}
-                        </a>
-                    </div>
-                </div>
+
+        <div class="p-3" v-for="each in courseDataList">
+            <div class="fs-5 mb-2">
+                {{each.courseName}}
+            </div>
+            <div class="row row-cols-1 row-cols-md-2">
+                <a href="javascript:void(0)" class="p-2 text-decoration-none text-light-gray-hover" v-for="subEach in each.lesson">
+                    {{subEach.lessonName}}
+                </a>
             </div>
         </div>
+
     </div>
 
     <noDataFound/>
