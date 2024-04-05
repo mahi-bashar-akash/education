@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,15 +37,15 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageStuffModalOpen" />
+            <newBtn @click="manageStuffModalOpen"/>
         </div>
     </div>
 
@@ -87,35 +89,41 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label"> Email </label>
-                        <input id="email" type="email" name="email" v-model="formData.email" class="form-control" required autocomplete="new-email">
+                        <input id="email" type="email" name="email" v-model="formData.email" class="form-control"
+                               required autocomplete="new-email">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="joining-date" class="form-label">Joining Date</label>
-                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="join-date" class="form-control" required autocomplete="new-joining-date">
+                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="join-date"
+                               class="form-control" required autocomplete="new-joining-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">department</label>
                         <select name="department" id="department" class="form-select" v-model="formData.department">
                             <option :value="0">Select department option</option>
-                            <option v-for="each in departmentDataList" :value="each.id"> {{each.name}} </option>
+                            <option v-for="each in departmentDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="phone-number" class="form-label"> Phone number </label>
-                        <input id="phone-number" type="text" name="phone-number" v-model="formData.phoneNumber" class="form-control" required autocomplete="new-phone-number">
+                        <input id="phone-number" type="text" name="phone-number" v-model="formData.phoneNumber"
+                               class="form-control" required autocomplete="new-phone-number">
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="description" class="form-textarea" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                        <textarea name="description" id="description" class="form-textarea"
+                                  v-model="formData.description" cols="30" rows="5" required
+                                  autocomplete="new-description"></textarea>
                     </div>
 
                 </div>
@@ -187,7 +195,14 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Designation', 'Phone', 'Email', 'Joining Date', 'Action'],
             tableRows: [
-                { id: '1', name: 'Bajirau Singham', description: 'Police Officer', phoneNumber: '01400125289', email: 'accounting@gmail.com', joiningDate: '01, January, 2025' },
+                {
+                    id: '1',
+                    name: 'Bajirau Singham',
+                    description: 'Police Officer',
+                    phoneNumber: '01400125289',
+                    email: 'accounting@gmail.com',
+                    joiningDate: '01, January, 2025'
+                },
             ],
             formData: {
                 name: '',
@@ -199,23 +214,30 @@ export default {
             },
 
             departmentDataList: [
-                { id: '1', name: 'accounting' },
-                { id: '2', name: 'finance' },
-                { id: '3', name: 'marketing' },
-                { id: '4', name: 'management' },
-                { id: '5', name: 'economic' },
-                { id: '6', name: 'statistic' },
-                { id: '7', name: 'computer application' },
-                { id: '8', name: 'Human resource management' },
+                {id: '1', name: 'accounting'},
+                {id: '2', name: 'finance'},
+                {id: '3', name: 'marketing'},
+                {id: '4', name: 'management'},
+                {id: '5', name: 'economic'},
+                {id: '6', name: 'statistic'},
+                {id: '7', name: 'computer application'},
+                {id: '8', name: 'Human resource management'},
             ],
             stuffDataList: [
-                { id: '1', name: 'Bajirau Singham', designation: 'Police Officer', phoneNumber: '991', email: 'singham@gmail.com', joiningDate: '01, January, 2025' },
+                {
+                    id: '1',
+                    name: 'Bajirau Singham',
+                    designation: 'Police Officer',
+                    phoneNumber: '991',
+                    email: 'singham@gmail.com',
+                    joiningDate: '01, January, 2025'
+                },
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigDate();
@@ -223,26 +245,26 @@ export default {
     methods: {
 
         /* Function to manage stuff modal open */
-        manageStuffModalOpen(){
-            const myModal = new bootstrap.Modal("#manageStuffModal", { keyboard: false } );
+        manageStuffModalOpen() {
+            const myModal = new bootstrap.Modal("#manageStuffModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage stuff modal close */
-        manageStuffModalClose(){
+        manageStuffModalClose() {
             let myModalEl = document.getElementById('manageStuffModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete stuff modal open */
-        deleteStuffModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteStuffModal", { keyboard: false } );
+        deleteStuffModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteStuffModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete stuff modal close */
-        deleteStuffModalClose(){
+        deleteStuffModalClose() {
             let myModalEl = document.getElementById('deleteStuffModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

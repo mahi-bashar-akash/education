@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -46,7 +48,7 @@
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageEventModalOpen" />
+            <newBtn @click="manageEventModalOpen"/>
         </div>
     </div>
 
@@ -90,7 +92,8 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                        <label for="upload-image"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
                             <input id="upload-image" type="file" name="update-image" hidden="hidden">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
@@ -99,27 +102,34 @@
 
                     <div class="form-group mb-3">
                         <label for="event-name" class="form-label"> Name </label>
-                        <input id="event-name" v-model="formData.eventName" type="text" name="event-name" class="form-control" required autocomplete="new-event-name">
+                        <input id="event-name" v-model="formData.eventName" type="text" name="event-name"
+                               class="form-control" required autocomplete="new-event-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-date" class="form-label"> Date </label>
-                        <input id="event-date" v-model="formData.eventDate" type="text" name="event-date" class="form-control" required autocomplete="new-event-date">
+                        <input id="event-date" v-model="formData.eventDate" type="text" name="event-date"
+                               class="form-control" required autocomplete="new-event-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-start-time" class="form-label"> Start time </label>
-                        <input id="event-start-time" v-model="formData.eventStartTime" type="text" name="event-start-time" class="form-control" required autocomplete="new-event-start-time">
+                        <input id="event-start-time" v-model="formData.eventStartTime" type="text"
+                               name="event-start-time" class="form-control" required
+                               autocomplete="new-event-start-time">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-end-time" class="form-label"> End time </label>
-                        <input id="event-end-time" v-model="formData.eventEndTime" type="text" name="event-end-time" class="form-control" required autocomplete="new-event-end-time">
+                        <input id="event-end-time" v-model="formData.eventEndTime" type="text" name="event-end-time"
+                               class="form-control" required autocomplete="new-event-end-time">
                     </div>
 
                     <div class="form-group">
                         <label for="event-description" class="form-label"> Description </label>
-                        <textarea id="event-description" class="form-textarea" name="event-description" v-model="formData.description" cols="30" rows="5" required autocomplete="new-event-description"></textarea>
+                        <textarea id="event-description" class="form-textarea" name="event-description"
+                                  v-model="formData.description" cols="30" rows="5" required
+                                  autocomplete="new-event-description"></textarea>
                     </div>
 
                 </div>
@@ -191,7 +201,7 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Date', 'Start Time', 'End Time', 'Action'],
             tableRows: [
-                { id: 1, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm' },
+                {id: 1, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm'},
             ],
             formData: {
                 updateImage: '',
@@ -202,43 +212,49 @@ export default {
                 eventDescription: '',
             },
             timeData: [
-                { id: '1', time: '01:00' },
-                { id: '2', time: '01:30' },
-                { id: '3', time: '02:00' },
-                { id: '4', time: '02:30' },
-                { id: '5', time: '03:00' },
-                { id: '6', time: '03:30' },
-                { id: '7', time: '04:00' },
-                { id: '8', time: '04:30' },
-                { id: '9', time: '05:00' },
-                { id: '10', time: '05:30' },
-                { id: '11', time: '06:00' },
-                { id: '12', time: '06:30' },
-                { id: '13', time: '07:00' },
-                { id: '14', time: '07:30' },
-                { id: '15', time: '08:00' },
-                { id: '16', time: '08:30' },
-                { id: '17', time: '09:00' },
-                { id: '18', time: '09:30' },
-                { id: '19', time: '10:00' },
-                { id: '20', time: '10:30' },
-                { id: '21', time: '11:00' },
-                { id: '22', time: '11:30' },
-                { id: '23', time: '12:00' },
-                { id: '24', time: '12:30' },
+                {id: '1', time: '01:00'},
+                {id: '2', time: '01:30'},
+                {id: '3', time: '02:00'},
+                {id: '4', time: '02:30'},
+                {id: '5', time: '03:00'},
+                {id: '6', time: '03:30'},
+                {id: '7', time: '04:00'},
+                {id: '8', time: '04:30'},
+                {id: '9', time: '05:00'},
+                {id: '10', time: '05:30'},
+                {id: '11', time: '06:00'},
+                {id: '12', time: '06:30'},
+                {id: '13', time: '07:00'},
+                {id: '14', time: '07:30'},
+                {id: '15', time: '08:00'},
+                {id: '16', time: '08:30'},
+                {id: '17', time: '09:00'},
+                {id: '18', time: '09:30'},
+                {id: '19', time: '10:00'},
+                {id: '20', time: '10:30'},
+                {id: '21', time: '11:00'},
+                {id: '22', time: '11:30'},
+                {id: '23', time: '12:00'},
+                {id: '24', time: '12:30'},
             ],
             periodData: [
-                { id: '1', period: 'am' },
-                { id: '2', period: 'pm' },
+                {id: '1', period: 'am'},
+                {id: '2', period: 'pm'},
             ],
             eventDataList: [
-                { id: '1', name: 'Celebrate convocation', date: '01, January, 2025', startTime: '01:00 pm', endTime: '03:00 pm' },
+                {
+                    id: '1',
+                    name: 'Celebrate convocation',
+                    date: '01, January, 2025',
+                    startTime: '01:00 pm',
+                    endTime: '03:00 pm'
+                },
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigDate()
@@ -248,26 +264,26 @@ export default {
     methods: {
 
         /* Function to manage event modal open */
-        manageEventModalOpen(){
-            const myModal = new bootstrap.Modal("#manageEventModal", { keyboard: false } );
+        manageEventModalOpen() {
+            const myModal = new bootstrap.Modal("#manageEventModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage event modal close */
-        manageEventModalClose(){
+        manageEventModalClose() {
             let myModalEl = document.getElementById('manageEventModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete event modal open */
-        deleteEventModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteEventModal", { keyboard: false } );
+        deleteEventModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteEventModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete event modal close */
-        deleteEventModalClose(){
+        deleteEventModalClose() {
             let myModalEl = document.getElementById('deleteEventModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

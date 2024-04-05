@@ -9,13 +9,11 @@
 export default {
 
     data() {
-        return{}
+        return {}
     },
     mounted() {
     },
-    methods: {
-
-    }
+    methods: {}
 
 }
 

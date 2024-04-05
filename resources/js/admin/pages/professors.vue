@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,15 +37,15 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageProfessorModalOpen" />
+            <newBtn @click="manageProfessorModalOpen"/>
         </div>
     </div>
 
@@ -75,7 +77,8 @@
     <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage professor modal -->
-    <div class="modal fade" id="manageProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="manageProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0 d-flex justify-content-between">
@@ -88,8 +91,10 @@
 
                     <div class="form-group">
                         <div class="d-flex justify-content-center align-items-center">
-                            <label for="upload-image" class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
-                                <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                            <label for="upload-image"
+                                   class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
+                                <input id="upload-image" type="file" name="upload-image" class="form-control"
+                                       hidden="hidden">
                                 <span class="d-block">
                                     <i class="bi bi-cloud-arrow-down-fill fs-3"></i>
                                 </span>
@@ -100,34 +105,39 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control" required autocomplete="new-email">
+                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control"
+                               required autocomplete="new-email">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="education" class="form-label">Education</label>
-                        <input id="education" type="text" v-model="formData.education" name="education" class="form-control" required autocomplete="new-education">
+                        <input id="education" type="text" v-model="formData.education" name="education"
+                               class="form-control" required autocomplete="new-education">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select Department</label>
                         <select name="department" id="department" class="form-select">
-                            <option v-for="each in departmentListData" :value="each.id"> {{each.name}} </option>
+                            <option v-for="each in departmentListData" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="phone-number" class="form-label">Phone number</label>
-                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number"
+                               class="form-control" required autocomplete="new-phone-number">
                     </div>
 
                     <div class="form-group">
                         <label for="joining-date" class="form-label">Joining date</label>
-                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="joining-date" class="form-control" required autocomplete="new-joining-date">
+                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="joining-date"
+                               class="form-control" required autocomplete="new-joining-date">
                     </div>
 
                 </div>
@@ -144,7 +154,8 @@
     </div>
 
     <!-- delete professor modal -->
-    <div class="modal fade" id="deleteProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -166,7 +177,8 @@
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
-                        <button type="button" class="btn btn-secondary rounded-3 w-100" @click="deleteProfessorModalClose">
+                        <button type="button" class="btn btn-secondary rounded-3 w-100"
+                                @click="deleteProfessorModalClose">
                             Close
                         </button>
                     </div>
@@ -199,7 +211,15 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Department', 'Education', 'Email', 'Phone', 'Joining date', 'Action'],
             tableRows: [
-                { id: '1', name: 'Alpha', education: 'BBA', department: 'Accounting', email: 'mahibashar2023@gmail.com', phoneNumber: '01400125289', joiningDate: '01, January, 2025' },
+                {
+                    id: '1',
+                    name: 'Alpha',
+                    education: 'BBA',
+                    department: 'Accounting',
+                    email: 'mahibashar2023@gmail.com',
+                    phoneNumber: '01400125289',
+                    joiningDate: '01, January, 2025'
+                },
             ],
             formData: {
                 name: '',
@@ -209,23 +229,31 @@ export default {
                 education: '',
             },
             departmentListData: [
-                { id: '1', name: 'accounting' },
-                { id: '2', name: 'finance' },
-                { id: '3', name: 'marketing' },
-                { id: '4', name: 'management' },
-                { id: '5', name: 'economic' },
-                { id: '6', name: 'statistic' },
-                { id: '7', name: 'computer application' },
-                { id: '8', name: 'Human resource management' },
+                {id: '1', name: 'accounting'},
+                {id: '2', name: 'finance'},
+                {id: '3', name: 'marketing'},
+                {id: '4', name: 'management'},
+                {id: '5', name: 'economic'},
+                {id: '6', name: 'statistic'},
+                {id: '7', name: 'computer application'},
+                {id: '8', name: 'Human resource management'},
             ],
             professorDataList: [
-                { id: '1', name: 'Mahi Bashar Akash', education: 'BBA, MBA', department: 'Accounting', email: 'mahibashar2023@gmail.com', phoneNumber: '01400125289', joiningDate: '01, January, 2025' }
+                {
+                    id: '1',
+                    name: 'Mahi Bashar Akash',
+                    education: 'BBA, MBA',
+                    department: 'Accounting',
+                    email: 'mahibashar2023@gmail.com',
+                    phoneNumber: '01400125289',
+                    joiningDate: '01, January, 2025'
+                }
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigDate();
@@ -233,26 +261,26 @@ export default {
     methods: {
 
         /* Function to manage professor modal open */
-        manageProfessorModalOpen(){
-            const myModal = new bootstrap.Modal("#manageProfessorModal", { keyboard: false } );
+        manageProfessorModalOpen() {
+            const myModal = new bootstrap.Modal("#manageProfessorModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage professor modal close */
-        manageProfessorModalClose(){
+        manageProfessorModalClose() {
             let myModalEl = document.getElementById('manageProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete professor modal open */
-        deleteProfessorModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteProfessorModal", { keyboard: false } );
+        deleteProfessorModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteProfessorModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete professor modal close */
-        deleteProfessorModalClose(){
+        deleteProfessorModalClose() {
             let myModalEl = document.getElementById('deleteProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

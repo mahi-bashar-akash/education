@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,11 +37,11 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
@@ -74,7 +76,8 @@
     <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage department modal -->
-    <div class="modal fade" id="manageDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="manageDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
@@ -87,37 +90,46 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="head-of-department" class="form-label">Head Of Department</label>
-                        <input id="head-of-department" type="text" v-model="formData.headOfDepartment" name="head-of-department" class="form-control" required autocomplete="new-head-of-department">
+                        <input id="head-of-department" type="text" v-model="formData.headOfDepartment"
+                               name="head-of-department" class="form-control" required
+                               autocomplete="new-head-of-department">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="start-date" class="form-label"> Start date </label>
-                        <input id="start-date" type="text" name="start-date" v-model="formData.startDate" class="form-control" required autocomplete="new-start-date">
+                        <input id="start-date" type="text" name="start-date" v-model="formData.startDate"
+                               class="form-control" required autocomplete="new-start-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="stuff-capacity" class="form-label"> Stuff capacity </label>
-                        <input id="stuff-capacity" type="text" name="stuff-capacity" v-model="formData.stuffCapacity" class="form-control" required autocomplete="new-stuff-capacity">
+                        <input id="stuff-capacity" type="text" name="stuff-capacity" v-model="formData.stuffCapacity"
+                               class="form-control" required autocomplete="new-stuff-capacity">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label"> Email </label>
-                        <input id="email" type="email" name="email" v-model="formData.email" class="form-control" required autocomplete="new-email">
+                        <input id="email" type="email" name="email" v-model="formData.email" class="form-control"
+                               required autocomplete="new-email">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="phone-number" class="form-label"> Phone number </label>
-                        <input id="phone-number" type="text" name="phone-number" v-model="formData.phoneNumber" class="form-control" required autocomplete="new-phone-number">
+                        <input id="phone-number" type="text" name="phone-number" v-model="formData.phoneNumber"
+                               class="form-control" required autocomplete="new-phone-number">
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="description" class="form-textarea" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                        <textarea name="description" id="description" class="form-textarea"
+                                  v-model="formData.description" cols="30" rows="5" required
+                                  autocomplete="new-description"></textarea>
                     </div>
 
                 </div>
@@ -134,7 +146,8 @@
     </div>
 
     <!-- delete department modal -->
-    <div class="modal fade" id="deleteDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -189,7 +202,15 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Head of department', 'Phone', 'Email', 'Starting year', 'Stuff Capacity', 'Action'],
             tableRows: [
-                { id: '1', name: 'Accounting', headOfDepartment: 'Mahi Bashar Akash', phoneNumber: '01400125289', email: 'accounting@gmail.com', startDate: '01, January, 2025', stuffCapacity: '21' },
+                {
+                    id: '1',
+                    name: 'Accounting',
+                    headOfDepartment: 'Mahi Bashar Akash',
+                    phoneNumber: '01400125289',
+                    email: 'accounting@gmail.com',
+                    startDate: '01, January, 2025',
+                    stuffCapacity: '21'
+                },
             ],
             formData: {
                 name: '',
@@ -201,13 +222,22 @@ export default {
                 description: '',
             },
             departmentDateList: [
-                { id: '1', name: 'Accounting', email: 'accounting@gmail.com', startDate: '01, January, 2025', stuffCapacity: '21', phoneNumber: '01400125289', headOfDepartment: 'Mahi Bashar Akash', description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis ipsum iure laborum sunt veritatis?' },
+                {
+                    id: '1',
+                    name: 'Accounting',
+                    email: 'accounting@gmail.com',
+                    startDate: '01, January, 2025',
+                    stuffCapacity: '21',
+                    phoneNumber: '01400125289',
+                    headOfDepartment: 'Mahi Bashar Akash',
+                    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis ipsum iure laborum sunt veritatis?'
+                },
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigDate();
@@ -215,26 +245,26 @@ export default {
     methods: {
 
         /* Function to manage department modal open */
-        manageDepartmentModalOpen(){
-            const myModal = new bootstrap.Modal("#manageDepartmentModal", { keyboard: false } );
+        manageDepartmentModalOpen() {
+            const myModal = new bootstrap.Modal("#manageDepartmentModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage department modal close */
-        manageDepartmentModalClose(){
+        manageDepartmentModalClose() {
             let myModalEl = document.getElementById('manageDepartmentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete department modal open */
-        deleteDepartmentModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteDepartmentModal", { keyboard: false } );
+        deleteDepartmentModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete department modal close */
-        deleteDepartmentModalClose(){
+        deleteDepartmentModalClose() {
             let myModalEl = document.getElementById('deleteDepartmentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

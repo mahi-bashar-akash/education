@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -36,7 +38,8 @@
                             <div class="card-header bg-white rounded-3 border-0">
 
                                 <!-- group of button -->
-                                <div class="card-header bg-white rounded-3 border-0 d-flex justify-content-start align-items-center pt-3">
+                                <div
+                                    class="card-header bg-white rounded-3 border-0 d-flex justify-content-start align-items-center pt-3">
 
                                     <button type="button" class="btn btn-theme me-1" @click="setTab(1)" v-if="!loading">
                                         <i class="bi bi-pencil-square"></i>
@@ -45,8 +48,10 @@
                                         <i class="bi bi-shield"></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
-                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38"
+                                            v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38"
+                                            v-if="loading"></button>
 
                                 </div>
 
@@ -54,8 +59,11 @@
                                     <form class="pt-3">
 
                                         <!-- avatar upload -->
-                                        <label for="upload-image" class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer" v-if="!loading">
-                                            <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                                        <label for="upload-image"
+                                               class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer"
+                                               v-if="!loading">
+                                            <input id="upload-image" type="file" name="upload-image"
+                                                   class="form-control" hidden="hidden">
                                             <span class="d-block">
                                                 <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
                                             </span>
@@ -75,12 +83,12 @@
                                 <!-- profile information -->
                                 <div class="mt-3 px-3">
                                     <div v-if="!loading">
-                                        <div class="mb-2 text-light-gray fw-bold">Name: </div>
-                                        <div class="mb-2 text-light-gray-hover"> Mahi Bashar Akash </div>
-                                        <div class="mb-2 text-light-gray fw-bold">Email: </div>
-                                        <div class="mb-2 text-light-gray-hover"> mahibashar2023@gmail.com </div>
-                                        <div class="mb-2 text-light-gray fw-bold">Phone Number: </div>
-                                        <div class="mb-2 text-light-gray-hover"> 01645820007 </div>
+                                        <div class="mb-2 text-light-gray fw-bold">Name:</div>
+                                        <div class="mb-2 text-light-gray-hover"> Mahi Bashar Akash</div>
+                                        <div class="mb-2 text-light-gray fw-bold">Email:</div>
+                                        <div class="mb-2 text-light-gray-hover"> mahibashar2023@gmail.com</div>
+                                        <div class="mb-2 text-light-gray fw-bold">Phone Number:</div>
+                                        <div class="mb-2 text-light-gray-hover"> 01645820007</div>
                                     </div>
 
                                     <div class="card-text placeholder-glow" v-if="loading">
@@ -115,15 +123,18 @@
                                 <form>
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
-                                        <input id="name" type="text" name="name" class="form-control" v-model="passwordParam.currentPassword" required autocomplete="new-name">
+                                        <input id="name" type="text" name="name" class="form-control"
+                                               v-model="passwordParam.currentPassword" required autocomplete="new-name">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email">
+                                        <input id="email" type="email" name="email" class="form-control" required
+                                               autocomplete="new-email">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="phone-number" class="form-label">Phone number</label>
-                                        <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                                        <input id="phone-number" type="text" name="phone-number" class="form-control"
+                                               required autocomplete="new-phone-number">
                                     </div>
                                     <div class="w-100">
                                         <button type="button" class="btn btn-theme wpx-150">
@@ -139,13 +150,19 @@
                                 <form>
                                     <div class="form-group mb-3">
                                         <label for="current-password" class="form-label">Current password</label>
-                                        <input id="current-password" type="password" name="current-password" v-model="passwordParam.currentPassword" class="form-control" required autocomplete="current-password">
+                                        <input id="current-password" type="password" name="current-password"
+                                               v-model="passwordParam.currentPassword" class="form-control" required
+                                               autocomplete="current-password">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="new-password" class="form-label">New password</label>
                                         <div class="position-relative">
-                                            <input id="password" :type="passwordFieldType" name="password" class="form-control" v-model="passwordParam.password" required autocomplete="new-password">
-                                            <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
+                                            <input id="password" :type="passwordFieldType" name="password"
+                                                   class="form-control" v-model="passwordParam.password" required
+                                                   autocomplete="new-password">
+                                            <div
+                                                class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                                                @click="passwordVisibility">
                                                 <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
                                                 <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
                                             </div>
@@ -154,10 +171,16 @@
                                     <div class="form-group mb-3">
                                         <label for="confirm-password" class="form-label">Confirm password</label>
                                         <div class="position-relative">
-                                            <input id="password" :type="passwordConfirmationFieldType" name="password" class="form-control" v-model="passwordParam.passwordConfirm" required autocomplete="new-confirm-password">
-                                            <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
-                                                <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
-                                                <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
+                                            <input id="password" :type="passwordConfirmationFieldType" name="password"
+                                                   class="form-control" v-model="passwordParam.passwordConfirm" required
+                                                   autocomplete="new-confirm-password">
+                                            <div
+                                                class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                                                @click="passwordConfirmVisibility">
+                                                <i class="bi bi-eye"
+                                                   v-if="passwordConfirmationFieldType === 'text'"></i>
+                                                <i class="bi bi-eye-slash"
+                                                   v-if="passwordConfirmationFieldType === 'password'"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -199,7 +222,7 @@ export default {
     },
 
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
     },
@@ -207,7 +230,7 @@ export default {
     methods: {
 
         /* Function to set tab */
-        setTab(tab){
+        setTab(tab) {
             this.tab = tab
         },
 

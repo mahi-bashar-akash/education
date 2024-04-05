@@ -12,8 +12,11 @@
         <div class="form-group mb-3">
             <label for="password" class="form-label">Password</label>
             <div class="position-relative">
-                <input id="password" :type="passwordFieldType" name="password" class="form-control" required autocomplete="new-password">
-                <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
+                <input id="password" :type="passwordFieldType" name="password" class="form-control" required
+                       autocomplete="new-password">
+                <div
+                    class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                    @click="passwordVisibility">
                     <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
                     <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
                 </div>
@@ -22,8 +25,11 @@
         <div class="form-group mb-3">
             <label for="confirm-password" class="form-label">Confirm Password</label>
             <div class="position-relative">
-                <input id="confirm-password" :type="passwordConfirmationFieldType" name="confirm-password" class="form-control" required autocomplete="new-confirm-password">
-                <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
+                <input id="confirm-password" :type="passwordConfirmationFieldType" name="confirm-password"
+                       class="form-control" required autocomplete="new-confirm-password">
+                <div
+                    class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                    @click="passwordConfirmVisibility">
                     <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
                     <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
                 </div>
@@ -31,7 +37,8 @@
         </div>
         <div class="form-group mb-3">
             <label for="phone-number" class="form-label">Phone number</label>
-            <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+            <input id="phone-number" type="text" name="phone-number" class="form-control" required
+                   autocomplete="new-phone-number">
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-theme wpx-90">
@@ -58,7 +65,8 @@ export default {
             passwordConfirmationFieldType: 'password',
         }
     },
-    mounted() {  },
+    mounted() {
+    },
     methods: {
 
         /* Function to password visibility */

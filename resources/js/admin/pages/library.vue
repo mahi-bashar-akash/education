@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,11 +37,11 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
@@ -74,7 +76,8 @@
     <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage library asset modal -->
-    <div class="modal fade" id="manageLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="manageLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
@@ -86,7 +89,8 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                        <label for="upload-image"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
                             <input id="upload-image" type="file" name="update-image" hidden="hidden">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
@@ -95,30 +99,34 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label"> Name </label>
-                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="subject" class="form-label"> Subject </label>
-                        <input id="subject" v-model="formData.subject" type="text" name="subject" class="form-control" required autocomplete="new-subject">
+                        <input id="subject" v-model="formData.subject" type="text" name="subject" class="form-control"
+                               required autocomplete="new-subject">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="author-name" class="form-label"> Author name </label>
-                        <input id="author-name" v-model="formData.authorName" type="text" name="author-name" class="form-control" required autocomplete="new-author-name">
+                        <input id="author-name" v-model="formData.authorName" type="text" name="author-name"
+                               class="form-control" required autocomplete="new-author-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select department</label>
                         <select name="department" id="department" class="form-select" v-model="formData.department">
                             <option :value="0">Select Department option</option>
-                            <option v-for="each in departmentListData" :value="each.id"> {{each.name}} </option>
+                            <option v-for="each in departmentListData" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="price" class="form-label"> Price </label>
-                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control" required autocomplete="new-price">
+                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control"
+                               required autocomplete="new-price">
                     </div>
 
                     <div class="form-group mb-3">
@@ -144,7 +152,8 @@
     </div>
 
     <!-- delete library asset modal -->
-    <div class="modal fade" id="deleteLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -166,7 +175,8 @@
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
-                        <button type="button" class="btn btn-secondary rounded-3 w-100" @click="deleteLibraryAssetModalClose">
+                        <button type="button" class="btn btn-secondary rounded-3 w-100"
+                                @click="deleteLibraryAssetModalClose">
                             Close
                         </button>
                     </div>
@@ -198,7 +208,15 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Author', 'Subject', 'Price', 'Department', 'Status', 'Action'],
             tableRows: [
-                { id: '1', name: 'Technical Author', author: 'Mahi Bashar Akash', subject: 'Designing', price: '1000', department: 'Creative Graphic Design', status: 'In Stock' },
+                {
+                    id: '1',
+                    name: 'Technical Author',
+                    author: 'Mahi Bashar Akash',
+                    subject: 'Designing',
+                    price: '1000',
+                    department: 'Creative Graphic Design',
+                    status: 'In Stock'
+                },
             ],
             formData: {
                 updateImage: '',
@@ -209,46 +227,54 @@ export default {
                 status: '0',
             },
             departmentListData: [
-                { id: '1', name: 'Accounting' },
-                { id: '2', name: 'Finance' },
-                { id: '3', name: 'Marketing' },
-                { id: '4', name: 'Management' },
-                { id: '5', name: 'Economic' },
+                {id: '1', name: 'Accounting'},
+                {id: '2', name: 'Finance'},
+                {id: '3', name: 'Marketing'},
+                {id: '4', name: 'Management'},
+                {id: '5', name: 'Economic'},
             ],
             libraryDataList: [
-                { id: '1', name: 'Technical Author', author: 'Mahi Bashar Akash', subject: 'Designing', price: '1000', department: 'Creative Graphic Design', status: 1 },
+                {
+                    id: '1',
+                    name: 'Technical Author',
+                    author: 'Mahi Bashar Akash',
+                    subject: 'Designing',
+                    price: '1000',
+                    department: 'Creative Graphic Design',
+                    status: 1
+                },
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
     },
     methods: {
 
         /* Function to manage library modal open */
-        manageLibraryAssetModalOpen(){
-            const myModal = new bootstrap.Modal("#manageLibraryAssetModal", { keyboard: false } );
+        manageLibraryAssetModalOpen() {
+            const myModal = new bootstrap.Modal("#manageLibraryAssetModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage library modal close */
-        manageLibraryAssetModalClose(){
+        manageLibraryAssetModalClose() {
             let myModalEl = document.getElementById('manageLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete library modal open */
-        deleteLibraryAssetModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", { keyboard: false } );
+        deleteLibraryAssetModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete library modal close */
-        deleteLibraryAssetModalClose(){
+        deleteLibraryAssetModalClose() {
             let myModalEl = document.getElementById('deleteLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

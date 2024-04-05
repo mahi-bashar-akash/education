@@ -10,14 +10,12 @@
 
 export default {
 
-    data(){
+    data() {
         return {}
     },
     mounted() {
     },
-    methods: {
-
-    }
+    methods: {}
 
 }
 

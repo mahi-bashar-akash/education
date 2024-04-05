@@ -44,9 +44,7 @@ export default {
 
     },
 
-    methods: {
-
-    }
+    methods: {}
 
 }
 

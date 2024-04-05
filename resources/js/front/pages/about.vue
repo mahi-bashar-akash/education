@@ -72,7 +72,8 @@
                                 We connect people through knowledge.
                             </div>
                             <div class="mb-3 text-light-gray line-height-2">
-                                We help organizations of all types and sizes prepare for the path ahead — wherever it leads. Our curated collection of business and technical courses.
+                                We help organizations of all types and sizes prepare for the path ahead — wherever it
+                                leads. Our curated collection of business and technical courses.
                             </div>
                             <div class="text-light-gray">
                                 <div class="line-height-2 d-flex align-items-center">
@@ -146,7 +147,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 1">
+                                    <img :src="`/images/blogs/blog-1.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 1">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -174,7 +176,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                    <img :src="`/images/blogs/blog-2.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -202,7 +205,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                    <img :src="`/images/blogs/blog-3.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -230,7 +234,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                    <img :src="`/images/blogs/blog-4.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -258,7 +263,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                    <img :src="`/images/blogs/blog-5.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -286,7 +292,8 @@
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
+                                    <img :src="`/images/blogs/blog-6.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="brand 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -331,7 +338,7 @@
                                     <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover" alt="face 1">
                                 </div>
                                 <div class="fs-4 pt-2 text-center">
-                                    {{each.name}}
+                                    {{ each.name }}
                                 </div>
                                 <div class="text-center text-light-gray pb-3">
                                     Instructor, Math
@@ -354,73 +361,99 @@
                     <div class="accordion" id="accordionExample">
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                     What are the benefits of an Education.io
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    An Education.io is short for Learning Management System. It is a software that allows you to automate, manage, and capture the learning, or training, with your organization. An LMS, or learning management system, combines a wide range of features to present.
+                                    An Education.io is short for Learning Management System. It is a software that
+                                    allows you to automate, manage, and capture the learning, or training, with your
+                                    organization. An LMS, or learning management system, combines a wide range of
+                                    features to present.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     What are the fundamentals of Education.io
                                 </button>
                             </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Learning Management System (LMS) advantages include the ability to capture compliance training, reduce the amount of time and effort to managing organizational
+                                    Learning Management System (LMS) advantages include the ability to capture
+                                    compliance training, reduce the amount of time and effort to managing organizational
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
                                     Why Education.io has best language management system
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Learning Management System Education.io advantages include the ability to capture compliance training, reduce the amount of time and effort to managing organizational
+                                    Learning Management System Education.io advantages include the ability to capture
+                                    compliance training, reduce the amount of time and effort to managing organizational
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
                                     Why is collaborative language is so important
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseFour" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    An LMS is short for Learning Management System. It is a software that allows you to automate, manage, and capture the learning, or training, with your organization. An LMS, or learning management system, combines a wide range of features to present.
+                                    An LMS is short for Learning Management System. It is a software that allows you to
+                                    automate, manage, and capture the learning, or training, with your organization. An
+                                    LMS, or learning management system, combines a wide range of features to present.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item mb-3 border shadow-none overflow-hidden rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFive">
                                     Organize the content of Education.io
                                 </button>
                             </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseFive" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    An Education.io is short for Learning Management System. It is a software that allows you to automate, manage, and capture the learning, or training, with your organization. An Education.io, or learning management system, combines a wide range of features to present.
+                                    An Education.io is short for Learning Management System. It is a software that
+                                    allows you to automate, manage, and capture the learning, or training, with your
+                                    organization. An Education.io, or learning management system, combines a wide range
+                                    of features to present.
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                                     What is the reason you need an Education.io
                                 </button>
                             </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div id="collapseSix" class="accordion-collapse collapse"
+                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Learning Management System (LMS) advantages include the ability to capture compliance training, reduce the amount of time and effort to managing organizational
+                                    Learning Management System (LMS) advantages include the ability to capture
+                                    compliance training, reduce the amount of time and effort to managing organizational
                                 </div>
                             </div>
                         </div>
@@ -436,17 +469,17 @@
 <script>
 
 export default {
-    data(){
-        return{
+    data() {
+        return {
             teamDataList: [
-                { id: '1', filePath: '/images/faces/team-1.jpg', name: 'Arnold Barnerd' },
-                { id: '2', filePath: '/images/faces/team-2.jpg', name: 'Mike Fermalin' },
-                { id: '3', filePath: '/images/faces/team-3.jpg', name: 'Harnold Min' },
-                { id: '4', filePath: '/images/faces/team-4.jpg', name: 'Andrew Inon' },
-                { id: '5', filePath: '/images/faces/team-5.jpg', name: 'kin Joan' },
-                { id: '6', filePath: '/images/faces/team-6.jpg', name: 'Kinda Mona' },
-                { id: '7', filePath: '/images/faces/team-7.jpg', name: 'Aronic Kenan' },
-                { id: '8', filePath: '/images/faces/team-8.jpg', name: 'Mike Fermalin' },
+                {id: '1', filePath: '/images/faces/team-1.jpg', name: 'Arnold Barnerd'},
+                {id: '2', filePath: '/images/faces/team-2.jpg', name: 'Mike Fermalin'},
+                {id: '3', filePath: '/images/faces/team-3.jpg', name: 'Harnold Min'},
+                {id: '4', filePath: '/images/faces/team-4.jpg', name: 'Andrew Inon'},
+                {id: '5', filePath: '/images/faces/team-5.jpg', name: 'kin Joan'},
+                {id: '6', filePath: '/images/faces/team-6.jpg', name: 'Kinda Mona'},
+                {id: '7', filePath: '/images/faces/team-7.jpg', name: 'Aronic Kenan'},
+                {id: '8', filePath: '/images/faces/team-8.jpg', name: 'Mike Fermalin'},
             ]
         }
     },
@@ -462,15 +495,15 @@ export default {
                 nav: false,
                 dots: true,
                 autoplay: true,
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:3
+                    600: {
+                        items: 3
                     },
-                    1000:{
-                        items:5
+                    1000: {
+                        items: 5
                     }
                 }
             })
@@ -483,15 +516,15 @@ export default {
                 nav: false,
                 dots: true,
                 autoplay: true,
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:3
+                    1000: {
+                        items: 3
                     }
                 }
             })

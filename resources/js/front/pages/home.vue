@@ -3,11 +3,14 @@
     <div class="cursor-content">
 
         <!-- hero content -->
-        <section class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center" :style="{ background: 'url(' + imageUrl + ')' }">
+        <section
+            class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center"
+            :style="{ background: 'url(' + imageUrl + ')' }">
             <div class="svg-content">
                 <svg id="svg" viewBox="0, 0, 400,27.708333333333336" fill="#fff">
                     <g id="svgg">
-                        <path id="path0" d="M0.000 13.854 L 0.000 27.708 200.000 27.708 L 400.000 27.708 400.000 14.216 L 400.000 0.725 395.573 1.822 C 322.012 20.064,241.242 29.243,178.709 26.467 C 123.876 24.033,57.451 14.315,4.123 0.926 C 2.094 0.417,0.336 0.000,0.217 0.000 C 0.069 0.000,0.000 4.399,0.000 13.854"></path>
+                        <path id="path0"
+                              d="M0.000 13.854 L 0.000 27.708 200.000 27.708 L 400.000 27.708 400.000 14.216 L 400.000 0.725 395.573 1.822 C 322.012 20.064,241.242 29.243,178.709 26.467 C 123.876 24.033,57.451 14.315,4.123 0.926 C 2.094 0.417,0.336 0.000,0.217 0.000 C 0.069 0.000,0.000 4.399,0.000 13.854"></path>
                     </g>
                 </svg>
             </div>
@@ -30,7 +33,7 @@
 
         <!-- category content -->
         <section class="w-100 py-5 d-flex justify-content-center align-items-center flex-column text-light-gray">
-            <div class="fs-1 mb-3"> Popular Categories </div>
+            <div class="fs-1 mb-3"> Popular Categories</div>
             <div class="fs-5 col-md-4 text-center line-height-2">
                 Join 2,500+ companies and 80% of the Fortune 1000 who use our courses to upskill their teams.
             </div>
@@ -101,14 +104,18 @@
                                 <div class="bg-light p-3 text-light-gray text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
+                                        minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt
+                                        tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum,
+                                        provident
                                         quo sit ullam ut voluptatum!
                                     </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
-                                    <img :src="`/images/clients/face-1.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
+                                    <img :src="`/images/clients/face-1.png`"
+                                         class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
                                 </div>
                                 <div class="fw-bold text-center">
                                     John Smith
@@ -122,14 +129,18 @@
                                 <div class="bg-light p-3 text-light-gray text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
+                                        minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt
+                                        tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum,
+                                        provident
                                         quo sit ullam ut voluptatum!
                                     </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
-                                    <img :src="`/images/clients/face-2.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
+                                    <img :src="`/images/clients/face-2.png`"
+                                         class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
                                 </div>
                                 <div class="fw-bold text-center">
                                     John Smith
@@ -143,14 +154,18 @@
                                 <div class="bg-light p-3 text-light-gray text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
-                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                        excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
+                                        minima
+                                        modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt
+                                        tempora
+                                        tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum,
+                                        provident
                                         quo sit ullam ut voluptatum!
                                     </q>
                                 </div>
                                 <div class="my-3 d-flex justify-content-center">
-                                    <img :src="`/images/clients/face-3.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
+                                    <img :src="`/images/clients/face-3.png`"
+                                         class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
                                 </div>
                                 <div class="fw-bold text-center">
                                     John Smith
@@ -163,13 +178,16 @@
                             <div class="p-3 rounded-3">
                                 <div class="bg-light p-3 text-light-gray text-center">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
-                                    excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum minima
+                                    excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
+                                    minima
                                     modi, natus nobis omnis quaerat quas repellat reprehenderit, sapiente sunt tempora
-                                    tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum, provident
+                                    tempore voluptatibus? Animi assumenda commodi dolore fugiat, ipsum nostrum,
+                                    provident
                                     quo sit ullam ut voluptatum!
                                 </div>
                                 <div class="mb-2 d-flex justify-content-center">
-                                    <img :src="`/images/clients/face-4.png`" class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
+                                    <img :src="`/images/clients/face-4.png`"
+                                         class="wpx-65 hpx-65 rounded-circle object-fit-cover" alt="testimonial avatar">
                                 </div>
                                 <div class="fw-bold text-center">
                                     John Smith
@@ -209,7 +227,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 1">
+                                    <img :src="`/images/blogs/blog-1.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 1">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -237,7 +256,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-2.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -265,7 +285,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 3">
+                                    <img :src="`/images/blogs/blog-3.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 3">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -293,7 +314,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 4">
+                                    <img :src="`/images/blogs/blog-4.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 4">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -321,7 +343,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-5.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -349,7 +372,8 @@
                         <div class="item p-3 image-effect">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
-                                    <img :src="`/images/blogs/blog-6.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
+                                    <img :src="`/images/blogs/blog-6.jpg`"
+                                         class="img-fluid object-fit-cover hpx-250 w-100" alt="blog 2">
                                 </div>
                                 <div class="pt-3 px-3">
                                     <div class="w-100 d-flex justify-content-between align-items-center">
@@ -411,15 +435,15 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: true,
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:1
+                    600: {
+                        items: 1
                     },
-                    1000:{
-                        items:1
+                    1000: {
+                        items: 1
                     }
                 }
             })
@@ -431,15 +455,15 @@ export default {
                 margin: 10,
                 nav: false,
                 dots: true,
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:1
+                    600: {
+                        items: 1
                     },
-                    1000:{
-                        items:1
+                    1000: {
+                        items: 1
                     }
                 }
             })
@@ -452,15 +476,15 @@ export default {
                 nav: false,
                 dots: true,
                 autoplay: true,
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:3
+                    1000: {
+                        items: 3
                     }
                 }
             })

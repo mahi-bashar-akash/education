@@ -11,7 +11,8 @@
                         </div>
                     </div>
                     <div class="text-light-gray">
-                        We’ve got the solution: world-class training and development programs developed by top universities.
+                        We’ve got the solution: world-class training and development programs developed by top
+                        universities.
                     </div>
                     <div class="d-flex align-items-center justify-content-start mt-3 gap-4">
                         <a href="javascript:void(0)" class="nav-link text-light-gray-hover">
@@ -79,7 +80,8 @@
                     </a>
                 </div>
                 <div class="col-sm-6 d-flex justify-content-sm-end">
-                    <a href="https://www.redishketch.com" class="text-decoration-none text-light-gray mb-3 d-flex align-items-center">
+                    <a href="https://www.redishketch.com"
+                       class="text-decoration-none text-light-gray mb-3 d-flex align-items-center">
                         All rights reserved by <span class="text-theme ms-2">Redishketch</span>
                     </a>
                 </div>
@@ -97,8 +99,9 @@ export default {
             app_name: window.core.APP_NAME,
         }
     },
-    mounted() {  },
-    methods: {  },
+    mounted() {
+    },
+    methods: {},
 }
 
 </script>

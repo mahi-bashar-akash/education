@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,15 +37,15 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageStudentModalOpen" />
+            <newBtn @click="manageStudentModalOpen"/>
         </div>
     </div>
 
@@ -74,7 +76,8 @@
     <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage student modal -->
-    <div class="modal fade" id="manageStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="manageStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0 d-flex justify-content-between">
@@ -87,8 +90,10 @@
 
                     <div class="form-group">
                         <div class="d-flex justify-content-center align-items-center">
-                            <label for="upload-image" class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
-                                <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
+                            <label for="upload-image"
+                                   class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
+                                <input id="upload-image" type="file" name="upload-image" class="form-control"
+                                       hidden="hidden">
                                 <span class="d-block">
                                     <i class="bi bi-cloud-arrow-down-fill fs-3"></i>
                                 </span>
@@ -99,30 +104,34 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control" required autocomplete="new-email">
+                        <input id="email" type="email" v-model="formData.email" name="email" class="form-control"
+                               required autocomplete="new-email">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select Enroll</label>
                         <select name="department" id="department" class="form-select">
                             <option :value="0">Select Enroll Course</option>
-                            <option v-for="each in enrollCourseDataList" :value="each.id"> {{each.name}} </option>
+                            <option v-for="each in enrollCourseDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="phone-number" class="form-label">Phone number</label>
-                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number" class="form-control" required autocomplete="new-phone-number">
+                        <input id="phone-number" type="text" v-model="formData.phoneNumber" name="phone-number"
+                               class="form-control" required autocomplete="new-phone-number">
                     </div>
 
                     <div class="form-group">
                         <label for="admission-date" class="form-label">Admission date</label>
-                        <input id="admission-date" type="text" v-model="formData.joiningDate" name="admission-date" class="form-control" required autocomplete="new-admission-date">
+                        <input id="admission-date" type="text" v-model="formData.joiningDate" name="admission-date"
+                               class="form-control" required autocomplete="new-admission-date">
                     </div>
 
                 </div>
@@ -139,7 +148,8 @@
     </div>
 
     <!-- delete student modal -->
-    <div class="modal fade" id="deleteStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteStudentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -161,7 +171,8 @@
                 </div>
                 <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
                     <div class="col-5">
-                        <button type="button" class="btn btn-secondary rounded-3 w-100" @click="deleteStudentModalClose">
+                        <button type="button" class="btn btn-secondary rounded-3 w-100"
+                                @click="deleteStudentModalClose">
                             Close
                         </button>
                     </div>
@@ -194,7 +205,15 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Admission date', 'Name', 'Roll or Id', 'Phone', 'Email', 'Enroll Course', 'Action'],
             tableRows: [
-                { id: '1', admissionDate: '01, February, 2025', name: 'Mahi Bashar Akash', roll: '18191101025', phoneNumber: '01645820007', email: 'mahibashar2023@gmail.com', enrollCourse: 'Bachelor of Business Administration' },
+                {
+                    id: '1',
+                    admissionDate: '01, February, 2025',
+                    name: 'Mahi Bashar Akash',
+                    roll: '18191101025',
+                    phoneNumber: '01645820007',
+                    email: 'mahibashar2023@gmail.com',
+                    enrollCourse: 'Bachelor of Business Administration'
+                },
             ],
             formData: {
                 name: '',
@@ -202,22 +221,30 @@ export default {
                 phoneNumber: '',
             },
             enrollCourseDataList: [
-                { id: '1', name: 'Creative Graphic Design' },
-                { id: '2', name: 'Frontend Web Developer' },
-                { id: '3', name: 'Backend Web Developer' },
-                { id: '4', name: 'Full Stack Web Developer' },
-                { id: '5', name: 'Cyber Security' },
-                { id: '6', name: 'Business Administration' },
-                { id: '7', name: 'Digital Marketing' },
+                {id: '1', name: 'Creative Graphic Design'},
+                {id: '2', name: 'Frontend Web Developer'},
+                {id: '3', name: 'Backend Web Developer'},
+                {id: '4', name: 'Full Stack Web Developer'},
+                {id: '5', name: 'Cyber Security'},
+                {id: '6', name: 'Business Administration'},
+                {id: '7', name: 'Digital Marketing'},
             ],
             studentDataList: [
-                { id: '1', admissionDate: '01, February, 2025', name: 'Mahi Bashar Akash', roll: '18191101025', phoneNumber: '01645820007', email: 'mahibashar2023@gmail.com', enrollCourse: 'Bachelor of Business Administration' },
+                {
+                    id: '1',
+                    admissionDate: '01, February, 2025',
+                    name: 'Mahi Bashar Akash',
+                    roll: '18191101025',
+                    phoneNumber: '01645820007',
+                    email: 'mahibashar2023@gmail.com',
+                    enrollCourse: 'Bachelor of Business Administration'
+                },
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigDate();
@@ -236,26 +263,26 @@ export default {
         },
 
         /* Function to manage student modal open */
-        manageStudentModalOpen(){
-            const myModal = new bootstrap.Modal("#manageStudentModal", { keyboard: false } );
+        manageStudentModalOpen() {
+            const myModal = new bootstrap.Modal("#manageStudentModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage student modal close */
-        manageStudentModalClose(){
+        manageStudentModalClose() {
             let myModalEl = document.getElementById('manageStudentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete student modal open */
-        deleteStudentModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteStudentModal", { keyboard: false } );
+        deleteStudentModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteStudentModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete student modal close */
-        deleteStudentModalClose(){
+        deleteStudentModalClose() {
             let myModalEl = document.getElementById('deleteStudentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

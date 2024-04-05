@@ -1,6 +1,8 @@
 <template>
 
-    <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+    <nav
+        style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+        aria-label="breadcrumb">
         <div class="breadcrumb bg-white shadow p-3 rounded-3">
             <div class="breadcrumb-item">
                 <router-link :to="{name: 'profile'}" class="text-decoration-none text-light-gray-hover">
@@ -28,25 +30,29 @@
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="name" class="form-label">Name</label>
-                    <input id="name" type="text" name="name" class="form-control" required autocomplete="new-name" v-model="formData.name">
+                    <input id="name" type="text" name="name" class="form-control" required autocomplete="new-name"
+                           v-model="formData.name">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="email" class="form-label">Email</label>
-                    <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email" v-model="formData.email">
+                    <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email"
+                           v-model="formData.email">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="phone-number" class="form-label">Phone number</label>
-                    <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number" v-model="formData.phoneNumber">
+                    <input id="phone-number" type="text" name="phone-number" class="form-control" required
+                           autocomplete="new-phone-number" v-model="formData.phoneNumber">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="address" class="form-label">Address</label>
-                    <input id="address" type="text" name="address" class="form-control" required autocomplete="new-address" v-model="formData.address">
+                    <input id="address" type="text" name="address" class="form-control" required
+                           autocomplete="new-address" v-model="formData.address">
                 </div>
             </div>
         </div>
@@ -62,8 +68,11 @@
                 <div class="form-group mb-2">
                     <label for="current-password" class="form-label">Current password</label>
                     <div class="position-relative">
-                        <input id="current-password" :type="currentPasswordFieldType" name="password" class="form-control" required autocomplete="new-current-password">
-                        <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="currentPasswordVisibility">
+                        <input id="current-password" :type="currentPasswordFieldType" name="password"
+                               class="form-control" required autocomplete="new-current-password">
+                        <div
+                            class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                            @click="currentPasswordVisibility">
                             <i class="bi bi-eye" v-if="currentPasswordFieldType === 'text'"></i>
                             <i class="bi bi-eye-slash" v-if="currentPasswordFieldType === 'password'"></i>
                         </div>
@@ -74,8 +83,11 @@
                 <div class="form-group mb-3">
                     <label for="password" class="form-label">Password</label>
                     <div class="position-relative">
-                        <input id="password" :type="passwordFieldType" name="password" class="form-control" required autocomplete="new-password">
-                        <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
+                        <input id="password" :type="passwordFieldType" name="password" class="form-control" required
+                               autocomplete="new-password">
+                        <div
+                            class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                            @click="passwordVisibility">
                             <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
                             <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
                         </div>
@@ -86,8 +98,11 @@
                 <div class="form-group mb-3">
                     <label for="confirm-password" class="form-label">Confirm Password</label>
                     <div class="position-relative">
-                        <input id="confirm-password" :type="passwordConfirmationFieldType" name="confirm-password" class="form-control" required autocomplete="new-confirm-password">
-                        <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
+                        <input id="confirm-password" :type="passwordConfirmationFieldType" name="confirm-password"
+                               class="form-control" required autocomplete="new-confirm-password">
+                        <div
+                            class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                            @click="passwordConfirmVisibility">
                             <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
                             <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
                         </div>
@@ -106,25 +121,29 @@
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="card-holder-name" class="form-label">Card holder name</label>
-                    <input id="card-holder-name" type="text" name="card-holder-name" class="form-control" required autocomplete="new-card-holder-name" v-model="paymentParam.cardHolderName">
+                    <input id="card-holder-name" type="text" name="card-holder-name" class="form-control" required
+                           autocomplete="new-card-holder-name" v-model="paymentParam.cardHolderName">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="card-name" class="form-label">Card name</label>
-                    <input id="card-name" type="text" name="card-name" class="form-control" required autocomplete="new-card-name" v-model="paymentParam.cardName">
+                    <input id="card-name" type="text" name="card-name" class="form-control" required
+                           autocomplete="new-card-name" v-model="paymentParam.cardName">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="expire-date" class="form-label">Expire date</label>
-                    <input id="expire-date" type="text" name="expire-date" class="form-control" required autocomplete="new-expire-date" v-model="paymentParam.ExpireDate">
+                    <input id="expire-date" type="text" name="expire-date" class="form-control" required
+                           autocomplete="new-expire-date" v-model="paymentParam.ExpireDate">
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group mb-2">
                     <label for="cvv" class="form-label">CVV</label>
-                    <input id="cvv" type="text" name="cvv" class="form-control" required autocomplete="new-cvv" v-model="paymentParam.CVV">
+                    <input id="cvv" type="text" name="cvv" class="form-control" required autocomplete="new-cvv"
+                           v-model="paymentParam.CVV">
                 </div>
             </div>
         </div>

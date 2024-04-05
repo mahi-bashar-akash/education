@@ -1,19 +1,23 @@
 .accordion {
     overflow: hidden;
+
     .accordion-item {
         .accordion-header {
             .accordion-button:not(.collapsed) {
                 background-color: var(--light-gray) !important;
                 color: var(--bs-white) !important;
             }
+
             .accordion-button {
                 box-shadow: 0 0 0 0 !important;
                 font-weight: 500 !important;
+
                 &:after {
                     background-image: none !important;
                 }
             }
         }
+
         .accordion-body {
 
         }

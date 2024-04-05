@@ -12,7 +12,7 @@ import Preloader from "./includes/preloader.vue";
 
 export default {
     components: {
-        Header,Footer, Preloader
+        Header, Footer, Preloader
     },
     data() {
         return {
@@ -20,13 +20,11 @@ export default {
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false;
-        },5000)
+        }, 5000)
     },
-    methods: {
-
-    }
+    methods: {}
 }
 
 </script>

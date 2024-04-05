@@ -3,7 +3,8 @@
     <div class="admin-wrapper">
         <aside class="admin-sidebar" :class="{ 'active' : sidebarActive }">
             <div class="admin-sidebar-header">
-                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5" @click="remove">
+                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5"
+                             @click="remove">
                     <span class="none-res-text">Education.io</span>
                     <span class="res-text">E</span>
                 </router-link>
@@ -67,8 +68,10 @@
                         <i class="bi bi-bell"></i>
                     </button>
                     <span class="dropdown">
-                        <button type="button" class="user-avatar border-0 bg-transparent" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img :src="`/images/clients/face-1.png`" class="img-fluid wpx-35 hpx-35 rounded-circle" alt="avatar">
+                        <button type="button" class="user-avatar border-0 bg-transparent" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            <img :src="`/images/clients/face-1.png`" class="img-fluid wpx-35 hpx-35 rounded-circle"
+                                 alt="avatar">
                         </button>
                         <span class="dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-3 border">
                             <span>

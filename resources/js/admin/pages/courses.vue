@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,11 +37,11 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
@@ -84,7 +86,8 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image" class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                        <label for="upload-image"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
                             <input id="upload-image" type="file" name="update-image" hidden="hidden">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
@@ -93,35 +96,42 @@
 
                     <div class="form-group mb-3">
                         <label for="student-enroll-capacity" class="form-label"> Student enroll capacity </label>
-                        <input id="student-enroll-capacity" v-model="formData.studentEnrollCapacity" type="text" name="student-enroll-capacity" class="form-control" required autocomplete="new-student-enroll-capacity">
+                        <input id="student-enroll-capacity" v-model="formData.studentEnrollCapacity" type="text"
+                               name="student-enroll-capacity" class="form-control" required
+                               autocomplete="new-student-enroll-capacity">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label"> Name </label>
-                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="professor" class="form-label">Select professor</label>
                         <select name="professor" id="professor" class="form-select">
                             <option :value="0">Select professor option</option>
-                            <option v-for="each in professorDataList" :value="each.id"> {{each.name}} </option>
+                            <option v-for="each in professorDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="price" class="form-label"> Price </label>
-                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control" required autocomplete="new-price">
+                        <input id="price" v-model="formData.price" type="text" name="price" class="form-control"
+                               required autocomplete="new-price">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="duration" class="form-label"> Duration </label>
-                        <input id="duration" v-model="formData.duration" type="text" name="duration" class="form-control" required autocomplete="new-duration">
+                        <input id="duration" v-model="formData.duration" type="text" name="duration"
+                               class="form-control" required autocomplete="new-duration">
                     </div>
 
                     <div class="form-group">
                         <label for="description" class="form-label"> Description </label>
-                        <textarea id="description" class="form-textarea" name="description" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                        <textarea id="description" class="form-textarea" name="description"
+                                  v-model="formData.description" cols="30" rows="5" required
+                                  autocomplete="new-description"></textarea>
                     </div>
 
                 </div>
@@ -192,10 +202,24 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Enroll', 'Price', 'Duration', 'Professor', 'Action'],
             tableRows: [
-                { id: '1', name: 'Full Stack Web Developer', enroll: '+360', price: '12000', duration: '1 year 6 month', professor: 'Mahi Bashar Akash' },
+                {
+                    id: '1',
+                    name: 'Full Stack Web Developer',
+                    enroll: '+360',
+                    price: '12000',
+                    duration: '1 year 6 month',
+                    professor: 'Mahi Bashar Akash'
+                },
             ],
             CourseDataList: [
-                { id: '1', name: 'Full Stack Web Developer', enroll: '+360', price: '12000', duration: '1 year 6 month', professor: 'Mahi Bashar Akash' },
+                {
+                    id: '1',
+                    name: 'Full Stack Web Developer',
+                    enroll: '+360',
+                    price: '12000',
+                    duration: '1 year 6 month',
+                    professor: 'Mahi Bashar Akash'
+                },
             ],
             formData: {
                 studentEnrollCapacity: '',
@@ -204,42 +228,42 @@ export default {
                 description: '',
             },
             professorDataList: [
-                { id: '1', name: 'John Smith' },
-                { id: '2', name: 'Danial Wilson' },
-                { id: '3', name: 'John Wilson' },
-                { id: '4', name: 'Smith John' },
+                {id: '1', name: 'John Smith'},
+                {id: '2', name: 'Danial Wilson'},
+                {id: '3', name: 'John Wilson'},
+                {id: '4', name: 'Smith John'},
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
     },
     methods: {
 
         /* Function to manage course modal open */
-        manageCourseModalOpen(){
-            const myModal = new bootstrap.Modal("#manageCourseModal", { keyboard: false } );
+        manageCourseModalOpen() {
+            const myModal = new bootstrap.Modal("#manageCourseModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage course modal close */
-        manageCourseModalClose(){
+        manageCourseModalClose() {
             let myModalEl = document.getElementById('manageCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete course modal open */
-        deleteCourseModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteCourseModal", { keyboard: false } );
+        deleteCourseModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteCourseModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete course modal close */
-        deleteCourseModalClose(){
+        deleteCourseModalClose() {
             let myModalEl = document.getElementById('deleteCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

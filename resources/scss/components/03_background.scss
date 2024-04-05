@@ -10,6 +10,7 @@
     transition: 0.3s all ease-in-out;
     color: var(--light-gray) !important;
     background: var(--bs-white) !important;
+
     &:hover {
         color: var(--bs-white) !important;
         transition: 0.3s all ease-in-out;
@@ -21,6 +22,7 @@
     transition: 0.3s all ease-in-out;
     color: var(--theme) !important;
     background: var(--bs-white) !important;
+
     &:hover {
         color: var(--bs-white) !important;
         transition: 0.3s all ease-in-out;

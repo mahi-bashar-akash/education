@@ -11,7 +11,9 @@
                 </li>
             </ol>
         </nav>
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+        <nav
+            style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);"
+            aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray">
@@ -35,15 +37,15 @@
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
                 <option value="select-option">Select visible data</option>
-                <option value="10"> 10 </option>
-                <option value="20"> 20 </option>
-                <option value="30"> 30 </option>
-                <option value="40"> 40 </option>
-                <option value="50"> 50 </option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageHolidayModalOpen" />
+            <newBtn @click="manageHolidayModalOpen"/>
         </div>
     </div>
 
@@ -75,7 +77,8 @@
     <pagination v-if="!loading && tableRows.length > 0"/>
 
     <!-- manage holiday modal -->
-    <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
@@ -88,27 +91,33 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required autocomplete="new-name">
+                        <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
+                               autocomplete="new-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="types" class="form-label">Types</label>
-                        <input id="types" type="text" v-model="formData.types" name="types" class="form-control" required autocomplete="new-types">
+                        <input id="types" type="text" v-model="formData.types" name="types" class="form-control"
+                               required autocomplete="new-types">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="start-date" class="form-label">Start Date</label>
-                        <input id="start-date" type="text" v-model="formData.startDate" name="start-date" class="form-control" required autocomplete="new-start-date">
+                        <input id="start-date" type="text" v-model="formData.startDate" name="start-date"
+                               class="form-control" required autocomplete="new-start-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="end-date" class="form-label">End Date</label>
-                        <input id="end-date" type="text" v-model="formData.endDate" name="end-date" class="form-control" required autocomplete="new-end-date">
+                        <input id="end-date" type="text" v-model="formData.endDate" name="end-date" class="form-control"
+                               required autocomplete="new-end-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <textarea name="description" id="description" class="form-textarea" v-model="formData.description" cols="30" rows="5" required autocomplete="new-description"></textarea>
+                        <textarea name="description" id="description" class="form-textarea"
+                                  v-model="formData.description" cols="30" rows="5" required
+                                  autocomplete="new-description"></textarea>
                     </div>
 
                 </div>
@@ -125,7 +134,8 @@
     </div>
 
     <!-- delete holiday modal -->
-    <div class="modal fade" id="deleteHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
@@ -180,7 +190,13 @@ export default {
         return {
             tableHeaders: ['Checkbox', 'Name', 'Type', 'Start date', 'End date', 'Action'],
             tableRows: [
-                { id: '1', name: 'Festival', type: 'National Holiday', startDate: '31 July 1998', endDate: '31 July 1998' }
+                {
+                    id: '1',
+                    name: 'Festival',
+                    type: 'National Holiday',
+                    startDate: '31 July 1998',
+                    endDate: '31 July 1998'
+                }
             ],
             formData: {
                 name: '',
@@ -190,13 +206,19 @@ export default {
                 description: '',
             },
             holidayDataList: [
-                { id: '1', name: 'Festival', type: 'National Holiday', startDate: '31 July 1998', endDate: '31 July 1998' }
+                {
+                    id: '1',
+                    name: 'Festival',
+                    type: 'National Holiday',
+                    startDate: '31 July 1998',
+                    endDate: '31 July 1998'
+                }
             ],
             loading: true,
         }
     },
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
         this.flatpickrConfigStartDate();
@@ -205,26 +227,26 @@ export default {
     methods: {
 
         /* Function to manage holiday modal open */
-        manageHolidayModalOpen(){
-            const myModal = new bootstrap.Modal("#manageHolidayModal", { keyboard: false } );
+        manageHolidayModalOpen() {
+            const myModal = new bootstrap.Modal("#manageHolidayModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to manage holiday modal close */
-        manageHolidayModalClose(){
+        manageHolidayModalClose() {
             let myModalEl = document.getElementById('manageHolidayModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
         /* Function to delete holiday modal open */
-        deleteHolidayModalOpen(){
-            const myModal = new bootstrap.Modal("#deleteHolidayModal", { keyboard: false } );
+        deleteHolidayModalOpen() {
+            const myModal = new bootstrap.Modal("#deleteHolidayModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete holiday modal close */
-        deleteHolidayModalClose(){
+        deleteHolidayModalClose() {
             let myModalEl = document.getElementById('deleteHolidayModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();

@@ -13,15 +13,15 @@
                             <div class="pt-3 px-3">
                                 <div class="w-100 d-flex justify-content-between align-items-center">
                                     <div class="badge bg-warning text-dark fw-medium px-3 py-2 rounded-pill">
-                                        {{each.author}}
+                                        {{ each.author }}
                                     </div>
                                     <div class="text-secondary text-opacity-75">
-                                        {{each.date}}
+                                        {{ each.date }}
                                     </div>
                                 </div>
                             </div>
                             <div class="fs-3 fw-medium truncate-to-2-line p-3 text-light-gray-hover">
-                                {{each.title}}
+                                {{ each.title }}
                             </div>
                             <div class="pb-3 px-3">
                                 <a href="javascript:void(0)" class="text-decoration-none">
@@ -52,20 +52,57 @@ export default {
     components: {
         pagination
     },
-    data(){
-        return{
+    data() {
+        return {
             blogDataList: [
-                { id: '1', filePath: '/images/blogs/blog-1.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, January, 2025' },
-                { id: '2', filePath: '/images/blogs/blog-2.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, february, 2026' },
-                { id: '3', filePath: '/images/blogs/blog-3.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, march, 2027' },
-                { id: '4', filePath: '/images/blogs/blog-4.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, april, 2028' },
-                { id: '5', filePath: '/images/blogs/blog-5.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, may, 2029' },
-                { id: '6', filePath: '/images/blogs/blog-6.jpg', title: 'Secret Tips & Tricks to Master Electricity', author: 'Admin', date: '01, may, 2030' },
+                {
+                    id: '1',
+                    filePath: '/images/blogs/blog-1.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, January, 2025'
+                },
+                {
+                    id: '2',
+                    filePath: '/images/blogs/blog-2.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, february, 2026'
+                },
+                {
+                    id: '3',
+                    filePath: '/images/blogs/blog-3.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, march, 2027'
+                },
+                {
+                    id: '4',
+                    filePath: '/images/blogs/blog-4.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, april, 2028'
+                },
+                {
+                    id: '5',
+                    filePath: '/images/blogs/blog-5.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, may, 2029'
+                },
+                {
+                    id: '6',
+                    filePath: '/images/blogs/blog-6.jpg',
+                    title: 'Secret Tips & Tricks to Master Electricity',
+                    author: 'Admin',
+                    date: '01, may, 2030'
+                },
             ]
         }
     },
-    mounted() {  },
-    methods: {  }
+    mounted() {
+    },
+    methods: {}
 }
 
 </script>

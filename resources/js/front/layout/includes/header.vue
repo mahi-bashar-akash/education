@@ -9,13 +9,15 @@
                         {{ app_name }}
                     </div>
                 </router-link>
-                <button class="navbar-toggler shadow-sm border-0" type="button" data-bs-toggle="collapse" @click="collapse">
+                <button class="navbar-toggler shadow-sm border-0" type="button" data-bs-toggle="collapse"
+                        @click="collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item text-end d-inline-block d-lg-none">
-                            <button type="button" class="btn btn-close border-0 p-3 icon-close" @click="collapse"></button>
+                            <button type="button" class="btn btn-close border-0 p-3 icon-close"
+                                    @click="collapse"></button>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{name: 'home'}" class="nav-link" @click="collapse">
@@ -64,11 +66,11 @@ export default {
         return {
             app_name: window.core.APP_NAME,
             navbarToggle: {
-                'data-bs-toggle' :  'collapse',
-                'data-bs-target' :  '#navbarSupportedContent',
-                'aria-controls'  :  'navbarSupportedContent',
-                'aria-expanded'  :  'false',
-                'aria-label'     :  'Toggle navigation',
+                'data-bs-toggle': 'collapse',
+                'data-bs-target': '#navbarSupportedContent',
+                'aria-controls': 'navbarSupportedContent',
+                'aria-expanded': 'false',
+                'aria-label': 'Toggle navigation',
             },
         }
 
@@ -76,11 +78,11 @@ export default {
 
     mounted() {
 
-        window.addEventListener('scroll',(e)=>{
+        window.addEventListener('scroll', (e) => {
             const nav = document.querySelector('.header');
-            if(window.pageYOffset>0){
+            if (window.pageYOffset > 0) {
                 nav.classList.add("animated-shadow");
-            }else{
+            } else {
                 nav.classList.remove("animated-shadow");
             }
         });
@@ -91,7 +93,7 @@ export default {
 
         /* Function to collapse in navbar responsive */
         collapse() {
-            if(window.innerWidth < 991){
+            if (window.innerWidth < 991) {
                 const navbarCollapse = document.querySelector('.navbar-collapse');
                 if (navbarCollapse.classList.contains('show')) {
                     navbarCollapse.classList.remove('show');

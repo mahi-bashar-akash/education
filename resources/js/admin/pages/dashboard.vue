@@ -17,14 +17,18 @@
         <!-- event -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'events'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.event_count}}
+                        {{ countParam.event_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-calendar4-event fs-3 text-theme"></i>
@@ -40,14 +44,18 @@
         <!-- professor -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'professors'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.professor_count}}
+                        {{ countParam.professor_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-person fs-3 text-theme"></i>
@@ -63,14 +71,18 @@
         <!-- student -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'students'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.student_count}}
+                        {{ countParam.student_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -85,14 +97,18 @@
         <!-- course -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'courses'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.course_count}}
+                        {{ countParam.course_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-mortarboard fs-3 text-theme"></i>
@@ -107,14 +123,18 @@
         <!-- library -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'library'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.library_count}}
+                        {{ countParam.library_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-journal-bookmark fs-3 text-theme"></i>
@@ -129,14 +149,18 @@
         <!-- department -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'departments'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.department_count}}
+                        {{ countParam.department_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-building fs-3 text-theme"></i>
@@ -152,14 +176,18 @@
         <!-- stuff -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'stuff'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.stuff_count}}
+                        {{ countParam.stuff_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -175,14 +203,18 @@
         <!-- holiday -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'holiday'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.holiday_count}}
+                        {{ countParam.holiday_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-gift fs-3 text-theme"></i>
@@ -198,14 +230,18 @@
         <!-- fees -->
         <div class="mb-4">
 
-            <div class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading" v-if="loading">
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
                 <span class="spinner-border spinner-border" aria-hidden="true"></span>
             </div>
 
             <router-link :to="{name: 'fees'}" class="text-decoration-none">
-                <div class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column" v-if="!loading">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{countParam.fees_count}} tk
+                        {{ countParam.fees_count }} tk
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-currency-dollar fs-3 text-theme"></i>
@@ -246,12 +282,12 @@ export default {
     },
 
     mounted() {
-        setTimeout( () => {
+        setTimeout(() => {
             this.loading = false
         }, 2000)
     },
 
-    methods: {  }
+    methods: {}
 
 }
 
