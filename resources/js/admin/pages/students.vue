@@ -2,7 +2,7 @@
 
     <!-- breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
-        <breadcrumb :items="module1BreadcrumbItems" moduleName="Students"/>
+        <breadcrumb :items="BreadcrumbItems" moduleName="Students"/>
     </div>
 
     <!-- search and new -->
@@ -180,7 +180,7 @@ export default {
     },
     data() {
         return {
-            module1BreadcrumbItems: [
+            BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Students', route: 'students' },
             ],

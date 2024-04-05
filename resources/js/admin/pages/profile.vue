@@ -2,7 +2,7 @@
 
     <!-- breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
-        <breadcrumb :items="module1BreadcrumbItems" moduleName="Profile"/>
+        <breadcrumb :items="BreadcrumbItems" moduleName="Profile"/>
     </div>
 
     <div class="row mt-3 mt-md-5">
@@ -187,7 +187,7 @@ export default {
     data() {
 
         return {
-            module1BreadcrumbItems: [
+            BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'profile', route: 'profile' },
             ],
