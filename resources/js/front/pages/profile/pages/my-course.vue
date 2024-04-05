@@ -24,7 +24,7 @@
                 {{each.courseName}}
             </div>
             <div class="row row-cols-1 row-cols-md-2">
-                <a href="javascript:void(0)" class="p-2 text-decoration-none text-light-gray-hover" v-for="subEach in each.lesson">
+                <a href="javascript:void(0)" class="ps-3 py-2 text-decoration-none text-light-gray-hover" v-for="subEach in each.lesson">
                     {{subEach.lessonName}}
                 </a>
             </div>
