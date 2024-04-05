@@ -3,7 +3,7 @@
     <div class="cursor-content margin-top-105">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9 py-4">
+                <div class="col-xl-9 py-4">
 
                     <!-- single blog image -->
                     <img :src="`/images/blogs/blog-large-screen.jpg`" class="img-fluid w-100 object-fit-cover" alt="course">
@@ -164,7 +164,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-3 py-4">
+                <div class="col-xl-3 py-4">
 
                     <sideContent/>
 

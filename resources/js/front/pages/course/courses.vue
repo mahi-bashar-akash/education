@@ -2,7 +2,7 @@
     <div class="cursor-content margin-top-105">
         <section class="container">
             <div class="row py-3 align-items-start">
-                <div class="col-lg-3 text-light-gray py-1 px-3">
+                <div class="col-xl-9 text-light-gray py-1 px-3">
                     <div class="bg-light shadow-sm rounded-3 p-3">
                         <form>
 
@@ -153,7 +153,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-9 py-1 px-3">
+                <div class="col-xl-3 py-1 px-3">
 
                     <div class="px-3 py-2 bg-light shadow-sm w-100 rounded-3">
                         <div class="row align-items-center">

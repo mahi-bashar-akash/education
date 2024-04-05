@@ -13,13 +13,13 @@
     </nav>
 
     <div class="d-none d-sm-flex align-items-center justify-content-start mb-4">
-        <button type="button" class="btn btn-theme me-2" @click="setTab('edit-profile')">
+        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('edit-profile')">
             Edit profile
         </button>
-        <button type="button" class="btn btn-theme me-2" @click="setTab('edit-password')">
+        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('edit-password')">
             Edit password
         </button>
-        <button type="button" class="btn btn-theme me-2" @click="setTab('add-payment')">
+        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('add-payment')">
             Add Payment
         </button>
     </div>

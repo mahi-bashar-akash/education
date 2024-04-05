@@ -96,7 +96,7 @@
     <!-- blog sidebar img -->
     <div class="my-4">
         <div class="card text-bg-dark border-0 rounded-0">
-            <img :src="`/images/sidebar-img.jpg`" class="card-img hpx-350 object-fit-fill" alt="sidebar-img">
+            <img :src="`/images/sidebar-img.jpg`" class="card-img hpx-350 object-fit-cover" alt="sidebar-img">
             <div class="card-img-overlay d-flex justify-content-start align-items-start flex-column">
                 <div class="mb-4">
                     <div class="p-3 rounded-circle wpx-60 hpx-60 d-flex justify-content-center align-items-center bg-theme text-white fw-medium">
