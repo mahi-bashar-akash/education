@@ -22,7 +22,7 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-CrXvDP43.js",
+    "file": "assets/app-DwthySR-.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
@@ -30,7 +30,7 @@
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-BJHgTeVr.js",
+    "file": "assets/app-hpK7oz12.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
@@ -38,7 +38,7 @@
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-CSE1CKoI.css",
+    "file": "assets/stylesheet-D0Zval18.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }

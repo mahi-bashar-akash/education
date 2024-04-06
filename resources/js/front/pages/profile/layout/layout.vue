@@ -28,6 +28,9 @@
                             <router-link :to="{name: 'myCourse'}" class="nav-link mb-2">
                                 My course
                             </router-link>
+                            <router-link :to="{name: 'myClassRoom'}" class="nav-link mb-2">
+                                My Class room
+                            </router-link>
                             <router-link :to="{name: 'myFees'}" class="nav-link mb-2">
                                 My fees
                             </router-link>

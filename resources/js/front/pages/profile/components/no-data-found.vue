@@ -1,7 +1,6 @@
 <template>
 
-    <div
-        class="profile-no-data-card bg-white shadow scrollbar d-flex justify-content-center align-items-center flex-column rounded-3 d-none">
+    <div class="profile-content bg-white shadow scrollbar d-flex justify-content-center align-items-center flex-column rounded-3">
         <div class="mb-2">
             <i class="bi bi-database-exclamation fs-2 text-theme"></i>
         </div>

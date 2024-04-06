@@ -1,7 +1,6 @@
 <template>
 
-    <div
-        class="profile-no-data-card bg-white shadow scrollbar d-flex justify-content-center align-items-center rounded-3 d-none">
+    <div class="profile-content bg-white shadow scrollbar d-flex justify-content-center align-items-center rounded-3">
         <span class="spinner-border spinner-border" aria-hidden="true"></span>
     </div>
 

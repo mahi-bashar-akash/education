@@ -31,6 +31,7 @@ import forget from "../pages/forget.vue";
 import profileLayout from "../pages/profile/layout/layout.vue";
 import profile from "../pages/profile/pages/profile.vue";
 import myCourse from "../pages/profile/pages/my-course.vue";
+import myClassRoom from "../pages/profile/pages/my-class.vue";
 import myFees from "../pages/profile/pages/my-fees.vue";
 
 const TITLE = window.core.APP_NAME
@@ -55,6 +56,7 @@ const routes = [
                 children: [
                     { path: 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
                     { path: 'my-course', name: 'myCourse', component: myCourse, meta: { title: TITLE + ' - my course' } },
+                    { path: 'my-class-room', name: 'myClassRoom', component: myClassRoom, meta: { title: TITLE + ' - my class room' } },
                     { path: 'my-fees', name: 'myFees', component: myFees, meta: { title: TITLE + ' - my fees' } },
                 ]
             }
