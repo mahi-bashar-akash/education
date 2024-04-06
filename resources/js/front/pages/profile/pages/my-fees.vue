@@ -1,6 +1,8 @@
 <template>
 
-    <breadcrumb/>
+    <div class="bg-white shadow px-3 py-3 mb-3 rounded-3">
+        <BreadcrumbContent :items="BreadcrumbItems"/>
+    </div>
 
     <div class="bg-white shadow p-3 profile-content scrollbar rounded-3" v-if="!loading && feesListData.length > 0">
         <div class="table-responsive">
@@ -49,11 +51,11 @@
 <script>
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
-import Breadcrumb from "../components/breadcrumb.vue";
+import BreadcrumbContent from "../components/breadcrumb.vue";
 
 export default {
     components: {
-        Breadcrumb, noDataFound, preloader
+        BreadcrumbContent, noDataFound, preloader
     },
     data() {
         return {

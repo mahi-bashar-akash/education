@@ -1,6 +1,8 @@
 <template>
 
-    <breadcrumb/>
+    <div class="bg-white shadow px-3 py-3 mb-3 rounded-3">
+        <BreadcrumbContent :items="BreadcrumbItems"/>
+    </div>
 
     <div class="d-none d-sm-flex align-items-center justify-content-start mb-4">
         <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('edit-profile')">
@@ -150,9 +152,12 @@
 
 <script>
 import flatpickr from "flatpickr";
-import breadcrumb from "../components/breadcrumb.vue";
+import BreadcrumbContent from "../components/breadcrumb.vue";
 
 export default {
+    components: {
+        BreadcrumbContent
+    },
     data() {
         return {
             BreadcrumbItems: [

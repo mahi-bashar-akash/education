@@ -1,6 +1,8 @@
 <template>
 
-    <breadcrumb/>
+    <div class="bg-white shadow px-3 py-3 mb-3 rounded-3">
+        <BreadcrumbContent :items="BreadcrumbItems"/>
+    </div>
 
     <div class="profile-content bg-white shadow scrollbar p-3 rounded-3" v-if="!loading && courseSingleData.length > 0">  </div>
 
@@ -13,11 +15,11 @@
 <script>
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
-import breadcrumb from "../components/breadcrumb.vue";
+import BreadcrumbContent from "../components/breadcrumb.vue";
 
 export default {
     components: {
-        breadcrumb, noDataFound, preloader
+        BreadcrumbContent, noDataFound, preloader
     },
     data() {
         return {

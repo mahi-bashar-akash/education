@@ -1,8 +1,8 @@
 <template>
 
-    <div class="d-flex justify-content-between align-items-center bg-white shadow shadow px-3 py-2 mb-3 rounded-3">
+    <div class="d-flex justify-content-between align-items-center bg-white shadow px-3 py-2 mb-3 rounded-3">
 
-        <breadcrumb/>
+        <BreadcrumbContent :items="BreadcrumbItems"/>
 
         <div class="dropdown">
             <button type="button" class="btn-icon rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -100,10 +100,10 @@
 <script>
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
-import Breadcrumb from "../components/breadcrumb.vue";
+import BreadcrumbContent from "../components/breadcrumb.vue";
 export default {
     components: {
-        Breadcrumb, noDataFound, preloader
+        BreadcrumbContent, noDataFound, preloader
     },
     data(){
         return{
