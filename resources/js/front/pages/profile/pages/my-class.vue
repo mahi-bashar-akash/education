@@ -8,7 +8,7 @@
             <button type="button" class="btn-icon rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-plus-lg"></i>
             </button>
-            <ul class="dropdown-menu dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-3 border">
+            <ul class="dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-3 border">
                 <li>
                     <button type="button" class="dropdown-item px-3 py-2" @click="openJoinClassRoom">
                         Join class room
