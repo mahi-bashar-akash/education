@@ -2,20 +2,7 @@
 
     <div class="d-flex justify-content-between align-items-center bg-white shadow shadow px-3 py-2 mb-3 rounded-3">
 
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
-            <div class="breadcrumb mb-md-0">
-                <div class="breadcrumb-item mb-0">
-                    <router-link :to="{name: 'profile'}" class="text-decoration-none text-light-gray-hover">
-                        Profile
-                    </router-link>
-                </div>
-                <div class="breadcrumb-item mb-0">
-                    <router-link :to="{name: 'myClassRoom'}" class="text-decoration-none text-light-gray-hover">
-                        Class room
-                    </router-link>
-                </div>
-            </div>
-        </nav>
+        <breadcrumb/>
 
         <div class="dropdown">
             <button type="button" class="btn-icon rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -113,12 +100,17 @@
 <script>
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
+import Breadcrumb from "../components/breadcrumb.vue";
 export default {
     components: {
-        noDataFound, preloader
+        Breadcrumb, noDataFound, preloader
     },
     data(){
         return{
+            BreadcrumbItems: [
+                { title: 'Profile', route: 'profile' },
+                { title: 'My class room', route: 'myClassRoom' },
+            ],
             loading: true,
             classRoomDataList: [
                 {
