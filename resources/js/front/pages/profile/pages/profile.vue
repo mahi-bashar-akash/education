@@ -1,206 +1,281 @@
 <template>
 
-    <div class="bg-white shadow px-3 py-3 mb-3 rounded-3">
-        <BreadcrumbContent :items="BreadcrumbItems"/>
+    <!-- breadcrumb -->
+    <div class="d-sm-flex justify-content-between align-items-center bg-white shadow p-3">
+        <breadcrumb :items="BreadcrumbItems"/>
     </div>
 
-    <div class="d-none d-sm-flex align-items-center justify-content-start mb-4">
-        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('edit-profile')">
-            Edit profile
-        </button>
-        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('edit-password')">
-            Edit password
-        </button>
-        <button type="button" class="btn btn-theme px-3 me-2" @click="setTab('add-payment')">
-            Add Payment
-        </button>
-    </div>
+    <div class="row mt-3 mt-md-5">
+        <div class="d-flex justify-content-center align-items-start">
+            <div class="col-xl-9">
+                <div class="row">
+                    <div class="col-xl-5 p-2">
+                        <div class="card rounded-3 border">
+                            <div class="card-header bg-white rounded-3 border-0">
 
-    <div class="dropdown dropdown-center d-sm-none">
-        <button type="button" class="btn btn-theme w-100 mb-3" data-bs-toggle="dropdown" aria-expanded="false">
-            {{inertDropdownText}}
-        </button>
-        <ul class="dropdown-menu dropdown-center w-100">
-            <li>
-                <button type="button" class="dropdown-item px-4 py-2" @click="setDropdownText($event); setTab('edit-profile')">
-                    Edit Profile
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item px-4 py-2" @click="setDropdownText($event); setTab('edit-password')">
-                    Edit Password
-                </button>
-            </li>
-            <li>
-                <button type="button" class="dropdown-item px-4 py-2" @click="setDropdownText($event); setTab('add-payment')">
-                    Add Payment
-                </button>
-            </li>
-        </ul>
-    </div>
+                                <!-- group of button -->
+                                <div
+                                    class="card-header bg-white rounded-3 border-0 d-flex justify-content-start align-items-center pt-3">
+                                    <button type="button" class="btn btn-theme me-1" @click="setTab('edit-profile')" v-if="!loading">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-theme me-1" @click="setTab('edit-password')" v-if="!loading">
+                                        <i class="bi bi-shield"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-theme" @click="setTab('edit-payment')" v-if="!loading">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
+                                </div>
 
-    <form class="mb-3 bg-white shadow p-4 rounded-3" v-if="tab === 'edit-profile'">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <form class="pt-3">
 
-        <div class="mb-3 fs-5">
-            Edit profile
-        </div>
+                                        <!-- avatar upload -->
+                                        <label for="upload-image"
+                                               class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer"
+                                               v-if="!loading">
+                                            <input id="upload-image" type="file" name="upload-image"
+                                                   class="form-control" hidden="hidden">
+                                            <span class="d-block">
+                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
+                                            </span>
+                                        </label>
 
-        <div class="form-group mb-2">
-            <label for="name" class="form-label">Name</label>
-            <input id="name" type="text" name="name" class="form-control" required autocomplete="new-name" v-model="formData.name">
-        </div>
+                                        <!-- avatar preloader -->
+                                        <div class="card-text placeholder-glow" v-if="loading">
+                                            <div class="mb-2">
+                                                <div class="placeholder wpx-175 hpx-175 rounded-circle"></div>
+                                            </div>
+                                        </div>
 
-        <div class="form-group mb-2">
-            <label for="email" class="form-label">Email</label>
-            <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email" v-model="formData.email">
-        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="card-body">
 
-        <div class="form-group mb-2">
-            <label for="phone-number" class="form-label">Phone number</label>
-            <input id="phone-number" type="text" name="phone-number" class="form-control" required autocomplete="new-phone-number" v-model="formData.phoneNumber">
-        </div>
+                                <!-- profile information -->
+                                <div class="mt-3 px-3">
+                                    <div v-if="!loading">
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Name:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            Mahi Bashar Akash
+                                        </div>
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Email:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            mahibashar2023@gmail.com
+                                        </div>
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Phone Number:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            01645820007
+                                        </div>
+                                    </div>
 
-        <div class="form-group mb-2">
-            <label for="address" class="form-label">Address</label>
-            <input id="address" type="text" name="address" class="form-control" required autocomplete="new-address" v-model="formData.address">
-        </div>
+                                    <div class="card-text placeholder-glow" v-if="loading">
+                                        <div class="mb-2">
+                                            <div class="placeholder wpx-45"></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="placeholder wpx-150"></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="placeholder wpx-45"></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="placeholder wpx-175"></div>
+                                        </div>
+                                        <div class="mb-2">
+                                            <div class="placeholder wpx-45"></div>
+                                        </div>
+                                        <div class="placeholder wpx-150"></div>
+                                    </div>
 
-        <button type="submit" class="btn btn-theme wpx-150">
-            Update profile
-        </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    </form>
+                    <div class="col-xl-7 p-2">
+                        <div class="card rounded-3 border p-3">
 
-    <form class="mb-3 bg-white shadow p-4 rounded-3" v-if="tab === 'edit-password'">
+                            <!-- update profile -->
+                            <div class="card-body" v-if="tab === 'edit-profile'">
+                                <div class="fs-5 mb-3"> Edit profile</div>
+                                <form>
+                                    <div class="form-group mb-3">
+                                        <label for="name" class="form-label">Name</label>
+                                        <input id="name" type="text" name="name" class="form-control"
+                                               v-model="profileParam.name" required autocomplete="new-name">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input id="email" type="email" name="email" class="form-control"
+                                               v-model="profileParam.email" required autocomplete="new-email">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="phone-number" class="form-label">Phone number</label>
+                                        <input id="phone-number" type="text" name="phone-number" class="form-control"
+                                               v-model="profileParam.phoneNumber" required
+                                               autocomplete="new-phone-number">
+                                    </div>
+                                    <div class="w-100">
+                                        <button type="button" class="btn btn-theme wpx-150">
+                                            Update profile
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
 
-        <div class="mb-3 fs-5">
-            Edit password
-        </div>
+                            <!-- update password -->
+                            <div class="card-body" v-if="tab === 'edit-password'">
+                                <div class="fs-5 mb-3"> Edit password</div>
+                                <form>
+                                    <div class="form-group mb-3">
+                                        <label for="current-password" class="form-label">Current password</label>
+                                        <input id="current-password" type="password" name="current-password"
+                                               v-model="passwordParam.currentPassword" class="form-control" required
+                                               autocomplete="current-password">
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="new-password" class="form-label">New password</label>
+                                        <div class="position-relative">
+                                            <input id="password" :type="passwordFieldType" name="password"
+                                                   class="form-control" v-model="passwordParam.password" required
+                                                   autocomplete="new-password">
+                                            <div
+                                                class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                                                @click="passwordVisibility">
+                                                <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
+                                                <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label for="confirm-password" class="form-label">Confirm password</label>
+                                        <div class="position-relative">
+                                            <input id="password" :type="passwordConfirmationFieldType" name="password"
+                                                   class="form-control" v-model="passwordParam.passwordConfirm" required
+                                                   autocomplete="new-confirm-password">
+                                            <div
+                                                class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
+                                                @click="passwordConfirmVisibility">
+                                                <i class="bi bi-eye"
+                                                   v-if="passwordConfirmationFieldType === 'text'"></i>
+                                                <i class="bi bi-eye-slash"
+                                                   v-if="passwordConfirmationFieldType === 'password'"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-100">
+                                        <button type="button" class="btn btn-theme wpx-150">
+                                            Update password
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
 
-        <div class="form-group mb-2">
-            <label for="current-password" class="form-label">Current password</label>
-            <div class="position-relative">
-                <input id="current-password" :type="currentPasswordFieldType" name="password" class="form-control" required autocomplete="new-current-password">
-                <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="currentPasswordVisibility">
-                    <i class="bi bi-eye" v-if="currentPasswordFieldType === 'text'"></i>
-                    <i class="bi bi-eye-slash" v-if="currentPasswordFieldType === 'password'"></i>
+                            <!-- update payment -->
+                            <div class="card-body" v-if="tab === 'edit-payment'">
+                                <div class="fs-5 mb-3">Edit payment</div>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="card-holder-full-name" class="form-label fw-bold">
+                                            Card holder full name
+                                        </label>
+                                        <input id="card-holder-full-name" type="text" name="card-holder-full-name"
+                                               class="form-control" required v-model="paymentParam.cardHolderName"
+                                               autocomplete="new-card-holder-full-name">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="card-name" class="form-label fw-bold">Card name</label>
+                                        <input id="card-name" type="text" name="card-name" class="form-control" required
+                                               v-model="paymentParam.cardName"
+                                               autocomplete="new-card-name">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="expire-date" class="form-label fw-bold">Expire date</label>
+                                            <input id="expire-date" type="text" name="expire-date" class="form-control"
+                                                   required v-model="paymentParam.expireDate"
+                                                   autocomplete="new-expire-date">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="cvv" class="form-label fw-bold">CVV</label>
+                                            <input id="cvv" type="text" name="cvv" class="form-control" required
+                                                   v-model="paymentParam.cvv"
+                                                   autocomplete="new-cvv">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="form-group mb-3">
-            <label for="password" class="form-label">Password</label>
-            <div class="position-relative">
-                <input id="password" :type="passwordFieldType" name="password" class="form-control" required autocomplete="new-password">
-                <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
-                    <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
-                    <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group mb-3">
-            <label for="confirm-password" class="form-label">Confirm Password</label>
-            <div class="position-relative">
-                <input id="confirm-password" :type="passwordConfirmationFieldType" name="confirm-password" class="form-control" required autocomplete="new-confirm-password">
-                <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
-                    <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
-                    <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
-                </div>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-theme wpx-150">
-            Update password
-        </button>
-
-    </form>
-
-    <form class="mb-3 bg-white shadow p-4 rounded-3" v-if="tab === 'add-payment'">
-
-        <div class="mb-3 fs-5">
-            Add payment
-        </div>
-
-        <div class="form-group mb-2">
-            <label for="card-holder-name" class="form-label">Card holder name</label>
-            <input id="card-holder-name" type="text" name="card-holder-name" class="form-control" required autocomplete="new-card-holder-name" v-model="paymentParam.cardHolderName">
-        </div>
-
-        <div class="form-group mb-2">
-            <label for="card-name" class="form-label">Card name</label>
-            <input id="card-name" type="text" name="card-name" class="form-control" required autocomplete="new-card-name" v-model="paymentParam.cardName">
-        </div>
-
-        <div class="form-group mb-2">
-            <label for="expire-date" class="form-label">Expire date</label>
-            <input id="expire-date" type="text" name="expire-date" class="form-control" required autocomplete="new-expire-date" v-model="paymentParam.ExpireDate">
-        </div>
-
-        <div class="form-group mb-2">
-            <label for="cvv" class="form-label">CVV</label>
-            <input id="cvv" type="text" name="cvv" class="form-control" required autocomplete="new-cvv" v-model="paymentParam.CVV">
-        </div>
-
-        <button type="submit" class="btn btn-theme wpx-150">
-            Submit
-        </button>
-
-    </form>
+    </div>
 
 </template>
 
 <script>
-import flatpickr from "flatpickr";
-import BreadcrumbContent from "../components/breadcrumb.vue";
+import breadcrumb from "../components/breadcrumb.vue";
 
 export default {
     components: {
-        BreadcrumbContent
+        breadcrumb
     },
+
     data() {
+
         return {
             BreadcrumbItems: [
-                { title: 'Profile', route: 'profile' },
+                {title: 'Profile', route: 'profile'},
             ],
-            formData: {
-                name: 'Mahi Bashar Akash',
-                email: 'mahibashar2023@gmail.com',
-                phoneNumber: '01400125289',
-                address: 'Dhanmondi, Dhaka - 1209, Bangladesh',
+            tab: 'edit-profile',
+            password: '',
+            passwordFieldType: 'password',
+            passwordConfirmationFieldType: 'password',
+            passwordParam: {
+                currentPassword: '',
+                password: '',
+                passwordConfirm: '',
+            },
+            profileParam: {
+                name: '',
+                email: '',
+                phoneNumber: '',
             },
             paymentParam: {
                 cardHolderName: '',
                 cardName: '',
-                ExpireDate: '',
-                CVV: '',
+                expireDate: '',
+                cvv: '',
             },
-            password: '',
-            currentPasswordFieldType: 'password',
-            passwordFieldType: 'password',
-            passwordConfirmationFieldType: 'password',
-            tab: 'edit-profile',
-            inertDropdownText: 'Edit Profile',
+            loading: true,
         }
+
     },
+
     mounted() {
-        this.flatpickrConfigDate();
+        setTimeout(() => {
+            this.loading = false
+        }, 2000)
     },
+
     methods: {
 
-        /* Function to change tab */
+        /* Function to set tab */
         setTab(tab) {
             this.tab = tab
-        },
-
-        /* Function inert dropdown text */
-        setDropdownText(e) {
-            this.inertDropdownText = e.target.innerText
-        },
-
-        /* Function to current password visibility */
-        currentPasswordVisibility() {
-            this.currentPasswordFieldType = this.currentPasswordFieldType === "password" ? "text" : "password";
         },
 
         /* Function to password visibility */
@@ -213,17 +288,8 @@ export default {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to expire date */
-        flatpickrConfigDate() {
-            flatpickr("#expire-date", {
-                altFormat: 'j M Y',
-                altInput: true,
-                dateFormat: 'Y-m-d',
-                disableMobile: true,
-            })
-        },
-
     }
+
 }
 
 </script>

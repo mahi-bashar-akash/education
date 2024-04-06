@@ -100,17 +100,18 @@
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input id="name" type="text" name="name" class="form-control"
-                                               v-model="passwordParam.currentPassword" required autocomplete="new-name">
+                                               v-model="profileParam.name" required autocomplete="new-name">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="email" class="form-label">Email</label>
                                         <input id="email" type="email" name="email" class="form-control" required
-                                               autocomplete="new-email">
+                                               v-model="profileParam.email" autocomplete="new-email">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="phone-number" class="form-label">Phone number</label>
                                         <input id="phone-number" type="text" name="phone-number" class="form-control"
-                                               required autocomplete="new-phone-number">
+                                               required
+                                               v-model="profileParam.phoneNumber" autocomplete="new-phone-number">
                                     </div>
                                     <div class="w-100">
                                         <button type="button" class="btn btn-theme wpx-150">
@@ -188,8 +189,8 @@ export default {
 
         return {
             BreadcrumbItems: [
-                { title: 'Dashboard', route: 'dashboard' },
-                { title: 'profile', route: 'profile' },
+                {title: 'Dashboard', route: 'dashboard'},
+                {title: 'profile', route: 'profile'},
             ],
             tab: 1,
             password: '',
@@ -199,6 +200,11 @@ export default {
                 currentPassword: '',
                 password: '',
                 passwordConfirm: '',
+            },
+            profileParam: {
+                name: '',
+                email: '',
+                phoneNumber: '',
             },
             loading: true,
         }

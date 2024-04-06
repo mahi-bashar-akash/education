@@ -49,6 +49,33 @@
                                 Login
                             </router-link>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end p-1 overflow-hidden rounded-3 border">
+                                <li>
+                                    <router-link :to="{name: 'profile'}" class="dropdown-item px-3 py-2 rounded-2 mb-1">
+                                        Mahi Bashar Akash
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{name: 'myClassRoom'}" class="dropdown-item px-3 py-2 rounded-2 mb-1">
+                                        My class room
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{name: 'myFees'}" class="dropdown-item px-3 py-2 rounded-2 mb-1">
+                                        My Fees
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item px-3 py-2 rounded-2">
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
