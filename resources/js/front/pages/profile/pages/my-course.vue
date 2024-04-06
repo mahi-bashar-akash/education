@@ -170,6 +170,7 @@ export default {
     },
     data() {
         return {
+            courseId: null,
             BreadcrumbItems: [
                 { title: 'Profile', route: 'profile' },
                 { title: 'My class room', route: 'myClassRoom' },

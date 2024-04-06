@@ -4,7 +4,9 @@
 
         <BreadcrumbContent :items="BreadcrumbItems"/>
 
-        <div class="dropdown">
+        <span class="spinner-border spinner-border" aria-hidden="true" v-if="loading"></span>
+
+        <div class="dropdown" v-if="!loading">
             <button type="button" class="btn-icon rounded-circle" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-plus-lg"></i>
             </button>
@@ -59,7 +61,7 @@
                     <h1 class="modal-title fs-5" id="exampleModalLabel">
                         Join class room
                     </h1>
-                    <button type="button" class="btn-close" @click="closeJoinClassRoom"></button>
+                    <button type="button" class="btn-close shadow-none" @click="closeJoinClassRoom"></button>
                 </div>
                 <div class="modal-body border-0">
                     <div class="form-group">
@@ -292,9 +294,10 @@ export default {
             modal.hide();
         },
 
+        /* Function to push data into another route */
         goToCourseDetails() {
             this.$router.push( { name: 'myCourse' } );
-        }
+        },
 
     }
 }
