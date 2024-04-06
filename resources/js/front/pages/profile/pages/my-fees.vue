@@ -42,6 +42,8 @@
         </div>
     </div>
 
+    <pagination v-if="!loading && feesListData.length > 0"/>
+
     <noDataFound v-if="!loading && feesListData.length === 0"/>
 
     <preloader v-if="loading"/>
@@ -52,10 +54,10 @@
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
 import BreadcrumbContent from "../components/breadcrumb.vue";
-
+import pagination from "../components/pagination.vue";
 export default {
     components: {
-        BreadcrumbContent, noDataFound, preloader
+        BreadcrumbContent, noDataFound, preloader, pagination
     },
     data() {
         return {

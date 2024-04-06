@@ -21,28 +21,32 @@
 
     <div class="profile-content bg-white shadow scrollbar p-3 rounded-3" v-if="!loading && classRoomDataList.length > 0">
 
-        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2">
+        <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
             <div class="p-3" v-for="each in classRoomDataList">
-                <div class="position-relative">
-                    <img :src="each.filePath" class="img-fluid hpx-150 object-fit-cover" alt="classroom bg">
-                    <div class="position-absolute top-0 start-0 p-3 text-white fs-5">
-                        {{each.courseName}}
-                        <br>
-                        {{each.professor}}
+                <div class="card border rounded-3">
+                    <div class="position-relative">
+                        <img :src="each.filePath" class="img-fluid hpx-150 object-fit-cover" alt="classroom bg">
+                        <div class="position-absolute top-0 start-0 p-3 text-white fs-5">
+                            {{each.courseName}}
+                            <br>
+                            {{each.professor}}
+                        </div>
                     </div>
-                </div>
-                <div class="border border-top-0 hpx-100 rounded-bottom-3 d-flex justify-content-end align-items-end p-2">
-                    <button type="button" class="btn btn-outline-theme rounded-circle me-2 wpx-40 hpx-40 d-flex justify-content-center align-items-center" @click="openProfessorDetailsModal(each)">
-                        <i class="bi bi-person"></i>
-                    </button>
-                    <button type="button" class="btn btn-outline-theme rounded-circle wpx-40 hpx-40 d-flex justify-content-center align-items-center" @click="goToCourseDetails(each)">
-                        <i class="bi bi-arrow-right-short"></i>
-                    </button>
+                    <div class="hpx-100 rounded-bottom-3 d-flex justify-content-end align-items-end p-3">
+                        <button type="button" class="btn btn-outline-theme rounded-circle me-2 wpx-40 hpx-40 d-flex justify-content-center align-items-center" @click="openProfessorDetailsModal(each)">
+                            <i class="bi bi-person"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-theme rounded-circle wpx-40 hpx-40 d-flex justify-content-center align-items-center" @click="goToCourseDetails(each)">
+                            <i class="bi bi-arrow-right-short"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
     </div>
+
+    <pagination v-if="!loading && classRoomDataList.length > 0"/>
 
     <noDataFound v-if="!loading && classRoomDataList.length === 0"/>
 
@@ -85,11 +89,26 @@
                     <button type="button" class="btn-close shadow-none" @click="closeProfessorDetailsModal"></button>
                 </div>
                 <div class="modal-body border-0">
-                    <div class="mb-3"> <span class="fw-bold"> Professor name: </span> Mahi Bashar Akash </div>
-                    <div class="mb-3"> <span class="fw-bold"> Phone number: </span> +880 01645820007 </div>
-                    <div class="mb-3"> <span class="fw-bold"> Email: </span> mahibashar2023@gmail.com </div>
-                    <div class="mb-3"> <span class="fw-bold"> Professor code: </span> MBA </div>
-                    <div> <span class="fw-bold"> Certified: </span> MBA, BBA </div>
+                    <div class="mb-3">
+                        <div class="fw-bold mb-2"> Professor name: </div>
+                        <div class="text-light-gray-hover"> Mahi Bashar Akash </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="fw-bold mb-2"> Phone number: </div>
+                        <div class="text-light-gray-hover"> +880 01645820007 </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="fw-bold mb-2"> Email: </div>
+                        <div class="text-light-gray-hover"> mahibashar2023@gmail.com </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="fw-bold mb-2"> Professor code: </div>
+                        <div class="text-light-gray-hover"> MBA </div>
+                    </div>
+                    <div>
+                        <div class="fw-bold mb-2"> Certified: </div>
+                        <div class="text-light-gray-hover"> MBA, BBA </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,9 +120,10 @@
 import noDataFound from "../components/no-data-found.vue";
 import preloader from "../components/preloader.vue";
 import BreadcrumbContent from "../components/breadcrumb.vue";
+import pagination from "../components/pagination.vue";
 export default {
     components: {
-        BreadcrumbContent, noDataFound, preloader
+        BreadcrumbContent, noDataFound, preloader, pagination
     },
     data(){
         return{
