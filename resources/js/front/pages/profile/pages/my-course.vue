@@ -31,8 +31,8 @@
 
         <div class="d-flex justify-content-between align-items-center border pe-3 rounded-3 mb-3">
             <div class="p-3">
-                <a href="https://meet.google.com/ypw-gete-spv" class="text-decoration-none truncate-to-1-line" target="_blank">
-                    https://meet.google.com/ypw-gete-spv
+                <a href="https://meet.google.com/jrp-zekq-upp" class="text-decoration-none truncate-to-1-line" target="_blank">
+                    https://meet.google.com/jrp-zekq-upp
                 </a>
             </div>
             <div class="dropdown">
@@ -148,12 +148,6 @@
         </div>
 
     </div>
-
-<!--    <pagination v-if="!loading && courseSingleData.length > 0"/>-->
-
-<!--    <noDataFound v-if="!loading && courseSingleData.length === 0"/>-->
-
-<!--    <preloader v-if="loading"/>-->
 
 </template>
 
