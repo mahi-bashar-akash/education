@@ -3,7 +3,7 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="row">
-                    <div class="col-3 d-none d-lg-inline">
+                    <div class="col-lg-3 col-xl-2 d-none d-lg-inline">
                         <div class="bg-white shadow rounded-3 h-100">
                             <div class="p-3">
                                 <router-link :to="{name: 'profile'}" class="nav-link py-2 px-3 mb-1">
@@ -18,7 +18,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 col-xl-10">
                         <router-view/>
                     </div>
                 </div>

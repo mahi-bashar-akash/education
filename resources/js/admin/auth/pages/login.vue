@@ -93,6 +93,7 @@ export default {
             })
         },
 
+        /* Function to remember check */
         rememberCheck() {
             this.loginParam.remember = this.loginParam.remember !== true;
         },

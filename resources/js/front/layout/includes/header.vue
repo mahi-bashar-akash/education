@@ -44,19 +44,19 @@
                                 Contact
                             </router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" v-if="this.userInfo === null">
                             <router-link :to="{name: 'login'}" class="nav-link" @click="collapse">
                                 Login
                             </router-link>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" v-if="this.userInfo !== null">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Profile
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end p-1 overflow-hidden rounded-3 border">
                                 <li>
                                     <router-link :to="{name: 'profile'}" class="dropdown-item px-3 py-2 rounded-2 mb-1" @click="collapse">
-                                        Mahi Bashar Akash
+                                        {{profile_data.name}}
                                     </router-link>
                                 </li>
                                 <li>
@@ -70,7 +70,7 @@
                                     </router-link>
                                 </li>
                                 <li>
-                                    <button type="button" class="dropdown-item px-3 py-2 rounded-2" @click="collapse">
+                                    <button type="button" class="dropdown-item px-3 py-2 rounded-2" @click="userLogout();collapse">
                                         Logout
                                     </button>
                                 </li>
@@ -85,6 +85,8 @@
 </template>
 
 <script>
+import apiServices from "../../../services/apiServices.js";
+import apiRoutes from "../../../services/apiRoutes.js";
 
 export default {
 
@@ -99,6 +101,8 @@ export default {
                 'aria-expanded': 'false',
                 'aria-label': 'Toggle navigation',
             },
+            userInfo: window.core.UserInfo,
+            profile_data: '',
         }
 
     },
@@ -114,6 +118,10 @@ export default {
             }
         });
 
+        if(this.userInfo !== null) {
+            this.getUserProfile();
+        }
+
     },
 
     methods: {
@@ -128,7 +136,34 @@ export default {
                     navbarCollapse.classList.add('show');
                 }
             }
-        }
+        },
+
+        /* Function to get profile data api */
+        getUserProfile() {
+            this.getProfileLoading = true;
+            apiServices.GET(apiRoutes.userProfile, (res) => {
+                this.getProfileLoading = false;
+                if (res.status === 200) {
+                    this.profile_data = res.data
+                }
+            })
+        },
+
+
+        /* Function to logout api */
+        userLogout() {
+            this.logoutLoading = true
+            apiServices.GET(apiRoutes.userLogout, (res) => {
+                this.logoutLoading = false
+                if (res.status === 200) {
+                    this.$toast.success('Logout Successful', {
+                        position:
+                            "top-right"
+                    });
+                    window.location.reload()
+                }
+            })
+        },
 
     }
 

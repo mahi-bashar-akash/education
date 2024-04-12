@@ -28,10 +28,10 @@ Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'da
 
 /*
 |--------------------------------------------------------------------------
-|---- Front Routes --------------------------------------------------------
+|---- User Routes --------------------------------------------------------
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
-Route::get('/user/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
-Route::get('/', function () { return redirect()->route('lvs.front.any', 'home'); } );
+Route::get('/user/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.user');
+Route::get('/user/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.user.any');
+Route::get('/', function () { return redirect()->route('lvs.user.any', 'home'); } );

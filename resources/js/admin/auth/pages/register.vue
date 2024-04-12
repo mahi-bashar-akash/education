@@ -77,8 +77,7 @@ export default {
             },
         }
     },
-    mounted() {
-    },
+    mounted() {  },
     methods: {
 
         /* Function to password visibility */

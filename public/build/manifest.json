@@ -3,8 +3,8 @@
     "file": "assets/forget-CD4EWs7v.css",
     "src": "_forget-!~{004}~.js"
   },
-  "_forget-CVzx8bmq.js": {
-    "file": "assets/forget-CVzx8bmq.js",
+  "_forget-CTq7KDP3.js": {
+    "file": "assets/forget-CTq7KDP3.js",
     "css": [
       "assets/forget-CD4EWs7v.css"
     ],
@@ -22,19 +22,19 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-CZV4xbEG.js",
+    "file": "assets/app-BcC1dvjY.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_forget-CVzx8bmq.js"
+      "_forget-CTq7KDP3.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-DHCkHvLy.js",
+    "file": "assets/app-DlKEhZwR.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_forget-CVzx8bmq.js"
+      "_forget-CTq7KDP3.js"
     ],
     "css": [
       "assets/app-hEpI-9Tf.css"
