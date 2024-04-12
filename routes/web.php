@@ -15,28 +15,15 @@ use App\Http\Controllers\FrontController;
 |
 */
 
-//Route::get('/', function () { return view('welcome'); } );
-
-/*
-|--------------------------------------------------------------------------
-|---- Admin Auth Routes ---------------------------------------------------
-|--------------------------------------------------------------------------
-*/
-
-Route::get('admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth');
-
-Route::get('admin/auth', function () { return redirect()->route('lvs.admin.auth', 'login'); } );
-
 /*
 |--------------------------------------------------------------------------
 |---- Admin Routes --------------------------------------------------------
 |--------------------------------------------------------------------------
 */
 
-Route::get('/admin', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin');
-
-Route::get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
-
+Route::middleware('LoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth.any');
+Route::middleware('LoginCheck')->get('/admin', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
+Route::middleware('LoginCheck')->get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
 Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'dashboard'); } );
 
 /*
@@ -45,8 +32,6 @@ Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'da
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front');
-
-Route::get('/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
-
+Route::get('/user/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
+Route::get('/user/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.front.any');
 Route::get('/', function () { return redirect()->route('lvs.front.any', 'home'); } );

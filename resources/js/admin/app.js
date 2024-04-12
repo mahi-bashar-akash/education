@@ -10,8 +10,10 @@ import axios from "axios";
 
 import app from "./app.vue";
 
+import Toaster from '@meforma/vue-toaster';
+
 import { createApp } from "vue";
 
 import router from "./router/router";
 
-createApp( app ).use( router,  axios ).mount('#app')
+createApp( app ).use(router, axios).use(Toaster).mount('#app')

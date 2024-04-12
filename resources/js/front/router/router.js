@@ -36,7 +36,7 @@ import myFees from "../pages/profile/pages/my-fees.vue";
 
 const TITLE = window.core.APP_NAME
 
-const ROOT_URL = "/";
+const ROOT_URL = "/user/";
 
 const routes = [
     {
