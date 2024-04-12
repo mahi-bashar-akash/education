@@ -34,13 +34,17 @@
             </div>
         </div>
         <div class="mb-3">
-            <button type="submit" class="btn btn-theme wpx-90">
+            <button type="submit" class="btn btn-theme wpx-90" v-if="!loginLoading">
                 Login
+            </button>
+            <button type="button" class="btn btn-theme wpx-90" v-if="loginLoading">
+                <span class="spinner-border border-2 wpx-15 hpx-15"></span>
             </button>
         </div>
         <div class="text-light-gray">
             Don't have an account?
-            <router-link :to="{name: 'register'}" class="text-light-gray-hover text-decoration-none"> Sign up
+            <router-link :to="{name: 'register'}" class="text-light-gray-hover text-decoration-none">
+                Sign up
             </router-link>
         </div>
     </form>
@@ -61,7 +65,8 @@ export default {
             loginParam: {
                 email: '',
                 password: '',
-            }
+            },
+            loginLoading: false,
         }
     },
     mounted() {
@@ -75,10 +80,10 @@ export default {
 
         /* Function to log in api */
         login() {
-            this.loading = true;
+            this.loginLoading = true;
             this.error = null;
             apiServices.POST(apiRoutes.adminLogin, this.loginParam, (res) => {
-                this.loading = false
+                this.loginLoading = false
                 if (res.status === 200) {
                     this.$toast.success('Login Successful', { position: "top-right" } );
                     window.location.reload()

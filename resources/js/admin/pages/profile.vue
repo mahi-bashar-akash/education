@@ -60,11 +60,11 @@
                                 <div class="mt-3 px-3">
                                     <div v-if="!loading">
                                         <div class="mb-2 text-light-gray fw-bold">Name:</div>
-                                        <div class="mb-2 text-light-gray-hover"> Mahi Bashar Akash</div>
+                                        <div class="mb-2 text-light-gray-hover">{{profile_data.name}}</div>
                                         <div class="mb-2 text-light-gray fw-bold">Email:</div>
-                                        <div class="mb-2 text-light-gray-hover"> mahibashar2023@gmail.com</div>
+                                        <div class="mb-2 text-light-gray-hover">{{profile_data.email}}</div>
                                         <div class="mb-2 text-light-gray fw-bold">Phone Number:</div>
-                                        <div class="mb-2 text-light-gray-hover"> 01645820007</div>
+                                        <div class="mb-2 text-light-gray-hover">{{profile_data.phone}}</div>
                                     </div>
 
                                     <div class="card-text placeholder-glow" v-if="loading">
@@ -96,26 +96,31 @@
                             <!-- update profile -->
                             <div class="card-body" v-if="tab === 1">
                                 <div class="fs-5 mb-3">Edit Profile</div>
-                                <form>
+                                <form @submit.prevent="updateAdminProfile()">
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input id="name" type="text" name="name" class="form-control"
-                                               v-model="profileParam.name" required autocomplete="new-name">
+                                               v-model="profileParam.name" autocomplete="new-name">
+                                        <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input id="email" type="email" name="email" class="form-control" required
+                                        <input id="email" type="email" name="email" class="form-control"
                                                v-model="profileParam.email" autocomplete="new-email">
+                                        <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.email[0]}} </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="phone-number" class="form-label">Phone number</label>
                                         <input id="phone-number" type="text" name="phone-number" class="form-control"
-                                               required
-                                               v-model="profileParam.phoneNumber" autocomplete="new-phone-number">
+                                               v-model="profileParam.phone" autocomplete="new-phone-number">
+                                        <div class="error-report" v-if="error != null && error.phone !== undefined"> {{error.phone[0]}} </div>
                                     </div>
                                     <div class="w-100">
-                                        <button type="button" class="btn btn-theme wpx-150">
+                                        <button type="submit" class="btn btn-theme wpx-150" v-if="!updateProfileLoading">
                                             Update profile
+                                        </button>
+                                        <button type="button" class="btn btn-theme wpx-150" v-if="updateProfileLoading">
+                                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                         </button>
                                     </div>
                                 </form>
@@ -124,18 +129,19 @@
                             <!-- update password -->
                             <div class="card-body" v-if="tab === 2">
                                 <div class="fs-5 mb-3">Change password</div>
-                                <form>
+                                <form @submit.prevent="changeAdminPassword()">
                                     <div class="form-group mb-3">
                                         <label for="current-password" class="form-label">Current password</label>
                                         <input id="current-password" type="password" name="current-password"
-                                               v-model="passwordParam.currentPassword" class="form-control" required
+                                               v-model="passwordParam.current_password" class="form-control"
                                                autocomplete="current-password">
+                                        <div class="error-report" v-if="error != null && error.current_password !== undefined"> {{error.current_password[0]}} </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="new-password" class="form-label">New password</label>
                                         <div class="position-relative">
                                             <input id="password" :type="passwordFieldType" name="password"
-                                                   class="form-control" v-model="passwordParam.password" required
+                                                   class="form-control" v-model="passwordParam.password"
                                                    autocomplete="new-password">
                                             <div
                                                 class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
@@ -144,12 +150,13 @@
                                                 <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
                                             </div>
                                         </div>
+                                        <div class="error-report" v-if="error != null && error.password !== undefined"> {{error.password[0]}} </div>
                                     </div>
                                     <div class="form-group mb-3">
                                         <label for="confirm-password" class="form-label">Confirm password</label>
                                         <div class="position-relative">
                                             <input id="password" :type="passwordConfirmationFieldType" name="password"
-                                                   class="form-control" v-model="passwordParam.passwordConfirm" required
+                                                   class="form-control" v-model="passwordParam.password_confirmation"
                                                    autocomplete="new-confirm-password">
                                             <div
                                                 class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer"
@@ -160,10 +167,14 @@
                                                    v-if="passwordConfirmationFieldType === 'password'"></i>
                                             </div>
                                         </div>
+                                        <div class="error-report" v-if="error != null && error.password_confirmation !== undefined"> {{error.password_confirmation[0]}} </div>
                                     </div>
                                     <div class="w-100">
-                                        <button type="button" class="btn btn-theme wpx-150">
+                                        <button type="submit" class="btn btn-theme wpx-150" v-if="!passwordChangeLoading">
                                             Update password
+                                        </button>
+                                        <button type="button" class="btn btn-theme wpx-150" v-if="passwordChangeLoading">
+                                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                         </button>
                                     </div>
                                 </form>
@@ -179,6 +190,8 @@
 
 <script>
 import breadcrumb from "../components/breadcrumb.vue";
+import apiServices from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
@@ -197,16 +210,20 @@ export default {
             passwordFieldType: 'password',
             passwordConfirmationFieldType: 'password',
             passwordParam: {
-                currentPassword: '',
+                current_password: '',
                 password: '',
-                passwordConfirm: '',
+                password_confirmation: '',
             },
             profileParam: {
                 name: '',
                 email: '',
-                phoneNumber: '',
+                phone: '',
             },
             loading: true,
+            profile_data: null,
+            updateProfileLoading: false,
+            passwordChangeLoading: false,
+            error: null,
         }
 
     },
@@ -215,9 +232,36 @@ export default {
         setTimeout(() => {
             this.loading = false
         }, 2000)
+        this.getAdminProfile()
     },
 
     methods: {
+
+        /* Function to get profile data api */
+        getAdminProfile() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.adminProfile, (res) => {
+                this.loading = false;
+                if (res.status === 200) {
+                    this.profile_data = res.data
+                    this.profileParam = this.profile_data
+                }
+            })
+        },
+
+        /* Function to change password data api */
+        changeAdminPassword() {
+            this.passwordChangeLoading = true;
+            apiServices.POST(apiRoutes.adminChangePassword, this.passwordParam, (res) => {
+                this.passwordChangeLoading = false;
+                if(res.status === 200) {
+                    this.$toast.success('Change Password Successful', { position: "top-right" } );
+                    window.location.reload()
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
 
         /* Function to set tab */
         setTab(tab) {

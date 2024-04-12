@@ -3,8 +3,7 @@
     <div class="admin-wrapper">
         <aside class="admin-sidebar" :class="{ 'active' : sidebarActive }">
             <div class="admin-sidebar-header">
-                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5"
-                             @click="remove()">
+                <router-link :to="{name: 'dashboard'}" class="text-decoration-none text-light-gray fs-5" @click="remove()">
                     <span class="none-res-text">Education.io</span>
                     <span class="res-text">E</span>
                 </router-link>
@@ -73,10 +72,10 @@
                             <img :src="`/images/clients/face-1.png`" class="img-fluid wpx-35 hpx-35 rounded-circle"
                                  alt="avatar">
                         </button>
-                        <span class="dropdown-menu dropdown-menu-end p-1 overflow-hidden rounded-3 border">
+                        <span class="dropdown-menu dropdown-menu-end p-1 overflow-hidden rounded-3 border mt-3">
                             <span>
                                 <router-link :to="{name: 'profile'}" class="dropdown-item">
-                                    {{profile_data.name}}
+                                    Profile
                                 </router-link>
                             </span>
                             <span>
@@ -106,14 +105,11 @@ export default {
         return {
             sidebarActive: false,
             getProfileLoading: false,
-            profile_data: '',
             logoutLoading: false,
         }
     },
 
-    mounted() {
-        this.getAdminProfile();
-    },
+    mounted() {  },
 
     methods: {
 
@@ -126,18 +122,6 @@ export default {
         remove() {
             this.sidebarActive = false;
         },
-
-        /* Function to get profile data api */
-        getAdminProfile() {
-            this.getProfileLoading = true;
-            apiServices.GET(apiRoutes.adminProfile, (res) => {
-                this.getProfileLoading = false;
-                if (res.status === 200) {
-                    this.profile_data = res.data
-                }
-            })
-        },
-
 
         /* Function to logout api */
         adminLogout() {
