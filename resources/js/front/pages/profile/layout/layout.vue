@@ -31,9 +31,14 @@
 
 export default {
     data() {
-        return {}
+        return {
+            userInfo: window.core.UserInfo,
+        }
     },
     mounted() {
+        if(this.userInfo === null) {
+            this.$router.push( {name: 'login'} )
+        }
     },
     methods: {}
 }

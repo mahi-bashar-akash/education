@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class FrontController extends BaseController
 {
-    public function index() {
+    public function user() {
         return view('front.index');
     }
 

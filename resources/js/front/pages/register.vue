@@ -96,6 +96,9 @@ export default {
         }
     },
     mounted() {
+        if(this.userInfo !== null) {
+            this.$router.push( {name: 'profile'} )
+        }
     },
     methods: {
 
@@ -113,7 +116,7 @@ export default {
         registration() {
             this.registerLoading = true;
             this.error = null;
-            apiServices.POST(apiRoutes.adminRegister, this.registerParam, (res) => {
+            apiServices.POST(apiRoutes.userRegister, this.registerParam, (res) => {
                 this.registerLoading = false
                 if (res.status === 200) {
                     this.$toast.success('Registration Successful', { position: "top-right" } );

@@ -21,9 +21,9 @@ use App\Http\Controllers\FrontController;
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('LoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.auth.any');
-Route::middleware('LoginCheck')->get('/admin', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
-Route::middleware('LoginCheck')->get('/admin/{any}', [AdminController::class, 'index'])->where('any', '.*')->name('lvs.admin.any');
+Route::middleware('LoginCheck')->get('/admin/auth/{any}', [AdminController::class, 'admin'])->where('any', '.*')->name('lvs.admin.auth.any');
+Route::middleware('LoginCheck')->get('/admin', [AdminController::class, 'admin'])->where('any', '.*')->name('lvs.admin');
+Route::middleware('LoginCheck')->get('/admin/{any}', [AdminController::class, 'admin'])->where('any', '.*')->name('lvs.admin.any');
 Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'dashboard'); } );
 
 /*
@@ -32,6 +32,7 @@ Route::get('/admin', function () { return redirect()->route('lvs.admin.any', 'da
 |--------------------------------------------------------------------------
 */
 
-Route::get('/user/', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.user');
-Route::get('/user/{any}', [FrontController::class, 'index'])->where('any', '.*')->name('lvs.user.any');
-Route::get('/', function () { return redirect()->route('lvs.user.any', 'home'); } );
+Route::get('/user/auth/{any}', [FrontController::class, 'user'])->where('any', '.*')->name('lvs.user.auth.any');
+Route::get('/user/', [FrontController::class, 'user'])->where('any', '.*')->name('lvs.user');
+Route::get('/user/{any}', [FrontController::class, 'user'])->where('any', '.*')->name('lvs.user.any');
+Route::get('/', function (){ return redirect()->route('lvs.user.any','home'); });

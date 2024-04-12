@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class AdminController extends BaseController
 {
-    public function index() {
+    public function admin() {
         return view('admin.index');
     }
 

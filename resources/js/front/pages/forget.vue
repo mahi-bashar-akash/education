@@ -117,6 +117,9 @@ export default {
         }
     },
     mounted() {
+        if(this.userInfo !== null) {
+            this.$router.push( {name: 'profile'} )
+        }
     },
     methods: {
 

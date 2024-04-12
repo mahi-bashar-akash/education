@@ -85,6 +85,9 @@ export default {
         }
     },
     mounted() {
+        if(this.userInfo !== null) {
+            this.$router.push( {name: 'profile'} )
+        }
     },
     methods: {
 
@@ -96,11 +99,6 @@ export default {
         /* Function to remember check */
         rememberCheck() {
             this.loginParam.remember = this.loginParam.remember !== true;
-        },
-
-        /* push me in profile */
-        goRoute() {
-            this.$router.push({name: 'profile'})
         },
 
         /* Function to log in api */
