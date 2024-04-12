@@ -114,6 +114,7 @@ export default {
             },
             resetLoading: false,
             error: null,
+            userInfo: window.core.UserInfo,
         }
     },
     mounted() {

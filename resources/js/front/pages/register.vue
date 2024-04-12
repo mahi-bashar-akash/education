@@ -93,6 +93,7 @@ export default {
                 password: '',
                 password_confirmation: '',
             },
+            userInfo: window.core.UserInfo,
         }
     },
     mounted() {

@@ -82,6 +82,7 @@ export default {
                 password: '',
             },
             loginLoading: false,
+            userInfo: window.core.UserInfo,
         }
     },
     mounted() {
