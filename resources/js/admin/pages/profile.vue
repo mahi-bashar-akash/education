@@ -249,13 +249,25 @@ export default {
             })
         },
 
+        /* Function to update admin profile data api */
+        updateAdminProfile() {
+            this.updateProfileLoading = true;
+            apiServices.POST(apiRoutes.adminProfileUpdate, (res) => {
+                this.updateProfileLoading = false;
+                if (res.status === 200) {
+                    this.$toast.success('Update Profile Successfully', { position: "top-right" } );
+                    window.location.reload()
+                }
+            })
+        },
+
         /* Function to change password data api */
         changeAdminPassword() {
             this.passwordChangeLoading = true;
             apiServices.POST(apiRoutes.adminChangePassword, this.passwordParam, (res) => {
                 this.passwordChangeLoading = false;
                 if(res.status === 200) {
-                    this.$toast.success('Change Password Successful', { position: "top-right" } );
+                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
                     window.location.reload()
                 } else {
                     this.error = res.errors
