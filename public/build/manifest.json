@@ -1,12 +1,12 @@
 {
-  "_forget-!~{004}~.js": {
-    "file": "assets/forget-CD4EWs7v.css",
-    "src": "_forget-!~{004}~.js"
+  "_index-!~{004}~.js": {
+    "file": "assets/index-CD4EWs7v.css",
+    "src": "_index-!~{004}~.js"
   },
-  "_forget-Bs0QGR2F.js": {
-    "file": "assets/forget-Bs0QGR2F.js",
+  "_index-BME_Wul9.js": {
+    "file": "assets/index-BME_Wul9.js",
     "css": [
-      "assets/forget-CD4EWs7v.css"
+      "assets/index-CD4EWs7v.css"
     ],
     "assets": [
       "assets/bootstrap-icons-BtvjY1KL.woff2",
@@ -22,19 +22,19 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-BKM0VTq4.js",
+    "file": "assets/app-CFRUswuR.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_forget-Bs0QGR2F.js"
+      "_index-BME_Wul9.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-C96jdAxH.js",
+    "file": "assets/app-BKK6Wvz_.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_forget-Bs0QGR2F.js"
+      "_index-BME_Wul9.js"
     ],
     "css": [
       "assets/app-hEpI-9Tf.css"

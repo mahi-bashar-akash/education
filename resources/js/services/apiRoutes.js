@@ -22,6 +22,7 @@ const apiRoutes = {
     userProfile: '/user-secure/user-profile/details',
     userProfileUpdate: '/user-secure/user-profile/update',
     userChangePassword: '/user-secure/user-profile/update/password',
+    userPaymentUpdate: '/user-secure/user-profile/update/payment',
     userLogout: '/user-secure/user-profile/logout',
 
 }

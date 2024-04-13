@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('verified_token')->nullable();
             $table->bigInteger('reset_code')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('card_holder_name')->nullable();
+            $table->string('card_name')->nullable();
+            $table->string('card_expire_date')->nullable();
+            $table->string('card_cvv')->nullable();
             $table->rememberToken();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();

@@ -192,25 +192,23 @@
                     <!-- update payment -->
                     <div class="card-body" v-if="tab === 'edit-payment'">
                         <div class="fs-5 mb-3">Edit payment</div>
-                        <form autocomplete="off">
+                        <form @submit.prevent="updateUserPayment()" autocomplete="off">
                             <div class="mb-3">
-                                <label for="card-holder-full-name" class="form-label fw-bold">
-                                    Card holder full name
-                                </label>
-                                <input id="card-holder-full-name" type="text" name="card-holder-full-name" class="form-control" v-model="paymentParam.cardHolderName" autocomplete="new-card-holder-full-name" placeholder="Enter your card holder full name">
+                                <label for="card-holder-full-name" class="form-label fw-bold"> Card holder full name </label>
+                                <input id="card-holder-full-name" type="text" name="card_holder_name" class="form-control" v-model="paymentParam.card_holder_name" autocomplete="new-card-holder-full-name" placeholder="Enter your card holder full name">
                             </div>
                             <div class="mb-3">
-                                <label for="card-name" class="form-label fw-bold">Card name</label>
-                                <input id="card-name" type="text" name="card-name" class="form-control" v-model="paymentParam.cardName" autocomplete="new-card-name" placeholder="Enter your card name">
+                                <label for="card-name" class="form-label fw-bold"> Card name </label>
+                                <input id="card-name" type="text" name="card_name" class="form-control" v-model="paymentParam.card_name" autocomplete="new-card-name" placeholder="Enter your card name">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="expire-date" class="form-label fw-bold">Expire date</label>
-                                    <input id="expire-date" type="text" name="expire-date" class="form-control" v-model="paymentParam.expireDate" autocomplete="new-expire-date" placeholder="Enter your card expire date">
+                                    <label for="card-expire-date" class="form-label fw-bold"> Expire date </label>
+                                    <input id="card-expire-date" type="text" name="card_expire_date" class="form-control" v-model="paymentParam.card_expire_date" autocomplete="new-expire-date" placeholder="Enter your card expire date">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="cvv" class="form-label fw-bold">CVV</label>
-                                    <input id="cvv" type="text" name="cvv" class="form-control" v-model="paymentParam.cvv" autocomplete="new-cvv" placeholder="Enter your card cvv">
+                                    <label for="card-cvv" class="form-label fw-bold"> CVV </label>
+                                    <input id="card-cvv" type="text" name="card_cvv" class="form-control" v-model="paymentParam.card_cvv" autocomplete="new-cvv" placeholder="Enter your card cvv">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -232,6 +230,7 @@
 import breadcrumb from "../components/breadcrumb.vue";
 import apiServices from "../../../../services/apiServices.js";
 import apiRoutes from "../../../../services/apiRoutes.js";
+import flatpickr from "flatpickr";
 
 export default {
     components: {
@@ -261,15 +260,16 @@ export default {
                 presentAddress: '',
             },
             paymentParam: {
-                cardHolderName: '',
-                cardName: '',
-                expireDate: '',
-                cvv: '',
+                card_holder_name: '',
+                card_name: '',
+                card_expire_date: '',
+                card_cvv: '',
             },
             loading: true,
             userInfo: window.core.UserInfo,
             profile_data: null,
             error: null,
+            paymentLoading: false,
         }
 
     },
@@ -281,6 +281,7 @@ export default {
         if(this.userInfo !== null) {
             this.getUserProfile();
         }
+        this.flatpickrConfigCardExpireDate();
     },
 
     methods: {
@@ -313,6 +314,7 @@ export default {
                 if (res.status === 200) {
                     this.profile_data = res.data
                     this.profileParam = this.profile_data
+                    this.paymentParam = this.profile_data
                 }
             })
         },
@@ -342,6 +344,30 @@ export default {
                 } else {
                     this.error = res.errors
                 }
+            })
+        },
+
+        /* Function to change user password data api */
+        updateUserPayment() {
+            this.paymentLoading = true;
+            apiServices.POST(apiRoutes.userPaymentUpdate, this.paymentParam, (res) => {
+                this.paymentLoading = false;
+                if(res.status === 200) {
+                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
+                    window.location.reload()
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to card expire date */
+        flatpickrConfigCardExpireDate() {
+            flatpickr("#card-expire-date", {
+                altFormat: 'j M Y',
+                altInput: true,
+                dateFormat: 'Y-m-d',
+                disableMobile: true,
             })
         },
 

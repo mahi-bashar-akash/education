@@ -195,6 +195,35 @@ class FrontController extends BaseController
         }
     }
 
+    public static function profile_update_payment(Request $request)
+    {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'card_holder_name' => 'required|String',
+                    'card_name' => 'required|String',
+                    'card_expire_date' => 'required|String',
+                    'card_cvv' => 'required|String',
+                ]
+            );
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+
+            $user = User::where('id', Auth::guard('users')->id())->first();
+            $user->card_holder_name = $request->card_holder_name;
+            $user->card_name = $request->card_name;
+            $user->card_expire_date = $request->card_expire_date;
+            $user->card_cvv = $request->card_cvv;
+            $user->save();
+
+            return ['status' => 200];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
     public static function profile_logout(Request $request)
     {
         try {

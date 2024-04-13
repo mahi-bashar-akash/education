@@ -14,13 +14,13 @@
                                 <div class="alert alert-danger rounded-3 mb-3 text-center" v-if="error !== null && error.error !== undefined" v-text="error.error"></div>
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input id="email" type="email" name="email" class="form-control" required autocomplete="new-email" v-model="loginParam.email">
+                                    <input id="email" type="email" name="email" class="form-control" autocomplete="new-email" v-model="loginParam.email">
                                     <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.email[0]}} </div>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <div class="position-relative">
-                                        <input id="password" :type="passwordFieldType" name="password" class="form-control" required autocomplete="new-password" v-model="loginParam.password">
+                                        <input id="password" :type="passwordFieldType" name="password" class="form-control" autocomplete="new-password" v-model="loginParam.password">
                                         <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
                                             <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
                                             <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
