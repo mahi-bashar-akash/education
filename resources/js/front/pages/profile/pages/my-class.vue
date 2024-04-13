@@ -1,13 +1,13 @@
 <template>
 
-    <div class="d-flex justify-content-between align-items-center bg-white shadow p-3 mb-3 rounded-3">
+    <div class="d-flex justify-content-between align-items-center bg-white shadow px-3 mb-3 rounded-3 hpx-60">
 
         <BreadcrumbContent :items="BreadcrumbItems"/>
 
-        <span class="spinner-border spinner-border border-1 wpx-10 hpx-10 me-2" aria-hidden="true" v-if="loading"></span>
+        <span class="spinner-border spinner-border border-1 wpx-30 hpx-30 me-2" aria-hidden="true" v-if="loading"></span>
 
         <div class="dropdown" v-if="!loading">
-            <button type="button" class="btn-icon rounded-circle wpx-20 hpx-20" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn-icon rounded-circle wpx-30 hpx-30" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-plus-lg"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-end mt-3 p-1 overflow-hidden rounded-3 border">

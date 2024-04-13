@@ -1,7 +1,7 @@
 <template>
 
     <!-- breadcrumb -->
-    <div class="d-sm-flex justify-content-between align-items-center bg-white shadow p-3 mb-3">
+    <div class="d-flex justify-content-between align-items-center bg-white shadow px-3 mb-3 rounded-3 hpx-60">
         <breadcrumb :items="BreadcrumbItems"/>
     </div>
 

@@ -1,6 +1,6 @@
 <template>
 
-    <div class="bg-white shadow px-3 py-3 mb-3 rounded-3">
+    <div class="d-flex justify-content-between align-items-center bg-white shadow px-3 mb-3 rounded-3 hpx-60">
         <BreadcrumbContent :items="BreadcrumbItems"/>
     </div>
 
