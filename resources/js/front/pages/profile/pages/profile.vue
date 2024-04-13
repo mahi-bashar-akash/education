@@ -1,7 +1,7 @@
 <template>
 
     <!-- breadcrumb -->
-    <div class="d-flex justify-content-between align-items-center bg-white shadow px-3 mb-3 rounded-3 hpx-60">
+    <div class="d-flex justify-content-between align-items-center bg-white shadow px-4 mb-3 rounded-3 hpx-60">
         <breadcrumb :items="BreadcrumbItems"/>
     </div>
 
@@ -72,19 +72,19 @@
                                     Name:
                                 </div>
                                 <div class="mb-2 text-light-gray-hover">
-                                    Mahi Bashar Akash
+                                    {{profile_data.name}}
                                 </div>
                                 <div class="mb-2 text-light-gray fw-bold">
                                     Email:
                                 </div>
                                 <div class="mb-2 text-light-gray-hover">
-                                    mahibashar2023@gmail.com
+                                    {{profile_data.email}}
                                 </div>
                                 <div class="mb-2 text-light-gray fw-bold">
                                     Phone Number:
                                 </div>
                                 <div class="mb-2 text-light-gray-hover">
-                                    01645820007
+                                    {{profile_data.phone}}
                                 </div>
                             </div>
 
@@ -122,22 +122,21 @@
                     <!-- update profile -->
                     <div class="card-body" v-if="tab === 'edit-profile'">
                         <div class="fs-5 mb-3"> Edit profile</div>
-                        <form autocomplete="off">
+                        <form @submit.prevent="updateUserProfile()" autocomplete="off">
                             <div class="form-group mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input id="name" type="text" name="name" class="form-control" v-model="profileParam.name" required autocomplete="new-name" placeholder="Enter your full name">
+                                <input id="name" type="text" name="name" class="form-control" v-model="profileParam.name" autocomplete="new-name" placeholder="Enter your full name">
+                                <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.name[0]}} </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input id="email" type="email" name="email" class="form-control" v-model="profileParam.email" required autocomplete="new-email" placeholder="Enter your email address">
+                                <input id="email" type="email" name="email" class="form-control" v-model="profileParam.email" autocomplete="new-email" placeholder="Enter your email address">
+                                <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.email[0]}} </div>
                             </div>
                             <div class="form-group mb-3">
-                                <label for="phone-number" class="form-label">Phone number</label>
-                                <input id="phone-number" type="text" name="phone-number" class="form-control" v-model="profileParam.phoneNumber" required autocomplete="new-phone-number" placeholder="Enter your phone number">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="present-address" class="form-label">Present Address</label>
-                                <input id="present-address" type="text" name="present-address" class="form-control" v-model="profileParam.presentAddress" required autocomplete="new-present-address" placeholder="Enter your present address">
+                                <label for="phone" class="form-label">Phone number</label>
+                                <input id="phone" type="text" name="phone" class="form-control" v-model="profileParam.phone" autocomplete="new-phone" placeholder="Enter your phone number">
+                                <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.phone[0]}} </div>
                             </div>
                             <div class="w-100">
                                 <button type="submit" class="btn btn-theme wpx-200"> Update profile </button>
@@ -147,37 +146,40 @@
 
                     <!-- update password -->
                     <div class="card-body" v-if="tab === 'edit-password'">
-                        <div class="fs-5 mb-3"> Edit password</div>
-                        <form autocomplete="off">
+                        <div class="fs-5 mb-3"> Change password</div>
+                        <form @submit.prevent="changeUserPassword()" autocomplete="off">
                             <div class="form-group mb-3">
                                 <label for="current-password" class="form-label">Current password</label>
                                 <div class="position-relative">
-                                    <input id="current-password" :type="currentPasswordFieldType" name="current-password" v-model="passwordParam.currentPassword" class="form-control" required autocomplete="current-password" placeholder="Enter your current password">
+                                    <input id="current-password" :type="currentPasswordFieldType" name="current-password" v-model="passwordParam.current_password" class="form-control" autocomplete="current-password" placeholder="Enter your current password">
                                     <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="currentPasswordVisibility">
                                         <i class="bi bi-eye" v-if="currentPasswordFieldType === 'text'"></i>
                                         <i class="bi bi-eye-slash" v-if="currentPasswordFieldType === 'password'"></i>
                                     </div>
                                 </div>
+                                <div class="error-report" v-if="error != null && error.current_password !== undefined"> {{error.current_password[0]}} </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="new-password" class="form-label">New password</label>
                                 <div class="position-relative">
-                                    <input id="password" :type="passwordFieldType" name="password" class="form-control" v-model="passwordParam.password" required autocomplete="new-password" placeholder="Enter your new password">
+                                    <input id="password" :type="passwordFieldType" name="password" class="form-control" v-model="passwordParam.password" autocomplete="new-password" placeholder="Enter your new password">
                                     <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordVisibility">
                                         <i class="bi bi-eye" v-if="passwordFieldType === 'text'"></i>
                                         <i class="bi bi-eye-slash" v-if="passwordFieldType === 'password'"></i>
                                     </div>
                                 </div>
+                                <div class="error-report" v-if="error != null && error.password !== undefined"> {{error.password[0]}} </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="confirm-password" class="form-label">Confirm password</label>
                                 <div class="position-relative">
-                                    <input id="password" :type="passwordConfirmationFieldType" name="password" class="form-control" v-model="passwordParam.passwordConfirm" required autocomplete="new-confirm-password" placeholder="Enter your new confirm password">
+                                    <input id="confirm-password" :type="passwordConfirmationFieldType" name="password-confirmation" class="form-control" v-model="passwordParam.password_confirmation" autocomplete="new-confirm-password" placeholder="Enter your new confirm password">
                                     <div class="me-3 border-0 bg-transparent position-absolute top-50 end-0 translate-middle-y me-2 cursor-pointer" @click="passwordConfirmVisibility">
                                         <i class="bi bi-eye" v-if="passwordConfirmationFieldType === 'text'"></i>
                                         <i class="bi bi-eye-slash" v-if="passwordConfirmationFieldType === 'password'"></i>
                                     </div>
                                 </div>
+                                <div class="error-report" v-if="error != null && error.password_confirmation !== undefined"> {{error.password_confirmation[0]}} </div>
                             </div>
                             <div class="w-100">
                                 <button type="submit" class="btn btn-theme wpx-200">
@@ -195,20 +197,20 @@
                                 <label for="card-holder-full-name" class="form-label fw-bold">
                                     Card holder full name
                                 </label>
-                                <input id="card-holder-full-name" type="text" name="card-holder-full-name" class="form-control" required v-model="paymentParam.cardHolderName" autocomplete="new-card-holder-full-name" placeholder="Enter your card holder full name">
+                                <input id="card-holder-full-name" type="text" name="card-holder-full-name" class="form-control" v-model="paymentParam.cardHolderName" autocomplete="new-card-holder-full-name" placeholder="Enter your card holder full name">
                             </div>
                             <div class="mb-3">
                                 <label for="card-name" class="form-label fw-bold">Card name</label>
-                                <input id="card-name" type="text" name="card-name" class="form-control" required v-model="paymentParam.cardName" autocomplete="new-card-name" placeholder="Enter your card name">
+                                <input id="card-name" type="text" name="card-name" class="form-control" v-model="paymentParam.cardName" autocomplete="new-card-name" placeholder="Enter your card name">
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="expire-date" class="form-label fw-bold">Expire date</label>
-                                    <input id="expire-date" type="text" name="expire-date" class="form-control" required v-model="paymentParam.expireDate" autocomplete="new-expire-date" placeholder="Enter your card expire date">
+                                    <input id="expire-date" type="text" name="expire-date" class="form-control" v-model="paymentParam.expireDate" autocomplete="new-expire-date" placeholder="Enter your card expire date">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="cvv" class="form-label fw-bold">CVV</label>
-                                    <input id="cvv" type="text" name="cvv" class="form-control" required v-model="paymentParam.cvv" autocomplete="new-cvv" placeholder="Enter your card cvv">
+                                    <input id="cvv" type="text" name="cvv" class="form-control" v-model="paymentParam.cvv" autocomplete="new-cvv" placeholder="Enter your card cvv">
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -228,6 +230,8 @@
 
 <script>
 import breadcrumb from "../components/breadcrumb.vue";
+import apiServices from "../../../../services/apiServices.js";
+import apiRoutes from "../../../../services/apiRoutes.js";
 
 export default {
     components: {
@@ -246,9 +250,9 @@ export default {
             passwordFieldType: 'password',
             passwordConfirmationFieldType: 'password',
             passwordParam: {
-                currentPassword: '',
+                current_password: '',
                 password: '',
-                passwordConfirm: '',
+                password_confirmation: '',
             },
             profileParam: {
                 name: '',
@@ -263,6 +267,9 @@ export default {
                 cvv: '',
             },
             loading: true,
+            userInfo: window.core.UserInfo,
+            profile_data: null,
+            error: null,
         }
 
     },
@@ -270,7 +277,10 @@ export default {
     mounted() {
         setTimeout(() => {
             this.loading = false
-        }, 2000)
+        }, 2000);
+        if(this.userInfo !== null) {
+            this.getUserProfile();
+        }
     },
 
     methods: {
@@ -293,6 +303,46 @@ export default {
         /* Function to password confirm visibility */
         passwordConfirmVisibility() {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
+        },
+
+        /* Function to get profile data api */
+        getUserProfile() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.userProfile, (res) => {
+                this.loading = false;
+                if (res.status === 200) {
+                    this.profile_data = res.data
+                    this.profileParam = this.profile_data
+                }
+            })
+        },
+
+        /* Function to update admin profile data api */
+        updateUserProfile() {
+            this.updateProfileLoading = true;
+            apiServices.POST(apiRoutes.userProfileUpdate, this.profileParam, (res) => {
+                this.updateProfileLoading = false;
+                if (res.status === 200) {
+                    this.$toast.success('Update Profile Successfully', { position: "top-right" } );
+                    window.location.reload()
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to change password data api */
+        changeUserPassword() {
+            this.passwordChangeLoading = true;
+            apiServices.POST(apiRoutes.userChangePassword, this.passwordParam, (res) => {
+                this.passwordChangeLoading = false;
+                if(res.status === 200) {
+                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
+                    window.location.reload()
+                } else {
+                    this.error = res.errors
+                }
+            })
         },
 
     }
