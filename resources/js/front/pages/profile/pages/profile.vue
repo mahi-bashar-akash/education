@@ -305,7 +305,7 @@ export default {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to get profile data api */
+        /* Function to get user profile data api */
         getUserProfile() {
             this.loading = true;
             apiServices.GET(apiRoutes.userProfile, (res) => {
@@ -317,7 +317,7 @@ export default {
             })
         },
 
-        /* Function to update admin profile data api */
+        /* Function to update user profile data api */
         updateUserProfile() {
             this.updateProfileLoading = true;
             apiServices.POST(apiRoutes.userProfileUpdate, this.profileParam, (res) => {
@@ -331,7 +331,7 @@ export default {
             })
         },
 
-        /* Function to change password data api */
+        /* Function to change user password data api */
         changeUserPassword() {
             this.passwordChangeLoading = true;
             apiServices.POST(apiRoutes.userChangePassword, this.passwordParam, (res) => {
