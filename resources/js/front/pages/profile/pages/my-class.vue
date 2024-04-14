@@ -4,7 +4,7 @@
 
         <BreadcrumbContent :items="BreadcrumbItems"/>
 
-        <span class="spinner-border spinner-border wpx-15 hpx-15 me-2" aria-hidden="true" v-if="loading"></span>
+        <span class="spinner-border spinner-border border-2 wpx-15 hpx-15 me-2" aria-hidden="true" v-if="loading"></span>
 
         <div class="dropdown" v-if="!loading">
             <button type="button" class="btn-icon rounded-circle wpx-30 hpx-30" data-bs-toggle="dropdown" aria-expanded="false">
