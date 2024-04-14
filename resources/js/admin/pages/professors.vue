@@ -47,7 +47,7 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded v-if="!loading && tableRows.length === 0" :newModalFunction="manageProfessorModalOpen"/>
+    <noDataFounded :text="'professor'" :newModalFunction="manageProfessorModalOpen" v-if="!loading && tableRows.length === 0"/>
 
     <!-- pagination -->
     <pagination v-if="!loading && tableRows.length > 0"/>

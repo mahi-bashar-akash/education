@@ -46,7 +46,7 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded v-if="!loading && tableRows.length === 0" :newModalFunction="manageLibraryAssetModalOpen"/>
+    <noDataFounded :text="'library asset'" :newModalFunction="manageLibraryAssetModalOpen" v-if="!loading && tableRows.length === 0"/>
 
     <!-- pagination -->
     <pagination v-if="!loading && tableRows.length > 0"/>

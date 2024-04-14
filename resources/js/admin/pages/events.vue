@@ -50,7 +50,7 @@
 
     <!-- no data -->
     <!-- no data -->
-    <noDataFounded v-if="!loading && tableRows.length === 0" :newModalFunction="manageEventModalOpen"/>
+    <noDataFounded :text="'event'" :newModalFunction="manageEventModalOpen" v-if="!loading && tableRows.length === 0"/>
 
     <!-- pagination -->
     <pagination v-if="!loading && tableRows.length > 0"/>
