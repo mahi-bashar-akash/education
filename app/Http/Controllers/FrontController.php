@@ -34,7 +34,7 @@ class FrontController extends BaseController
 
             $credential = ['email' => $request->email, 'password' => $request->password];
             if (Auth::guard('users')->attempt($credential, $request->remember)) {
-                return ['status' => 200, 'data' => Auth::guard('users')->user()];
+                return ['message' => 'User login successfully', 'data' => Auth::guard('users')->user()];
             } else {
                 return ['status' => 500, 'errors' => ['error' => 'Invalid Credentials! Please try again']];
             }
@@ -66,7 +66,7 @@ class FrontController extends BaseController
             $user->avatar =  null;
             $user->save();
 
-            return ['status' => 200, 'msg' => 'Registration has been completed successfully.'];
+            return ['message' => 'User registration successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -94,7 +94,7 @@ class FrontController extends BaseController
                 $message->to($userInfo['email'], $userInfo['name'])->subject(env('MAIL_FROM_NAME') . ': Password reset code');
                 $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
             });
-            return ['status' => 200, 'msg' => 'A reset code has been sent to your email. Please check your email'];
+            return ['message' => 'A reset code has been sent to your email. Please check your email'];
         } catch (\Exception $e) {
             return ['status' => 500, 'error' => $e->getMessage()];
         }
@@ -122,7 +122,7 @@ class FrontController extends BaseController
             $userInfo->password = bcrypt($input['password']);
             $userInfo->reset_code = null;
             $userInfo->save();
-            return ['status' => 200, 'msg' => 'The password has been reset successfully.'];
+            return ['message' => 'The password has been reset successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'error' => $e->getMessage()];
         }
@@ -133,7 +133,7 @@ class FrontController extends BaseController
         try {
             $user_id = Auth::guard('users')->id();
             $user = User::where('id', $user_id)->first();
-            return ['status' => 200, 'data' => $user];
+            return ['message' => 'User profile data show successfully', 'data' => $user];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -161,7 +161,7 @@ class FrontController extends BaseController
             $user->phone = $request->phone ?? null;
             $user->save();
 
-            return ['status' => 200,];
+            return ['message' => 'User profile update successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -189,7 +189,7 @@ class FrontController extends BaseController
                 return ['status' => 500, 'errors' => ['current_password' => ['Current is not correct! Please type correct password.']]];
             }
 
-            return ['status' => 200];
+            return ['message' => 'Profile update password successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -218,7 +218,7 @@ class FrontController extends BaseController
             $user->card_cvv = $request->card_cvv;
             $user->save();
 
-            return ['status' => 200];
+            return ['message' => 'Profile update payment successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -228,7 +228,7 @@ class FrontController extends BaseController
     {
         try {
             Auth::guard('users')->logout();
-            return ['status' => 200];
+            return ['message' => 'User logout successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

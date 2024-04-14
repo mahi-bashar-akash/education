@@ -143,8 +143,10 @@ export default {
             this.getProfileLoading = true;
             apiServices.GET(apiRoutes.userProfile, (res) => {
                 this.getProfileLoading = false;
-                if (res.status === 200) {
+                if (res.message) {
                     this.profile_data = res.data
+                }else {
+                    this.$toast.error('Server Error', { position: "top-right" } );
                 }
             })
         },
@@ -155,11 +157,8 @@ export default {
             this.logoutLoading = true
             apiServices.GET(apiRoutes.userLogout, (res) => {
                 this.logoutLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Logout Successful', {
-                        position:
-                            "top-right"
-                    });
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     window.location.reload()
                 }
             })

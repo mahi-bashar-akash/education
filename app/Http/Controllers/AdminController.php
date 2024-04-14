@@ -199,7 +199,7 @@ class AdminController extends BaseController
     {
         try {
             Auth::guard('admins')->logout();
-            return ['message' => 'Logout successfully'];
+            return ['message' => 'Admin logout successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

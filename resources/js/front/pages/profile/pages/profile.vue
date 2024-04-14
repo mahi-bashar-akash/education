@@ -325,10 +325,12 @@ export default {
             this.loading = true;
             apiServices.GET(apiRoutes.userProfile, (res) => {
                 this.loading = false;
-                if (res.status === 200) {
+                if (res.message) {
                     this.profile_data = res.data
                     this.profileParam = this.profile_data
                     this.paymentParam = this.profile_data
+                }else {
+                    this.$toast.error('Server Error', { position: "top-right" } );
                 }
             })
         },
@@ -338,8 +340,8 @@ export default {
             this.updateProfileLoading = true;
             apiServices.PATCH(apiRoutes.userProfileUpdate, this.profileParam, (res) => {
                 this.updateProfileLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success('Update Profile Successfully', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     window.location.reload()
                 } else {
                     this.error = res.errors
@@ -352,8 +354,8 @@ export default {
             this.passwordChangeLoading = true;
             apiServices.PATCH(apiRoutes.userChangePassword, this.passwordParam, (res) => {
                 this.passwordChangeLoading = false;
-                if(res.status === 200) {
-                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
+                if(res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     this.passwordParam = { current_password: '', password: '', password_confirmation: '' }
                 } else {
                     this.error = res.errors
@@ -366,8 +368,8 @@ export default {
             this.paymentLoading = true;
             apiServices.PATCH(apiRoutes.userPaymentUpdate, this.paymentParam, (res) => {
                 this.paymentLoading = false;
-                if(res.status === 200) {
-                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
+                if(res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     this.paymentParam = { card_holder_name: '', card_name: '', card_expire_date: '', card_cvv: '' }
                 } else {
                     this.error = res.errors

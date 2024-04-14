@@ -140,8 +140,8 @@ export default {
             this.error = null;
             apiServices.POST(apiRoutes.userForget, this.forgetParam, (res) => {
                 this.forgetLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Send code in your email', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     this.resetParam.email = this.forgetParam.email
                     this.tab = 'reset'
                 } else {
@@ -156,8 +156,8 @@ export default {
             this.error = null;
             apiServices.POST(apiRoutes.userReset, this.resetParam, (res) => {
                 this.resetLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Reset account successfully Successful', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     this.$router.push( { name: 'login' } )
                 } else {
                     this.error = res.error
