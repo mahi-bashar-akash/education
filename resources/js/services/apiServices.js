@@ -8,9 +8,7 @@ const apiService = {
             'Content-Type': 'application/json; charset=utf-8',
         };
         axios.post(url, param, { headers: headers }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+            callback(response.data);
         }).catch(err => {
             const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
             if (errorCode === 401) {
@@ -22,23 +20,15 @@ const apiService = {
         });
     },
 
-    GET: (url, callback) => {
+    GET: (url, params, callback) => {
         headers = {
             'Content-Type': 'application/json; charset=utf-8',
-        };
-        axios.get(url, { headers: headers }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+        }
+        axios.get(url, {params: params}, {headers: headers}).then((response) => {
+            callback(response.data);
         }).catch(err => {
-            const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
-            if (errorCode === 403) {
-                console.log('Forbidden Error');
-            }
-            if (errorCode === 401) {
-                console.log('Unauthorized Error');
-            }
-        });
+            callback(err?.response?.data)
+        })
     },
 
     PUT: (url, param, callback) => {
@@ -46,9 +36,7 @@ const apiService = {
             'Content-Type': 'application/json; charset=utf-8',
         };
         axios.put(url, param, { headers: headers }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+            callback(response.data);
         }).catch(err => {
             const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
             if (errorCode === 401) {
@@ -65,9 +53,7 @@ const apiService = {
             'Content-Type': 'application/json; charset=utf-8',
         };
         axios.patch(url, param, { headers: headers }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+            callback(response.data);
         }).catch(err => {
             const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
             if (errorCode === 401) {
@@ -79,23 +65,15 @@ const apiService = {
         });
     },
 
-    DELETE: (url, callback) => {
+    DELETE: (url, params, callback) => {
         headers = {
             'Content-Type': 'application/json; charset=utf-8',
-        };
-        axios.delete(url, { headers: headers }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+        }
+        axios.delete(url, {params: params}, {headers: headers}).then((response) => {
+            callback(response.data);
         }).catch(err => {
-            const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
-            if (errorCode === 401) {
-                console.log('Unauthorized Error');
-            }
-            if (errorCode === 403) {
-                console.log('Forbidden Error');
-            }
-        });
+            callback(err.response.data)
+        })
     },
 
     UPLOAD: (url, media, callback) => {
@@ -103,9 +81,7 @@ const apiService = {
             "Content-Type": "multipart/form-data",
         };
         axios.post(url, media, { headers: mediaHeaders }).then((response) => {
-            if (response.status === 200) {
-                callback(response.data);
-            }
+            callback(response.data);
         }).catch(err => {
             const errorCode = parseInt(err.toLocaleString().replace(/\D/g, ""));
             if (errorCode === 401) {

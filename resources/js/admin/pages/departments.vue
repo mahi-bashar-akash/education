@@ -8,7 +8,13 @@
     <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
-            <search v-model="listData.keyword" @keyup="SearchData()"/>
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control ps-5" required autocomplete="new-search"
+                       placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
@@ -32,7 +38,7 @@
                 <thead>
                     <tr>
                         <th class="checkbox">
-                            <input type="checkbox" class="form-checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
                         </th>
                         <th class="default-width">
                             Name
@@ -60,7 +66,7 @@
                 <tbody>
                     <tr v-for="each in tableData">
                         <td class="checkbox">
-                            <input type="checkbox" class="form-checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
                         </td>
                         <td class="default-width">
                             {{each.name}}
@@ -114,7 +120,78 @@
     <noDataFounded v-if="!loading  && tableData.length === 0" :newModalFunction="manageDepartmentModalOpen"/>
 
     <!-- pagination -->
-    <pagination v-if="!loading && tableData.length > 0"/>
+    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
+        <div class="pagination admin-pagination">
+            <div class="page-item" @click="PrevPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+            <div v-if="buttons.length <= 6">
+                <div v-for="(page, index) in buttons" class="page-item"
+                     :class="{'active': current_page === page}">
+                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
+                       v-text="page"></a>
+                </div>
+            </div>
+            <div v-if="buttons.length > 6">
+                <div class="page-item" :class="{'active': current_page === 1}">
+                    <a class="page-link" @click="pageChange(1)"
+                       href="javascript:void(0)">1</a>
+                </div>
+
+                <div v-if="current_page > 3" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div v-if="current_page === buttons.length" class="page-item"
+                     :class="{'active': current_page === (current_page - 2)}">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)" v-text="current_page - 2"></a>
+                </div>
+
+                <div v-if="current_page > 2" class="page-item"
+                     :class="{'active': current_page === (current_page - 1)}">
+                    <a class="page-link" @click="pageChange(current_page - 1)"
+                       href="javascript:void(0)" v-text="current_page - 1"></a>
+                </div>
+
+                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
+                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
+                       v-text="current_page"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 1)}">
+                    <a class="page-link" @click="pageChange(current_page + 1)"
+                       href="javascript:void(0)" v-text="current_page + 1"></a>
+                </div>
+
+                <div v-if="current_page === 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 2)}">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)" v-text="current_page + 2"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 2" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
+                    <a class="page-link" @click="pageChange(buttons.length)"
+                       href="javascript:void(0)" v-text="buttons.length"></a>
+                </div>
+            </div>
+            <div class="page-item" @click="NextPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <!-- manage department modal -->
     <div class="modal fade" id="manageDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -194,7 +271,7 @@
     <div class="modal fade" id="deleteDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content rounded-3 border-0 py-2 px-3">
+            <form @submit.prevent="departmentDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Delete department
@@ -263,6 +340,9 @@ export default {
                 email: '',
                 phone: '',
             },
+            deleteDepartmentParam: {
+                ids: []
+            },
             loading: false,
             tableData: [],
             listData: {
@@ -285,6 +365,34 @@ export default {
     },
     methods: {
 
+        /* Function to toggle check all */
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.tableData.forEach((v) => {
+                    this.selected.push(v.id);
+                });
+            } else {
+                this.selected = [];
+            }
+        },
+
+        /* Function to toggle check */
+        toggleCheck(e, id) {
+            if (e.target.checked) {
+                this.selected.push(id);
+            } else {
+                let index = this.selected.indexOf(id);
+                this.selected.splice(index, 1);
+            }
+        },
+
+        /* Function to check if checked */
+        CheckIfChecked(id) {
+            return this.selected.map(function (id) {
+                return id
+            }).indexOf(id) > -1;
+        },
+
         /* Function to manage department modal open */
         manageDepartmentModalOpen(data = null) {
             apiServices.clearErrorHandler()
@@ -304,19 +412,6 @@ export default {
             modal.hide();
         },
 
-        /* Function to delete department modal open */
-        deleteDepartmentModalOpen() {
-            const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
-            myModal.show();
-        },
-
-        /* Function to delete department modal close */
-        deleteDepartmentModalClose() {
-            let myModalEl = document.getElementById('deleteDepartmentModal');
-            let modal = bootstrap.Modal.getInstance(myModalEl)
-            modal.hide();
-        },
-
         /* Function to department start-date */
         flatpickrConfigDate() {
             flatpickr("#start-date", {
@@ -332,7 +427,7 @@ export default {
         departmentList() {
             this.loading = true;
             this.listData.page = this.current_page;
-            apiServices.POST(apiRoutes.departmentList, this.listData, (res) => {
+            apiServices.GET(apiRoutes.departmentList, this.listData, (res) => {
                 this.loading = false;
                 if (res.message) {
                     this.tableData = res.data.data;
@@ -346,8 +441,33 @@ export default {
             })
         },
 
+        /* Function to department search data */
         SearchData() {
-            this.current_page = 1;
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.departmentList();
+            }, 800);
+        },
+
+        /* Function to department previous page */
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.departmentList()
+            }
+        },
+
+        /* Function to department next page */
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.departmentList()
+            }
+        },
+
+        /* Function to department change page */
+        pageChange(page) {
+            this.current_page = page;
             this.departmentList();
         },
 
@@ -402,6 +522,41 @@ export default {
                 }
             });
         },
+
+        /* Function to delete department modal open */
+        deleteDepartmentModalOpen(id) {
+            this.deleteDepartmentParam.ids.push(id)
+            const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete department modal close */
+        deleteDepartmentModalClose() {
+            this.selected = [];
+            this.current_page = 1;
+            this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
+            let myModalEl = document.getElementById('deleteDepartmentModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to department delete api */
+        departmentDelete() {
+            this.selected.forEach((v) => {
+                this.deleteDepartmentParam.ids.push(v);
+            })
+            this.deleteDepartmentLoading = true;
+            apiServices.DELETE(apiRoutes.departmentDelete, this.deleteDepartmentParam, (res) => {
+                this.deleteDepartmentLoading = false;
+                if(res.message) {
+                    this.deleteDepartmentModalClose();
+                    this.departmentList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        }
 
     }
 }

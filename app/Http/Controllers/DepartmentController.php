@@ -97,7 +97,12 @@ class DepartmentController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required',
+                    'name' => 'required|String',
+                    'head_of_department' => 'required|String',
+                    'phone' => 'required|String',
+                    'email' => 'required|email',
+                    'start_year' => 'required|String',
+                    'stuff_capacity' => 'required|String',
                 ]
             );
 
@@ -110,6 +115,11 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => 'Department not found'];
             }
             $department->name = $request->name;
+            $department->head_of_department = $request->head_of_department;
+            $department->phone = $request->phone;
+            $department->email = $request->email;
+            $department->start_year = $request->start_year;
+            $department->stuff_capacity = $request->stuff_capacity;
             $department->save();
             return ['message' => 'Department has been updated successfully.'];
         } catch (\Exception $e) {
@@ -117,18 +127,23 @@ class DepartmentController extends BaseController
         }
     }
 
-    public function delete(Request $request) {
+    public static function delete(Request $request)
+    {
+
         try {
-            $validator = Validator::make($request->all(), [
-                'id' => 'required|array',
-                'id.*' => 'required|numeric',
-            ]);
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'ids' => 'required|array',
+                ]
+            );
+
             if ($validator->fails()) {
-                return response()->json(['status' => 422, 'errors' => $validator->errors()], 422);
+                return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            Department::whereIn('id', $request->id)->where('admin_id', $admin_id)->delete();
-            return response()->json(['message' => 'Department(s) have been deleted successfully']);
+            Department::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Department has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

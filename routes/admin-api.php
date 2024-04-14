@@ -41,7 +41,7 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'department'],
     function () {
-        Route::post('/list', [DepartmentController::class, 'list'])->name('Admin.Department.List');
+        Route::get('/list', [DepartmentController::class, 'list'])->name('Admin.Department.List');
         Route::post('/create', [DepartmentController::class, 'create'])->name('Admin.Department.Create');
         Route::put('/single', [DepartmentController::class, 'single'])->name('Admin.Department.Single');
         Route::patch('/update', [DepartmentController::class, 'update'])->name('Admin.Department.Update');
