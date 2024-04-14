@@ -242,9 +242,11 @@ export default {
             this.loading = true;
             apiServices.GET(apiRoutes.adminProfile, (res) => {
                 this.loading = false;
-                if (res.status === 200) {
+                if(res.message) {
                     this.profile_data = res.data
                     this.profileParam = this.profile_data
+                } else {
+                    this.$toast.error('Server Error', { position: "top-right" } );
                 }
             })
         },
@@ -252,11 +254,13 @@ export default {
         /* Function to update admin profile data api */
         updateAdminProfile() {
             this.updateProfileLoading = true;
-            apiServices.POST(apiRoutes.adminProfileUpdate, (res) => {
+            apiServices.PATCH(apiRoutes.adminProfileUpdate,this.profileParam, (res) => {
                 this.updateProfileLoading = false;
-                if (res.status === 200) {
-                    this.$toast.success('Update Profile Successfully', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     window.location.reload()
+                } else {
+                    this.error = res.errors
                 }
             })
         },
@@ -264,11 +268,11 @@ export default {
         /* Function to change password data api */
         changeAdminPassword() {
             this.passwordChangeLoading = true;
-            apiServices.POST(apiRoutes.adminChangePassword, this.passwordParam, (res) => {
+            apiServices.PATCH(apiRoutes.adminChangePassword, this.passwordParam, (res) => {
                 this.passwordChangeLoading = false;
-                if(res.status === 200) {
-                    this.$toast.success('Change Password Successfully', { position: "top-right" } );
-                    window.location.reload()
+                if(res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.passwordParam = { current_password: '', password: '', password_confirmation: '' }
                 } else {
                     this.error = res.errors
                 }

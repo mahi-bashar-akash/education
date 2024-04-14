@@ -96,8 +96,8 @@ export default {
             this.error = null;
             apiServices.POST(apiRoutes.adminRegister, this.registerParam, (res) => {
                 this.registerLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Registration Successful', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     this.registerParam = { name: '', email: '', phone: '', password: '', password_confirmation: '', }
                 } else {
                     this.error = res.errors

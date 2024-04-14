@@ -128,11 +128,8 @@ export default {
             this.logoutLoading = true
             apiServices.GET(apiRoutes.adminLogout, (res) => {
                 this.logoutLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Logout Successful', {
-                        position:
-                            "top-right"
-                    });
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     window.location.reload()
                 }
             })

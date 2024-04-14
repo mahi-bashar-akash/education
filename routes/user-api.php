@@ -30,9 +30,9 @@ Route::group(
     ['middleware' => ['UserAuthReq'], 'prefix' => 'user-profile'],
     function () {
         Route::get('/details', [FrontController::class, 'profile_details'])->name('User.Profile.Details');
-        Route::post('/update', [FrontController::class, 'profile_update'])->name('User.Profile.Update');
-        Route::post('/update/password', [FrontController::class, 'profile_update_password'])->name('User.Profile.Update.Password');
-        Route::post('/update/payment', [FrontController::class, 'profile_update_payment'])->name('User.Profile.Update.payment');
+        Route::patch('/update', [FrontController::class, 'profile_update'])->name('User.Profile.Update');
+        Route::patch('/update/password', [FrontController::class, 'profile_update_password'])->name('User.Profile.Update.Password');
+        Route::patch('/update/payment', [FrontController::class, 'profile_update_payment'])->name('User.Profile.Update.payment');
         Route::get('/logout', [FrontController::class, 'profile_logout'])->name('User.Profile.Logout');
     }
 );

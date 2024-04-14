@@ -84,8 +84,8 @@ export default {
             this.error = null;
             apiServices.POST(apiRoutes.adminLogin, this.loginParam, (res) => {
                 this.loginLoading = false
-                if (res.status === 200) {
-                    this.$toast.success('Login Successful', { position: "top-right" } );
+                if (res.message) {
+                    this.$toast.success(res.message, { position: "top-right" } );
                     window.location.reload()
                 } else {
                     this.error = res.errors

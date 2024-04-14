@@ -139,7 +139,10 @@
                                 <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.phone[0]}} </div>
                             </div>
                             <div class="w-100">
-                                <button type="submit" class="btn btn-theme wpx-200"> Update profile </button>
+                                <button type="submit" class="btn btn-theme wpx-200" v-if="!updateProfileLoading"> Update profile </button>
+                                <button type="button" class="btn btn-theme wpx-200" v-if="updateProfileLoading">
+                                    <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -182,8 +185,11 @@
                                 <div class="error-report" v-if="error != null && error.password_confirmation !== undefined"> {{error.password_confirmation[0]}} </div>
                             </div>
                             <div class="w-100">
-                                <button type="submit" class="btn btn-theme wpx-200">
+                                <button type="submit" class="btn btn-theme wpx-200" v-if="!passwordChangeLoading">
                                     Update password
+                                </button>
+                                <button type="button" class="btn btn-theme wpx-200" v-if="passwordChangeLoading">
+                                    <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                 </button>
                             </div>
                         </form>
@@ -196,24 +202,31 @@
                             <div class="mb-3">
                                 <label for="card-holder-full-name" class="form-label fw-bold"> Card holder full name </label>
                                 <input id="card-holder-full-name" type="text" name="card_holder_name" class="form-control" v-model="paymentParam.card_holder_name" autocomplete="new-card-holder-full-name" placeholder="Enter your card holder full name">
+                                <div class="error-report" v-if="error != null && error.card_holder_name !== undefined"> {{error.card_holder_name[0]}} </div>
                             </div>
                             <div class="mb-3">
                                 <label for="card-name" class="form-label fw-bold"> Card name </label>
                                 <input id="card-name" type="text" name="card_name" class="form-control" v-model="paymentParam.card_name" autocomplete="new-card-name" placeholder="Enter your card name">
+                                <div class="error-report" v-if="error != null && error.card_name !== undefined"> {{error.card_name[0]}} </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <label for="card-expire-date" class="form-label fw-bold"> Expire date </label>
                                     <input id="card-expire-date" type="text" name="card_expire_date" class="form-control" v-model="paymentParam.card_expire_date" autocomplete="new-expire-date" placeholder="Enter your card expire date">
+                                    <div class="error-report" v-if="error != null && error.card_expire_date !== undefined"> {{error.card_expire_date[0]}} </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="card-cvv" class="form-label fw-bold"> CVV </label>
                                     <input id="card-cvv" type="text" name="card_cvv" class="form-control" v-model="paymentParam.card_cvv" autocomplete="new-cvv" placeholder="Enter your card cvv">
+                                    <div class="error-report" v-if="error != null && error.card_cvv !== undefined"> {{error.card_cvv[0]}} </div>
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-theme wpx-200">
+                                <button type="submit" class="btn btn-theme wpx-200" v-if="!paymentLoading">
                                     Update payment
+                                </button>
+                                <button type="button" class="btn btn-theme wpx-200" v-if="paymentLoading">
+                                    <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                 </button>
                             </div>
                         </form>
@@ -270,6 +283,8 @@ export default {
             profile_data: null,
             error: null,
             paymentLoading: false,
+            updateProfileLoading: false,
+            passwordChangeLoading: false,
         }
 
     },
@@ -281,7 +296,6 @@ export default {
         if(this.userInfo !== null) {
             this.getUserProfile();
         }
-        this.flatpickrConfigCardExpireDate();
     },
 
     methods: {
@@ -322,7 +336,7 @@ export default {
         /* Function to update user profile data api */
         updateUserProfile() {
             this.updateProfileLoading = true;
-            apiServices.POST(apiRoutes.userProfileUpdate, this.profileParam, (res) => {
+            apiServices.PATCH(apiRoutes.userProfileUpdate, this.profileParam, (res) => {
                 this.updateProfileLoading = false;
                 if (res.status === 200) {
                     this.$toast.success('Update Profile Successfully', { position: "top-right" } );
@@ -336,11 +350,11 @@ export default {
         /* Function to change user password data api */
         changeUserPassword() {
             this.passwordChangeLoading = true;
-            apiServices.POST(apiRoutes.userChangePassword, this.passwordParam, (res) => {
+            apiServices.PATCH(apiRoutes.userChangePassword, this.passwordParam, (res) => {
                 this.passwordChangeLoading = false;
                 if(res.status === 200) {
                     this.$toast.success('Change Password Successfully', { position: "top-right" } );
-                    window.location.reload()
+                    this.passwordParam = { current_password: '', password: '', password_confirmation: '' }
                 } else {
                     this.error = res.errors
                 }
@@ -350,24 +364,14 @@ export default {
         /* Function to change user password data api */
         updateUserPayment() {
             this.paymentLoading = true;
-            apiServices.POST(apiRoutes.userPaymentUpdate, this.paymentParam, (res) => {
+            apiServices.PATCH(apiRoutes.userPaymentUpdate, this.paymentParam, (res) => {
                 this.paymentLoading = false;
                 if(res.status === 200) {
                     this.$toast.success('Change Password Successfully', { position: "top-right" } );
-                    window.location.reload()
+                    this.paymentParam = { card_holder_name: '', card_name: '', card_expire_date: '', card_cvv: '' }
                 } else {
                     this.error = res.errors
                 }
-            })
-        },
-
-        /* Function to card expire date */
-        flatpickrConfigCardExpireDate() {
-            flatpickr("#card-expire-date", {
-                altFormat: 'j M Y',
-                altInput: true,
-                dateFormat: 'Y-m-d',
-                disableMobile: true,
             })
         },
 

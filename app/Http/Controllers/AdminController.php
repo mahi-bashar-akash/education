@@ -34,7 +34,7 @@ class AdminController extends BaseController
 
             $credential = ['email' => $request->email, 'password' => $request->password];
             if (Auth::guard('admins')->attempt($credential, $request->remember)) {
-                return ['status' => 200, 'data' => Auth::guard('admins')->user()];
+                return [ 'message' => 'Login successfully', 'data' => Auth::guard('admins')->user()];
             } else {
                 return ['status' => 500, 'errors' => ['error' => 'Invalid Credentials! Please try again']];
             }
@@ -58,7 +58,6 @@ class AdminController extends BaseController
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $activation_token = md5(uniqid(uniqid(), true));
             $user = new Admins();
             $user->name = $request->name;
             $user->phone = $request->phone;
@@ -67,7 +66,7 @@ class AdminController extends BaseController
             $user->avatar =  null;
             $user->save();
 
-            return ['status' => 200, 'msg' => 'Registration has been completed successfully.'];
+            return [ 'message' => 'Registration has been completed successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -95,7 +94,7 @@ class AdminController extends BaseController
                 $message->to($userInfo['email'], $userInfo['name'])->subject(env('MAIL_FROM_NAME') . ': Password reset code');
                 $message->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
             });
-            return ['status' => 200, 'msg' => 'A reset code has been sent to your email. Please check your email'];
+            return [ 'message' => 'A reset code has been sent to your email. Please check your email'];
         } catch (\Exception $e) {
             return ['status' => 500, 'error' => $e->getMessage()];
         }
@@ -123,7 +122,7 @@ class AdminController extends BaseController
             $userInfo->password = bcrypt($input['password']);
             $userInfo->reset_code = null;
             $userInfo->save();
-            return ['status' => 200, 'msg' => 'The password has been reset successfully.'];
+            return [ 'message' => 'The password has been reset successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'error' => $e->getMessage()];
         }
@@ -134,7 +133,7 @@ class AdminController extends BaseController
         try {
             $user_id = Auth::guard('admins')->id();
             $user = Admins::where('id', $user_id)->first();
-            return ['status' => 200, 'data' => $user];
+            return [ 'message' => 'Admin data show successfully', 'data' => $user];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -162,7 +161,7 @@ class AdminController extends BaseController
             $user->avatar = $request->avatar ?? null;
             $user->save();
 
-            return ['status' => 200,];
+            return ['message' => 'Profile update successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -190,7 +189,7 @@ class AdminController extends BaseController
                 return ['status' => 500, 'errors' => ['current_password' => ['Current is not correct! Please type correct password.']]];
             }
 
-            return ['status' => 200];
+            return ['message' => 'Profile update password successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -200,7 +199,7 @@ class AdminController extends BaseController
     {
         try {
             Auth::guard('admins')->logout();
-            return ['status' => 200];
+            return ['message' => 'Logout successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

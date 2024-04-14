@@ -30,8 +30,8 @@ Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'admin-profile'],
     function () {
         Route::get('/details', [AdminController::class, 'profile_details'])->name('Admin.Profile.Details');
-        Route::post('/update', [AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
-        Route::post('/update/password', [AdminController::class, 'profile_update_password'])->name('Admin.Profile.Update.Password');
+        Route::patch('/update', [AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
+        Route::patch('/update/password', [AdminController::class, 'profile_update_password'])->name('Admin.Profile.Update.Password');
         Route::get('/logout', [AdminController::class, 'profile_logout'])->name('Admin.Profile.Logout');
     }
 );
