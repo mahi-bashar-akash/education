@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* --- --- --- --- api admin authentication --- --- --- --- */
+/* --- --- --- --- Admin authentication api --- --- --- --- */
 Route::group(
     ['middleware' => ['AdminAuth'], 'prefix' => 'admin-auth'],
     function () {
@@ -25,7 +26,7 @@ Route::group(
     }
 );
 
-/* --- --- --- --- api admin profile --- --- --- --- */
+/* --- --- --- --- Profile api --- --- --- --- */
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'admin-profile'],
     function () {
@@ -33,5 +34,17 @@ Route::group(
         Route::patch('/update', [AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
         Route::patch('/update/password', [AdminController::class, 'profile_update_password'])->name('Admin.Profile.Update.Password');
         Route::get('/logout', [AdminController::class, 'profile_logout'])->name('Admin.Profile.Logout');
+    }
+);
+
+/* --- --- --- --- Department api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'department'],
+    function () {
+        Route::post('/list', [DepartmentController::class, 'list'])->name('Admin.Department.List');
+        Route::post('/create', [DepartmentController::class, 'create'])->name('Admin.Department.Create');
+        Route::put('/single', [DepartmentController::class, 'single'])->name('Admin.Department.Single');
+        Route::patch('/update', [DepartmentController::class, 'update'])->name('Admin.Department.Update');
+        Route::delete('/delete', [DepartmentController::class, 'delete'])->name('Admin.Department.Delete');
     }
 );

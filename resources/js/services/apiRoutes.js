@@ -12,6 +12,13 @@ const apiRoutes = {
     adminChangePassword: '/admin-secure/admin-profile/update/password',
     adminLogout: '/admin-secure/admin-profile/logout',
 
+    /* --- --- --- --- department --- --- --- --- */
+    departmentList: '/admin-secure/department/list',
+    departmentCreate: '/admin-secure/department/create',
+    departmentSingle: '/admin-secure/department/single',
+    departmentUpdate: '/admin-secure/department/update',
+    departmentDelete: '/admin-secure/department/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',
