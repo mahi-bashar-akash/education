@@ -55,7 +55,7 @@ const routes = [
             { path: ROOT_URL, name: 'profileLayout', component: profileLayout,
                 children: [
                     { path: 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
-                    { path: 'my-course/:courseId', name: 'myCourse', component: myCourse, meta: { title: TITLE + ' - my course' } },
+                    { path: 'my-course', name: 'myCourse', component: myCourse, meta: { title: TITLE + ' - my course' } },
                     { path: 'my-class-room', name: 'myClassRoom', component: myClassRoom, meta: { title: TITLE + ' - my class room' } },
                     { path: 'my-fees', name: 'myFees', component: myFees, meta: { title: TITLE + ' - my fees' } },
                 ]
