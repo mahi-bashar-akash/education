@@ -126,7 +126,7 @@ export default {
         /* Function to logout api */
         adminLogout() {
             this.logoutLoading = true
-            apiServices.GET(apiRoutes.adminLogout, (res) => {
+            apiServices.GET(apiRoutes.adminLogout, null, (res) => {
                 this.logoutLoading = false
                 if (res.message) {
                     this.$toast.success(res.message, { position: "top-right" } );

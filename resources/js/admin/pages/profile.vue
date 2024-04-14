@@ -240,7 +240,7 @@ export default {
         /* Function to get profile data api */
         getAdminProfile() {
             this.loading = true;
-            apiServices.GET(apiRoutes.adminProfile, (res) => {
+            apiServices.GET(apiRoutes.adminProfile, null, (res) => {
                 this.loading = false;
                 if(res.message) {
                     this.profile_data = res.data

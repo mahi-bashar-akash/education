@@ -141,7 +141,7 @@ export default {
         /* Function to get profile data api */
         getUserProfile() {
             this.getProfileLoading = true;
-            apiServices.GET(apiRoutes.userProfile, (res) => {
+            apiServices.GET(apiRoutes.userProfile, null, (res) => {
                 this.getProfileLoading = false;
                 if (res.message) {
                     this.profile_data = res.data
@@ -155,7 +155,7 @@ export default {
         /* Function to logout api */
         userLogout() {
             this.logoutLoading = true
-            apiServices.GET(apiRoutes.userLogout, (res) => {
+            apiServices.GET(apiRoutes.userLogout, null, (res) => {
                 this.logoutLoading = false
                 if (res.message) {
                     this.$toast.success(res.message, { position: "top-right" } );

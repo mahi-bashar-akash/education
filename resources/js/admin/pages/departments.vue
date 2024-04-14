@@ -412,6 +412,23 @@ export default {
             modal.hide();
         },
 
+        /* Function to delete department modal open */
+        deleteDepartmentModalOpen(id) {
+            this.deleteDepartmentParam.ids.push(id)
+            const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete department modal close */
+        deleteDepartmentModalClose() {
+            this.selected = [];
+            this.current_page = 1;
+            this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
+            let myModalEl = document.getElementById('deleteDepartmentModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
         /* Function to department start-date */
         flatpickrConfigDate() {
             flatpickr("#start-date", {
@@ -521,23 +538,6 @@ export default {
                     this.error = res.errors;
                 }
             });
-        },
-
-        /* Function to delete department modal open */
-        deleteDepartmentModalOpen(id) {
-            this.deleteDepartmentParam.ids.push(id)
-            const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
-            myModal.show();
-        },
-
-        /* Function to delete department modal close */
-        deleteDepartmentModalClose() {
-            this.selected = [];
-            this.current_page = 1;
-            this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
-            let myModalEl = document.getElementById('deleteDepartmentModal');
-            let modal = bootstrap.Modal.getInstance(myModalEl)
-            modal.hide();
         },
 
         /* Function to department delete api */

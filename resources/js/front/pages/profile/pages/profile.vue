@@ -323,7 +323,7 @@ export default {
         /* Function to get user profile data api */
         getUserProfile() {
             this.loading = true;
-            apiServices.GET(apiRoutes.userProfile, (res) => {
+            apiServices.GET(apiRoutes.userProfile, null, (res) => {
                 this.loading = false;
                 if (res.message) {
                     this.profile_data = res.data
