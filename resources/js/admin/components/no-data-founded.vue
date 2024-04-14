@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <div class="text-center text-light-gray fs-6">
-                    Click “New” to create new course.
+                    Click “New” to create new <span> {{ text }} </span>.
                 </div>
             </div>
             <button type="button"
@@ -29,6 +29,7 @@
 
 export default {
     props: {
+        text: String,
         newModalFunction: Function,
     },
 

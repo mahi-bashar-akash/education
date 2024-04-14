@@ -117,7 +117,7 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded v-if="!loading  && tableData.length === 0" :newModalFunction="manageDepartmentModalOpen"/>
+    <noDataFounded :text="'department'" :newModalFunction="manageDepartmentModalOpen" v-if="!loading  && tableData.length === 0"/>
 
     <!-- pagination -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
