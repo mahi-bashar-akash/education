@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->string('admin_id')->after('name');
+            $table->string('admin_id')->after('updated_at');
         });
         Schema::table('professors', function (Blueprint $table) {
-            $table->string('admin_id')->after('name');
+            $table->string('admin_id')->after('updated_at');
+        });
+        Schema::table('courses', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
         });
     }
 
@@ -28,6 +31,9 @@ return new class extends Migration
             $table->dropColumn('admin_id');
         });
         Schema::table('professors', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('courses', function (Blueprint $table) {
             $table->dropColumn('admin_id');
         });
     }

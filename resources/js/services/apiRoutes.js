@@ -26,6 +26,13 @@ const apiRoutes = {
     professorUpdate: '/admin-secure/professor/update',
     professorDelete: '/admin-secure/professor/delete',
 
+    /* --- --- --- --- course --- --- --- --- */
+    courseList: '/admin-secure/course/list',
+    courseCreate: '/admin-secure/course/create',
+    courseSingle: '/admin-secure/course/single',
+    courseUpdate: '/admin-secure/course/update',
+    courseDelete: '/admin-secure/course/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',
