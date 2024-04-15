@@ -383,6 +383,7 @@ export default {
             manageProfessorLoading: false,
             error: null,
             deleteProfessorLoading: false,
+            buttons: [],
         }
     },
     mounted() {

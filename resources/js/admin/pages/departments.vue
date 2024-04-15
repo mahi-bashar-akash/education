@@ -360,6 +360,7 @@ export default {
             manageDepartmentLoading: false,
             error: null,
             deleteDepartmentLoading: false,
+            buttons: [],
         }
     },
     mounted() {

@@ -369,6 +369,7 @@ export default {
             manageCourseLoading: false,
             error: null,
             deleteCourseLoading: false,
+            buttons: [],
         }
     },
     mounted() {
