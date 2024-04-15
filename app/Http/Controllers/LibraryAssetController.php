@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
+use App\Models\LibraryAsset;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class StudentController extends BaseController
+class LibraryAssetController extends BaseController
 {
 
     public function list(Request $request) {
@@ -16,20 +16,20 @@ class StudentController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $courses = Student::with('course_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $libraryAsset = LibraryAsset::with('department_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $courses->where(
+                $libraryAsset->where(
                     function ($q) use ($keyword) {
-                        $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
+                        $q->where('author', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('subject', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
-            $courses = $courses->paginate($limit);
+            $libraryAsset = $libraryAsset->paginate($limit);
 
-            return ['message' => 'Show student list data successfully' ,'data' => $courses];
+            return ['message' => 'Show library asset list data successfully' ,'data' => $libraryAsset];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -40,29 +40,29 @@ class StudentController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'admission_date' => 'required',
-                    'name' => 'required',
-                    'roll_or_id' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required',
-                    'course_id' => 'required',
+                    'author' => 'required',
+                    'name' => 'required|String',
+                    'subject' => 'required',
+                    'price' => 'required',
+                    'department_id' => 'required',
+                    'status' => 'required',
                 ]
             );
 
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $course = new Student();
+            $libraryAsset = new LibraryAsset();
             $admin_id = Auth::guard('admins')->id();
-            $course->admission_date = $request->admission_date;
-            $course->name = $request->name;
-            $course->roll_or_id = $request->roll_or_id;
-            $course->phone = $request->phone;
-            $course->email = $request->email;
-            $course->course_id = $request->course_id;
-            $course->admin_id = $admin_id;
-            $course->save();
-            return ['message' => 'Student has been saved successfully.'];
+            $libraryAsset->author = $request->author;
+            $libraryAsset->name = $request->name;
+            $libraryAsset->subject = $request->subject;
+            $libraryAsset->price = $request->price;
+            $libraryAsset->department_id = $request->department_id;
+            $libraryAsset->status = $request->status;
+            $libraryAsset->admin_id = $admin_id;
+            $libraryAsset->save();
+            return ['message' => 'Library asset has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -81,11 +81,11 @@ class StudentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
-                return ['status' => 500, 'errors' => 'Student data not found'];
+            $libraryAsset = LibraryAsset::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($libraryAsset == null){
+                return ['status' => 500, 'errors' => 'Library asset data not found'];
             }
-            return ['message' => 'show single data successfully','data' => $course];
+            return ['message' => 'Show single data successfully','data' => $libraryAsset];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -97,12 +97,12 @@ class StudentController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'admission_date' => 'required',
-                    'name' => 'required',
-                    'roll_or_id' => 'required',
-                    'phone' => 'required',
-                    'email' => 'required',
-                    'course_id' => 'required',
+                    'author' => 'required',
+                    'name' => 'required|String',
+                    'subject' => 'required',
+                    'price' => 'required',
+                    'department_id' => 'required',
+                    'status' => 'required',
                 ]
             );
 
@@ -110,18 +110,18 @@ class StudentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
-                return ['status' => 500, 'errors' => 'Student data not found'];
+            $libraryAsset = LibraryAsset::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($libraryAsset == null){
+                return ['status' => 500, 'errors' => 'Library asset data not found'];
             }
-            $course->admission_date = $request->admission_date;
-            $course->name = $request->name;
-            $course->roll_or_id = $request->roll_or_id;
-            $course->phone = $request->phone;
-            $course->email = $request->email;
-            $course->course_id = $request->course_id;
-            $course->save();
-            return ['message' => 'Student has been updated successfully.'];
+            $libraryAsset->author = $request->author;
+            $libraryAsset->name = $request->name;
+            $libraryAsset->subject = $request->subject;
+            $libraryAsset->price = $request->price;
+            $libraryAsset->department_id = $request->department_id;
+            $libraryAsset->status = $request->status;
+            $libraryAsset->save();
+            return ['message' => 'Library asset has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -142,8 +142,8 @@ class StudentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            Student::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
-            return ['message' => 'Student has been deleted successfully'];
+            LibraryAsset::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Library Asset has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

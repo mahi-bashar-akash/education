@@ -82,3 +82,15 @@ Route::group(
         Route::delete('/delete', [\App\Http\Controllers\StudentController::class, 'delete'])->name('Admin.Student.Delete');
     }
 );
+
+/* --- --- --- --- Library asset api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'library/asset'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\LibraryAssetController::class, 'list'])->name('Admin.Library.Asset.List');
+        Route::post('/create', [\App\Http\Controllers\LibraryAssetController::class, 'create'])->name('Admin.Library.Asset.Create');
+        Route::put('/single', [\App\Http\Controllers\LibraryAssetController::class, 'single'])->name('Admin.Library.Asset.Single');
+        Route::patch('/update', [\App\Http\Controllers\LibraryAssetController::class, 'update'])->name('Admin.Library.Asset.Update');
+        Route::delete('/delete', [\App\Http\Controllers\LibraryAssetController::class, 'delete'])->name('Admin.Library.Asset.Delete');
+    }
+);

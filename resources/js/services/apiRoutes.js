@@ -1,39 +1,39 @@
 const apiRoutes = {
 
-    /* --- --- --- --- admin auth --- --- --- --- */
+    /* --- --- --- --- admin - auth - access --- --- --- --- */
     adminLogin: '/admin-secure/admin-auth/login',
     adminRegister: '/admin-secure/admin-auth/register',
     adminForget: '/admin-secure/admin-auth/forgot',
     adminReset: '/admin-secure/admin-auth/reset',
 
-    /* --- --- --- --- admin profile --- --- --- --- */
+    /* --- --- --- --- admin - profile --- --- --- --- */
     adminProfile: '/admin-secure/admin-profile/details',
     adminProfileUpdate: '/admin-secure/admin-profile/update',
     adminChangePassword: '/admin-secure/admin-profile/update/password',
     adminLogout: '/admin-secure/admin-profile/logout',
 
-    /* --- --- --- --- department --- --- --- --- */
+    /* --- --- --- --- admin - department --- --- --- --- */
     departmentList: '/admin-secure/department/list',
     departmentCreate: '/admin-secure/department/create',
     departmentSingle: '/admin-secure/department/single',
     departmentUpdate: '/admin-secure/department/update',
     departmentDelete: '/admin-secure/department/delete',
 
-    /* --- --- --- --- professor --- --- --- --- */
+    /* --- --- --- --- admin - professor --- --- --- --- */
     professorList: '/admin-secure/professor/list',
     professorCreate: '/admin-secure/professor/create',
     professorSingle: '/admin-secure/professor/single',
     professorUpdate: '/admin-secure/professor/update',
     professorDelete: '/admin-secure/professor/delete',
 
-    /* --- --- --- --- course --- --- --- --- */
+    /* --- --- --- --- admin - course --- --- --- --- */
     courseList: '/admin-secure/course/list',
     courseCreate: '/admin-secure/course/create',
     courseSingle: '/admin-secure/course/single',
     courseUpdate: '/admin-secure/course/update',
     courseDelete: '/admin-secure/course/delete',
 
-    /* --- --- --- --- student --- --- --- --- */
+    /* --- --- --- --- admin - student --- --- --- --- */
     studentList: '/admin-secure/student/list',
     studentCreate: '/admin-secure/student/create',
     studentSingle: '/admin-secure/student/single',

@@ -82,9 +82,9 @@ class CourseController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $course = Course::where('id', $request->id)->where('admin_id', $admin_id)->first();
             if($course == null){
-                return ['status' => 500, 'errors' => 'Professor data not found'];
+                return ['status' => 500, 'errors' => 'Course data not found'];
             }
-            return ['message' => 'show single data successfully','data' => $course];
+            return ['message' => 'Show single data successfully','data' => $course];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -110,7 +110,7 @@ class CourseController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $course = Course::where('id', $request->id)->where('admin_id', $admin_id)->first();
             if($course == null){
-                return ['status' => 500, 'errors' => 'Professor data not found'];
+                return ['status' => 500, 'errors' => 'Course data not found'];
             }
             $course->student_enroll_capacity = $request->student_enroll_capacity;
             $course->name = $request->name;
@@ -118,7 +118,7 @@ class CourseController extends BaseController
             $course->price = $request->price;
             $course->duration = $request->duration;
             $course->save();
-            return ['message' => 'Professor has been updated successfully.'];
+            return ['message' => 'Course has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

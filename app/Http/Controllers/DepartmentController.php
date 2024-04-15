@@ -85,7 +85,7 @@ class DepartmentController extends BaseController
             if($department == null){
                 return ['status' => 500, 'errors' => 'Department not found'];
             }
-            return ['message' => 'show single data successfully','data' => $department];
+            return ['message' => 'Show single data successfully','data' => $department];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
