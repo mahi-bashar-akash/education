@@ -40,6 +40,13 @@ const apiRoutes = {
     studentUpdate: '/admin-secure/student/update',
     studentDelete: '/admin-secure/student/delete',
 
+    /* --- --- --- --- admin - library asset --- --- --- --- */
+    libraryAssetList: '/admin-secure/library/asset/list',
+    libraryAssetCreate: '/admin-secure/library/asset/create',
+    libraryAssetSingle: '/admin-secure/library/asset/single',
+    libraryAssetUpdate: '/admin-secure/library/asset/update',
+    libraryAssetDelete: '/admin-secure/library/asset/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',

@@ -8,7 +8,13 @@
     <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
-            <search/>
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control ps-5" required autocomplete="new-search"
+                       placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
@@ -21,24 +27,92 @@
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteLibraryAssetModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
             <newBtn @click="manageLibraryAssetModalOpen"/>
         </div>
     </div>
 
-    <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
+    <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
-
-            <tableContent
-                :headers="tableHeaders"
-                :rows="tableRows"
-                tableClass="table"
-                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                :checkboxColumnIndex="0"
-                :editModalFunction="manageLibraryAssetModalOpen"
-                :deleteModalFunction="deleteLibraryAssetModalOpen"
-            />
-
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
+                        </th>
+                        <th class="default-width">
+                            name
+                        </th>
+                        <th class="default-width">
+                            author
+                        </th>
+                        <th class="default-width">
+                            subject
+                        </th>
+                        <th class="default-width">
+                            price
+                        </th>
+                        <th class="default-width">
+                            department
+                        </th>
+                        <th class="default-width">
+                            status
+                        </th>
+                        <th class="action">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="each in tableData">
+                        <td class="checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
+                        </td>
+                        <td class="default-width">
+                            {{each.name}}
+                        </td>
+                        <td class="default-width">
+                            {{each.author}}
+                        </td>
+                        <td class="default-width">
+                            {{each.subject}}
+                        </td>
+                        <td class="default-width">
+                            {{each.price}}
+                        </td>
+                        <td class="default-width">
+                            <span v-if="each.department_info != null">
+                                {{ each.department_info.name }}
+                            </span>
+                        </td>
+                        <td class="default-width">
+                            <span v-if="each.status === 1"> In Stock </span>
+                            <span v-if="each.status === 2"> Out of Stock </span>
+                        </td>
+                        <td class="action">
+                            <div class="dropdown">
+                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end p-2 mt-1 overflow-hidden rounded-3 border">
+                                    <li class="mb-2">
+                                        <button type="button" class="dropdown-item rounded-3" @click="manageLibraryAssetModalOpen(each.id)">
+                                            Edit
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="dropdown-item rounded-3" @click="deleteLibraryAssetModalOpen(each.id)">
+                                            Delete
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -46,19 +120,92 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded :text="'library asset'" :newModalFunction="manageLibraryAssetModalOpen" v-if="!loading && tableRows.length === 0"/>
+    <noDataFounded :text="'library asset'" :newModalFunction="manageLibraryAssetModalOpen" v-if="!loading  && tableData.length === 0"/>
 
     <!-- pagination -->
-    <pagination v-if="!loading && tableRows.length > 0"/>
+    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
+        <div class="pagination admin-pagination">
+            <div class="page-item" @click="PrevPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+            <div v-if="buttons.length <= 6">
+                <div v-for="(page, index) in buttons" class="page-item"
+                     :class="{'active': current_page === page}">
+                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
+                       v-text="page"></a>
+                </div>
+            </div>
+            <div v-if="buttons.length > 6">
+                <div class="page-item" :class="{'active': current_page === 1}">
+                    <a class="page-link" @click="pageChange(1)"
+                       href="javascript:void(0)">1</a>
+                </div>
+
+                <div v-if="current_page > 3" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div v-if="current_page === buttons.length" class="page-item"
+                     :class="{'active': current_page === (current_page - 2)}">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)" v-text="current_page - 2"></a>
+                </div>
+
+                <div v-if="current_page > 2" class="page-item"
+                     :class="{'active': current_page === (current_page - 1)}">
+                    <a class="page-link" @click="pageChange(current_page - 1)"
+                       href="javascript:void(0)" v-text="current_page - 1"></a>
+                </div>
+
+                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
+                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
+                       v-text="current_page"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 1)}">
+                    <a class="page-link" @click="pageChange(current_page + 1)"
+                       href="javascript:void(0)" v-text="current_page + 1"></a>
+                </div>
+
+                <div v-if="current_page === 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 2)}">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)" v-text="current_page + 2"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 2" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
+                    <a class="page-link" @click="pageChange(buttons.length)"
+                       href="javascript:void(0)" v-text="buttons.length"></a>
+                </div>
+            </div>
+            <div class="page-item" @click="NextPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <!-- manage library asset modal -->
     <div class="modal fade" id="manageLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content px-3 py-2 rounded-3 border-0">
+            <form @submit.prevent="manageLibraryAsset()" class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                        Create library asset
+                        <span v-if="this.formData.id === undefined"> Create </span>
+                        <span v-if="this.formData.id !== undefined"> Edit </span>
+                        library asset
                     </h1>
                     <button type="button" class="btn-close shadow-none" @click="manageLibraryAssetModalClose"></button>
                 </div>
@@ -77,41 +224,47 @@
                         <label for="name" class="form-label"> Name </label>
                         <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required
                                autocomplete="new-name">
+                        <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="subject" class="form-label"> Subject </label>
                         <input id="subject" v-model="formData.subject" type="text" name="subject" class="form-control"
                                required autocomplete="new-subject">
+                        <div class="error-report" v-if="error != null && error.subject !== undefined"> {{error.subject[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="author-name" class="form-label"> Author name </label>
-                        <input id="author-name" v-model="formData.authorName" type="text" name="author-name"
+                        <input id="author-name" v-model="formData.author" type="text" name="author"
                                class="form-control" required autocomplete="new-author-name">
+                        <div class="error-report" v-if="error != null && error.author !== undefined"> {{error.author[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select department</label>
-                        <select name="department" id="department" class="form-select" v-model="formData.department">
+                        <select name="department" id="department_id" class="form-select" v-model="formData.department_id">
                             <option :value="0">Select Department option</option>
                             <option v-for="each in departmentListData" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.department_id !== undefined"> {{error.department_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="price" class="form-label"> Price </label>
                         <input id="price" v-model="formData.price" type="text" name="price" class="form-control"
                                required autocomplete="new-price">
+                        <div class="error-report" v-if="error != null && error.price !== undefined"> {{error.price[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="status" class="form-label"> Status </label>
-                        <select name="" id="" class="form-select" v-model="formData.status">
+                        <select name="status" id="status" class="form-select" v-model="formData.status">
                             <option :value="0">Select status option</option>
                             <option :value="1">In Stock</option>
                             <option :value="2">Out of Stock</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.status !== undefined"> {{error.status[0]}} </div>
                     </div>
 
                 </div>
@@ -119,8 +272,12 @@
                     <button type="button" class="btn btn-secondary wpx-110" @click="manageLibraryAssetModalClose">
                         Close
                     </button>
-                    <button type="button" class="btn btn-theme wpx-110">
-                        Save
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!manageLibraryAssetLoading">
+                        <span v-if="this.formData.id === undefined"> Save </span>
+                        <span v-if="this.formData.id !== undefined"> Update </span>
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="manageLibraryAssetLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                     </button>
                 </div>
             </form>
@@ -131,7 +288,7 @@
     <div class="modal fade" id="deleteLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3 border-0 py-2 px-3">
+            <form @submit.prevent="libraryAssetDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Delete library asset
@@ -157,12 +314,15 @@
                         </button>
                     </div>
                     <div class="col-5">
-                        <button type="button" class="btn btn-theme rounded-3 w-100">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deleteLibraryAssetLoading">
                             Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deleteLibraryAssetLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -176,6 +336,8 @@ import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
 import tableContent from "../components/table.vue";
 import breadcrumb from "../components/breadcrumb.vue";
+import apiServices from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
@@ -187,79 +349,261 @@ export default {
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Library', route: 'library' },
             ],
-            tableHeaders: ['Checkbox', 'Name', 'Author', 'Subject', 'Price', 'Department', 'Status', 'Action'],
-            tableRows: [
-                {
-                    id: '1',
-                    name: 'Technical Author',
-                    author: 'Mahi Bashar Akash',
-                    subject: 'Designing',
-                    price: '1000',
-                    department: 'Creative Graphic Design',
-                    status: 'In Stock'
-                },
-            ],
             formData: {
-                updateImage: '',
+                name: '',
                 subject: '',
-                authorName: '',
-                department: '0',
+                author: '',
+                department_id: '0',
                 price: '',
                 status: '0',
             },
-            departmentListData: [
-                {id: '1', name: 'Accounting'},
-                {id: '2', name: 'Finance'},
-                {id: '3', name: 'Marketing'},
-                {id: '4', name: 'Management'},
-                {id: '5', name: 'Economic'},
-            ],
-            libraryDataList: [
-                {
-                    id: '1',
-                    name: 'Technical Author',
-                    author: 'Mahi Bashar Akash',
-                    subject: 'Designing',
-                    price: '1000',
-                    department: 'Creative Graphic Design',
-                    status: 1
-                },
-            ],
-            loading: true,
+            departmentListData: [],
+            deleteLibraryAssetParam: {
+                ids: []
+            },
+            loading: false,
+            tableData: [],
+            listData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            current_page: 1,
+            searchTimeOut: null,
+            responseData: null,
+            selected: [],
+            manageLibraryAssetLoading: false,
+            error: null,
+            deleteLibraryAssetLoading: false,
+            buttons: [],
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
+        this.libraryAssetList()
     },
     methods: {
 
-        /* Function to manage library modal open */
-        manageLibraryAssetModalOpen() {
+        /* Function to toggle check all */
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.tableData.forEach((v) => {
+                    this.selected.push(v.id);
+                });
+            } else {
+                this.selected = [];
+            }
+        },
+
+        /* Function to toggle check */
+        toggleCheck(e, id) {
+            if (e.target.checked) {
+                this.selected.push(id);
+            } else {
+                let index = this.selected.indexOf(id);
+                this.selected.splice(index, 1);
+            }
+        },
+
+        /* Function to check if checked */
+        CheckIfChecked(id) {
+            return this.selected.map(function (id) {
+                return id
+            }).indexOf(id) > -1;
+        },
+
+        /* Function to manage library asset modal open */
+        manageLibraryAssetModalOpen(data = null) {
+            this.getDepartment()
+            apiServices.clearErrorHandler()
+            if(data !== null) {
+                this.libraryAssetSingle(data);
+            }else {
+                this.formData = {
+                    name: '',
+                    subject: '',
+                    author: '',
+                    department_id: '0',
+                    price: '',
+                    status: '0',
+                }
+            }
             const myModal = new bootstrap.Modal("#manageLibraryAssetModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to manage library modal close */
+        /* Function to manage library asset modal close */
         manageLibraryAssetModalClose() {
             let myModalEl = document.getElementById('manageLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete library modal open */
-        deleteLibraryAssetModalOpen() {
+        /* Function to delete library asset modal open */
+        deleteLibraryAssetModalOpen(id) {
+            this.deleteLibraryAssetParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete library modal close */
+        /* Function to delete library asset modal close */
         deleteLibraryAssetModalClose() {
+            this.selected = [];
+            this.current_page = 1;
+            this.formData = {
+                name: '',
+                subject: '',
+                author: '',
+                department_id: '0',
+                price: '',
+                status: '0',
+            }
             let myModalEl = document.getElementById('deleteLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
+
+        /* Function to library asset list api */
+        libraryAssetList() {
+            this.loading = true;
+            this.listData.page = this.current_page;
+            apiServices.GET(apiRoutes.libraryAssetList, this.listData, (res) => {
+                this.loading = false;
+                if (res.message) {
+                    this.tableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        /* Function to library asset search data */
+        SearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.libraryAssetList();
+            }, 800);
+        },
+
+        /* Function to library asset previous page */
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.libraryAssetList()
+            }
+        },
+
+        /* Function to library asset next page */
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.libraryAssetList()
+            }
+        },
+
+        /* Function to library asset change page */
+        pageChange(page) {
+            this.current_page = page;
+            this.libraryAssetList();
+        },
+
+        /* Function to library asset manage of create and update api */
+        manageLibraryAsset() {
+            if(this.formData.id === undefined) {
+                this.libraryAssetCreate()
+            }else {
+                this.libraryAssetUpdate()
+            }
+        },
+
+        /* Function to library asset create api */
+        libraryAssetCreate() {
+            this.manageLibraryAssetLoading = true;
+            apiServices.POST(apiRoutes.libraryAssetCreate, this.formData, (res) => {
+                this.manageLibraryAssetLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        name: '',
+                        subject: '',
+                        author: '',
+                        department_id: '0',
+                        price: '',
+                        status: '0',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageLibraryAssetModalClose();
+                    this.libraryAssetList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to library asset update api */
+        libraryAssetUpdate() {
+            this.manageLibraryAssetLoading = true;
+            apiServices.PATCH(apiRoutes.libraryAssetUpdate, this.formData, (res) => {
+                this.manageLibraryAssetLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        name: '',
+                        subject: '',
+                        author: '',
+                        department_id: '0',
+                        price: '',
+                        status: '0',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageLibraryAssetModalClose();
+                    this.libraryAssetList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to library asset single api */
+        libraryAssetSingle(data) {
+            apiServices.PUT(apiRoutes.libraryAssetSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.formData = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
+        /* Function to library asset delete api */
+        libraryAssetDelete() {
+            this.selected.forEach((v) => {
+                this.deleteLibraryAssetParam.ids.push(v);
+            })
+            this.deleteLibraryAssetLoading = true;
+            apiServices.DELETE(apiRoutes.libraryAssetDelete, this.deleteLibraryAssetParam, (res) => {
+                this.deleteLibraryAssetLoading = false;
+                if(res.message) {
+                    this.deleteDepartmentModalClose();
+                    this.departmentList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to department list api */
+        getDepartment() {
+            apiServices.GET(apiRoutes.departmentList, '', (res) => {
+                if(res.message) {
+                    this.departmentListData = res.data.data
+                }else {
+                    this.error = res.errors
+                }
+            })
+        }
 
     }
 }

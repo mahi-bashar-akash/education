@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class LibraryAsset extends Model
 {
     use HasFactory;
+
+    public function department_info(){
+        return  $this->hasOne(Department::class, 'id', 'department_id');
+    }
+
 }

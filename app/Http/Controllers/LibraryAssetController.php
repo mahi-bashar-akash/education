@@ -16,7 +16,7 @@ class LibraryAssetController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $libraryAsset = LibraryAsset::with('department_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $libraryAsset = LibraryAsset::with('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $libraryAsset->where(
