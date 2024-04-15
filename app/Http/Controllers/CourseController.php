@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Professor;
+use App\Models\Course;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class ProfessorController extends BaseController
+class CourseController extends BaseController
 {
 
     public function list(Request $request) {
@@ -16,20 +18,20 @@ class ProfessorController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $professor = Professor::with('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $courses = Course::with('professor_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $professor->where(
+                $courses->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
-            $professor = $professor->paginate($limit);
+            $courses = $courses->paginate($limit);
 
-            return ['message' => 'Show professor list data successfully' ,'data' => $professor];
+            return ['message' => 'Show course list data successfully' ,'data' => $courses];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -40,29 +42,28 @@ class ProfessorController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'email' => 'required|email',
-                    'educational_qualification' => 'required|String',
-                    'department_id' => 'required',
-                    'phone' => 'required|String',
-                    'joining_date' => 'required|String',
+                    'student_enroll_capacity' => 'required',
+                    'name' => 'required',
+                    'professor_id' => 'required',
+                    'price' => 'required',
+                    'duration' => 'required',
                 ]
             );
 
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $professor = new Professor();
+            $course = new Course();
             $admin_id = Auth::guard('admins')->id();
-            $professor->name = $request->name;
-            $professor->email = $request->email;
-            $professor->educational_qualification = $request->educational_qualification;
-            $professor->department_id = $request->department_id;
-            $professor->phone = $request->phone;
-            $professor->joining_date = $request->joining_date;
-            $professor->admin_id = $admin_id;
-            $professor->save();
-            return ['message' => 'Professor has been saved successfully.'];
+            $course->student_enroll_capacity = $request->student_enroll_capacity;
+            $course->name = $request->name;
+            $course->professor_id = $request->professor_id;
+            $course->price = $request->price;
+            $course->duration = $request->duration;
+            $course->description = $request->description;
+            $course->admin_id = $admin_id;
+            $course->save();
+            return ['message' => 'Course has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -81,11 +82,11 @@ class ProfessorController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $professor = Professor::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($professor == null){
+            $course = Course::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($course == null){
                 return ['status' => 500, 'errors' => 'Professor data not found'];
             }
-            return ['message' => 'show single data successfully','data' => $professor];
+            return ['message' => 'show single data successfully','data' => $course];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -97,12 +98,11 @@ class ProfessorController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'email' => 'required|email',
-                    'educational_qualification' => 'required|String',
-                    'department_id' => 'required',
-                    'phone' => 'required|String',
-                    'joining_date' => 'required|String',
+                    'student_enroll_capacity' => 'required',
+                    'name' => 'required',
+                    'professor_id' => 'required',
+                    'price' => 'required',
+                    'duration' => 'required',
                 ]
             );
 
@@ -110,17 +110,16 @@ class ProfessorController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $professor = Professor::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($professor == null){
+            $course = Course::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($course == null){
                 return ['status' => 500, 'errors' => 'Professor data not found'];
             }
-            $professor->name = $request->name;
-            $professor->email = $request->email;
-            $professor->educational_qualification = $request->educational_qualification;
-            $professor->department_id = $request->department_id;
-            $professor->phone = $request->phone;
-            $professor->joining_date = $request->joining_date;
-            $professor->save();
+            $course->student_enroll_capacity = $request->student_enroll_capacity;
+            $course->name = $request->name;
+            $course->professor_id = $request->professor_id;
+            $course->price = $request->price;
+            $course->duration = $request->duration;
+            $course->save();
             return ['message' => 'Professor has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
@@ -142,8 +141,8 @@ class ProfessorController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            Professor::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
-            return ['message' => 'Professor has been deleted successfully'];
+            Course::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Course has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }

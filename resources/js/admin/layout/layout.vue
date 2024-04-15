@@ -20,25 +20,25 @@
                     <i class="bi bi-calendar4-event"></i>
                     <span class="ms-2"> Event management </span>
                 </router-link>
+                <router-link :to="{name: 'departments'}" class="sidebar-link" @click="remove()">
+                    <i class="bi bi-building"></i>
+                    <span class="ms-2"> Departments </span>
+                </router-link>
                 <router-link :to="{name: 'professors'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-person"></i>
                     <span class="ms-2"> Professors </span>
-                </router-link>
-                <router-link :to="{name: 'students'}" class="sidebar-link" @click="remove()">
-                    <i class="bi bi-people"></i>
-                    <span class="ms-2"> Students </span>
                 </router-link>
                 <router-link :to="{name: 'courses'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-mortarboard"></i>
                     <span class="ms-2"> Courses </span>
                 </router-link>
+                <router-link :to="{name: 'students'}" class="sidebar-link" @click="remove()">
+                    <i class="bi bi-people"></i>
+                    <span class="ms-2"> Students </span>
+                </router-link>
                 <router-link :to="{name: 'library'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-journal-bookmark"></i>
                     <span class="ms-2"> Library </span>
-                </router-link>
-                <router-link :to="{name: 'departments'}" class="sidebar-link" @click="remove()">
-                    <i class="bi bi-building"></i>
-                    <span class="ms-2"> Departments </span>
                 </router-link>
                 <router-link :to="{name: 'stuff'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-people"></i>
