@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::table('departments', function (Blueprint $table) {
             $table->string('admin_id')->after('name');
         });
+        Schema::table('professors', function (Blueprint $table) {
+            $table->string('admin_id')->after('name');
+        });
     }
 
     /**
@@ -22,6 +25,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('departments', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('professors', function (Blueprint $table) {
             $table->dropColumn('admin_id');
         });
     }

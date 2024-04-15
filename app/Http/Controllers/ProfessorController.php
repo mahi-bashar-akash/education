@@ -1,0 +1,152 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Professors;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+class ProfessorController extends BaseController
+{
+
+    public function list(Request $request) {
+        try {
+            $admin_id = Auth::guard('admins')->id();
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $departments = Professors::with('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $departments->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $departments = $departments->paginate($limit);
+
+            return ['message' => 'Show professor list data successfully' ,'data' => $departments];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public function create(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'name' => 'required|String',
+                    'email' => 'required|email',
+                    'educational_qualification' => 'required|String',
+                    'department_id' => 'required',
+                    'phone' => 'required|String',
+                    'joining_date' => 'required|String',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $department = new Professors();
+            $admin_id = Auth::guard('admins')->id();
+            $department->name = $request->name;
+            $department->email = $request->email;
+            $department->educational_qualification = $request->educational_qualification;
+            $department->department_id = $request->department_id;
+            $department->phone = $request->phone;
+            $department->joining_date = $request->joining_date;
+            $department->admin_id = $admin_id;
+            $department->save();
+            return ['message' => 'Professor has been saved successfully.'];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public function single(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $admin_id = Auth::guard('admins')->id();
+            $department = Professors::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($department == null){
+                return ['status' => 500, 'errors' => 'Professor data not found'];
+            }
+            return ['message' => 'show single data successfully','data' => $department];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public function update(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                    'name' => 'required|String',
+                    'email' => 'required|email',
+                    'educational_qualification' => 'required|String',
+                    'department_id' => 'required',
+                    'phone' => 'required|String',
+                    'joining_date' => 'required|String',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $admin_id = Auth::guard('admins')->id();
+            $department = Professors::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($department == null){
+                return ['status' => 500, 'errors' => 'Professor data not found'];
+            }
+            $department->name = $request->name;
+            $department->email = $request->email;
+            $department->educational_qualification = $request->educational_qualification;
+            $department->department_id = $request->department_id;
+            $department->phone = $request->phone;
+            $department->joining_date = $request->joining_date;
+            $department->save();
+            return ['message' => 'Professor has been updated successfully.'];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function delete(Request $request)
+    {
+
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'ids' => 'required|array',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $admin_id = Auth::guard('admins')->id();
+            Professors::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Professor has been deleted successfully'];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+}

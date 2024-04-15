@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DepartmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(
     ['middleware' => ['AdminAuth'], 'prefix' => 'admin-auth'],
     function () {
-        Route::post('/login', [AdminController::class, 'login'])->name('Admin.Auth.Login');
-        Route::post('/register', [AdminController::class, 'register'])->name('Admin.Auth.Register');
-        Route::post('/forgot', [AdminController::class, 'forgot'])->name('Admin.Auth.Forgot');
-        Route::post('/reset', [AdminController::class, 'reset'])->name('Admin.Auth.Reset');
+        Route::post('/login', [\App\Http\Controllers\AdminController::class, 'login'])->name('Admin.Auth.Login');
+        Route::post('/register', [\App\Http\Controllers\AdminController::class, 'register'])->name('Admin.Auth.Register');
+        Route::post('/forgot', [\App\Http\Controllers\AdminController::class, 'forgot'])->name('Admin.Auth.Forgot');
+        Route::post('/reset', [\App\Http\Controllers\AdminController::class, 'reset'])->name('Admin.Auth.Reset');
     }
 );
 
@@ -30,10 +28,10 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'admin-profile'],
     function () {
-        Route::get('/details', [AdminController::class, 'profile_details'])->name('Admin.Profile.Details');
-        Route::patch('/update', [AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
-        Route::patch('/update/password', [AdminController::class, 'profile_update_password'])->name('Admin.Profile.Update.Password');
-        Route::get('/logout', [AdminController::class, 'profile_logout'])->name('Admin.Profile.Logout');
+        Route::get('/details', [\App\Http\Controllers\AdminController::class, 'profile_details'])->name('Admin.Profile.Details');
+        Route::patch('/update', [\App\Http\Controllers\AdminController::class, 'profile_update'])->name('Admin.Profile.Update');
+        Route::patch('/update/password', [\App\Http\Controllers\AdminController::class, 'profile_update_password'])->name('Admin.Profile.Update.Password');
+        Route::get('/logout', [\App\Http\Controllers\AdminController::class, 'profile_logout'])->name('Admin.Profile.Logout');
     }
 );
 
@@ -41,10 +39,22 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'department'],
     function () {
-        Route::get('/list', [DepartmentController::class, 'list'])->name('Admin.Department.List');
-        Route::post('/create', [DepartmentController::class, 'create'])->name('Admin.Department.Create');
-        Route::put('/single', [DepartmentController::class, 'single'])->name('Admin.Department.Single');
-        Route::patch('/update', [DepartmentController::class, 'update'])->name('Admin.Department.Update');
-        Route::delete('/delete', [DepartmentController::class, 'delete'])->name('Admin.Department.Delete');
+        Route::get('/list', [\App\Http\Controllers\DepartmentController::class, 'list'])->name('Admin.Department.List');
+        Route::post('/create', [\App\Http\Controllers\DepartmentController::class, 'create'])->name('Admin.Department.Create');
+        Route::put('/single', [\App\Http\Controllers\DepartmentController::class, 'single'])->name('Admin.Department.Single');
+        Route::patch('/update', [\App\Http\Controllers\DepartmentController::class, 'update'])->name('Admin.Department.Update');
+        Route::delete('/delete', [\App\Http\Controllers\DepartmentController::class, 'delete'])->name('Admin.Department.Delete');
+    }
+);
+
+/* --- --- --- --- Professor api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'professor'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\ProfessorController::class, 'list'])->name('Admin.Professor.List');
+        Route::post('/create', [\App\Http\Controllers\ProfessorController::class, 'create'])->name('Admin.Professor.Create');
+        Route::put('/single', [\App\Http\Controllers\ProfessorController::class, 'single'])->name('Admin.Professor.Single');
+        Route::patch('/update', [\App\Http\Controllers\ProfessorController::class, 'update'])->name('Admin.Professor.Update');
+        Route::delete('/delete', [\App\Http\Controllers\ProfessorController::class, 'delete'])->name('Admin.Professor.Delete');
     }
 );
