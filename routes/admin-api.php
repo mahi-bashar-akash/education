@@ -70,3 +70,15 @@ Route::group(
         Route::delete('/delete', [\App\Http\Controllers\CourseController::class, 'delete'])->name('Admin.Course.Delete');
     }
 );
+
+/* --- --- --- --- Student api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'student'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\StudentController::class, 'list'])->name('Admin.Student.List');
+        Route::post('/create', [\App\Http\Controllers\StudentController::class, 'create'])->name('Admin.Student.Create');
+        Route::put('/single', [\App\Http\Controllers\StudentController::class, 'single'])->name('Admin.Student.Single');
+        Route::patch('/update', [\App\Http\Controllers\StudentController::class, 'update'])->name('Admin.Student.Update');
+        Route::delete('/delete', [\App\Http\Controllers\StudentController::class, 'delete'])->name('Admin.Student.Delete');
+    }
+);

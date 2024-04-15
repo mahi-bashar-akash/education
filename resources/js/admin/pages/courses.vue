@@ -199,7 +199,7 @@
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         <span v-if="this.formData.id === undefined"> Create </span>
-                        <span v-if="this.formData.id !== undefined"> Update </span>
+                        <span v-if="this.formData.id !== undefined"> Edit </span>
                         course
                     </h1>
                     <button type="button" class="btn-close shadow-none" @click="manageCourseModalClose"></button>
@@ -412,7 +412,14 @@ export default {
             if(data !== null) {
                 this.courseSingle(data);
             }else {
-                this.formData = { student_enroll_capacity: '', name: '', professor_id: 'select-professor-option', price: '', duration: '', description: '' }
+                this.formData = {
+                    student_enroll_capacity: '',
+                    name: '',
+                    professor_id: 'select-professor-option',
+                    price: '',
+                    duration: '',
+                    description: '',
+                }
             }
             const myModal = new bootstrap.Modal("#manageCourseModal", {keyboard: false});
             myModal.show();
@@ -436,7 +443,14 @@ export default {
         deleteCourseModalClose() {
             this.selected = [];
             this.current_page = 1;
-            this.formData = { student_enroll_capacity: '', name: '', professor_id: 'select-professor-option', price: '', duration: '', description: '' }
+            this.formData = {
+                student_enroll_capacity: '',
+                name: '',
+                professor_id: 'select-professor-option',
+                price: '',
+                duration: '',
+                description: '',
+            }
             let myModalEl = document.getElementById('deleteCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -505,7 +519,14 @@ export default {
             apiServices.POST(apiRoutes.courseCreate, this.formData, (res) => {
                 this.manageCourseLoading = false;
                 if(res.message) {
-                    this.formData = { student_enroll_capacity: '', name: '', professor_id: '', price: '', duration: '', description: '' }
+                    this.formData = {
+                        student_enroll_capacity: '',
+                        name: '',
+                        professor_id: 'select-professor-option',
+                        price: '',
+                        duration: '',
+                        description: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageCourseModalClose();
                     this.courseList();
@@ -521,7 +542,14 @@ export default {
             apiServices.PATCH(apiRoutes.courseUpdate, this.formData, (res) => {
                 this.manageCourseLoading = false;
                 if(res.message) {
-                    this.formData = { student_enroll_capacity: '', name: '', professor_id: '', price: '', duration: '', description: '' }
+                    this.formData = {
+                        student_enroll_capacity: '',
+                        name: '',
+                        professor_id: 'select-professor-option',
+                        price: '',
+                        duration: '',
+                        description: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageCourseModalClose();
                     this.courseList();

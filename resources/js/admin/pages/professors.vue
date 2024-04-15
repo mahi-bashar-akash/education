@@ -427,7 +427,14 @@ export default {
             if(data !== null) {
                 this.professorSingle(data);
             }else {
-                this.formData = { name: '', email: '', phone: '', department_id: 'select-department-option', educational_qualification: '', joining_date: '' }
+                this.formData = {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    department_id: 'select-department-option',
+                    educational_qualification: '',
+                    joining_date: '',
+                }
             }
             const myModal = new bootstrap.Modal("#manageProfessorModal", {keyboard: false});
             myModal.show();
@@ -451,7 +458,14 @@ export default {
         deleteProfessorModalClose() {
             this.selected = [];
             this.current_page = 1;
-            this.formData = { name: '', email: '', phone: '', department_id: '', educational_qualification: '', joining_date: '' }
+            this.formData = {
+                name: '',
+                email: '',
+                phone: '',
+                department_id: 'select-department-option',
+                educational_qualification: '',
+                joining_date: '',
+            }
             let myModalEl = document.getElementById('deleteProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -531,7 +545,14 @@ export default {
             apiServices.POST(apiRoutes.professorCreate, this.formData, (res) => {
                 this.manageProfessorLoading = false;
                 if(res.message) {
-                    this.formData = { name: '', email: '', phone: '', department_id: '', educational_qualification: '', joining_date: '' }
+                    this.formData = {
+                        name: '',
+                        email: '',
+                        phone: '',
+                        department_id: 'select-department-option',
+                        educational_qualification: '',
+                        joining_date: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageProfessorModalClose();
                     this.professorList();
@@ -547,7 +568,14 @@ export default {
             apiServices.PATCH(apiRoutes.professorUpdate, this.formData, (res) => {
                 this.manageProfessorLoading = false;
                 if(res.message) {
-                    this.formData = { name: '', email: '', phone: '', department_id: '', educational_qualification: '', joining_date: '' }
+                    this.formData = {
+                        name: '',
+                        email: '',
+                        phone: '',
+                        department_id: 'select-department-option',
+                        educational_qualification: '',
+                        joining_date: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageProfessorModalClose();
                     this.professorList();

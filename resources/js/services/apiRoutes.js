@@ -33,6 +33,13 @@ const apiRoutes = {
     courseUpdate: '/admin-secure/course/update',
     courseDelete: '/admin-secure/course/delete',
 
+    /* --- --- --- --- student --- --- --- --- */
+    studentList: '/admin-secure/student/list',
+    studentCreate: '/admin-secure/student/create',
+    studentSingle: '/admin-secure/student/single',
+    studentUpdate: '/admin-secure/student/update',
+    studentDelete: '/admin-secure/student/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',

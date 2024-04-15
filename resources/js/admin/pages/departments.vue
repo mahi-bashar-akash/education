@@ -403,7 +403,14 @@ export default {
             if(data !== null) {
                 this.departmentSingle(data);
             }else {
-                this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
+                this.formData = {
+                    name: '',
+                    head_of_department: '',
+                    start_year: '',
+                    stuff_capacity: '',
+                    email: '',
+                    phone: '',
+                }
             }
             const myModal = new bootstrap.Modal("#manageDepartmentModal", {keyboard: false});
             myModal.show();
@@ -427,7 +434,14 @@ export default {
         deleteDepartmentModalClose() {
             this.selected = [];
             this.current_page = 1;
-            this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
+            this.formData = {
+                name: '',
+                head_of_department: '',
+                start_year: '',
+                stuff_capacity: '',
+                email: '',
+                phone: '',
+            }
             let myModalEl = document.getElementById('deleteDepartmentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -507,7 +521,14 @@ export default {
             apiServices.POST(apiRoutes.departmentCreate, this.formData, (res) => {
                 this.manageDepartmentLoading = false;
                 if(res.message) {
-                    this.formData = { name: '', head_of_department: '', start_year: null, stuff_capacity: '', email: '', phone: '' }
+                    this.formData = {
+                        name: '',
+                        head_of_department: '',
+                        start_year: '',
+                        stuff_capacity: '',
+                        email: '',
+                        phone: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageDepartmentModalClose();
                     this.departmentList();
@@ -523,7 +544,14 @@ export default {
             apiServices.PATCH(apiRoutes.departmentUpdate, this.formData, (res) => {
                 this.manageDepartmentLoading = false;
                 if(res.message) {
-                    this.formData = { name: '', head_of_department: '', start_year: '', stuff_capacity: '', email: '', phone: '' }
+                    this.formData = {
+                        name: '',
+                        head_of_department: '',
+                        start_year: '',
+                        stuff_capacity: '',
+                        email: '',
+                        phone: '',
+                    }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageDepartmentModalClose();
                     this.departmentList();
