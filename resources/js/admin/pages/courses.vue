@@ -26,7 +26,10 @@
                 <option value="50"> 50</option>
             </select>
         </div>
-        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteCourseModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
             <newBtn @click="manageCourseModalOpen"/>
         </div>
     </div>

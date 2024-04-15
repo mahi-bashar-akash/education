@@ -46,6 +46,33 @@
         </tr>
         </tbody>
     </table>
+
+<!-- global component for table as use into another component -->
+<!--    <tableContent-->
+<!--        :headers="tableHeaders"-->
+<!--        :rows="tableRows"-->
+<!--        tableClass="table"-->
+<!--        :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"-->
+<!--        :columnClasses="{ checkbox: 'checkbox', action: 'action' }"-->
+<!--        :checkboxColumnIndex="0"-->
+<!--        :editModalFunction="manageStudentModalOpen"-->
+<!--        :deleteModalFunction="deleteStudentModalOpen"-->
+<!--    />-->
+
+<!-- use this code in data() { return {} } into another component -->
+<!--    tableHeaders: ['Checkbox', 'Admission date', 'Name', 'Roll or Id', 'Phone', 'Email', 'Enroll Course', 'Action'],-->
+<!--    tableRows: [-->
+<!--    {-->
+<!--    id: '1',-->
+<!--    admissionDate: '01, February, 2025',-->
+<!--    name: 'Mahi Bashar Akash',-->
+<!--    roll: '18191101025',-->
+<!--    phoneNumber: '01645820007',-->
+<!--    email: 'mahibashar2023@gmail.com',-->
+<!--    enrollCourse: 'Bachelor of Business Administration'-->
+<!--    },-->
+<!--    ],-->
+
 </template>
 
 <script>

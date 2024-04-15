@@ -26,7 +26,10 @@
                 <option value="50"> 50</option>
             </select>
         </div>
-        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteDepartmentModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
             <newBtn @click="manageDepartmentModalOpen()"/>
         </div>
     </div>
@@ -236,7 +239,7 @@
                                autocomplete="new-email">
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3" v-if="this.formData.id === undefined">
                         <label for="start-date" class="form-label"> Start date </label>
                         <input id="start-date" type="text" name="start_year" v-model="formData.start_year"
                                class="form-control" autocomplete="new-start-year">

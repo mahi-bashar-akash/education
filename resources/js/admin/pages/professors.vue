@@ -26,7 +26,10 @@
                 <option value="50"> 50</option>
             </select>
         </div>
-        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteProfessorModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
             <newBtn @click="manageProfessorModalOpen()"/>
         </div>
     </div>
@@ -264,7 +267,7 @@
                         <div class="error-report" v-if="error != null && error.phone !== undefined"> {{error.phone[0]}} </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" v-if="this.formData.id === undefined">
                         <label for="joining-date" class="form-label">Joining date</label>
                         <input id="joining-date" type="text" v-model="formData.joining_date" name="joining-date"
                                class="form-control" autocomplete="new-joining-date">
