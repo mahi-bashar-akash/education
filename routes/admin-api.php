@@ -58,3 +58,15 @@ Route::group(
         Route::delete('/delete', [\App\Http\Controllers\ProfessorController::class, 'delete'])->name('Admin.Professor.Delete');
     }
 );
+
+/* --- --- --- --- Course api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'course'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\CourseController::class, 'list'])->name('Admin.Course.List');
+        Route::post('/create', [\App\Http\Controllers\CourseController::class, 'create'])->name('Admin.Course.Create');
+        Route::put('/single', [\App\Http\Controllers\CourseController::class, 'single'])->name('Admin.Course.Single');
+        Route::patch('/update', [\App\Http\Controllers\CourseController::class, 'update'])->name('Admin.Course.Update');
+        Route::delete('/delete', [\App\Http\Controllers\CourseController::class, 'delete'])->name('Admin.Course.Delete');
+    }
+);
