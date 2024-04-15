@@ -23,6 +23,9 @@ return new class extends Migration
         Schema::table('students', function (Blueprint $table) {
             $table->string('admin_id')->after('updated_at');
         });
+        Schema::table('library_assets', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
     }
 
     /**
@@ -40,6 +43,9 @@ return new class extends Migration
             $table->dropColumn('admin_id');
         });
         Schema::table('students', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('library_assets', function (Blueprint $table) {
             $table->dropColumn('admin_id');
         });
     }

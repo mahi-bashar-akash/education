@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('library_assets', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('author');
+            $table->string('name');
+            $table->string('subject');
+            $table->string('price');
+            $table->string('department_id');
+            $table->string('status');
+            $table->dateTime('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 
