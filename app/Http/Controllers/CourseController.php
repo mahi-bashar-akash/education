@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
@@ -43,7 +41,7 @@ class CourseController extends BaseController
                 $request->all(),
                 [
                     'student_enroll_capacity' => 'required',
-                    'name' => 'required',
+                    'name' => 'required|String',
                     'professor_id' => 'required',
                     'price' => 'required',
                     'duration' => 'required',

@@ -229,7 +229,7 @@
 
                     <div class="form-group mb-3">
                         <label for="professor" class="form-label">Select professor</label>
-                        <select name="professor" id="professor" class="form-select" v-model="formData.professor_id">
+                        <select name="professor_id" id="professor" class="form-select" v-model="formData.professor_id" autocomplete="new-professor-id">
                             <option value="select-professor-option">Select professor option</option>
                             <option v-for="each in professorDataList" :value="each.id">
                                 {{ each.name }}
@@ -340,7 +340,6 @@ export default {
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Courses', route: 'courses' },
             ],
-            professorDataList: [],
             formData: {
                 student_enroll_capacity: '',
                 name: '',
@@ -349,6 +348,7 @@ export default {
                 duration: '',
                 description: '',
             },
+            professorDataList: [],
             loading: true,
             deleteProfessorParam: {
                 ids: []
@@ -369,9 +369,7 @@ export default {
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
+        this.courseList();
     },
     methods: {
 
@@ -440,7 +438,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to professor list api */
+        /* Function to course list api */
         courseList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -458,7 +456,7 @@ export default {
             })
         },
 
-        /* Function to professor search data */
+        /* Function to course search data */
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -466,7 +464,7 @@ export default {
             }, 800);
         },
 
-        /* Function to professor previous page */
+        /* Function to course previous page */
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -474,7 +472,7 @@ export default {
             }
         },
 
-        /* Function to professor next page */
+        /* Function to course next page */
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -482,13 +480,13 @@ export default {
             }
         },
 
-        /* Function to professor change page */
+        /* Function to course change page */
         pageChange(page) {
             this.current_page = page;
             this.courseList();
         },
 
-        /* Function to professor manage of create and update api */
+        /* Function to course manage of create and update api */
         manageCourse() {
             if(this.formData.id === undefined) {
                 this.courseCreate()
@@ -497,7 +495,7 @@ export default {
             }
         },
 
-        /* Function to professor create api */
+        /* Function to course create api */
         courseCreate() {
             this.manageCourseLoading = true;
             apiServices.POST(apiRoutes.courseCreate, this.formData, (res) => {
@@ -513,7 +511,7 @@ export default {
             })
         },
 
-        /* Function to professor update api */
+        /* Function to course update api */
         courseUpdate() {
             this.manageCourseLoading = true;
             apiServices.PATCH(apiRoutes.courseUpdate, this.formData, (res) => {
@@ -529,7 +527,7 @@ export default {
             })
         },
 
-        /* Function to professor single api */
+        /* Function to course single api */
         courseSingle(data) {
             apiServices.PUT(apiRoutes.courseSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -540,7 +538,7 @@ export default {
             });
         },
 
-        /* Function to professor delete api */
+        /* Function to course delete api */
         courseDelete() {
             this.selected.forEach((v) => {
                 this.deleteProfessorParam.ids.push(v);
@@ -558,7 +556,7 @@ export default {
             })
         },
 
-        /* Function to get department api */
+        /* Function to get professor api */
         getProfessor(){
             apiServices.GET(apiRoutes.professorList, '', (res) => {
                 if(res.message) {

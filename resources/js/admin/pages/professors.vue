@@ -248,9 +248,11 @@
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select Department</label>
-                        <select name="department" id="department" class="form-select" v-model="formData.department_id" autocomplete="new-department">
+                        <select name="department_id" id="department" class="form-select" v-model="formData.department_id" autocomplete="new-department-id">
                             <option value="select-department-option">Select department option</option>
-                            <option v-for="each in departmentDataList" :value="each.id"> {{ each.name }}</option>
+                            <option v-for="each in departmentDataList" :value="each.id">
+                                {{ each.name }}
+                            </option>
                         </select>
                         <div class="error-report" v-if="error != null && error.department_id !== undefined"> {{error.department_id[0]}} </div>
                     </div>
@@ -382,9 +384,6 @@ export default {
     },
     mounted() {
         this.professorList();
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
         this.flatpickrConfigDate();
     },
     methods: {
