@@ -9,7 +9,7 @@
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
-                <input type="text" name="keyword" class="form-control ps-5" required autocomplete="new-search"
+                <input type="text" name="keyword" class="form-control ps-5" autocomplete="new-search"
                        placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
                 <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                     <i class="bi bi-search"></i>
@@ -57,9 +57,6 @@
                         <th class="default-width">
                             department
                         </th>
-                        <th class="default-width">
-                            status
-                        </th>
                         <th class="action">
                             Action
                         </th>
@@ -86,10 +83,6 @@
                             <span v-if="each.department_info != null">
                                 {{ each.department_info.name }}
                             </span>
-                        </td>
-                        <td class="default-width">
-                            <span v-if="each.status === 1"> In Stock </span>
-                            <span v-if="each.status === 2"> Out of Stock </span>
                         </td>
                         <td class="action">
                             <div class="dropdown">
@@ -222,7 +215,7 @@
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label"> Name </label>
-                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control" required
+                        <input id="name" v-model="formData.name" type="text" name="name" class="form-control"
                                autocomplete="new-name">
                         <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
                     </div>
@@ -230,14 +223,14 @@
                     <div class="form-group mb-3">
                         <label for="subject" class="form-label"> Subject </label>
                         <input id="subject" v-model="formData.subject" type="text" name="subject" class="form-control"
-                               required autocomplete="new-subject">
+                               autocomplete="new-subject">
                         <div class="error-report" v-if="error != null && error.subject !== undefined"> {{error.subject[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="author-name" class="form-label"> Author name </label>
                         <input id="author-name" v-model="formData.author" type="text" name="author"
-                               class="form-control" required autocomplete="new-author-name">
+                               class="form-control" autocomplete="new-author-name">
                         <div class="error-report" v-if="error != null && error.author !== undefined"> {{error.author[0]}} </div>
                     </div>
 
@@ -253,18 +246,8 @@
                     <div class="form-group mb-3">
                         <label for="price" class="form-label"> Price </label>
                         <input id="price" v-model="formData.price" type="text" name="price" class="form-control"
-                               required autocomplete="new-price">
+                               autocomplete="new-price">
                         <div class="error-report" v-if="error != null && error.price !== undefined"> {{error.price[0]}} </div>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label for="status" class="form-label"> Status </label>
-                        <select name="status" id="status" class="form-select" v-model="formData.status">
-                            <option :value="0">Select status option</option>
-                            <option :value="1">In Stock</option>
-                            <option :value="2">Out of Stock</option>
-                        </select>
-                        <div class="error-report" v-if="error != null && error.status !== undefined"> {{error.status[0]}} </div>
                     </div>
 
                 </div>
@@ -355,7 +338,6 @@ export default {
                 author: '',
                 department_id: '0',
                 price: '',
-                status: '0',
             },
             departmentListData: [],
             deleteLibraryAssetParam: {
@@ -424,7 +406,6 @@ export default {
                     author: '',
                     department_id: '0',
                     price: '',
-                    status: '0',
                 }
             }
             const myModal = new bootstrap.Modal("#manageLibraryAssetModal", {keyboard: false});
@@ -455,7 +436,6 @@ export default {
                 author: '',
                 department_id: '0',
                 price: '',
-                status: '0',
             }
             let myModalEl = document.getElementById('deleteLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -531,7 +511,6 @@ export default {
                         author: '',
                         department_id: '0',
                         price: '',
-                        status: '0',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageLibraryAssetModalClose();
@@ -554,7 +533,6 @@ export default {
                         author: '',
                         department_id: '0',
                         price: '',
-                        status: '0',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageLibraryAssetModalClose();

@@ -77,21 +77,21 @@
 
                     <div class="form-group mb-3">
                         <label for="joining-date" class="form-label">Joining Date</label>
-                        <input id="joining-date" type="text" v-model="formData.joiningDate" name="join-date"
+                        <input id="joining-date" type="text" v-model="formData.joining_date" name="join-date"
                                class="form-control" required autocomplete="new-joining-date">
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="department" class="form-label">department</label>
-                        <select name="department" id="department" class="form-select" v-model="formData.department">
+                        <label for="department_id" class="form-label">Select department</label>
+                        <select name="department_id" id="department_id" class="form-select" v-model="formData.department_id">
                             <option :value="0">Select department option</option>
                             <option v-for="each in departmentDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="phone-number" class="form-label"> Phone number </label>
-                        <input id="phone-number" type="text" name="phone-number" v-model="formData.phoneNumber"
+                        <label for="phone" class="form-label"> Phone number </label>
+                        <input id="phone" type="text" name="phone" v-model="formData.phone"
                                class="form-control" required autocomplete="new-phone-number">
                     </div>
 
@@ -188,9 +188,9 @@ export default {
             formData: {
                 name: '',
                 email: '',
-                joiningDate: '',
-                department: '',
-                phoneNumber: '',
+                joining_date: '',
+                department_id: '',
+                phone: '',
                 description: '',
             },
 

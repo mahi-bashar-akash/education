@@ -78,27 +78,37 @@
 
                     <div class="form-group mb-3">
                         <label for="event-name" class="form-label"> Name </label>
-                        <input id="event-name" v-model="formData.eventName" type="text" name="event-name"
+                        <input id="event-name" v-model="formData.name" type="text" name="event-name"
                                class="form-control" required autocomplete="new-event-name">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-date" class="form-label"> Date </label>
-                        <input id="event-date" v-model="formData.eventDate" type="text" name="event-date"
+                        <input id="event-date" v-model="formData.date" type="text" name="event-date"
                                class="form-control" required autocomplete="new-event-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-start-time" class="form-label"> Start time </label>
-                        <input id="event-start-time" v-model="formData.eventStartTime" type="text"
+                        <input id="event-start-time" v-model="formData.start_time" type="text"
                                name="event-start-time" class="form-control" required
                                autocomplete="new-event-start-time">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="event-end-time" class="form-label"> End time </label>
-                        <input id="event-end-time" v-model="formData.eventEndTime" type="text" name="event-end-time"
+                        <input id="event-end-time" v-model="formData.end_time" type="text" name="event-end-time"
                                class="form-control" required autocomplete="new-event-end-time">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="guest" class="form-label"> Guest name </label>
+                        <input id="guest" type="text" name="guest" v-model="formData.guest" class="form-control" required autocomplete="new-event-guest-name">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="location" class="form-label"> Location </label>
+                        <input id="location" type="text" name="location" v-model="formData.location" class="form-control" required autocomplete="new-event-location">
                     </div>
 
                     <div class="form-group">
@@ -185,52 +195,14 @@ export default {
                 {id: 1, name: 'John Doe', date: '2024-03-31', startTime: '09:00 pm', endTime: '12:00 pm'},
             ],
             formData: {
-                updateImage: '',
-                eventName: '',
-                eventDate: '',
-                eventStartTime: '',
-                eventEndTime: '',
-                eventDescription: '',
+                name: '',
+                date: '',
+                start_time: '',
+                end_time: '',
+                description: '',
+                guest: '',
+                location: '',
             },
-            timeData: [
-                {id: '1', time: '01:00'},
-                {id: '2', time: '01:30'},
-                {id: '3', time: '02:00'},
-                {id: '4', time: '02:30'},
-                {id: '5', time: '03:00'},
-                {id: '6', time: '03:30'},
-                {id: '7', time: '04:00'},
-                {id: '8', time: '04:30'},
-                {id: '9', time: '05:00'},
-                {id: '10', time: '05:30'},
-                {id: '11', time: '06:00'},
-                {id: '12', time: '06:30'},
-                {id: '13', time: '07:00'},
-                {id: '14', time: '07:30'},
-                {id: '15', time: '08:00'},
-                {id: '16', time: '08:30'},
-                {id: '17', time: '09:00'},
-                {id: '18', time: '09:30'},
-                {id: '19', time: '10:00'},
-                {id: '20', time: '10:30'},
-                {id: '21', time: '11:00'},
-                {id: '22', time: '11:30'},
-                {id: '23', time: '12:00'},
-                {id: '24', time: '12:30'},
-            ],
-            periodData: [
-                {id: '1', period: 'am'},
-                {id: '2', period: 'pm'},
-            ],
-            eventDataList: [
-                {
-                    id: '1',
-                    name: 'Celebrate convocation',
-                    date: '01, January, 2025',
-                    startTime: '01:00 pm',
-                    endTime: '03:00 pm'
-                },
-            ],
             loading: true,
         }
     },

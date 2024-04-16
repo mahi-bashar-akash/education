@@ -64,9 +64,9 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="department" class="form-label">Select Student</label>
-                        <select name="department" id="department" class="form-select" required
-                                autocomplete="new-select-student" v-model="formData.department">
+                        <label for="student_id" class="form-label">Select Student</label>
+                        <select name="student_id" id="student_id" class="form-select" required
+                                autocomplete="new-select-student" v-model="formData.student_id">
                             <option :value="0">Select student option</option>
                             <option v-for="each in studentDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
@@ -74,8 +74,8 @@
 
                     <div class="form-group mb-3">
                         <label for="fees-type" class="form-label">Select Fees type</label>
-                        <select name="fees-type" id="fees-type" class="form-select" required
-                                autocomplete="new-select-fees-type" v-model="formData.feesType">
+                        <select name="fees_type" id="fees-type" class="form-select" required
+                                autocomplete="new-select-fees-type" v-model="formData.fees_type">
                             <option :value="0">Select fees type</option>
                             <option v-for="each in feesTypeDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
@@ -83,14 +83,14 @@
 
                     <div class="form-group mb-3">
                         <label for="fees-amount" class="form-label">Fees amount</label>
-                        <input id="fees-amount" type="text" name="fees-amount" class="form-control" required
-                               autocomplete="new-fees-amount" v-model="formData.feesAmount">
+                        <input id="fees-amount" type="text" name="fees_amount" class="form-control" required
+                               autocomplete="new-fees-amount" v-model="formData.fees_amount">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="payment-type" class="form-label">Payment type</label>
-                        <select name="payment-type" id="payment-type" class="form-select" required
-                                autocomplete="new-payment-type" v-model="formData.paymentType">
+                        <select name="payment_type" id="payment-type" class="form-select" required
+                                autocomplete="new-payment-type" v-model="formData.payment_type">
                             <option :value="0">Select payment type</option>
                             <option v-for="each in paymentTypeList" :value="each.id"> {{ each.name }}</option>
                         </select>
@@ -98,8 +98,8 @@
 
                     <div class="form-group mb-3">
                         <label for="payment-status" class="form-label">Payment status</label>
-                        <select name="payment-status" id="payment-status" class="form-select" required
-                                autocomplete="new-payment-status" v-model="formData.paymentStatus">
+                        <select name="payment_status" id="payment-status" class="form-select" required
+                                autocomplete="new-payment-status" v-model="formData.payment_status">
                             <option :value="0">Select payment status</option>
                             <option v-for="each in paymentStatusList" :value="each.id"> {{ each.name }}</option>
                         </select>
@@ -211,11 +211,11 @@ export default {
                 {id: '3', name: 'Pending'},
             ],
             formData: {
-                department: '0',
-                feesType: '0',
-                feesAmount: '',
-                paymentType: '0',
-                paymentStatus: '0',
+                student_id: '0',
+                fees_type: '0',
+                fees_amount: '',
+                payment_type: '0',
+                payment_status: '0',
             },
             feesDataList: [
                 {

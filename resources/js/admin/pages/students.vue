@@ -229,18 +229,21 @@
                     <div class="form-group mb-3">
                         <label for="roll_or_id" class="form-label">Roll or Id</label>
                         <input id="roll_or_id" type="text" name="roll_or_id" class="form-control" v-model="formData.roll_or_id" autocomplete="new-roll-or-id">
+                        <div class="error-report" v-if="error != null && error.roll_or_id !== undefined"> {{error.roll_or_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input id="name" type="text" v-model="formData.name" name="name" class="form-control"
                                autocomplete="new-name">
+                        <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input id="email" type="email" v-model="formData.email" name="email" class="form-control"
                                autocomplete="new-email">
+                        <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.email[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -249,18 +252,21 @@
                             <option value="select-enroll-course">Select Enroll Course</option>
                             <option v-for="each in courseDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.course_id !== undefined"> {{error.course_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="phone-number" class="form-label">Phone number</label>
                         <input id="phone-number" type="text" v-model="formData.phone" name="phone"
                                class="form-control" autocomplete="new-phone-number">
+                        <div class="error-report" v-if="error != null && error.phone !== undefined"> {{error.phone[0]}} </div>
                     </div>
 
                     <div class="form-group">
                         <label for="admission-date" class="form-label">Admission date</label>
                         <input id="admission-date" type="text" v-model="formData.admission_date" name="admission-date"
                                class="form-control" autocomplete="new-admission-date">
+                        <div class="error-report" v-if="error != null && error.admission_date !== undefined"> {{error.admission_date[0]}} </div>
                     </div>
 
                 </div>

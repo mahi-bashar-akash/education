@@ -251,7 +251,7 @@
 
                     <div class="form-group mb-3">
                         <label for="department" class="form-label">Select Department</label>
-                        <select name="department_id" id="department" class="form-select" v-model="formData.department_id" autocomplete="new-department-id">
+                        <select name="department_id" id="department_id" class="form-select" v-model="formData.department_id" autocomplete="new-department-id">
                             <option value="select-department-option">Select department option</option>
                             <option v-for="each in departmentDataList" :value="each.id">
                                 {{ each.name }}

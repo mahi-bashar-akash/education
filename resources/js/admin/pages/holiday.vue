@@ -79,13 +79,13 @@
 
                     <div class="form-group mb-3">
                         <label for="start-date" class="form-label">Start Date</label>
-                        <input id="start-date" type="text" v-model="formData.startDate" name="start-date"
+                        <input id="start-date" type="text" v-model="formData.start_date" name="start-date"
                                class="form-control" required autocomplete="new-start-date">
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="end-date" class="form-label">End Date</label>
-                        <input id="end-date" type="text" v-model="formData.endDate" name="end-date" class="form-control"
+                        <input id="end-date" type="text" v-model="formData.end_date" name="end-date" class="form-control"
                                required autocomplete="new-end-date">
                     </div>
 
@@ -182,8 +182,8 @@ export default {
             formData: {
                 name: '',
                 types: '',
-                startDate: '',
-                endDate: '',
+                start_date: '',
+                end_date: '',
                 description: '',
             },
             holidayDataList: [
