@@ -26,6 +26,18 @@ return new class extends Migration
         Schema::table('library_assets', function (Blueprint $table) {
             $table->string('admin_id')->after('updated_at');
         });
+        Schema::table('events', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
+        Schema::table('stuffs', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
+        Schema::table('holidays', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
+        Schema::table('fees', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
     }
 
     /**
@@ -46,6 +58,18 @@ return new class extends Migration
             $table->dropColumn('admin_id');
         });
         Schema::table('library_assets', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('stuffs', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('holidays', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('fees', function (Blueprint $table) {
             $table->dropColumn('admin_id');
         });
     }
