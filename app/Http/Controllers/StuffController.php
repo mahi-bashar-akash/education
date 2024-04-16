@@ -16,7 +16,7 @@ class StuffController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $stuff = Stuff::width('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $stuff = Stuff::with('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $stuff->where(
@@ -41,12 +41,12 @@ class StuffController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'email' => 'required|String',
-                    'joining_date' => 'required|String',
-                    'department_id' => 'required|email',
-                    'phone' => 'required|String',
-                    'description' => 'required|String',
+                    'name' => 'required|string',
+                    'email' => 'required|email',
+                    'joining_date' => 'required',
+                    'department_id' => 'required',
+                    'phone' => 'required|string',
+                    'description' => 'required|string',
                 ]
             );
 
@@ -98,12 +98,12 @@ class StuffController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'email' => 'required|String',
-                    'joining_date' => 'required|String',
-                    'department_id' => 'required|email',
-                    'phone' => 'required|String',
-                    'description' => 'required|String',
+                    'name' => 'required|string',
+                    'email' => 'required|email',
+                    'joining_date' => 'required',
+                    'department_id' => 'required',
+                    'phone' => 'required|string',
+                    'description' => 'required|string',
                 ]
             );
 

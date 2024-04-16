@@ -16,10 +16,10 @@ class StudentController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $courses = Student::with('course_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $students = Student::with('course_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $courses->where(
+                $students->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
                         $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
@@ -27,9 +27,9 @@ class StudentController extends BaseController
                     }
                 );
             }
-            $courses = $courses->paginate($limit);
+            $students = $students->paginate($limit);
 
-            return ['message' => 'Show student list data successfully' ,'data' => $courses];
+            return ['message' => 'Show student list data successfully' ,'data' => $students];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -41,10 +41,10 @@ class StudentController extends BaseController
                 $request->all(),
                 [
                     'admission_date' => 'required',
-                    'name' => 'required',
-                    'roll_or_id' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required',
+                    'name' => 'required|string',
+                    'roll_or_id' => 'required|string',
+                    'phone' => 'required|string',
+                    'email' => 'required|email',
                     'course_id' => 'required',
                 ]
             );
@@ -52,16 +52,16 @@ class StudentController extends BaseController
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $course = new Student();
+            $student = new Student();
             $admin_id = Auth::guard('admins')->id();
-            $course->admission_date = $request->admission_date;
-            $course->name = $request->name;
-            $course->roll_or_id = $request->roll_or_id;
-            $course->phone = $request->phone;
-            $course->email = $request->email;
-            $course->course_id = $request->course_id;
-            $course->admin_id = $admin_id;
-            $course->save();
+            $student->admission_date = $request->admission_date;
+            $student->name = $request->name;
+            $student->roll_or_id = $request->roll_or_id;
+            $student->phone = $request->phone;
+            $student->email = $request->email;
+            $student->course_id = $request->course_id;
+            $student->admin_id = $admin_id;
+            $student->save();
             return ['message' => 'Student has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
@@ -81,11 +81,11 @@ class StudentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
+            $student = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($student == null){
                 return ['status' => 500, 'errors' => 'Student data not found'];
             }
-            return ['message' => 'show single data successfully','data' => $course];
+            return ['message' => 'show single data successfully','data' => $student];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -98,10 +98,10 @@ class StudentController extends BaseController
                 [
                     'id' => 'required',
                     'admission_date' => 'required',
-                    'name' => 'required',
-                    'roll_or_id' => 'required',
-                    'phone' => 'required',
-                    'email' => 'required',
+                    'name' => 'required|string',
+                    'roll_or_id' => 'required|string',
+                    'phone' => 'required|string',
+                    'email' => 'required|email',
                     'course_id' => 'required',
                 ]
             );
@@ -110,17 +110,17 @@ class StudentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
+            $student = Student::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($student == null){
                 return ['status' => 500, 'errors' => 'Student data not found'];
             }
-            $course->admission_date = $request->admission_date;
-            $course->name = $request->name;
-            $course->roll_or_id = $request->roll_or_id;
-            $course->phone = $request->phone;
-            $course->email = $request->email;
-            $course->course_id = $request->course_id;
-            $course->save();
+            $student->admission_date = $request->admission_date;
+            $student->name = $request->name;
+            $student->roll_or_id = $request->roll_or_id;
+            $student->phone = $request->phone;
+            $student->email = $request->email;
+            $student->course_id = $request->course_id;
+            $student->save();
             return ['message' => 'Student has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];

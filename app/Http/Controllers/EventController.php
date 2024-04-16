@@ -41,13 +41,13 @@ class EventController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'date' => 'required|String',
-                    'start_time' => 'required|String',
-                    'end_time' => 'required|email',
-                    'description' => 'required|String',
-                    'guest' => 'required|String',
-                    'location' => 'required|String',
+                    'name' => 'required|string',
+                    'date' => 'required|string',
+                    'start_time' => 'required|string',
+                    'end_time' => 'required|string',
+                    'description' => 'required|string',
+                    'guest' => 'required|string',
+                    'location' => 'required|string',
                 ]
             );
 
@@ -100,13 +100,13 @@ class EventController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'date' => 'required|String',
-                    'start_time' => 'required|String',
-                    'end_time' => 'required|email',
-                    'description' => 'required|String',
-                    'guest' => 'required|String',
-                    'location' => 'required|String',
+                    'name' => 'required|string',
+                    'date' => 'required|string',
+                    'start_time' => 'required|string',
+                    'end_time' => 'required|string',
+                    'description' => 'required|string',
+                    'guest' => 'required|string',
+                    'location' => 'required|string',
                 ]
             );
 

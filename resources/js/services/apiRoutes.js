@@ -47,6 +47,27 @@ const apiRoutes = {
     libraryAssetUpdate: '/admin-secure/library/asset/update',
     libraryAssetDelete: '/admin-secure/library/asset/delete',
 
+    /* --- --- --- --- admin - stuff --- --- --- --- */
+    stuffList: '/admin-secure/stuff/list',
+    stuffCreate: '/admin-secure/stuff/create',
+    stuffSingle: '/admin-secure/stuff/single',
+    stuffUpdate: '/admin-secure/stuff/update',
+    stuffDelete: '/admin-secure/stuff/delete',
+
+    /* --- --- --- --- admin - holiday --- --- --- --- */
+    holidayList: '/admin-secure/holiday/list',
+    holidayCreate: '/admin-secure/holiday/create',
+    holidaySingle: '/admin-secure/holiday/single',
+    holidayUpdate: '/admin-secure/holiday/update',
+    holidayDelete: '/admin-secure/holiday/delete',
+
+    /* --- --- --- --- admin - fees --- --- --- --- */
+    feesList: '/admin-secure/fees/list',
+    feesCreate: '/admin-secure/fees/create',
+    feesSingle: '/admin-secure/fees/single',
+    feesUpdate: '/admin-secure/fees/update',
+    feesDelete: '/admin-secure/fees/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',

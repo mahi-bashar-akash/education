@@ -111,11 +111,11 @@ Route::group(
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'stuff'],
     function () {
-        Route::get('/list', [\App\Http\Controllers\StudentController::class, 'list'])->name('Admin.Stuff.List');
-        Route::post('/create', [\App\Http\Controllers\StudentController::class, 'create'])->name('Admin.Stuff.Create');
-        Route::put('/single', [\App\Http\Controllers\StudentController::class, 'single'])->name('Admin.Stuff.Single');
-        Route::patch('/update', [\App\Http\Controllers\StudentController::class, 'update'])->name('Admin.Stuff.Update');
-        Route::delete('/delete', [\App\Http\Controllers\StudentController::class, 'delete'])->name('Admin.Stuff.Delete');
+        Route::get('/list', [\App\Http\Controllers\StuffController::class, 'list'])->name('Admin.Stuff.List');
+        Route::post('/create', [\App\Http\Controllers\StuffController::class, 'create'])->name('Admin.Stuff.Create');
+        Route::put('/single', [\App\Http\Controllers\StuffController::class, 'single'])->name('Admin.Stuff.Single');
+        Route::patch('/update', [\App\Http\Controllers\StuffController::class, 'update'])->name('Admin.Stuff.Update');
+        Route::delete('/delete', [\App\Http\Controllers\StuffController::class, 'delete'])->name('Admin.Stuff.Delete');
     }
 );
 

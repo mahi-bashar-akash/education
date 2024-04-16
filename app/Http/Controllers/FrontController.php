@@ -49,8 +49,8 @@ class FrontController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'phone' => 'required|String',
+                    'name' => 'required|string',
+                    'phone' => 'required|string',
                     'email' => 'required|unique:users,email',
                     'password' => 'required|min:6|confirmed'
                 ]

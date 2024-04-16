@@ -15,10 +15,10 @@ class FeesController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $courses = Fees::with('student_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $fees = Fees::with('student_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $courses->where(
+                $fees->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
                         $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
@@ -26,9 +26,9 @@ class FeesController extends BaseController
                     }
                 );
             }
-            $courses = $courses->paginate($limit);
+            $fees = $fees->paginate($limit);
 
-            return ['message' => 'Show fees list data successfully' ,'data' => $courses];
+            return ['message' => 'Show fees list data successfully' ,'data' => $fees];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -41,8 +41,8 @@ class FeesController extends BaseController
                 [
                     'student_id' => 'required',
                     'fees_type' => 'required',
-                    'fees_amount' => 'required|String',
-                    'payment_type' => 'required|String',
+                    'fees_amount' => 'required',
+                    'payment_type' => 'required',
                     'payment_status' => 'required',
                 ]
             );
@@ -50,15 +50,15 @@ class FeesController extends BaseController
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $course = new Fees();
+            $fees = new Fees();
             $admin_id = Auth::guard('admins')->id();
-            $course->student_id = $request->student_id;
-            $course->fees_type = $request->fees_type;
-            $course->fees_amount = $request->fees_amount;
-            $course->payment_type = $request->payment_type;
-            $course->payment_status = $request->payment_status;
-            $course->admin_id = $admin_id;
-            $course->save();
+            $fees->student_id = $request->student_id;
+            $fees->fees_type = $request->fees_type;
+            $fees->fees_amount = $request->fees_amount;
+            $fees->payment_type = $request->payment_type;
+            $fees->payment_status = $request->payment_status;
+            $fees->admin_id = $admin_id;
+            $fees->save();
             return ['message' => 'Fees has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
@@ -78,11 +78,11 @@ class FeesController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
+            $fees = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($fees == null){
                 return ['status' => 500, 'errors' => 'Fees data not found'];
             }
-            return ['message' => 'show single data successfully','data' => $course];
+            return ['message' => 'show single data successfully','data' => $fees];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -96,8 +96,8 @@ class FeesController extends BaseController
                     'id' => 'required',
                     'student_id' => 'required',
                     'fees_type' => 'required',
-                    'fees_amount' => 'required|String',
-                    'payment_type' => 'required|String',
+                    'fees_amount' => 'required',
+                    'payment_type' => 'required',
                     'payment_status' => 'required',
                 ]
             );
@@ -106,16 +106,16 @@ class FeesController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $course = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($course == null){
+            $fees = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($fees == null){
                 return ['status' => 500, 'errors' => 'Fees data not found'];
             }
-            $course->student_id = $request->student_id;
-            $course->fees_type = $request->fees_type;
-            $course->fees_amount = $request->fees_amount;
-            $course->payment_type = $request->payment_type;
-            $course->payment_status = $request->payment_status;
-            $course->save();
+            $fees->student_id = $request->student_id;
+            $fees->fees_type = $request->fees_type;
+            $fees->fees_amount = $request->fees_amount;
+            $fees->payment_type = $request->payment_type;
+            $fees->payment_status = $request->payment_status;
+            $fees->save();
             return ['message' => 'Fees has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];

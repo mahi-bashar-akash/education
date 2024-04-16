@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteLibraryAssetModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageLibraryAssetModalOpen()"/>
+            <newBtn @click="manageLibraryAssetModalOpen(null)"/>
         </div>
     </div>
 
@@ -361,7 +361,7 @@ export default {
         }
     },
     mounted() {
-        this.libraryAssetList()
+        this.libraryAssetList();
     },
     methods: {
 

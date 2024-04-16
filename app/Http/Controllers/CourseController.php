@@ -41,7 +41,7 @@ class CourseController extends BaseController
                 $request->all(),
                 [
                     'student_enroll_capacity' => 'required',
-                    'name' => 'required|String',
+                    'name' => 'required|string',
                     'professor_id' => 'required',
                     'price' => 'required',
                     'duration' => 'required',

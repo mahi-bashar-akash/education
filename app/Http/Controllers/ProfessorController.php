@@ -40,12 +40,12 @@ class ProfessorController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
+                    'name' => 'required|string',
                     'email' => 'required|email',
-                    'educational_qualification' => 'required|String',
+                    'educational_qualification' => 'required|string',
                     'department_id' => 'required',
-                    'phone' => 'required|String',
-                    'joining_date' => 'required|String',
+                    'phone' => 'required|string',
+                    'joining_date' => 'required',
                 ]
             );
 
@@ -97,12 +97,12 @@ class ProfessorController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
+                    'name' => 'required|string',
                     'email' => 'required|email',
-                    'educational_qualification' => 'required|String',
+                    'educational_qualification' => 'required|string',
                     'department_id' => 'required',
-                    'phone' => 'required|String',
-                    'joining_date' => 'required|String',
+                    'phone' => 'required|string',
+                    'joining_date' => 'required',
                 ]
             );
 

@@ -40,9 +40,9 @@ class LibraryAssetController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'author' => 'required',
-                    'name' => 'required|String',
-                    'subject' => 'required',
+                    'author' => 'required|string',
+                    'name' => 'required|string',
+                    'subject' => 'required|string',
                     'price' => 'required',
                     'department_id' => 'required',
                     'status' => 'required',
@@ -97,9 +97,9 @@ class LibraryAssetController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'author' => 'required',
-                    'name' => 'required|String',
-                    'subject' => 'required',
+                    'author' => 'required|string',
+                    'name' => 'required|string',
+                    'subject' => 'required|string',
                     'price' => 'required',
                     'department_id' => 'required',
                     'status' => 'required',

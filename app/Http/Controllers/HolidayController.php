@@ -43,11 +43,11 @@ class HolidayController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'types' => 'required|String',
-                    'start_date' => 'required|String',
-                    'end_date' => 'required|email',
-                    'description' => 'required|String',
+                    'name' => 'required|string',
+                    'types' => 'required',
+                    'start_date' => 'required',
+                    'end_date' => 'required',
+                    'description' => 'required|string',
                 ]
             );
 
@@ -98,11 +98,11 @@ class HolidayController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'types' => 'required|String',
-                    'start_date' => 'required|String',
-                    'end_date' => 'required|email',
-                    'description' => 'required|String',
+                    'name' => 'required|string',
+                    'types' => 'required',
+                    'start_date' => 'required',
+                    'end_date' => 'required',
+                    'description' => 'required|string',
                 ]
             );
 

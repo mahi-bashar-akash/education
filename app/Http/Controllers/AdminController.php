@@ -49,8 +49,8 @@ class AdminController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'phone' => 'required|String',
+                    'name' => 'required|string',
+                    'phone' => 'required|string',
                     'email' => 'required|unique:admins,email',
                     'password' => 'required|min:6|confirmed'
                 ]
@@ -146,8 +146,8 @@ class AdminController extends BaseController
                 $request->all(),
                 [
                     'email' => 'required|email|unique:admins,email,' . $request->email . ',email',
-                    'name' => 'required|String',
-                    'phone' => 'required|String',
+                    'name' => 'required|string',
+                    'phone' => 'required|string',
                 ]
             );
             if ($validator->fails()) {

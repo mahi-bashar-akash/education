@@ -40,12 +40,12 @@ class DepartmentController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
+                    'name' => 'required|string',
+                    'head_of_department' => 'required|string',
+                    'phone' => 'required|string',
                     'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'start_year' => 'required|string',
+                    'stuff_capacity' => 'required|string',
                 ]
             );
 
@@ -97,12 +97,12 @@ class DepartmentController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
+                    'name' => 'required|string',
+                    'head_of_department' => 'required|string',
+                    'phone' => 'required|string',
                     'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'start_year' => 'required|string',
+                    'stuff_capacity' => 'required|string',
                 ]
             );
 

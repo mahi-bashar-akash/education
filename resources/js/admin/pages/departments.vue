@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteDepartmentModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageDepartmentModalOpen()"/>
+            <newBtn @click="manageDepartmentModalOpen(null)"/>
         </div>
     </div>
 
@@ -364,8 +364,8 @@ export default {
         }
     },
     mounted() {
-        this.flatpickrConfigDate();
         this.departmentList();
+        this.flatpickrConfigDate();
     },
     methods: {
 

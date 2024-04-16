@@ -24,7 +24,7 @@
             </select>
         </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageEventModalOpen"/>
+            <newBtn @click="manageEventModalOpen(null)"/>
         </div>
     </div>
 
@@ -210,7 +210,7 @@ export default {
         setTimeout(() => {
             this.loading = false
         }, 2000)
-        this.flatpickrConfigDate()
+        this.flatpickrConfigDate();
         this.flatpickrConfigStartTime();
         this.flatpickrConfigEndTime();
     },

@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteCourseModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageCourseModalOpen()"/>
+            <newBtn @click="manageCourseModalOpen(null)"/>
         </div>
     </div>
 
@@ -231,9 +231,9 @@
                     </div>
 
                     <div class="form-group mb-3">
-                        <label for="professor" class="form-label">Select professor</label>
-                        <select name="professor_id" id="professor" class="form-select" v-model="formData.professor_id" autocomplete="new-professor-id">
-                            <option value="select-professor-option">Select professor option</option>
+                        <label for="professor_id" class="form-label">Select professor</label>
+                        <select name="professor_id" id="professor_id" class="form-select" v-model="formData.professor_id" autocomplete="new-professor-id">
+                            <option :value="0">Select professor option</option>
                             <option v-for="each in professorDataList" :value="each.id">
                                 {{ each.name }}
                             </option>
@@ -346,7 +346,7 @@ export default {
             formData: {
                 student_enroll_capacity: '',
                 name: '',
-                professor_id: 'select-professor-option',
+                professor_id: '0',
                 price: '',
                 duration: '',
                 description: '',
@@ -415,7 +415,7 @@ export default {
                 this.formData = {
                     student_enroll_capacity: '',
                     name: '',
-                    professor_id: 'select-professor-option',
+                    professor_id: '0',
                     price: '',
                     duration: '',
                     description: '',
@@ -446,7 +446,7 @@ export default {
             this.formData = {
                 student_enroll_capacity: '',
                 name: '',
-                professor_id: 'select-professor-option',
+                professor_id: '0',
                 price: '',
                 duration: '',
                 description: '',
@@ -522,7 +522,7 @@ export default {
                     this.formData = {
                         student_enroll_capacity: '',
                         name: '',
-                        professor_id: 'select-professor-option',
+                        professor_id: '0',
                         price: '',
                         duration: '',
                         description: '',
@@ -545,7 +545,7 @@ export default {
                     this.formData = {
                         student_enroll_capacity: '',
                         name: '',
-                        professor_id: 'select-professor-option',
+                        professor_id: '0',
                         price: '',
                         duration: '',
                         description: '',

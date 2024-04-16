@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteStudentModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageStudentModalOpen"/>
+            <newBtn @click="manageStudentModalOpen(null)"/>
         </div>
     </div>
 
@@ -249,7 +249,7 @@
                     <div class="form-group mb-3">
                         <label for="courser_id" class="form-label">Select Enroll</label>
                         <select name="courser_id" id="courser_id" class="form-select" v-model="formData.course_id">
-                            <option value="select-enroll-course">Select Enroll Course</option>
+                            <option :value="0">Select Enroll Course</option>
                             <option v-for="each in courseDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
                         <div class="error-report" v-if="error != null && error.course_id !== undefined"> {{error.course_id[0]}} </div>
@@ -356,7 +356,7 @@ export default {
                 roll_or_id: '',
                 name: '',
                 email: '',
-                course_id: 'select-enroll-course',
+                course_id: '0',
                 phone: '',
                 admission_date: '',
             },
@@ -382,8 +382,8 @@ export default {
         }
     },
     mounted() {
-        this.flatpickrConfigDate();
         this.studentList();
+        this.flatpickrConfigDate();
     },
     methods: {
 
@@ -437,7 +437,7 @@ export default {
                     roll_or_id: '',
                     name: '',
                     email: '',
-                    course_id: 'select-enroll-course',
+                    course_id: '0',
                     phone: '',
                     admission_date: '',
                 }
@@ -468,7 +468,7 @@ export default {
                 roll_or_id: '',
                 name: '',
                 email: '',
-                course_id: 'select-enroll-course',
+                course_id: '0',
                 phone: '',
                 admission_date: '',
             }
@@ -544,7 +544,7 @@ export default {
                         roll_or_id: '',
                         name: '',
                         email: '',
-                        course_id: 'select-enroll-course',
+                        course_id: '0',
                         phone: '',
                         admission_date: '',
                     }
@@ -567,7 +567,7 @@ export default {
                         roll_or_id: '',
                         name: '',
                         email: '',
-                        course_id: 'select-enroll-course',
+                        course_id: '0',
                         phone: '',
                         admission_date: '',
                     }

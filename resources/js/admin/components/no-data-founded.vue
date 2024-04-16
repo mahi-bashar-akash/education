@@ -17,7 +17,7 @@
             </div>
             <button type="button"
                     class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0"
-                    @click="newModalFunction">
+                    @click="newModalFunctionWithData(null)">
                 New
             </button>
         </div>
@@ -41,7 +41,11 @@ export default {
 
     },
 
-    methods: {}
+    methods: {
+        newModalFunctionWithData(data) {
+            this.newModalFunction(data);
+        }
+    }
 
 }
 
