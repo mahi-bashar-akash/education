@@ -30,7 +30,7 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteLibraryAssetModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageLibraryAssetModalOpen"/>
+            <newBtn @click="manageLibraryAssetModalOpen()"/>
         </div>
     </div>
 
@@ -585,8 +585,8 @@ export default {
             apiServices.DELETE(apiRoutes.libraryAssetDelete, this.deleteLibraryAssetParam, (res) => {
                 this.deleteLibraryAssetLoading = false;
                 if(res.message) {
-                    this.deleteDepartmentModalClose();
-                    this.departmentList();
+                    this.deleteLibraryAssetModalClose();
+                    this.libraryAssetList();
                     this.$toast.success(res.message, { position: "top-right" } );
                 } else {
                     this.error = res.errors
