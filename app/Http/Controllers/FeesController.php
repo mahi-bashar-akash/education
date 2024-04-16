@@ -2,34 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\Fees;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Routing\Controller as BaseController;
 
-class DepartmentController extends BaseController
+class FeesController extends BaseController
 {
-
     public static function list(Request $request) {
         try {
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $departments = Department::where('admin_id', $admin_id)->orderby('id', 'asc');
+            $courses = Fees::with('student_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $departments->where(
+                $courses->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
-            $departments = $departments->paginate($limit);
+            $courses = $courses->paginate($limit);
 
-            return ['message' => 'Show department list data successfully' ,'data' => $departments];
+            return ['message' => 'Show fees list data successfully' ,'data' => $courses];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -40,29 +39,27 @@ class DepartmentController extends BaseController
             $validator = Validator::make(
                 $request->all(),
                 [
-                    'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'student_id' => 'required',
+                    'fees_type' => 'required',
+                    'fees_amount' => 'required|String',
+                    'payment_type' => 'required|String',
+                    'payment_status' => 'required',
                 ]
             );
 
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $department = new Department();
+            $course = new Fees();
             $admin_id = Auth::guard('admins')->id();
-            $department->name = $request->name;
-            $department->head_of_department = $request->head_of_department;
-            $department->phone = $request->phone;
-            $department->email = $request->email;
-            $department->start_year = $request->start_year;
-            $department->stuff_capacity = $request->stuff_capacity;
-            $department->admin_id = $admin_id;
-            $department->save();
-            return ['message' => 'Department has been saved successfully.'];
+            $course->student_id = $request->student_id;
+            $course->fees_type = $request->fees_type;
+            $course->fees_amount = $request->fees_amount;
+            $course->payment_type = $request->payment_type;
+            $course->payment_status = $request->payment_status;
+            $course->admin_id = $admin_id;
+            $course->save();
+            return ['message' => 'Fees has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -81,11 +78,11 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $department = Department::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($department == null){
-                return ['status' => 500, 'errors' => 'Department not found'];
+            $course = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($course == null){
+                return ['status' => 500, 'errors' => 'Fees data not found'];
             }
-            return ['message' => 'Show single data successfully','data' => $department];
+            return ['message' => 'show single data successfully','data' => $course];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -97,12 +94,11 @@ class DepartmentController extends BaseController
                 $request->all(),
                 [
                     'id' => 'required',
-                    'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'student_id' => 'required',
+                    'fees_type' => 'required',
+                    'fees_amount' => 'required|String',
+                    'payment_type' => 'required|String',
+                    'payment_status' => 'required',
                 ]
             );
 
@@ -110,18 +106,17 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $department = Department::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($department == null){
-                return ['status' => 500, 'errors' => 'Department not found'];
+            $course = Fees::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($course == null){
+                return ['status' => 500, 'errors' => 'Fees data not found'];
             }
-            $department->name = $request->name;
-            $department->head_of_department = $request->head_of_department;
-            $department->phone = $request->phone;
-            $department->email = $request->email;
-            $department->start_year = $request->start_year;
-            $department->stuff_capacity = $request->stuff_capacity;
-            $department->save();
-            return ['message' => 'Department has been updated successfully.'];
+            $course->student_id = $request->student_id;
+            $course->fees_type = $request->fees_type;
+            $course->fees_amount = $request->fees_amount;
+            $course->payment_type = $request->payment_type;
+            $course->payment_status = $request->payment_status;
+            $course->save();
+            return ['message' => 'Fees has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -142,11 +137,10 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            Department::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
-            return ['message' => 'Department has been deleted successfully'];
+            Fees::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Fees has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
-
 }

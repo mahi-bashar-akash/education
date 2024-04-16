@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class CourseController extends BaseController
 {
 
-    public function list(Request $request) {
+    public static function list(Request $request) {
         try {
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
@@ -35,7 +35,7 @@ class CourseController extends BaseController
         }
     }
 
-    public function create(Request $request) {
+    public static function create(Request $request) {
         try {
             $validator = Validator::make(
                 $request->all(),
@@ -67,7 +67,7 @@ class CourseController extends BaseController
         }
     }
 
-    public function single(Request $request) {
+    public static function single(Request $request) {
         try {
             $validator = Validator::make(
                 $request->all(),
@@ -90,7 +90,7 @@ class CourseController extends BaseController
         }
     }
 
-    public function update(Request $request) {
+    public static function update(Request $request) {
         try {
             $validator = Validator::make(
                 $request->all(),

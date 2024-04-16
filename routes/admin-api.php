@@ -35,6 +35,18 @@ Route::group(
     }
 );
 
+/* --- --- --- --- Event api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'event'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\EventController::class, 'list'])->name('Admin.Event.List');
+        Route::post('/create', [\App\Http\Controllers\EventController::class, 'create'])->name('Admin.Event.Create');
+        Route::put('/single', [\App\Http\Controllers\EventController::class, 'single'])->name('Admin.Event.Single');
+        Route::patch('/update', [\App\Http\Controllers\EventController::class, 'update'])->name('Admin.Event.Update');
+        Route::delete('/delete', [\App\Http\Controllers\EventController::class, 'delete'])->name('Admin.Event.Delete');
+    }
+);
+
 /* --- --- --- --- Department api --- --- --- --- */
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'department'],
@@ -92,5 +104,41 @@ Route::group(
         Route::put('/single', [\App\Http\Controllers\LibraryAssetController::class, 'single'])->name('Admin.Library.Asset.Single');
         Route::patch('/update', [\App\Http\Controllers\LibraryAssetController::class, 'update'])->name('Admin.Library.Asset.Update');
         Route::delete('/delete', [\App\Http\Controllers\LibraryAssetController::class, 'delete'])->name('Admin.Library.Asset.Delete');
+    }
+);
+
+/* --- --- --- --- Stuff api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'stuff'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\StudentController::class, 'list'])->name('Admin.Stuff.List');
+        Route::post('/create', [\App\Http\Controllers\StudentController::class, 'create'])->name('Admin.Stuff.Create');
+        Route::put('/single', [\App\Http\Controllers\StudentController::class, 'single'])->name('Admin.Stuff.Single');
+        Route::patch('/update', [\App\Http\Controllers\StudentController::class, 'update'])->name('Admin.Stuff.Update');
+        Route::delete('/delete', [\App\Http\Controllers\StudentController::class, 'delete'])->name('Admin.Stuff.Delete');
+    }
+);
+
+/* --- --- --- --- Holiday api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'holiday'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\HolidayController::class, 'list'])->name('Admin.Holiday.List');
+        Route::post('/create', [\App\Http\Controllers\HolidayController::class, 'create'])->name('Admin.Holiday.Create');
+        Route::put('/single', [\App\Http\Controllers\HolidayController::class, 'single'])->name('Admin.Holiday.Single');
+        Route::patch('/update', [\App\Http\Controllers\HolidayController::class, 'update'])->name('Admin.Holiday.Update');
+        Route::delete('/delete', [\App\Http\Controllers\HolidayController::class, 'delete'])->name('Admin.Holiday.Delete');
+    }
+);
+
+/* --- --- --- --- Fees api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'fees'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\FeesController::class, 'list'])->name('Admin.Fees.List');
+        Route::post('/create', [\App\Http\Controllers\FeesController::class, 'create'])->name('Admin.Fees.Create');
+        Route::put('/single', [\App\Http\Controllers\FeesController::class, 'single'])->name('Admin.Fees.Single');
+        Route::patch('/update', [\App\Http\Controllers\FeesController::class, 'update'])->name('Admin.Fees.Update');
+        Route::delete('/delete', [\App\Http\Controllers\FeesController::class, 'delete'])->name('Admin.Fees.Delete');
     }
 );

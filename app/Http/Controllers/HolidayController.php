@@ -2,67 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Department;
+use App\Models\Holiday;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Routing\Controller as BaseController;
 
-class DepartmentController extends BaseController
+class HolidayController extends BaseController
 {
-
-    public static function list(Request $request) {
+    public static function list (Request $request)
+    {
         try {
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $departments = Department::where('admin_id', $admin_id)->orderby('id', 'asc');
+            $holiday = Holiday::where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
-                $departments->where(
+                $holiday->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('guest', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('location', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
-            $departments = $departments->paginate($limit);
+            $holiday = $holiday->paginate($limit);
 
-            return ['message' => 'Show department list data successfully' ,'data' => $departments];
+            return ['message' => 'Show holiday list data successfully' ,'data' => $holiday];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
 
-    public static function create(Request $request) {
+    public static function create (Request $request)
+    {
         try {
             $validator = Validator::make(
                 $request->all(),
                 [
                     'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'types' => 'required|String',
+                    'start_date' => 'required|String',
+                    'end_date' => 'required|email',
+                    'description' => 'required|String',
                 ]
             );
 
             if ($validator->fails()) {
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
-            $department = new Department();
+            $holiday = new Holiday();
             $admin_id = Auth::guard('admins')->id();
-            $department->name = $request->name;
-            $department->head_of_department = $request->head_of_department;
-            $department->phone = $request->phone;
-            $department->email = $request->email;
-            $department->start_year = $request->start_year;
-            $department->stuff_capacity = $request->stuff_capacity;
-            $department->admin_id = $admin_id;
-            $department->save();
-            return ['message' => 'Department has been saved successfully.'];
+            $holiday->name = $request->name;
+            $holiday->types = $request->types;
+            $holiday->start_date = $request->start_date;
+            $holiday->end_date = $request->end_date;
+            $holiday->description = $request->description;
+            $holiday->admin_id = $admin_id;
+            $holiday->save();
+            return ['message' => 'Holiday has been saved successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -81,11 +82,11 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $department = Department::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($department == null){
-                return ['status' => 500, 'errors' => 'Department not found'];
+            $holiday = Holiday::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($holiday == null){
+                return ['status' => 500, 'errors' => 'Holiday not found'];
             }
-            return ['message' => 'Show single data successfully','data' => $department];
+            return ['message' => 'Show single data successfully','data' => $holiday];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -98,11 +99,10 @@ class DepartmentController extends BaseController
                 [
                     'id' => 'required',
                     'name' => 'required|String',
-                    'head_of_department' => 'required|String',
-                    'phone' => 'required|String',
-                    'email' => 'required|email',
-                    'start_year' => 'required|String',
-                    'stuff_capacity' => 'required|String',
+                    'types' => 'required|String',
+                    'start_date' => 'required|String',
+                    'end_date' => 'required|email',
+                    'description' => 'required|String',
                 ]
             );
 
@@ -110,18 +110,17 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            $department = Department::where('id', $request->id)->where('admin_id', $admin_id)->first();
-            if($department == null){
-                return ['status' => 500, 'errors' => 'Department not found'];
+            $holiday = Holiday::where('id', $request->id)->where('admin_id', $admin_id)->first();
+            if($holiday == null){
+                return ['status' => 500, 'errors' => 'Holiday not found'];
             }
-            $department->name = $request->name;
-            $department->head_of_department = $request->head_of_department;
-            $department->phone = $request->phone;
-            $department->email = $request->email;
-            $department->start_year = $request->start_year;
-            $department->stuff_capacity = $request->stuff_capacity;
-            $department->save();
-            return ['message' => 'Department has been updated successfully.'];
+            $holiday->name = $request->name;
+            $holiday->types = $request->types;
+            $holiday->start_date = $request->start_date;
+            $holiday->end_date = $request->end_date;
+            $holiday->description = $request->description;
+            $holiday->save();
+            return ['message' => 'Holiday has been updated successfully.'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
@@ -142,11 +141,10 @@ class DepartmentController extends BaseController
                 return ['status' => 500, 'errors' => $validator->errors()];
             }
             $admin_id = Auth::guard('admins')->id();
-            Department::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
-            return ['message' => 'Department has been deleted successfully'];
+            Holiday::whereIn('id', $request->ids)->where('admin_id', $admin_id)->delete();
+            return ['message' => 'Holiday has been deleted successfully'];
         } catch (\Exception $e) {
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
-
 }
