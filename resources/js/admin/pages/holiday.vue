@@ -250,7 +250,7 @@
     <!-- delete holiday modal -->
     <div class="modal fade" id="deleteHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <form @submit.prevent="holidayDelete()" class="modal-dialog modal-dialog-centered">
             <div class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
@@ -285,7 +285,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </template>

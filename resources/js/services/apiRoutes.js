@@ -12,6 +12,13 @@ const apiRoutes = {
     adminChangePassword: '/admin-secure/admin-profile/update/password',
     adminLogout: '/admin-secure/admin-profile/logout',
 
+    /* --- --- --- --- admin - event --- --- --- --- */
+    eventList: '/admin-secure/event/list',
+    eventCreate: '/admin-secure/event/create',
+    eventSingle: '/admin-secure/event/single',
+    eventUpdate: '/admin-secure/event/update',
+    eventDelete: '/admin-secure/event/delete',
+
     /* --- --- --- --- admin - department --- --- --- --- */
     departmentList: '/admin-secure/department/list',
     departmentCreate: '/admin-secure/department/create',
