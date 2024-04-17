@@ -100,16 +100,22 @@
                             </span>
                         </td>
                         <td class="default-width">
-                            {{each.fees_type}}
+                            <span v-if="each.fees_type_info != null">
+                                {{ each.fees_type_info.name }}
+                            </span>
                         </td>
                         <td class="default-width">
                             {{each.fees_amount}}
                         </td>
                         <td class="default-width">
-                            {{each.payment_type}}
+                            <span v-if="each.payment_type_info != null">
+                                {{each.payment_type_info.name}}
+                            </span>
                         </td>
                         <td class="default-width">
-                            {{each.payment_status}}
+                            <span v-if="each.payment_status_info != null">
+                                {{each.payment_status_info.name}}
+                            </span>
                         </td>
                         <td class="action">
                             <div class="dropdown">
@@ -763,10 +769,10 @@ export default {
             }else {
                 this.formData = {
                     student_id: '0',
-                    fees_type: '0',
+                    fees_type_id: '0',
                     fees_amount: '',
-                    payment_type: '0',
-                    payment_status: '0',
+                    payment_type_id: '0',
+                    payment_status_id: '0',
                 }
             }
             const myModal = new bootstrap.Modal("#manageFeesModal", {keyboard: false});
@@ -793,10 +799,10 @@ export default {
             this.current_page = 1;
             this.formData = {
                 student_id: '0',
-                fees_type: '0',
+                fees_type_id: '0',
                 fees_amount: '',
-                payment_type: '0',
-                payment_status: '0',
+                payment_type_id: '0',
+                payment_status_id: '0',
             }
             let myModalEl = document.getElementById('deleteFeesModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -867,12 +873,11 @@ export default {
                 this.manageFeesLoading = false;
                 if(res.message) {
                     this.formData = {
-                        student_enroll_capacity: '',
-                        name: '',
-                        professor_id: '0',
-                        price: '',
-                        duration: '',
-                        description: '',
+                        student_id: '0',
+                        fees_type_id: '0',
+                        fees_amount: '',
+                        payment_type_id: '0',
+                        payment_status_id: '0',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageFeesModalClose();
@@ -890,12 +895,11 @@ export default {
                 this.manageFeesLoading = false;
                 if(res.message) {
                     this.formData = {
-                        student_enroll_capacity: '',
-                        name: '',
-                        professor_id: '0',
-                        price: '',
-                        duration: '',
-                        description: '',
+                        student_id: '0',
+                        fees_type_id: '0',
+                        fees_amount: '',
+                        payment_type_id: '0',
+                        payment_status_id: '0',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageFeesModalClose();
