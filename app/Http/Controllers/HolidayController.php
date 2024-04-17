@@ -42,7 +42,6 @@ class HolidayController extends BaseController
                 $request->all(),
                 [
                     'name' => 'required|string',
-                    'types' => 'required',
                     'start_date' => 'required',
                     'end_date' => 'required',
                     'description' => 'required|string',
@@ -55,7 +54,6 @@ class HolidayController extends BaseController
             $holiday = new Holiday();
             $admin_id = Auth::guard('admins')->id();
             $holiday->name = $request->name;
-            $holiday->types = $request->types;
             $holiday->start_date = $request->start_date;
             $holiday->end_date = $request->end_date;
             $holiday->description = $request->description;
@@ -97,7 +95,6 @@ class HolidayController extends BaseController
                 [
                     'id' => 'required',
                     'name' => 'required|string',
-                    'types' => 'required',
                     'start_date' => 'required',
                     'end_date' => 'required',
                     'description' => 'required|string',
@@ -113,7 +110,6 @@ class HolidayController extends BaseController
                 return ['status' => 500, 'errors' => 'Holiday not found'];
             }
             $holiday->name = $request->name;
-            $holiday->types = $request->types;
             $holiday->start_date = $request->start_date;
             $holiday->end_date = $request->end_date;
             $holiday->description = $request->description;

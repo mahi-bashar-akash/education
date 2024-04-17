@@ -44,9 +44,6 @@
                         Name
                     </th>
                     <th class="default-width">
-                        Type
-                    </th>
-                    <th class="default-width">
                         Start date
                     </th>
                     <th class="default-width">
@@ -64,9 +61,6 @@
                     </td>
                     <td class="default-width">
                         {{each.name}}
-                    </td>
-                    <td class="default-width">
-                        {{each.types}}
                     </td>
                     <td class="default-width">
                         {{each.start_date}}
@@ -186,7 +180,7 @@
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageHoliday()" class="modal-content px-3 py-2 rounded-3 border-0">
-                <div class="modal-header border-0">
+                <div class="modal-header border-0 justify-content-between">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Create holiday
                     </h1>
@@ -199,13 +193,6 @@
                         <input id="name" type="text" v-model="formData.name" name="name" class="form-control" required
                                autocomplete="new-name">
                         <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
-                    </div>
-
-                    <div class="form-group mb-3">
-                        <label for="types" class="form-label">Types</label>
-                        <input id="types" type="text" v-model="formData.types" name="types" class="form-control"
-                               required autocomplete="new-types">
-                        <div class="error-report" v-if="error != null && error.types !== undefined"> {{error.types[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -299,8 +286,8 @@ import newBtn from "../components/new.vue";
 import flatpickr from "flatpickr";
 import tableContent from "../components/table.vue";
 import breadcrumb from "../components/breadcrumb.vue";
-import apiServices from "@/services/apiServices.js";
-import apiRoutes from "@/services/apiRoutes.js";
+import apiServices from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
@@ -312,19 +299,8 @@ export default {
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Holidays', route: 'holiday' },
             ],
-            tableHeaders: ['Checkbox', 'Name', 'Type', 'Start date', 'End date', 'Action'],
-            tableRows: [
-                {
-                    id: '1',
-                    name: 'Festival',
-                    type: 'National Holiday',
-                    startDate: '31 July 1998',
-                    endDate: '31 July 1998'
-                }
-            ],
             formData: {
                 name: '',
-                types: '',
                 start_date: '',
                 end_date: '',
                 description: '',
@@ -347,6 +323,10 @@ export default {
             error: null,
             deleteHolidayLoading: false,
             buttons: [],
+            manageHolidayTypeLoading: false,
+            holidayTypeParam: {
+                name: '',
+            }
         }
     },
     mounted() {
@@ -392,7 +372,6 @@ export default {
             }else {
                 this.formData = {
                     name: '',
-                    types: '',
                     start_date: '',
                     end_date: '',
                     description: '',
@@ -422,7 +401,6 @@ export default {
             this.current_page = 1;
             this.formData = {
                 name: '',
-                types: '',
                 start_date: '',
                 end_date: '',
                 description: '',
@@ -519,10 +497,8 @@ export default {
                 if(res.message) {
                     this.formData = {
                         name: '',
-                        email: '',
-                        joining_date: '',
-                        department_id: '0',
-                        phone: '',
+                        start_date: '',
+                        end_date: '',
                         description: '',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
@@ -542,10 +518,8 @@ export default {
                 if(res.message) {
                     this.formData = {
                         name: '',
-                        email: '',
-                        joining_date: '',
-                        department_id: '0',
-                        phone: '',
+                        start_date: '',
+                        end_date: '',
                         description: '',
                     }
                     this.$toast.success(res.message, { position: "top-right" } );

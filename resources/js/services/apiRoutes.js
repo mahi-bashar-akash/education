@@ -68,13 +68,6 @@ const apiRoutes = {
     holidayUpdate: '/admin-secure/holiday/update',
     holidayDelete: '/admin-secure/holiday/delete',
 
-    /* --- --- --- --- admin - holiday types --- --- --- --- */
-    holidayTypesList: '/admin-secure/holiday/types/list',
-    holidayTypesCreate: '/admin-secure/holiday/types/create',
-    holidayTypesSingle: '/admin-secure/holiday/types/single',
-    holidayTypesUpdate: '/admin-secure/holiday/types/update',
-    holidayTypesDelete: '/admin-secure/holiday/types/delete',
-
     /* --- --- --- --- admin - fees --- --- --- --- */
     feesList: '/admin-secure/fees/list',
     feesCreate: '/admin-secure/fees/create',

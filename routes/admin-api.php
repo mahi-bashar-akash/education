@@ -131,18 +131,6 @@ Route::group(
     },
 );
 
-/* --- --- --- --- Holiday type api --- --- --- --- */
-Route::group(
-    ['middleware' => ['AdminAuthReq'], 'prefix' => 'holiday/types'],
-    function () {
-        Route::get('/list', [\App\Http\Controllers\HolidayTypesController::class, 'list'])->name('Admin.Holiday.Types.List');
-        Route::post('/create', [\App\Http\Controllers\HolidayTypesController::class, 'create'])->name('Admin.Holiday.Types.Create');
-        Route::put('/single', [\App\Http\Controllers\HolidayTypesController::class, 'single'])->name('Admin.Holiday.Types.Single');
-        Route::patch('/update', [\App\Http\Controllers\HolidayTypesController::class, 'update'])->name('Admin.Holiday.Types.Update');
-        Route::delete('/delete', [\App\Http\Controllers\HolidayTypesController::class, 'delete'])->name('Admin.Holiday.Types.Delete');
-    },
-);
-
 /* --- --- --- --- Fees api --- --- --- --- */
 Route::group(
     ['middleware' => ['AdminAuthReq'], 'prefix' => 'fees'],

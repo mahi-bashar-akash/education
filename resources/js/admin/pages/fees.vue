@@ -30,7 +30,31 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteFeesModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
-            <newBtn @click="manageFeesModalOpen(null)"/>
+            <div class="dropdown">
+                <newBtn data-bs-toggle="dropdown" aria-expanded="false"/>
+                <ul class="dropdown-menu dropdown-menu-end p-2 m-0 overflow-hidden rounded-2">
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="manageFeesModalOpen(null)">
+                            Manage fees
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="manageFeesTypeModalOpen()">
+                            Manage fees type
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="managePaymentTypeModalOpen()">
+                            Manage payment type
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="managePaymentStatusModalOpen()">
+                            Manage payment status
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -210,7 +234,7 @@
                         <select name="student_id" id="student_id" class="form-select"
                                 autocomplete="new-select-student" v-model="formData.student_id">
                             <option :value="0">Select student option</option>
-                            <option v-for="each in studentDataList" :value="each.id"> {{ each.name }}</option>
+                            <option v-for="each in studentTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
                         <div class="error-report" v-if="error != null && error.student_id !== undefined"> {{error.student_id[0]}} </div>
                     </div>
@@ -220,7 +244,7 @@
                         <select name="fees_type" id="fees-type" class="form-select"
                                 autocomplete="new-select-fees-type" v-model="formData.fees_type">
                             <option :value="0">Select fees type</option>
-                            <option v-for="each in feesTypeDataList" :value="each.id"> {{ each.name }}</option>
+                            <option v-for="each in feesTypeTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
                         <div class="error-report" v-if="error != null && error.fees_type !== undefined"> {{error.fees_type[0]}} </div>
                     </div>
@@ -237,7 +261,7 @@
                         <select name="payment_type" id="payment-type" class="form-select"
                                 autocomplete="new-payment-type" v-model="formData.payment_type">
                             <option :value="0">Select payment type</option>
-                            <option v-for="each in paymentTypeList" :value="each.id"> {{ each.name }}</option>
+                            <option v-for="each in paymentTypeTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
                         <div class="error-report" v-if="error != null && error.payment_type !== undefined"> {{error.payment_type[0]}} </div>
                     </div>
@@ -247,7 +271,7 @@
                         <select name="payment_status" id="payment-status" class="form-select"
                                 autocomplete="new-payment-status" v-model="formData.payment_status">
                             <option :value="0">Select payment status</option>
-                            <option v-for="each in paymentStatusList" :value="each.id"> {{ each.name }}</option>
+                            <option v-for="each in paymentStatusTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
                         <div class="error-report" v-if="error != null && error.payment_status !== undefined"> {{error.payment_status[0]}} </div>
                     </div>
@@ -309,6 +333,108 @@
         </div>
     </div>
 
+    <!-- Manage fees type -->
+    <div class="modal fade" id="manageFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="manageFeesType()" class="modal-content border-0 px-3 py-2 rounded-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <span v-if="this.feesTypeParam.id === undefined"> Create </span>
+                        <span v-if="this.feesTypeParam.id !== undefined"> Edit </span>
+                        Fees types
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageFeesTypeModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+                    <div class="form-group">
+                        <label for="fees-type-name" class="form-label">Name</label>
+                        <input id="fees-type-name" type="text" name="name" v-model="feesTypeParam.name" class="form-control" autocomplete="new-fees-type-name">
+                        <div class="error-report" v-if="feesTypeError != null && feesTypeError.name !== undefined"> {{feesTypeError.name[0]}} </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary wpx-110" @click="manageFeesTypeModalClose">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!manageFeesTypeLoading">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="manageFeesTypeLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manage payment type -->
+    <div class="modal fade" id="managePaymentTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="managePaymentType()" class="modal-content border-0 px-3 py-2 rounded-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <span v-if="this.paymentTypeParam.id === undefined"> Create </span>
+                        <span v-if="this.paymentTypeParam.id !== undefined"> Edit </span>
+                        Payment types
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="managePaymentTypeModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+                    <div class="form-group">
+                        <label for="payment-type-name" class="form-label">Name</label>
+                        <input id="payment-type-name" type="text" name="name" v-model="paymentTypeParam.name" class="form-control" autocomplete="new-payment-type-name">
+                        <div class="error-report" v-if="paymentTypeError != null && paymentTypeError.name !== undefined"> {{paymentTypeError.name[0]}} </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary wpx-110" @click="managePaymentTypeModalClose">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!managePaymentTypeLoading">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="managePaymentTypeLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manage payment status -->
+    <div class="modal fade" id="managePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="managePaymentStatus()" class="modal-content border-0 px-3 py-2 rounded-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        <span v-if="this.paymentStatusParam.id === undefined"> Create </span>
+                        <span v-if="this.paymentStatusParam.id !== undefined"> Edit </span>
+                        Payment status
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="managePaymentStatusModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+                    <div class="form-group">
+                        <label for="payment-status-name" class="form-label">Name</label>
+                        <input id="payment-status-name" type="text" name="name" v-model="paymentStatusParam.name" class="form-control" autocomplete="new-payment-type-name">
+                        <div class="error-report" v-if="paymentStatusError != null && paymentStatusError.name !== undefined"> {{paymentStatusError.name[0]}} </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary wpx-110" @click="managePaymentStatusModalClose">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!managePaymentStatusLoading">
+                        Save
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="managePaymentStatusLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -332,10 +458,7 @@ export default {
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Fees', route: 'fees' },
             ],
-            studentDataList: [],
-            feesTypeDataList: [],
-            paymentTypeList: [],
-            paymentStatusList: [],
+            studentTableData: [],
             formData: {
                 student_id: '0',
                 fees_type: '0',
@@ -343,12 +466,45 @@ export default {
                 payment_type: '0',
                 payment_status: '0',
             },
+            feesTypeParam: {
+                name: '',
+            },
+            paymentTypeParam: {
+                name: '',
+            },
+            paymentStatusParam: {
+                name: '',
+            },
             loading: true,
+            manageFeesTypeLoading: false,
+            feesTypeListLoading: false,
+            managePaymentTypeLoading: false,
+            paymentTypeListLoading: false,
+            managePaymentStatusLoading: false,
+            paymentStatusListLoading: false,
             deleteFeesParam: {
                 ids: []
             },
             tableData: [],
+            feesTypeTableData: [],
+            paymentTypeTableData: [],
+            paymentStatusTableData: [],
             listData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            feesTypesListData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            paymentTypesListData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            paymentStatusListData: {
                 keyword: '',
                 limit: 10,
                 page: 1,
@@ -359,6 +515,9 @@ export default {
             selected: [],
             manageFeesLoading: false,
             error: null,
+            feesTypeError: null,
+            paymentTypeError: null,
+            paymentStatusError: null,
             deleteFeesLoading: false,
             buttons: [],
         }
@@ -562,10 +721,10 @@ export default {
         /* Function to fees delete api */
         feesDelete() {
             this.selected.forEach((v) => {
-                this.deleteProfessorParam.ids.push(v);
+                this.deleteFeesParam.ids.push(v);
             })
             this.deleteFeesLoading = true;
-            apiServices.DELETE(apiRoutes.feesDelete, this.deleteProfessorParam, (res) => {
+            apiServices.DELETE(apiRoutes.feesDelete, this.deleteFeesParam, (res) => {
                 this.deleteFeesLoading = false;
                 if(res.message) {
                     this.deleteFeesModalClose();
@@ -581,12 +740,237 @@ export default {
         getStudent(){
             apiServices.GET(apiRoutes.studentList, '', (res) => {
                 if(res.message) {
-                    this.studentDataList = res.data.data
+                    this.studentTableData = res.data.data
                 }else {
                     this.error = res.errors
                 }
             })
-        }
+        },
+
+        /* Function to manage fees type modal open */
+        manageFeesTypeModalOpen() {
+            const myModal = new bootstrap.Modal("#manageFeesTypeModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to manage fees type modal close */
+        manageFeesTypeModalClose() {
+            let myModalEl = document.getElementById('manageFeesTypeModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to manage fees type */
+        manageFeesType() {
+            if(this.feesTypeParam.id === undefined) {
+                this.createFeesType();
+            }else {
+                this.updateFeesType();
+            }
+        },
+
+        /* Function to create fees type */
+        createFeesType() {
+            this.manageFeesTypeLoading = true;
+            apiServices.POST(apiRoutes.feesTypesCreate, this.feesTypeParam, (res) => {
+                this.manageFeesTypeLoading = false;
+                if(res.message) {
+                    this.feesTypeParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageFeesTypeModalClose();
+                    this.feesTypeList();
+                } else {
+                    this.feesTypeError = res.errors
+                }
+            })
+        },
+
+        /* Function to update fees type */
+        updateFeesType() {
+            this.manageFeesTypeLoading = true;
+            apiServices.PATCH(apiRoutes.feesTypesUpdate, this.feesTypeParam, (res) => {
+                this.manageFeesTypeLoading = false;
+                if(res.message) {
+                    this.feesTypeParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageFeesTypeModalClose();
+                    this.feesTypeList();
+                } else {
+                    this.feesTypeError = res.errors
+                }
+            })
+        },
+
+        /* Function to fees type list */
+        feesTypeList() {
+            this.feesTypeListLoading = true;
+            apiServices.GET(apiRoutes.feesTypesList, this.feesTypesListData, (res) => {
+                this.feesTypeListLoading = false;
+                if (res.message) {
+                    this.feesTypeTableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        /* Function to manage payment type modal open */
+        managePaymentTypeModalOpen() {
+            const myModal = new bootstrap.Modal("#managePaymentTypeModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to manage payment type modal close */
+        managePaymentTypeModalClose() {
+            let myModalEl = document.getElementById('managePaymentTypeModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to manage payment type */
+        managePaymentType() {
+            if(this.paymentTypeParam.id === undefined) {
+                this.createPaymentType();
+            }else {
+                this.updatePaymentType();
+            }
+        },
+
+        /* Function to create payment type */
+        createPaymentType() {
+            this.managePaymentTypeLoading = true;
+            apiServices.POST(apiRoutes.paymentTypesCreate, this.paymentTypeParam, (res) => {
+                this.managePaymentTypeLoading = false;
+                if(res.message) {
+                    this.paymentTypeParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.managePaymentTypeModalClose();
+                    this.paymentTypeList();
+                } else {
+                    this.paymentTypeError = res.errors
+                }
+            })
+        },
+
+        /* Function to update payment type */
+        updatePaymentType() {
+            this.managePaymentTypeLoading = true;
+            apiServices.PATCH(apiRoutes.paymentTypesUpdate, this.paymentTypeParam, (res) => {
+                this.managePaymentTypeLoading = false;
+                if(res.message) {
+                    this.paymentTypeParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.managePaymentTypeModalClose();
+                    this.paymentTypeList();
+                } else {
+                    this.paymentTypeError = res.errors
+                }
+            })
+        },
+
+        /* Function to payment type list */
+        paymentTypeList() {
+            this.paymentTypeListLoading = true;
+            apiServices.GET(apiRoutes.paymentTypesList, this.paymentTypesListData, (res) => {
+                this.paymentTypeListLoading = false;
+                if (res.message) {
+                    this.paymentTypeTableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        /* Function to manage payment status modal open */
+        managePaymentStatusModalOpen() {
+            const myModal = new bootstrap.Modal("#managePaymentStatusModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to manage payment status modal close */
+        managePaymentStatusModalClose() {
+            let myModalEl = document.getElementById('managePaymentStatusModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to manage payment status */
+        managePaymentStatus() {
+            if(this.paymentStatusParam.id === undefined) {
+                this.createPaymentStatus();
+            }else {
+                this.updatePaymentStatus();
+            }
+        },
+
+        /* Function to create payment status */
+        createPaymentStatus() {
+            this.managePaymentStatusLoading = true;
+            apiServices.POST(apiRoutes.paymentStatusCreate, this.paymentStatusParam, (res) => {
+                this.managePaymentStatusLoading = false;
+                if(res.message) {
+                    this.paymentStatusParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.managePaymentTypeModalClose();
+                    this.paymentStatusList();
+                } else {
+                    this.paymentStatusError = res.errors
+                }
+            })
+        },
+
+        /* Function to update payment status */
+        updatePaymentStatus() {
+            this.managePaymentStatusLoading = true;
+            apiServices.POST(apiRoutes.paymentStatusUpdate, this.paymentStatusParam, (res) => {
+                this.managePaymentStatusLoading = false;
+                if(res.message) {
+                    this.paymentStatusParam = {
+                        name: ''
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.managePaymentTypeModalClose();
+                    this.paymentStatusList();
+                } else {
+                    this.paymentStatusError = res.errors
+                }
+            })
+        },
+
+        /* Function to payment status list */
+        paymentStatusList() {
+            this.paymentStatusListLoading = true;
+            apiServices.GET(apiRoutes.paymentTypesList, this.paymentStatusListData, (res) => {
+                this.paymentStatusListLoading = false;
+                if (res.message) {
+                    this.paymentStatusTableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
 
     }
 }
