@@ -226,7 +226,7 @@ export default {
                 email: '',
                 phone: '',
             },
-            loading: true,
+            loading: false,
             profile_data: null,
             updateProfileLoading: false,
             passwordChangeLoading: false,
@@ -236,9 +236,6 @@ export default {
     },
 
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
         this.getAdminProfile()
     },
 

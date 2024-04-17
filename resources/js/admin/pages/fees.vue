@@ -675,7 +675,7 @@ export default {
             paymentStatusParam: {
                 name: '',
             },
-            loading: true,
+            loading: false,
             manageFeesTypeLoading: false,
             feesTypeListLoading: false,
             managePaymentTypeLoading: false,

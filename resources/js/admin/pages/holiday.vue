@@ -305,7 +305,7 @@ export default {
                 end_date: '',
                 description: '',
             },
-            loading: true,
+            loading: false,
             deleteHolidayParam: {
                 ids: []
             },

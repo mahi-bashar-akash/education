@@ -366,7 +366,7 @@ export default {
                 joining_date: '',
             },
             departmentDataList: [],
-            loading: true,
+            loading: false,
             deleteProfessorParam: {
                 ids: []
             },

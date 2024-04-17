@@ -361,7 +361,7 @@ export default {
                 admission_date: '',
             },
             courseDataList: [],
-            loading: true,
+            loading: false,
             deleteProfessorParam: {
                 ids: []
             },

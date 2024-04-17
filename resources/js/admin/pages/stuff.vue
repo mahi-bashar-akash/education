@@ -341,7 +341,7 @@ export default {
                 description: '',
             },
             departmentDataList: [],
-            loading: true,
+            loading: false,
             deleteStuffParam: {
                 ids: []
             },

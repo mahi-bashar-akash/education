@@ -352,7 +352,7 @@ export default {
                 description: '',
             },
             professorDataList: [],
-            loading: true,
+            loading: false,
             deleteProfessorParam: {
                 ids: []
             },

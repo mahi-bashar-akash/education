@@ -361,7 +361,7 @@ export default {
                 guest: '',
                 location: '',
             },
-            loading: true,
+            loading: false,
             deleteEventParam: {
                 ids: []
             },

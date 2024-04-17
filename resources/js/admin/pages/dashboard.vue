@@ -22,7 +22,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.event_count }}
+                        {{ event_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-calendar4-event fs-3 text-theme"></i>
@@ -49,7 +49,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.professor_count }}
+                        {{ professor_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-person fs-3 text-theme"></i>
@@ -76,7 +76,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.student_count }}
+                        {{ student_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -102,7 +102,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.course_count }}
+                        {{ course_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-mortarboard fs-3 text-theme"></i>
@@ -128,7 +128,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.library_count }}
+                        {{ library_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-journal-bookmark fs-3 text-theme"></i>
@@ -154,7 +154,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.department_count }}
+                        {{ department_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-building fs-3 text-theme"></i>
@@ -181,7 +181,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.stuff_count }}
+                        {{ stuff_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-people fs-3 text-theme"></i>
@@ -208,7 +208,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.holiday_count }}
+                        {{ holiday_count }}
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-gift fs-3 text-theme"></i>
@@ -235,7 +235,7 @@
                     class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
                     v-if="!loading">
                     <div class="fw-bold fs-5 mb-3 text-light-gray">
-                        {{ countParam.fees_count }} tk
+                        {{ totalFeesAmount }} tk
                     </div>
                     <div class="mb-3">
                         <i class="bi bi-currency-dollar fs-3 text-theme"></i>
@@ -254,7 +254,8 @@
 
 <script>
 import breadcrumb from '../components/breadcrumb.vue';
-
+import apiServices from '../../services/apiServices.js';
+import apiRoutes from '../../services/apiRoutes.js';
 export default {
 
     components: {
@@ -264,29 +265,122 @@ export default {
     data() {
 
         return {
-            countParam: {
-                event_count: '1295',
-                professor_count: '1209',
-                student_count: '1114',
-                course_count: '109',
-                library_count: '97',
-                department_count: '73',
-                stuff_count: '123',
-                holiday_count: '365',
-                fees_count: '9,870,000',
-            },
-            loading: true,
+            event_count: '0',
+            professor_count: '0',
+            student_count: '0',
+            course_count: '0',
+            library_count: '0',
+            department_count: '0',
+            stuff_count: '0',
+            holiday_count: '0',
+            totalFeesAmount: '0',
+            loading: false,
         }
 
     },
 
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
+        this.getEventCount()
+        this.getProfessorCount()
+        this.getStudentCount()
+        this.getCourseCount()
+        this.getLibraryCount()
+        this.getDepartmentCount()
+        this.getStuffCount()
+        this.getHolidayCount()
+        this.getFeesAmount()
     },
 
-    methods: {}
+    methods: {
+
+        /* Function to count event */
+        getEventCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.eventList, '', (res) => {
+                this.loading = false;
+                this.event_count = res?.data?.total
+            })
+        },
+
+        /* Function to count professor */
+        getProfessorCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.professorList, '', (res) => {
+                this.loading = false;
+                this.professor_count = res?.data?.total
+            })
+        },
+
+        /* Function to count student */
+        getStudentCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.studentList, '', (res) => {
+                this.loading = false;
+                this.student_count = res?.data?.total
+            })
+        },
+
+        /* Function to count course */
+        getCourseCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.courseList, '', (res) => {
+                this.loading = false;
+                this.course_count = res?.data?.total
+            })
+        },
+
+        /* Function to count library */
+        getLibraryCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.libraryAssetList, '', (res) => {
+                this.loading = false;
+                this.library_count = res?.data?.total
+            })
+        },
+
+        /* Function to count department */
+        getDepartmentCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.departmentList, '', (res) => {
+                this.loading = false;
+                this.department_count = res?.data?.total
+            })
+        },
+
+        /* Function to count stuff */
+        getStuffCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.stuffList, '', (res) => {
+                this.loading = false;
+                this.stuff_count = res?.data?.total
+            })
+        },
+
+        /* Function to count holiday */
+        getHolidayCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.holidayList, '', (res) => {
+                this.loading = false;
+                this.holiday_count = res?.data?.total
+            })
+        },
+
+        /* Function to fees */
+        getFeesAmount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.feesList, '', (res) => {
+                this.loading = false;
+                const fees_amount = res?.data?.data;
+                if (fees_amount && fees_amount.length > 0) {
+                    this.totalFeesAmount = fees_amount.reduce((total, item) => {
+                        return total + parseFloat(item.fees_amount || 0);
+                    }, 0);
+                }
+            });
+        }
+
+
+    }
 
 }
 
