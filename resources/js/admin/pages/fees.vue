@@ -30,6 +30,28 @@
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteFeesModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
+            <div class="dropdown me-3">
+                <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" data-bs-toggle="dropdown" aria-expanded="false">
+                    List
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end p-2 m-0 overflow-hidden rounded-2">
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="feesTypeModalListOpen()">
+                            List of fees type
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="paymentTypeListOpen()">
+                            List of payment type
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="paymentStatusListOpen()">
+                            List of payment status
+                        </button>
+                    </li>
+                </ul>
+            </div>
             <div class="dropdown">
                 <newBtn data-bs-toggle="dropdown" aria-expanded="false"/>
                 <ul class="dropdown-menu dropdown-menu-end p-2 m-0 overflow-hidden rounded-2">
@@ -333,7 +355,7 @@
         </div>
     </div>
 
-    <!-- Manage fees type -->
+    <!-- Manage fees type modal -->
     <div class="modal fade" id="manageFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageFeesType()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -367,7 +389,7 @@
         </div>
     </div>
 
-    <!-- Manage payment type -->
+    <!-- Manage payment type modal -->
     <div class="modal fade" id="managePaymentTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="managePaymentType()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -401,7 +423,7 @@
         </div>
     </div>
 
-    <!-- Manage payment status -->
+    <!-- Manage payment status modal -->
     <div class="modal fade" id="managePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="managePaymentStatus()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -434,6 +456,52 @@
             </form>
         </div>
     </div>
+
+    <!-- fees type list modal -->
+    <div class="modal fade" id="feesTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content px-3 py-2 rounded-3 border-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Fees type</h1>
+                    <button type="button" class="btn-close shadow-none" @click="feesTypeModalListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- payment type list modal -->
+    <div class="modal fade" id="paymentTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content px-3 py-2 rounded-3 border-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment type</h1>
+                    <button type="button" class="btn-close shadow-none" @click="paymentTypeListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- payment status list modal -->
+    <div class="modal fade" id="paymentStatusListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content px-3 py-2 rounded-3 border-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment status</h1>
+                    <button type="button" class="btn-close shadow-none" @click="paymentStatusListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </template>
 
@@ -524,6 +592,9 @@ export default {
     },
     mounted() {
         this.feesList();
+        this.feesTypeList();
+        this.paymentTypeList();
+        this.paymentStatusList();
     },
     methods: {
 
@@ -929,7 +1000,7 @@ export default {
                         name: ''
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
-                    this.managePaymentTypeModalClose();
+                    this.managePaymentStatusModalClose();
                     this.paymentStatusList();
                 } else {
                     this.paymentStatusError = res.errors
@@ -947,7 +1018,7 @@ export default {
                         name: ''
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
-                    this.managePaymentTypeModalClose();
+                    this.managePaymentStatusModalClose();
                     this.paymentStatusList();
                 } else {
                     this.paymentStatusError = res.errors
@@ -958,7 +1029,7 @@ export default {
         /* Function to payment status list */
         paymentStatusList() {
             this.paymentStatusListLoading = true;
-            apiServices.GET(apiRoutes.paymentTypesList, this.paymentStatusListData, (res) => {
+            apiServices.GET(apiRoutes.paymentStatusList, this.paymentStatusListData, (res) => {
                 this.paymentStatusListLoading = false;
                 if (res.message) {
                     this.paymentStatusTableData = res.data.data;
@@ -970,6 +1041,45 @@ export default {
                     apiServices.clearErrorHandler(res.error)
                 }
             })
+        },
+
+        /* Function to fees type modal list open */
+        feesTypeModalListOpen() {
+            const myModal = new bootstrap.Modal("#feesTypeListModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to fees type modal list open */
+        feesTypeModalListClose() {
+            let myModalEl = document.getElementById('feesTypeListModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to payment type modal list open */
+        paymentTypeListOpen() {
+            const myModal = new bootstrap.Modal("#paymentTypeListModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to payment type modal list open */
+        paymentTypeListClose() {
+            let myModalEl = document.getElementById('paymentTypeListModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to payment status modal list open */
+        paymentStatusListOpen() {
+            const myModal = new bootstrap.Modal("#paymentStatusListModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to payment status modal list open */
+        paymentStatusListClose() {
+            let myModalEl = document.getElementById('paymentStatusListModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
         },
 
     }
