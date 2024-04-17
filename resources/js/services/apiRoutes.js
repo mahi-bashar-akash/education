@@ -68,12 +68,40 @@ const apiRoutes = {
     holidayUpdate: '/admin-secure/holiday/update',
     holidayDelete: '/admin-secure/holiday/delete',
 
+    /* --- --- --- --- admin - holiday types --- --- --- --- */
+    holidayTypesList: '/admin-secure/holiday/types/list',
+    holidayTypesCreate: '/admin-secure/holiday/types/create',
+    holidayTypesSingle: '/admin-secure/holiday/types/single',
+    holidayTypesUpdate: '/admin-secure/holiday/types/update',
+    holidayTypesDelete: '/admin-secure/holiday/types/delete',
+
     /* --- --- --- --- admin - fees --- --- --- --- */
     feesList: '/admin-secure/fees/list',
     feesCreate: '/admin-secure/fees/create',
     feesSingle: '/admin-secure/fees/single',
     feesUpdate: '/admin-secure/fees/update',
     feesDelete: '/admin-secure/fees/delete',
+
+    /* --- --- --- --- admin - fees types --- --- --- --- */
+    feesTypesList: '/admin-secure/fees/types/list',
+    feesTypesCreate: '/admin-secure/fees/types/create',
+    feesTypesSingle: '/admin-secure/fees/types/single',
+    feesTypesUpdate: '/admin-secure/fees/types/update',
+    feesTypesDelete: '/admin-secure/fees/types/delete',
+
+    /* --- --- --- --- admin - payment types --- --- --- --- */
+    paymentTypesList: '/admin-secure/payment/types/list',
+    paymentTypesCreate: '/admin-secure/payment/types/create',
+    paymentTypesSingle: '/admin-secure/payment/types/single',
+    paymentTypesUpdate: '/admin-secure/payment/types/update',
+    paymentTypesDelete: '/admin-secure/payment/types/delete',
+
+    /* --- --- --- --- admin - payment status --- --- --- --- */
+    paymentStatusList: '/admin-secure/payment/status/list',
+    paymentStatusCreate: '/admin-secure/payment/status/create',
+    paymentStatusSingle: '/admin-secure/payment/status/single',
+    paymentStatusUpdate: '/admin-secure/payment/status/update',
+    paymentStatusDelete: '/admin-secure/payment/status/delete',
 
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',

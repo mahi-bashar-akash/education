@@ -24,10 +24,8 @@
                                         <i class="bi bi-shield"></i>
                                     </button>
 
-                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38"
-                                            v-if="loading"></button>
-                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38"
-                                            v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
+                                    <button type="button" class="btn btn-theme me-1 disabled placeholder wpx-42 hpx-38" v-if="loading"></button>
 
                                 </div>
 
@@ -35,11 +33,8 @@
                                     <form class="pt-3">
 
                                         <!-- avatar upload -->
-                                        <label for="upload-image"
-                                               class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer"
-                                               v-if="!loading">
-                                            <input id="upload-image" type="file" name="upload-image"
-                                                   class="form-control" hidden="hidden">
+                                        <label for="upload-image" class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer" v-if="!loading">
+                                            <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
                                             <span class="d-block">
                                                 <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
                                             </span>
@@ -59,12 +54,24 @@
                                 <!-- profile information -->
                                 <div class="mt-3 px-3">
                                     <div v-if="!loading">
-                                        <div class="mb-2 text-light-gray fw-bold">Name:</div>
-                                        <div class="mb-2 text-light-gray-hover">{{profile_data.name}}</div>
-                                        <div class="mb-2 text-light-gray fw-bold">Email:</div>
-                                        <div class="mb-2 text-light-gray-hover">{{profile_data.email}}</div>
-                                        <div class="mb-2 text-light-gray fw-bold">Phone Number:</div>
-                                        <div class="mb-2 text-light-gray-hover">{{profile_data.phone}}</div>
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Name:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            {{profile_data.name}}
+                                        </div>
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Email:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            {{profile_data.email}}
+                                        </div>
+                                        <div class="mb-2 text-light-gray fw-bold">
+                                            Phone Number:
+                                        </div>
+                                        <div class="mb-2 text-light-gray-hover">
+                                            {{profile_data.phone}}
+                                        </div>
                                     </div>
 
                                     <div class="card-text placeholder-glow" v-if="loading">

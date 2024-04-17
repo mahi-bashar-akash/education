@@ -128,7 +128,19 @@ Route::group(
         Route::put('/single', [\App\Http\Controllers\HolidayController::class, 'single'])->name('Admin.Holiday.Single');
         Route::patch('/update', [\App\Http\Controllers\HolidayController::class, 'update'])->name('Admin.Holiday.Update');
         Route::delete('/delete', [\App\Http\Controllers\HolidayController::class, 'delete'])->name('Admin.Holiday.Delete');
-    }
+    },
+);
+
+/* --- --- --- --- Holiday type api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'holiday/types'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\HolidayTypesController::class, 'list'])->name('Admin.Holiday.Types.List');
+        Route::post('/create', [\App\Http\Controllers\HolidayTypesController::class, 'create'])->name('Admin.Holiday.Types.Create');
+        Route::put('/single', [\App\Http\Controllers\HolidayTypesController::class, 'single'])->name('Admin.Holiday.Types.Single');
+        Route::patch('/update', [\App\Http\Controllers\HolidayTypesController::class, 'update'])->name('Admin.Holiday.Types.Update');
+        Route::delete('/delete', [\App\Http\Controllers\HolidayTypesController::class, 'delete'])->name('Admin.Holiday.Types.Delete');
+    },
 );
 
 /* --- --- --- --- Fees api --- --- --- --- */
@@ -141,4 +153,40 @@ Route::group(
         Route::patch('/update', [\App\Http\Controllers\FeesController::class, 'update'])->name('Admin.Fees.Update');
         Route::delete('/delete', [\App\Http\Controllers\FeesController::class, 'delete'])->name('Admin.Fees.Delete');
     }
+);
+
+/* --- --- --- --- Fees type api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'fees/types'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\FeesTypesController::class, 'list'])->name('Admin.Fees.Types.List');
+        Route::post('/create', [\App\Http\Controllers\FeesTypesController::class, 'create'])->name('Admin.Fees.Types.Create');
+        Route::put('/single', [\App\Http\Controllers\FeesTypesController::class, 'single'])->name('Admin.Fees.Types.Single');
+        Route::patch('/update', [\App\Http\Controllers\FeesTypesController::class, 'update'])->name('Admin.Fees.Types.Update');
+        Route::delete('/delete', [\App\Http\Controllers\FeesTypesController::class, 'delete'])->name('Admin.Fees.Types.Delete');
+    },
+);
+
+/* --- --- --- --- payment type api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'payment/types'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\PaymentTypesController::class, 'list'])->name('Admin.Payment.Types.List');
+        Route::post('/create', [\App\Http\Controllers\PaymentTypesController::class, 'create'])->name('Admin.Payment.Types.Create');
+        Route::put('/single', [\App\Http\Controllers\PaymentTypesController::class, 'single'])->name('Admin.Payment.Types.Single');
+        Route::patch('/update', [\App\Http\Controllers\PaymentTypesController::class, 'update'])->name('Admin.Payment.Types.Update');
+        Route::delete('/delete', [\App\Http\Controllers\PaymentTypesController::class, 'delete'])->name('Admin.Payment.Types.Delete');
+    },
+);
+
+/* --- --- --- --- payment status api --- --- --- --- */
+Route::group(
+    ['middleware' => ['AdminAuthReq'], 'prefix' => 'payment/status'],
+    function () {
+        Route::get('/list', [\App\Http\Controllers\PaymentStatusController::class, 'list'])->name('Admin.Payment.Status.List');
+        Route::post('/create', [\App\Http\Controllers\PaymentStatusController::class, 'create'])->name('Admin.Payment.Status.Create');
+        Route::put('/single', [\App\Http\Controllers\PaymentStatusController::class, 'single'])->name('Admin.Payment.Status.Single');
+        Route::patch('/update', [\App\Http\Controllers\PaymentStatusController::class, 'update'])->name('Admin.Payment.Status.Update');
+        Route::delete('/delete', [\App\Http\Controllers\PaymentStatusController::class, 'delete'])->name('Admin.Payment.Status.Delete');
+    },
 );

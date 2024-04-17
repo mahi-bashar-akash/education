@@ -8,7 +8,13 @@
     <!-- fees search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
-            <search/>
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control ps-5" autocomplete="new-search"
+                       placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
@@ -20,24 +26,87 @@
                 <option value="50"> 50</option>
             </select>
         </div>
-        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end">
-            <newBtn @click="manageFeesModalOpen"/>
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteFeesModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
+            <newBtn @click="manageFeesModalOpen(null)"/>
         </div>
     </div>
 
-    <div class="card rounded-3 border-0 shadow" v-if="!loading && tableRows.length > 0">
+    <div class="card rounded-3 border-0 shadow" v-if="!loading && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
-            <tableContent
-                :headers="tableHeaders"
-                :rows="tableRows"
-                tableClass="table"
-                :headerClasses="['checkbox', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'default-width', 'action']"
-                :columnClasses="{ checkbox: 'checkbox', action: 'action' }"
-                :checkboxColumnIndex="0"
-                :editModalFunction="manageFeesModalOpen"
-                :deleteModalFunction="deleteFeesModalOpen"
-            />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
+                        </th>
+                        <th class="default-width">
+                            Student
+                        </th>
+                        <th class="default-width">
+                            Fees type
+                        </th>
+                        <th class="default-width">
+                            Fees amount
+                        </th>
+                        <th class="default-width">
+                            Payment type
+                        </th>
+                        <th class="default-width">
+                            Payment status
+                        </th>
+                        <th class="action">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="each in tableData">
+                        <td class="checkbox">
+                            <input type="checkbox" class="form-checkbox" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
+                        </td>
+                        <td class="default-width">
+                            <span v-if="each.student_info != null">
+                                {{ each.student_info.name }}
+                            </span>
+                        </td>
+                        <td class="default-width">
+                            {{each.fees_type}}
+                        </td>
+                        <td class="default-width">
+                            {{each.fees_amount}}
+                        </td>
+                        <td class="default-width">
+                            {{each.payment_type}}
+                        </td>
+                        <td class="default-width">
+                            {{each.payment_status}}
+                        </td>
+                        <td class="action">
+                            <div class="dropdown">
+                                <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end p-2 mt-1 overflow-hidden rounded-3 border">
+                                    <li class="mb-2">
+                                        <button type="button" class="dropdown-item rounded-3" @click="manageFeesModalOpen(each.id)">
+                                            Edit
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="dropdown-item rounded-3" @click="deleteFeesModalOpen(each.id)">
+                                            Delete
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
     </div>
@@ -46,18 +115,91 @@
     <preloader v-if="loading"/>
 
     <!-- no data -->
-    <noDataFounded :text="'fees'" :newModalFunction="manageFeesModalOpen" v-if="!loading && tableRows.length === 0"/>
+    <noDataFounded :text="'fees'" :newModalFunction="manageFeesModalOpen" v-if="!loading  && tableData.length === 0"/>
 
     <!-- pagination -->
-    <pagination v-if="!loading && tableRows.length > 0"/>
+    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
+        <div class="pagination admin-pagination">
+            <div class="page-item" @click="PrevPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+            <div v-if="buttons.length <= 6">
+                <div v-for="(page, index) in buttons" class="page-item"
+                     :class="{'active': current_page === page}">
+                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
+                       v-text="page"></a>
+                </div>
+            </div>
+            <div v-if="buttons.length > 6">
+                <div class="page-item" :class="{'active': current_page === 1}">
+                    <a class="page-link" @click="pageChange(1)"
+                       href="javascript:void(0)">1</a>
+                </div>
+
+                <div v-if="current_page > 3" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div v-if="current_page === buttons.length" class="page-item"
+                     :class="{'active': current_page === (current_page - 2)}">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)" v-text="current_page - 2"></a>
+                </div>
+
+                <div v-if="current_page > 2" class="page-item"
+                     :class="{'active': current_page === (current_page - 1)}">
+                    <a class="page-link" @click="pageChange(current_page - 1)"
+                       href="javascript:void(0)" v-text="current_page - 1"></a>
+                </div>
+
+                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
+                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
+                       v-text="current_page"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 1)}">
+                    <a class="page-link" @click="pageChange(current_page + 1)"
+                       href="javascript:void(0)" v-text="current_page + 1"></a>
+                </div>
+
+                <div v-if="current_page === 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 2)}">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)" v-text="current_page + 2"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 2" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
+                    <a class="page-link" @click="pageChange(buttons.length)"
+                       href="javascript:void(0)" v-text="buttons.length"></a>
+                </div>
+            </div>
+            <div class="page-item" @click="NextPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
 
     <!-- manage fees modal -->
     <div class="modal fade" id="manageFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <form class="modal-content px-3 py-2 rounded-3 border-0">
+            <form @submit.prevent="manageFees()" class="modal-content px-3 py-2 rounded-3 border-0">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
-                        Create fees
+                        <span v-if="this.formData.id === undefined"> Create </span>
+                        <span v-if="this.formData.id !== undefined"> Edit </span>
+                        fees
                     </h1>
                     <button type="button" class="btn-close shadow-none" @click="manageFeesModalClose"></button>
                 </div>
@@ -65,44 +207,49 @@
 
                     <div class="form-group mb-3">
                         <label for="student_id" class="form-label">Select Student</label>
-                        <select name="student_id" id="student_id" class="form-select" required
+                        <select name="student_id" id="student_id" class="form-select"
                                 autocomplete="new-select-student" v-model="formData.student_id">
                             <option :value="0">Select student option</option>
                             <option v-for="each in studentDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.student_id !== undefined"> {{error.student_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="fees-type" class="form-label">Select Fees type</label>
-                        <select name="fees_type" id="fees-type" class="form-select" required
+                        <select name="fees_type" id="fees-type" class="form-select"
                                 autocomplete="new-select-fees-type" v-model="formData.fees_type">
                             <option :value="0">Select fees type</option>
                             <option v-for="each in feesTypeDataList" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.fees_type !== undefined"> {{error.fees_type[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="fees-amount" class="form-label">Fees amount</label>
-                        <input id="fees-amount" type="text" name="fees_amount" class="form-control" required
+                        <input id="fees-amount" type="text" name="fees_amount" class="form-control"
                                autocomplete="new-fees-amount" v-model="formData.fees_amount">
+                        <div class="error-report" v-if="error != null && error.fees_amount !== undefined"> {{error.fees_amount[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="payment-type" class="form-label">Payment type</label>
-                        <select name="payment_type" id="payment-type" class="form-select" required
+                        <select name="payment_type" id="payment-type" class="form-select"
                                 autocomplete="new-payment-type" v-model="formData.payment_type">
                             <option :value="0">Select payment type</option>
                             <option v-for="each in paymentTypeList" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.payment_type !== undefined"> {{error.payment_type[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="payment-status" class="form-label">Payment status</label>
-                        <select name="payment_status" id="payment-status" class="form-select" required
+                        <select name="payment_status" id="payment-status" class="form-select"
                                 autocomplete="new-payment-status" v-model="formData.payment_status">
                             <option :value="0">Select payment status</option>
                             <option v-for="each in paymentStatusList" :value="each.id"> {{ each.name }}</option>
                         </select>
+                        <div class="error-report" v-if="error != null && error.payment_status !== undefined"> {{error.payment_status[0]}} </div>
                     </div>
 
                 </div>
@@ -110,8 +257,12 @@
                     <button type="button" class="btn btn-secondary wpx-110" @click="manageFeesModalClose">
                         Close
                     </button>
-                    <button type="button" class="btn btn-theme wpx-110">
-                        Save
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!manageFeesLoading">
+                        <span v-if="this.formData.id === undefined"> Save </span>
+                        <span v-if="this.formData.id !== undefined"> Update </span>
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="manageFeesLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                     </button>
                 </div>
             </form>
@@ -121,7 +272,7 @@
     <!-- delete fees modal -->
     <div class="modal fade" id="deleteFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3 border-0 py-2 px-3">
+            <form @submit.prevent="feesDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
                         Delete fees
@@ -146,12 +297,15 @@
                         </button>
                     </div>
                     <div class="col-5">
-                        <button type="button" class="btn btn-theme w-100">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deleteFeesLoading">
                             Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deleteFeesLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                         </button>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -165,6 +319,8 @@ import pagination from "../components/pagination.vue";
 import newBtn from "../components/new.vue";
 import tableContent from "../components/table.vue";
 import breadcrumb from "../components/breadcrumb.vue";
+import apiServices from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
@@ -176,40 +332,10 @@ export default {
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Fees', route: 'fees' },
             ],
-            tableHeaders: ['Checkbox', 'Name', 'Roll', 'Fees type', 'Fees Status', 'date', 'amount', 'Action'],
-            tableRows: [
-                {
-                    id: '1',
-                    name: 'Mahi Bashar Akash',
-                    roll: '18191101025',
-                    feesType: 'Annual',
-                    feesStatus: 'Paid',
-                    date: '01, January, 2025',
-                    amount: '10000',
-                }
-            ],
-            studentDataList: [
-                {id: '1', name: 'John Smith', roll: '18191101025'},
-                {id: '2', name: 'Denny Wilson', roll: '18191101026'},
-                {id: '3', name: 'Denial Furies', roll: '18191101027'},
-                {id: '4', name: 'Fas and Furious', roll: '18191101028'},
-                {id: '5', name: 'Sansi Monsi', roll: '18191101029'},
-            ],
-            feesTypeDataList: [
-                {id: '1', name: 'Annual'},
-                {id: '2', name: 'Exam'},
-                {id: '3', name: 'Other'},
-            ],
-            paymentTypeList: [
-                {id: '1', name: 'Cash'},
-                {id: '2', name: 'Cheque'},
-                {id: '3', name: 'Other'},
-            ],
-            paymentStatusList: [
-                {id: '1', name: 'Paid'},
-                {id: '2', name: 'Unpaid'},
-                {id: '3', name: 'Pending'},
-            ],
+            studentDataList: [],
+            feesTypeDataList: [],
+            paymentTypeList: [],
+            paymentStatusList: [],
             formData: {
                 student_id: '0',
                 fees_type: '0',
@@ -217,29 +343,74 @@ export default {
                 payment_type: '0',
                 payment_status: '0',
             },
-            feesDataList: [
-                {
-                    id: '1',
-                    name: 'Mahi Bashar Akash',
-                    roll: '18191101025',
-                    feesType: 'Annual',
-                    feesStatus: 'Paid',
-                    date: '01, January, 2025',
-                    amount: '10000',
-                }
-            ],
             loading: true,
+            deleteFeesParam: {
+                ids: []
+            },
+            tableData: [],
+            listData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            current_page: 1,
+            searchTimeOut: null,
+            responseData: null,
+            selected: [],
+            manageFeesLoading: false,
+            error: null,
+            deleteFeesLoading: false,
+            buttons: [],
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 2000)
+        this.feesList();
     },
     methods: {
 
+        /* Function to toggle check all */
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.tableData.forEach((v) => {
+                    this.selected.push(v.id);
+                });
+            } else {
+                this.selected = [];
+            }
+        },
+
+        /* Function to toggle check */
+        toggleCheck(e, id) {
+            if (e.target.checked) {
+                this.selected.push(id);
+            } else {
+                let index = this.selected.indexOf(id);
+                this.selected.splice(index, 1);
+            }
+        },
+
+        /* Function to check if checked */
+        CheckIfChecked(id) {
+            return this.selected.map(function (id) {
+                return id
+            }).indexOf(id) > -1;
+        },
+
         /* Function to manage fees modal open */
-        manageFeesModalOpen() {
+        manageFeesModalOpen(data = null) {
+            this.getStudent();
+            apiServices.clearErrorHandler()
+            if(data !== null) {
+                this.feesSingle(data);
+            }else {
+                this.formData = {
+                    student_id: '0',
+                    fees_type: '0',
+                    fees_amount: '',
+                    payment_type: '0',
+                    payment_status: '0',
+                }
+            }
             const myModal = new bootstrap.Modal("#manageFeesModal", {keyboard: false});
             myModal.show();
         },
@@ -252,17 +423,170 @@ export default {
         },
 
         /* Function to delete fees modal open */
-        deleteFeesModalOpen() {
+        deleteFeesModalOpen(id) {
+            this.deleteFeesParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteFeesModal", {keyboard: false});
             myModal.show();
         },
 
         /* Function to delete fees modal close */
         deleteFeesModalClose() {
+            this.selected = [];
+            this.current_page = 1;
+            this.formData = {
+                student_id: '0',
+                fees_type: '0',
+                fees_amount: '',
+                payment_type: '0',
+                payment_status: '0',
+            }
             let myModalEl = document.getElementById('deleteFeesModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
+
+        /* Function to fees list api */
+        feesList() {
+            this.loading = true;
+            this.listData.page = this.current_page;
+            apiServices.GET(apiRoutes.feesList, this.listData, (res) => {
+                this.loading = false;
+                if (res.message) {
+                    this.tableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        /* Function to fees search data */
+        SearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.feesList();
+            }, 800);
+        },
+
+        /* Function to fees previous page */
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.feesList()
+            }
+        },
+
+        /* Function to fees next page */
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.feesList()
+            }
+        },
+
+        /* Function to fees change page */
+        pageChange(page) {
+            this.current_page = page;
+            this.feesList();
+        },
+
+        /* Function to fees manage of create and update api */
+        manageFees() {
+            if(this.formData.id === undefined) {
+                this.feesCreate()
+            }else {
+                this.feesUpdate()
+            }
+        },
+
+        /* Function to fees create api */
+        feesCreate() {
+            this.manageFeesLoading = true;
+            apiServices.POST(apiRoutes.feesCreate, this.formData, (res) => {
+                this.manageFeesLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        student_enroll_capacity: '',
+                        name: '',
+                        professor_id: '0',
+                        price: '',
+                        duration: '',
+                        description: '',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageFeesModalClose();
+                    this.feesList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to fees update api */
+        feesUpdate() {
+            this.manageFeesLoading = true;
+            apiServices.PATCH(apiRoutes.feesUpdate, this.formData, (res) => {
+                this.manageFeesLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        student_enroll_capacity: '',
+                        name: '',
+                        professor_id: '0',
+                        price: '',
+                        duration: '',
+                        description: '',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageFeesModalClose();
+                    this.feesList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to fees single api */
+        feesSingle(data) {
+            apiServices.PUT(apiRoutes.feesSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.formData = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
+        /* Function to fees delete api */
+        feesDelete() {
+            this.selected.forEach((v) => {
+                this.deleteProfessorParam.ids.push(v);
+            })
+            this.deleteFeesLoading = true;
+            apiServices.DELETE(apiRoutes.feesDelete, this.deleteProfessorParam, (res) => {
+                this.deleteFeesLoading = false;
+                if(res.message) {
+                    this.deleteFeesModalClose();
+                    this.feesList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to get professor api */
+        getStudent(){
+            apiServices.GET(apiRoutes.studentList, '', (res) => {
+                if(res.message) {
+                    this.studentDataList = res.data.data
+                }else {
+                    this.error = res.errors
+                }
+            })
+        }
 
     }
 }

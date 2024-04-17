@@ -3,8 +3,8 @@
     "file": "assets/index-CD4EWs7v.css",
     "src": "_index-!~{004}~.js"
   },
-  "_index-k2rbWy8x.js": {
-    "file": "assets/index-k2rbWy8x.js",
+  "_index-BhfgNzNX.js": {
+    "file": "assets/index-BhfgNzNX.js",
     "css": [
       "assets/index-CD4EWs7v.css"
     ],
@@ -22,19 +22,19 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-BN0pqw_t.js",
+    "file": "assets/app-XmL9UdRo.js",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
     "imports": [
-      "_index-k2rbWy8x.js"
+      "_index-BhfgNzNX.js"
     ]
   },
   "resources/js/front/app.js": {
-    "file": "assets/app-CA-qm1t9.js",
+    "file": "assets/app-CEboXTF7.js",
     "src": "resources/js/front/app.js",
     "isEntry": true,
     "imports": [
-      "_index-k2rbWy8x.js"
+      "_index-BhfgNzNX.js"
     ],
     "css": [
       "assets/app-hEpI-9Tf.css"

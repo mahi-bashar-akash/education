@@ -8,7 +8,13 @@
     <!-- search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
-            <search/>
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control ps-5" required autocomplete="new-search"
+                       placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6 col-xl-3 mb-3">
             <select name="event-type" class="form-select">
