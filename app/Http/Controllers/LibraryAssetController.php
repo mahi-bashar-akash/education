@@ -24,6 +24,7 @@ class LibraryAssetController extends BaseController
                         $q->where('author', 'LIKE', '%' . $keyword . '%');
                         $q->orWhere('name', 'LIKE', '%' . $keyword . '%');
                         $q->orWhere('subject', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }

@@ -22,8 +22,6 @@ class HolidayController extends BaseController
                 $holiday->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('guest', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('location', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }

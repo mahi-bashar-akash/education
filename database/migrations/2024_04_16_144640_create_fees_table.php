@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('fees', function (Blueprint $table) {
             $table->id();
             $table->string('student_id');
-            $table->string('fees_type');
+            $table->string('fees_type_id');
             $table->string('fees_amount');
-            $table->string('payment_type');
-            $table->string('payment_status');
+            $table->string('payment_type_id');
+            $table->string('payment_status_id');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

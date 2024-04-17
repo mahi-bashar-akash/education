@@ -31,10 +31,15 @@
                 <i class="bi bi-trash2 text-danger"></i>
             </button>
             <div class="dropdown me-3">
-                <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" data-bs-toggle="dropdown" aria-expanded="false">
-                    List
+                <button type="button" class="btn btn-theme wpx-120 hpx-36 d-flex align-items-center justify-content-center border-0" data-bs-toggle="dropdown" aria-expanded="false">
+                    List manage
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end p-2 m-0 overflow-hidden rounded-2">
+                    <li>
+                        <button type="button" class="dropdown-item rounded-2" @click="manageFeesModalOpen(null)">
+                            Manage fees
+                        </button>
+                    </li>
                     <li>
                         <button type="button" class="dropdown-item rounded-2" @click="feesTypeModalListOpen()">
                             List of fees type
@@ -48,31 +53,6 @@
                     <li>
                         <button type="button" class="dropdown-item rounded-2" @click="paymentStatusListOpen()">
                             List of payment status
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <newBtn data-bs-toggle="dropdown" aria-expanded="false"/>
-                <ul class="dropdown-menu dropdown-menu-end p-2 m-0 overflow-hidden rounded-2">
-                    <li>
-                        <button type="button" class="dropdown-item rounded-2" @click="manageFeesModalOpen(null)">
-                            Manage fees
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="dropdown-item rounded-2" @click="manageFeesTypeModalOpen()">
-                            Manage fees type
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="dropdown-item rounded-2" @click="managePaymentTypeModalOpen()">
-                            Manage payment type
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="dropdown-item rounded-2" @click="managePaymentStatusModalOpen()">
-                            Manage payment status
                         </button>
                     </li>
                 </ul>
@@ -263,12 +243,12 @@
 
                     <div class="form-group mb-3">
                         <label for="fees-type" class="form-label">Select Fees type</label>
-                        <select name="fees_type" id="fees-type" class="form-select"
-                                autocomplete="new-select-fees-type" v-model="formData.fees_type">
+                        <select name="fees_type_id" id="fees-type" class="form-select"
+                                autocomplete="new-select-fees-type" v-model="formData.fees_type_id">
                             <option :value="0">Select fees type</option>
                             <option v-for="each in feesTypeTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
-                        <div class="error-report" v-if="error != null && error.fees_type !== undefined"> {{error.fees_type[0]}} </div>
+                        <div class="error-report" v-if="error != null && error.fees_type_id !== undefined"> {{error.fees_type_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -280,22 +260,22 @@
 
                     <div class="form-group mb-3">
                         <label for="payment-type" class="form-label">Payment type</label>
-                        <select name="payment_type" id="payment-type" class="form-select"
-                                autocomplete="new-payment-type" v-model="formData.payment_type">
+                        <select name="payment_type_id" id="payment-type" class="form-select"
+                                autocomplete="new-payment-type" v-model="formData.payment_type_id">
                             <option :value="0">Select payment type</option>
                             <option v-for="each in paymentTypeTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
-                        <div class="error-report" v-if="error != null && error.payment_type !== undefined"> {{error.payment_type[0]}} </div>
+                        <div class="error-report" v-if="error != null && error.payment_type_id !== undefined"> {{error.payment_type_id[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="payment-status" class="form-label">Payment status</label>
-                        <select name="payment_status" id="payment-status" class="form-select"
-                                autocomplete="new-payment-status" v-model="formData.payment_status">
+                        <select name="payment_status_id" id="payment-status" class="form-select"
+                                autocomplete="new-payment-status" v-model="formData.payment_status_id">
                             <option :value="0">Select payment status</option>
                             <option v-for="each in paymentStatusTableData" :value="each.id"> {{ each.name }}</option>
                         </select>
-                        <div class="error-report" v-if="error != null && error.payment_status !== undefined"> {{error.payment_status[0]}} </div>
+                        <div class="error-report" v-if="error != null && error.payment_status_id !== undefined"> {{error.payment_status_id[0]}} </div>
                     </div>
 
                 </div>
@@ -379,7 +359,8 @@
                         Close
                     </button>
                     <button type="submit" class="btn btn-theme wpx-110" v-if="!manageFeesTypeLoading">
-                        Save
+                        <span v-if="this.feesTypeParam.id === undefined"> Save </span>
+                        <span v-if="this.feesTypeParam.id !== undefined"> Update </span>
                     </button>
                     <button type="button" class="btn btn-theme wpx-110" v-if="manageFeesTypeLoading">
                         <span class="spinner-border border-2 wpx-15 hpx-15"></span>
@@ -413,7 +394,8 @@
                         Close
                     </button>
                     <button type="submit" class="btn btn-theme wpx-110" v-if="!managePaymentTypeLoading">
-                        Save
+                        <span v-if="this.paymentTypeParam.id === undefined"> Save </span>
+                        <span v-if="this.paymentTypeParam.id !== undefined"> Update </span>
                     </button>
                     <button type="button" class="btn btn-theme wpx-110" v-if="managePaymentTypeLoading">
                         <span class="spinner-border border-2 wpx-15 hpx-15"></span>
@@ -447,7 +429,8 @@
                         Close
                     </button>
                     <button type="submit" class="btn btn-theme wpx-110" v-if="!managePaymentStatusLoading">
-                        Save
+                        <span v-if="this.paymentStatusParam.id === undefined"> Save </span>
+                        <span v-if="this.paymentStatusParam.id !== undefined"> Update </span>
                     </button>
                     <button type="button" class="btn btn-theme wpx-110" v-if="managePaymentStatusLoading">
                         <span class="spinner-border border-2 wpx-15 hpx-15"></span>
@@ -467,6 +450,54 @@
                 </div>
                 <div class="modal-body border-0">
 
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!feesTypeListLoading && feesTypeTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new fees type.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageFeesTypeModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="feesTypeListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!feesTypeListLoading && feesTypeTableData.length > 0">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="feesTypesListData.keyword" @keyup="feesTypeSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="manageFeesTypeModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!feesTypeListLoading && feesTypeTableData.length > 0">
+                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in feesTypeTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <button type="button" class="btn-icon border-0 rounded-circle" @click="manageFeesTypeModalOpen(each.id)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -481,6 +512,54 @@
                     <button type="button" class="btn-close shadow-none" @click="paymentTypeListClose()"></button>
                 </div>
                 <div class="modal-body border-0">
+
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentTypeListLoading && paymentTypeTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new payment type.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentTypeModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentTypeListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentTypesListData.keyword" @keyup="paymentTypeSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentTypeModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0">
+                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in paymentTypeTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <button type="button" class="btn-icon border-0 rounded-circle" @click="managePaymentTypeModalOpen(each.id)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -497,11 +576,58 @@
                 </div>
                 <div class="modal-body border-0">
 
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentStatusListLoading && paymentStatusTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new payment status.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentStatusModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentStatusListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentStatusListData.keyword" @keyup="paymentStatusSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentStatusModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0">
+                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in paymentStatusTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <button type="button" class="btn-icon border-0 rounded-circle" @click="managePaymentStatusModalOpen(each.id)">
+                                <i class="bi bi-pencil"></i>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
-
 
 </template>
 
@@ -529,10 +655,10 @@ export default {
             studentTableData: [],
             formData: {
                 student_id: '0',
-                fees_type: '0',
+                fees_type_id: '0',
                 fees_amount: '',
-                payment_type: '0',
-                payment_status: '0',
+                payment_type_id: '0',
+                payment_status_id: '0',
             },
             feesTypeParam: {
                 name: '',
@@ -597,6 +723,8 @@ export default {
         this.paymentStatusList();
     },
     methods: {
+
+        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- fees ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
         /* Function to toggle check all */
         toggleCheckAll(e) {
@@ -811,21 +939,42 @@ export default {
         getStudent(){
             apiServices.GET(apiRoutes.studentList, '', (res) => {
                 if(res.message) {
-                    this.studentTableData = res.data.data
+                    this.studentTableData = res.data.data;
                 }else {
-                    this.error = res.errors
+                    this.error = res.errors;
                 }
             })
         },
 
+        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- fees type ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+
         /* Function to manage fees type modal open */
-        manageFeesTypeModalOpen() {
+        manageFeesTypeModalOpen(data = null) {
+            this.feesTypeModalListClose();
+            apiServices.clearErrorHandler();
+            if(data != null) {
+                this.feesTypeSingle(data);
+            }else {
+                this.feesTypeParam = { name: '' };
+            }
             const myModal = new bootstrap.Modal("#manageFeesTypeModal", {keyboard: false});
             myModal.show();
         },
 
+        /* Function to fees type single api */
+        feesTypeSingle(data) {
+            apiServices.PUT(apiRoutes.feesTypesSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.feesTypeParam = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
         /* Function to manage fees type modal close */
         manageFeesTypeModalClose() {
+            this.feesTypeModalListOpen();
             let myModalEl = document.getElementById('manageFeesTypeModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -893,14 +1042,56 @@ export default {
             })
         },
 
+        /* Function to fees type search data */
+        feesTypeSearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.feesTypeList();
+            }, 800);
+        },
+
+        /* Function to fees type modal list open */
+        feesTypeModalListOpen() {
+            const myModal = new bootstrap.Modal("#feesTypeListModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to fees type modal list open */
+        feesTypeModalListClose() {
+            let myModalEl = document.getElementById('feesTypeListModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment type ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+
         /* Function to manage payment type modal open */
-        managePaymentTypeModalOpen() {
+        managePaymentTypeModalOpen(data = null) {
+            this.paymentTypeListClose();
+            apiServices.clearErrorHandler()
+            if(data !== null) {
+                this.paymentTypeSingle(data);
+            }else {
+                this.paymentTypeParam = { name: '' }
+            }
             const myModal = new bootstrap.Modal("#managePaymentTypeModal", {keyboard: false});
             myModal.show();
         },
 
+        /* Function to payment type single api */
+        paymentTypeSingle(data) {
+            apiServices.PUT(apiRoutes.paymentTypesSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.paymentTypeParam = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
         /* Function to manage payment type modal close */
         managePaymentTypeModalClose() {
+            this.paymentTypeListOpen();
             let myModalEl = document.getElementById('managePaymentTypeModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -968,14 +1159,56 @@ export default {
             })
         },
 
+        /* Function to payment type search data */
+        paymentTypeSearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.paymentTypeList();
+            }, 800);
+        },
+
+        /* Function to payment type modal list open */
+        paymentTypeListOpen() {
+            const myModal = new bootstrap.Modal("#paymentTypeListModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to payment type modal list open */
+        paymentTypeListClose() {
+            let myModalEl = document.getElementById('paymentTypeListModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment status ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+
         /* Function to manage payment status modal open */
-        managePaymentStatusModalOpen() {
+        managePaymentStatusModalOpen(data = null) {
+            this.paymentStatusListClose();
+            apiServices.clearErrorHandler();
+            if(data !== null) {
+                this.paymentStatusSingle(data);
+            }else {
+                this.paymentStatusParam = { name: '' }
+            }
             const myModal = new bootstrap.Modal("#managePaymentStatusModal", {keyboard: false});
             myModal.show();
         },
 
+        /* Function to payment status single api */
+        paymentStatusSingle(data) {
+            apiServices.PUT(apiRoutes.paymentStatusSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.paymentStatusParam = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
         /* Function to manage payment status modal close */
         managePaymentStatusModalClose() {
+            this.paymentStatusListOpen();
             let myModalEl = document.getElementById('managePaymentStatusModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
@@ -1011,7 +1244,7 @@ export default {
         /* Function to update payment status */
         updatePaymentStatus() {
             this.managePaymentStatusLoading = true;
-            apiServices.POST(apiRoutes.paymentStatusUpdate, this.paymentStatusParam, (res) => {
+            apiServices.PATCH(apiRoutes.paymentStatusUpdate, this.paymentStatusParam, (res) => {
                 this.managePaymentStatusLoading = false;
                 if(res.message) {
                     this.paymentStatusParam = {
@@ -1043,32 +1276,6 @@ export default {
             })
         },
 
-        /* Function to fees type modal list open */
-        feesTypeModalListOpen() {
-            const myModal = new bootstrap.Modal("#feesTypeListModal", {keyboard: false});
-            myModal.show();
-        },
-
-        /* Function to fees type modal list open */
-        feesTypeModalListClose() {
-            let myModalEl = document.getElementById('feesTypeListModal');
-            let modal = bootstrap.Modal.getInstance(myModalEl)
-            modal.hide();
-        },
-
-        /* Function to payment type modal list open */
-        paymentTypeListOpen() {
-            const myModal = new bootstrap.Modal("#paymentTypeListModal", {keyboard: false});
-            myModal.show();
-        },
-
-        /* Function to payment type modal list open */
-        paymentTypeListClose() {
-            let myModalEl = document.getElementById('paymentTypeListModal');
-            let modal = bootstrap.Modal.getInstance(myModalEl)
-            modal.hide();
-        },
-
         /* Function to payment status modal list open */
         paymentStatusListOpen() {
             const myModal = new bootstrap.Modal("#paymentStatusListModal", {keyboard: false});
@@ -1080,6 +1287,14 @@ export default {
             let myModalEl = document.getElementById('paymentStatusListModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
+        },
+
+        /* Function to payment type search data */
+        paymentStatusSearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.paymentStatusList();
+            }, 800);
         },
 
     }

@@ -15,14 +15,13 @@ class FeesController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $fees = Fees::with('student_id')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $fees = Fees::with('student_info', 'fees_type_info', 'payment_type_info', 'payment_status_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $fees->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('fees_amount', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
@@ -40,10 +39,10 @@ class FeesController extends BaseController
                 $request->all(),
                 [
                     'student_id' => 'required',
-                    'fees_type' => 'required',
+                    'fees_type_id' => 'required',
                     'fees_amount' => 'required',
-                    'payment_type' => 'required',
-                    'payment_status' => 'required',
+                    'payment_type_id' => 'required',
+                    'payment_status_id' => 'required',
                 ]
             );
 
@@ -53,10 +52,10 @@ class FeesController extends BaseController
             $fees = new Fees();
             $admin_id = Auth::guard('admins')->id();
             $fees->student_id = $request->student_id;
-            $fees->fees_type = $request->fees_type;
+            $fees->fees_type_id = $request->fees_type_id;
             $fees->fees_amount = $request->fees_amount;
-            $fees->payment_type = $request->payment_type;
-            $fees->payment_status = $request->payment_status;
+            $fees->payment_type_id = $request->payment_type_id;
+            $fees->payment_status_id = $request->payment_status_id;
             $fees->admin_id = $admin_id;
             $fees->save();
             return ['message' => 'Fees has been saved successfully.'];
@@ -95,10 +94,10 @@ class FeesController extends BaseController
                 [
                     'id' => 'required',
                     'student_id' => 'required',
-                    'fees_type' => 'required',
+                    'fees_type_id' => 'required',
                     'fees_amount' => 'required',
-                    'payment_type' => 'required',
-                    'payment_status' => 'required',
+                    'payment_type_id' => 'required',
+                    'payment_status_id' => 'required',
                 ]
             );
 
@@ -111,10 +110,10 @@ class FeesController extends BaseController
                 return ['status' => 500, 'errors' => 'Fees data not found'];
             }
             $fees->student_id = $request->student_id;
-            $fees->fees_type = $request->fees_type;
+            $fees->fees_type_id = $request->fees_type_id;
             $fees->fees_amount = $request->fees_amount;
-            $fees->payment_type = $request->payment_type;
-            $fees->payment_status = $request->payment_status;
+            $fees->payment_type_id = $request->payment_type_id;
+            $fees->payment_status_id = $request->payment_status_id;
             $fees->save();
             return ['message' => 'Fees has been updated successfully.'];
         } catch (\Exception $e) {

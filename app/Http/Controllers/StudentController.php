@@ -22,8 +22,9 @@ class StudentController extends BaseController
                 $students->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('roll_or_id', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }

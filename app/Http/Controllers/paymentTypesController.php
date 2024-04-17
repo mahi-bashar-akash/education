@@ -21,8 +21,6 @@ class paymentTypesController extends BaseController
                 $PaymentTypes->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }

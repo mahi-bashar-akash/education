@@ -22,8 +22,8 @@ class StuffController extends BaseController
                 $stuff->where(
                     function ($q) use ($keyword) {
                         $q->where('name', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('guest', 'LIKE', '%' . $keyword . '%');
-                        $q->orWhere('location', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
                     }
                 );
             }
