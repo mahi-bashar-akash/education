@@ -831,7 +831,10 @@ export default {
             deleteFeesLoading: false,
             manageFeesLoading: false,
             error: null,
-            
+            deleteFeesParam: {
+                ids: []
+            },
+
             /* fees type */
             manageFeesTypeLoading: false,
             feesTypeParam: { name: '' },
