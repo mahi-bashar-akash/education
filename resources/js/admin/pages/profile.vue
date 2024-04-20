@@ -227,7 +227,7 @@ export default {
                 phone: '',
             },
             loading: false,
-            profile_data: null,
+            profile_data: '',
             updateProfileLoading: false,
             passwordChangeLoading: false,
             error: null,
@@ -247,8 +247,8 @@ export default {
             apiServices.GET(apiRoutes.adminProfile, null, (res) => {
                 this.loading = false;
                 if(res.message) {
-                    this.profile_data = res.data
-                    this.profileParam = this.profile_data
+                    this.profile_data = res?.data;
+                    this.profileParam = JSON.parse(JSON.stringify(res?.data));
                 } else {
                     this.$toast.error('Server Error', { position: "top-right" } );
                 }

@@ -280,7 +280,7 @@ export default {
             },
             loading: true,
             userInfo: window.core.UserInfo,
-            profile_data: null,
+            profile_data: '',
             error: null,
             paymentLoading: false,
             updateProfileLoading: false,
@@ -326,9 +326,9 @@ export default {
             apiServices.GET(apiRoutes.userProfile, null, (res) => {
                 this.loading = false;
                 if (res.message) {
-                    this.profile_data = res.data
-                    this.profileParam = this.profile_data
-                    this.paymentParam = this.profile_data
+                    this.profile_data = res?.data
+                    this.profileParam = JSON.parse(JSON.stringify(res?.data))
+                    this.paymentParam = JSON.parse(JSON.stringify(res?.data))
                 }else {
                     this.$toast.error('Server Error', { position: "top-right" } );
                 }
