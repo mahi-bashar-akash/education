@@ -341,6 +341,81 @@
         </div>
     </div>
 
+
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+    <!-- Fees type -->
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+
+    <!-- fees type list modal -->
+    <div class="modal fade" id="feesTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-2 rounded-3 border-0">
+                <div class="modal-header border-0 px-4">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Fees type</h1>
+                    <button type="button" class="btn-close shadow-none" @click="feesTypeModalListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <!-- search data -->
+                    <div class="d-flex justify-content-between align-items-center mb-3 px-2">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="feesTypesListData.keyword" @keyup="feesTypeSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="manageFeesTypeModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!feesTypeListLoading && feesTypeTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new fees type.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageFeesTypeModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="feesTypeListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!feesTypeListLoading && feesTypeTableData.length > 0">
+                        <div class="py-2 ps-3 pe-2 d-flex justify-content-between align-items-center" v-for="each in feesTypeTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end">
+                                <button type="button" class="btn-icon border-0 rounded-circle me-2" @click="manageFeesTypeModalOpen(each.id)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn-icon border-0 rounded-circle" @click="deleteFeesTypeModalOpen(each.id)">
+                                    <i class="bi bi-trash2 text-danger"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Manage fees type modal -->
     <div class="modal fade" id="manageFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -373,6 +448,120 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- delete fees type modal -->
+    <div class="modal fade" id="deleteFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="feesTypeDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete fees type
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteFeesTypeModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary w-100" @click="deleteFeesTypeModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deleteFeesTypeLoading">
+                            Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deleteFeesTypeLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+    <!-- Payment type -->
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+
+    <!-- payment type list modal -->
+    <div class="modal fade" id="paymentTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content py-2 rounded-3 border-0">
+                <div class="modal-header border-0 px-4">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment type</h1>
+                    <button type="button" class="btn-close shadow-none" @click="paymentTypeListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <!-- search data -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentTypesListData.keyword" @keyup="paymentTypeSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentTypeModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentTypeListLoading && paymentTypeTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new payment type.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentTypeModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentTypeListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0">
+                        <div class="py-2 ps-3 pe-2 d-flex justify-content-between align-items-center" v-for="each in paymentTypeTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <div class="d-flex justify-content-end align-items-center">
+                                <button type="button" class="btn-icon border-0 rounded-circle me-2" @click="managePaymentTypeModalOpen(each.id)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn-icon border-0 rounded-circle" @click="deletePaymentTypeModalOpen(each.id)">
+                                    <i class="bi bi-trash2 text-danger"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
@@ -411,6 +600,121 @@
         </div>
     </div>
 
+    <!-- delete payment type modal -->
+    <div class="modal fade" id="deletePaymentTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="paymentTypeDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete payment type
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deletePaymentTypeModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary w-100" @click="deletePaymentTypeModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deletePaymentTypeLoading">
+                            Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deletePaymentTypeLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+    <!-- Payment status -->
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+
+    <!-- payment status list modal -->
+    <div class="modal fade" id="paymentStatusListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content px-3 py-2 rounded-3 border-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment status</h1>
+                    <button type="button" class="btn-close shadow-none" @click="paymentStatusListClose()"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <!-- search here -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="position-relative w-100">
+                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentStatusListData.keyword" @keyup="paymentStatusSearchData()">
+                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                                <i class="bi bi-search"></i>
+                            </div>
+                        </div>
+                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentStatusModalOpen(null)">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- no data founded -->
+                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentStatusListLoading && paymentStatusTableData.length === 0">
+                        <div class="mb-2">
+                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-5">
+                                No data founded!
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="text-center text-light-gray fs-6">
+                                Click “New” to create new payment status.
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentStatusModalOpen(null)">
+                            New
+                        </button>
+                    </div>
+
+                    <!-- preloader -->
+                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentStatusListLoading">
+                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
+                    </div>
+
+                    <!-- list data -->
+                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0">
+                        <div class="py-2 ps-3 pe-2 d-flex justify-content-between align-items-center" v-for="each in paymentStatusTableData">
+                            <div class="fw-medium">
+                                {{each.name}}
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end">
+                                <button type="button" class="btn-icon border-0 rounded-circle me-2" @click="managePaymentStatusModalOpen(each.id)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button type="button" class="btn-icon border-0 rounded-circle" @click="deletePaymentStatusModalOpen(each.id)">
+                                    <i class="bi bi-trash2"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Manage payment status modal -->
     <div class="modal fade" id="managePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -446,192 +750,43 @@
         </div>
     </div>
 
-    <!-- fees type list modal -->
-    <div class="modal fade" id="feesTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- delete payment status modal -->
+    <div class="modal fade" id="deletePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content px-3 py-2 rounded-3 border-0">
+            <form @submit.prevent="paymentStatusDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Fees type</h1>
-                    <button type="button" class="btn-close shadow-none" @click="feesTypeModalListClose()"></button>
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete fees type
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deletePaymentStatusModalClose"></button>
                 </div>
-                <div class="modal-body border-0">
+                <div class="modal-body border-0 text-center">
 
-                    <!-- no data founded -->
-                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!feesTypeListLoading && feesTypeTableData.length === 0">
-                        <div class="mb-2">
-                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-5">
-                                No data founded!
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-6">
-                                Click “New” to create new fees type.
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="manageFeesTypeModalOpen(null)">
-                            New
-                        </button>
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
                     </div>
 
-                    <!-- preloader -->
-                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="feesTypeListLoading">
-                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
-                    </div>
-
-                    <!-- list data -->
-                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!feesTypeListLoading && feesTypeTableData.length > 0">
-                        <div class="position-relative w-100">
-                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="feesTypesListData.keyword" @keyup="feesTypeSearchData()">
-                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
-                                <i class="bi bi-search"></i>
-                            </div>
-                        </div>
-                        <button type="button" class="ms-3 btn btn-theme" @click="manageFeesTypeModalOpen(null)">
-                            <i class="bi bi-plus-lg"></i>
-                        </button>
-                    </div>
-                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!feesTypeListLoading && feesTypeTableData.length > 0">
-                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in feesTypeTableData">
-                            <div class="fw-medium">
-                                {{each.name}}
-                            </div>
-                            <button type="button" class="btn-icon border-0 rounded-circle" @click="manageFeesTypeModalOpen(each.id)">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </div>
+                    <div class="text-center">
+                        Are you sure?
                     </div>
 
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- payment type list modal -->
-    <div class="modal fade" id="paymentTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content px-3 py-2 rounded-3 border-0">
-                <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment type</h1>
-                    <button type="button" class="btn-close shadow-none" @click="paymentTypeListClose()"></button>
-                </div>
-                <div class="modal-body border-0">
-
-                    <!-- no data founded -->
-                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentTypeListLoading && paymentTypeTableData.length === 0">
-                        <div class="mb-2">
-                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-5">
-                                No data founded!
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-6">
-                                Click “New” to create new payment type.
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentTypeModalOpen(null)">
-                            New
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary w-100" @click="deletePaymentStatusModalClose">
+                            Close
                         </button>
                     </div>
-
-                    <!-- preloader -->
-                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentTypeListLoading">
-                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
-                    </div>
-
-                    <!-- list data -->
-                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0">
-                        <div class="position-relative w-100">
-                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentTypesListData.keyword" @keyup="paymentTypeSearchData()">
-                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
-                                <i class="bi bi-search"></i>
-                            </div>
-                        </div>
-                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentTypeModalOpen(null)">
-                            <i class="bi bi-plus-lg"></i>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deletePaymentStatusLoading">
+                            Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deletePaymentStatusLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                         </button>
                     </div>
-                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0">
-                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in paymentTypeTableData">
-                            <div class="fw-medium">
-                                {{each.name}}
-                            </div>
-                            <button type="button" class="btn-icon border-0 rounded-circle" @click="managePaymentTypeModalOpen(each.id)">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- payment status list modal -->
-    <div class="modal fade" id="paymentStatusListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content px-3 py-2 rounded-3 border-0">
-                <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Payment status</h1>
-                    <button type="button" class="btn-close shadow-none" @click="paymentStatusListClose()"></button>
-                </div>
-                <div class="modal-body border-0">
-
-                    <!-- no data founded -->
-                    <div class="hpx-300 d-flex justify-content-center align-items-center flex-column" v-if="!paymentStatusListLoading && paymentStatusTableData.length === 0">
-                        <div class="mb-2">
-                            <i class="bi bi-database-exclamation fs-2 text-theme"></i>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-5">
-                                No data founded!
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="text-center text-light-gray fs-6">
-                                Click “New” to create new payment status.
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-theme wpx-90 hpx-36 d-flex align-items-center justify-content-center border-0" @click="managePaymentStatusModalOpen(null)">
-                            New
-                        </button>
-                    </div>
-
-                    <!-- preloader -->
-                    <div class="hpx-300 cursor-loading d-flex justify-content-center align-items-center" v-if="paymentStatusListLoading">
-                        <span class="spinner-border spinner-border" aria-hidden="true"></span>
-                    </div>
-
-                    <!-- list data -->
-                    <div class="d-flex justify-content-between align-items-center mb-3" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0">
-                        <div class="position-relative w-100">
-                            <input type="text" name="keyword" class="form-control ps-5" placeholder="Search here" autocomplete="new-keyword" v-model="paymentStatusListData.keyword" @keyup="paymentStatusSearchData()">
-                            <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
-                                <i class="bi bi-search"></i>
-                            </div>
-                        </div>
-                        <button type="button" class="ms-3 btn btn-theme" @click="managePaymentStatusModalOpen(null)">
-                            <i class="bi bi-plus-lg"></i>
-                        </button>
-                    </div>
-                    <div class="hpx-300 overflow-y-scroll scrollbar p-0 m-0" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0">
-                        <div class="py-1 d-flex justify-content-between align-items-center" v-for="each in paymentStatusTableData">
-                            <div class="fw-medium">
-                                {{each.name}}
-                            </div>
-                            <button type="button" class="btn-icon border-0 rounded-circle" @click="managePaymentStatusModalOpen(each.id)">
-                                <i class="bi bi-pencil"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 
@@ -666,59 +821,72 @@ export default {
                 payment_type_id: '0',
                 payment_status_id: '0',
             },
-            feesTypeParam: {
-                name: '',
-            },
-            paymentTypeParam: {
-                name: '',
-            },
-            paymentStatusParam: {
-                name: '',
-            },
             loading: false,
-            manageFeesTypeLoading: false,
-            feesTypeListLoading: false,
-            managePaymentTypeLoading: false,
-            paymentTypeListLoading: false,
-            managePaymentStatusLoading: false,
-            paymentStatusListLoading: false,
-            deleteFeesParam: {
-                ids: []
-            },
-            tableData: [],
-            feesTypeTableData: [],
-            paymentTypeTableData: [],
-            paymentStatusTableData: [],
             listData: {
                 keyword: '',
                 limit: 10,
                 page: 1,
             },
+            tableData: [],
+            deleteFeesLoading: false,
+            manageFeesLoading: false,
+            error: null,
+            
+            /* fees type */
+            manageFeesTypeLoading: false,
+            feesTypeParam: { name: '' },
+            feesTypeListLoading: false,
+            deleteFeesTypeLoading: false,
+            deleteFeesTypeParam: { ids: [] },
+            feesTypeError: null,
+            feesTypeTableData: [],
             feesTypesListData: {
                 keyword: '',
                 limit: 10,
                 page: 1,
             },
+
+            /* payment type */
+            managePaymentTypeLoading: false,
+            paymentTypeParam: {
+                name: '',
+            },
+            paymentTypeListLoading: false,
+            deletePaymentTypeLoading: false,
+            deletePaymentTypeParam: {
+                ids: []
+            },
+            paymentTypeTableData: [],
             paymentTypesListData: {
                 keyword: '',
                 limit: 10,
                 page: 1,
             },
+            paymentTypeError: null,
+
+            /* payment status */
+            managePaymentStatusLoading: false,
+            paymentStatusListLoading: false,
+            deletePaymentStatusLoading: false,
+            paymentStatusParam: {
+                name: '',
+            },
+            deletePaymentStatusParam: {
+                ids: []
+            },
+            paymentStatusTableData: [],
             paymentStatusListData: {
                 keyword: '',
                 limit: 10,
                 page: 1,
             },
+            paymentStatusError: null,
+
+            // pagination
             current_page: 1,
             searchTimeOut: null,
             responseData: null,
             selected: [],
-            manageFeesLoading: false,
-            error: null,
-            feesTypeError: null,
-            paymentTypeError: null,
-            paymentStatusError: null,
-            deleteFeesLoading: false,
             buttons: [],
         }
     },
@@ -1067,6 +1235,40 @@ export default {
             modal.hide();
         },
 
+        /* Function to delete fees type modal open */
+        deleteFeesTypeModalOpen(id) {
+            this.feesTypeModalListClose();
+            this.deleteFeesTypeParam.ids.push(id);
+            const myModal = new bootstrap.Modal("#deleteFeesTypeModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete fees type modal close */
+        deleteFeesTypeModalClose() {
+            this.feesTypeModalListOpen();
+            let myModalEl = document.getElementById('deleteFeesTypeModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to fees type delete api */
+        feesTypeDelete() {
+            this.selected.forEach((v) => {
+                this.deleteFeesTypeParam.ids.push(v);
+            })
+            this.deleteFeesTypeLoading = true;
+            apiServices.DELETE(apiRoutes.feesTypesDelete, this.deleteFeesTypeParam, (res) => {
+                this.deleteFeesTypeLoading = false;
+                if(res.message) {
+                    this.deleteFeesTypeModalClose();
+                    this.feesTypeList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
         /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment type ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
         /* Function to manage payment type modal open */
@@ -1184,6 +1386,40 @@ export default {
             modal.hide();
         },
 
+        /* Function to delete payment type modal open */
+        deletePaymentTypeModalOpen(id) {
+            this.paymentTypeListClose();
+            this.deletePaymentTypeParam.ids.push(id);
+            const myModal = new bootstrap.Modal("#deletePaymentTypeModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete payment type modal close */
+        deletePaymentTypeModalClose() {
+            this.paymentTypeListOpen();
+            let myModalEl = document.getElementById('deletePaymentTypeModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to payment type delete api */
+        paymentTypeDelete() {
+            this.selected.forEach((v) => {
+                this.deletePaymentTypeParam.ids.push(v);
+            })
+            this.deletePaymentTypeLoading = true;
+            apiServices.DELETE(apiRoutes.paymentTypesDelete, this.deletePaymentTypeParam, (res) => {
+                this.deletePaymentTypeLoading = false;
+                if(res.message) {
+                    this.deletePaymentTypeModalClose();
+                    this.paymentTypeList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
         /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment status ---- ---- ---- ---- ---- ---- ---- ---- ---- */
 
         /* Function to manage payment status modal open */
@@ -1299,6 +1535,40 @@ export default {
             this.searchTimeout = setTimeout(() => {
                 this.paymentStatusList();
             }, 800);
+        },
+
+        /* Function to delete payment status modal open */
+        deletePaymentStatusModalOpen(id) {
+            this.paymentStatusListClose();
+            this.deletePaymentStatusParam.ids.push(id);
+            const myModal = new bootstrap.Modal("#deletePaymentStatusModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete payment status modal close */
+        deletePaymentStatusModalClose() {
+            this.paymentStatusListOpen();
+            let myModalEl = document.getElementById('deletePaymentStatusModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to payment status delete api */
+        paymentStatusDelete() {
+            this.selected.forEach((v) => {
+                this.deletePaymentStatusParam.ids.push(v);
+            })
+            this.deletePaymentTypeLoading = true;
+            apiServices.DELETE(apiRoutes.paymentStatusDelete, this.deletePaymentStatusParam, (res) => {
+                this.deletePaymentTypeLoading = false;
+                if(res.message) {
+                    this.deletePaymentStatusModalClose();
+                    this.paymentStatusList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
         },
 
     }
