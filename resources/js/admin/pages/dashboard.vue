@@ -264,7 +264,7 @@
                         {{ faq_count }}
                     </div>
                     <div class="mb-3">
-                        <i class="bi bi-gift fs-3 text-theme"></i>
+                        <i class="bi bi-question-circle fs-3 text-theme"></i>
                     </div>
                     <div class="text-light-gray">
                         Summary Faq
