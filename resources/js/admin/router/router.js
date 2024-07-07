@@ -27,6 +27,7 @@ import events from "../pages/events.vue";
 import professors from "../pages/professors.vue";
 import students from "../pages/students.vue";
 import courses from "../pages/courses.vue";
+import blogs from "../pages/blogs.vue";
 import library from "../pages/library.vue";
 import departments from "../pages/departments.vue";
 import stuff from "../pages/stuff.vue";
@@ -54,6 +55,7 @@ const routes = [
             { path: ROOT_URL + 'professors', name: 'professors', component: professors, meta: { title: TITLE + ' - professors' } },
             { path: ROOT_URL + 'students', name: 'students', component: students, meta: { title: TITLE + ' - students' } },
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
+            { path: ROOT_URL + 'blogs', name: 'blogs', component: blogs, meta: { title: TITLE + ' - blogs' } },
             { path: ROOT_URL + 'library', name: 'library', component: library, meta: { title: TITLE + ' - library' } },
             { path: ROOT_URL + 'departments', name: 'departments', component: departments, meta: { title: TITLE + ' - departments' } },
             { path: ROOT_URL + 'stuff', name: 'stuff', component: stuff, meta: { title: TITLE + ' - stuff' } },

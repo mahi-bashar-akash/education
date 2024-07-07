@@ -32,6 +32,10 @@
                     <i class="bi bi-mortarboard"></i>
                     <span class="ms-2"> Courses </span>
                 </router-link>
+                <router-link :to="{name: 'blogs'}" class="sidebar-link" @click="remove()">
+                    <i class="bi bi-file-post-fill"></i>
+                    <span class="ms-2"> Blogs </span>
+                </router-link>
                 <router-link :to="{name: 'students'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-people"></i>
                     <span class="ms-2"> Students </span>

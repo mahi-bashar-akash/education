@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------
 | ADMIN API Routes
-|--------------------------------------------------------------------------
+|-------------------------------------------
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------
 | ADMIN AUTHENTICATION API ROUTES
-|--------------------------------------------------------------------------
+|-------------------------------------------
 */
 
 Route::group(
@@ -30,9 +30,9 @@ Route::group(
 );
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------------
 | ADMIN INSIDE CONTENT API ROUTES
-|--------------------------------------------------------------------------
+|-------------------------------------------
 */
 
 Route::group(
@@ -95,6 +95,18 @@ Route::group(
                 Route::put('/single', [\App\Http\Controllers\CourseController::class, 'single'])->name('Admin.Course.Single');
                 Route::patch('/update', [\App\Http\Controllers\CourseController::class, 'update'])->name('Admin.Course.Update');
                 Route::delete('/delete', [\App\Http\Controllers\CourseController::class, 'delete'])->name('Admin.Course.Delete');
+            }
+        );
+
+        /* ADMIN BLOG API ROUTES */
+        Route::group(
+            ['prefix' => 'blog'],
+            function () {
+                Route::get('/list', [\App\Http\Controllers\BlogController::class, 'list'])->name('Admin.Blog.List');
+                Route::post('/create', [\App\Http\Controllers\BlogController::class, 'create'])->name('Admin.Blog.Create');
+                Route::put('/single', [\App\Http\Controllers\BlogController::class, 'single'])->name('Admin.Blog.Single');
+                Route::patch('/update', [\App\Http\Controllers\BlogController::class, 'update'])->name('Admin.Blog.Update');
+                Route::delete('/delete', [\App\Http\Controllers\BlogController::class, 'delete'])->name('Admin.Blog.Delete');
             }
         );
 

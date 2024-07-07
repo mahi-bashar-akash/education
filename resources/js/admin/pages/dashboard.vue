@@ -114,6 +114,32 @@
             </router-link>
         </div>
 
+        <!-- blog -->
+        <div class="mb-4">
+
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
+            <router-link :to="{name: 'blogs'}" class="text-decoration-none">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
+                    <div class="fw-bold fs-5 mb-3 text-light-gray">
+                        {{ blog_count }}
+                    </div>
+                    <div class="mb-3">
+                        <i class="bi bi-mortarboard fs-3 text-theme"></i>
+                    </div>
+                    <div class="text-light-gray">
+                        Summary blog
+                    </div>
+                </div>
+            </router-link>
+        </div>
+
         <!-- library -->
         <div class="mb-4">
 
@@ -269,6 +295,7 @@ export default {
             professor_count: '0',
             student_count: '0',
             course_count: '0',
+            blog_count: '0',
             library_count: '0',
             department_count: '0',
             stuff_count: '0',
@@ -284,6 +311,7 @@ export default {
         this.getProfessorCount()
         this.getStudentCount()
         this.getCourseCount()
+        this.getBlogCount()
         this.getLibraryCount()
         this.getDepartmentCount()
         this.getStuffCount()
@@ -326,6 +354,15 @@ export default {
             apiServices.GET(apiRoutes.courseList, '', (res) => {
                 this.loading = false;
                 this.course_count = res?.data?.total
+            })
+        },
+
+        /* Function to count blog */
+        getBlogCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.blogList, '', (res) => {
+                this.loading = false;
+                this.blog_count = res?.data?.total
             })
         },
 

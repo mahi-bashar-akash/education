@@ -40,6 +40,13 @@ const apiRoutes = {
     courseUpdate: '/admin-secure/course/update',
     courseDelete: '/admin-secure/course/delete',
 
+    /* --- --- --- --- admin - blog --- --- --- --- */
+    blogList: '/admin-secure/blog/list',
+    blogCreate: '/admin-secure/blog/create',
+    blogSingle: '/admin-secure/blog/single',
+    blogUpdate: '/admin-secure/blog/update',
+    blogDelete: '/admin-secure/blog/delete',
+
     /* --- --- --- --- admin - student --- --- --- --- */
     studentList: '/admin-secure/student/list',
     studentCreate: '/admin-secure/student/create',

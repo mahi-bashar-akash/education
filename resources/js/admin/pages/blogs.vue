@@ -1,0 +1,540 @@
+<template>
+
+    <!-- breadcrumb -->
+    <div class="d-sm-flex justify-content-between align-items-center">
+        <breadcrumb :items="BreadcrumbItems" moduleName="Blogs"/>
+    </div>
+
+    <!-- search and new -->
+    <div class="row justify-content-between">
+        <div class="col-sm-6 col-xl-3 mb-3">
+            <div class="position-relative">
+                <input type="text" name="keyword" class="form-control ps-5" autocomplete="new-search"
+                       placeholder="Search here" v-model="listData.keyword" @keyup="SearchData()">
+                <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
+                    <i class="bi bi-search"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3 mb-3">
+            <select name="event-type" class="form-select">
+                <option value="select-option">Select visible data</option>
+                <option value="10"> 10</option>
+                <option value="20"> 20</option>
+                <option value="30"> 30</option>
+                <option value="40"> 40</option>
+                <option value="50"> 50</option>
+            </select>
+        </div>
+        <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light border-0 mx-2" @click="deleteBlogModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
+                <i class="bi bi-trash2 text-danger"></i>
+            </button>
+            <newBtn @click="manageBlogModalOpen(null)"/>
+        </div>
+    </div>
+
+    <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
+        <div class="card-body card-list scrollbar">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="checkbox">
+                        <input type="checkbox" class="form-checkbox" :checked="tableData.length > 0 && tableData.length === selected.length" @change="toggleCheckAll($event)">
+                    </th>
+                    <th class="default-width">
+                        Title
+                    </th>
+                    <th class="default-width">
+                        Author name
+                    </th>
+                    <th class="default-width">
+                        Description
+                    </th>
+                    <th class="action">
+                        Action
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="each in tableData">
+                    <td class="checkbox">
+                        <input type="checkbox" class="form-checkbox" :checked="CheckIfChecked(each.id)" @change="toggleCheck($event,each.id)">
+                    </td>
+                    <td class="default-width">
+                        {{each.title}}
+                    </td>
+                    <td class="default-width">
+                        {{each.author_name}}
+                    </td>
+                    <td class="default-width">
+                        <div class="truncate-to-1-line">
+                            {{each.description}}
+                        </div>
+                    </td>
+                    <td class="action">
+                        <div class="dropdown">
+                            <button type="button" class="btn border-0 p-0 btn-icon" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end p-2 mt-1 overflow-hidden rounded-3 border">
+                                <li class="mb-2">
+                                    <button type="button" class="dropdown-item rounded-3" @click="manageBlogModalOpen(each.id)">
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="dropdown-item rounded-3" @click="deleteBlogModalOpen(each.id)">
+                                        Delete
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <!-- preloader -->
+    <preloader v-if="loading"/>
+
+    <!-- no data -->
+    <noDataFounded :text="'blog'" :newModalFunction="manageBlogModalOpen" v-if="!loading  && tableData.length === 0"/>
+
+    <!-- pagination -->
+    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
+        <div class="pagination admin-pagination">
+            <div class="page-item" @click="PrevPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-left"></i>
+                </a>
+            </div>
+            <div v-if="buttons.length <= 6">
+                <div v-for="(page, index) in buttons" class="page-item"
+                     :class="{'active': current_page === page}">
+                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
+                       v-text="page"></a>
+                </div>
+            </div>
+            <div v-if="buttons.length > 6">
+                <div class="page-item" :class="{'active': current_page === 1}">
+                    <a class="page-link" @click="pageChange(1)"
+                       href="javascript:void(0)">1</a>
+                </div>
+
+                <div v-if="current_page > 3" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div v-if="current_page === buttons.length" class="page-item"
+                     :class="{'active': current_page === (current_page - 2)}">
+                    <a class="page-link" @click="pageChange(current_page - 2)"
+                       href="javascript:void(0)" v-text="current_page - 2"></a>
+                </div>
+
+                <div v-if="current_page > 2" class="page-item"
+                     :class="{'active': current_page === (current_page - 1)}">
+                    <a class="page-link" @click="pageChange(current_page - 1)"
+                       href="javascript:void(0)" v-text="current_page - 1"></a>
+                </div>
+
+                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
+                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
+                       v-text="current_page"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 1)}">
+                    <a class="page-link" @click="pageChange(current_page + 1)"
+                       href="javascript:void(0)" v-text="current_page + 1"></a>
+                </div>
+
+                <div v-if="current_page === 1" class="page-item"
+                     :class="{'active': current_page === (current_page + 2)}">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)" v-text="current_page + 2"></a>
+                </div>
+
+                <div v-if="current_page < buttons.length - 2" class="page-item">
+                    <a class="page-link" @click="pageChange(current_page + 2)"
+                       href="javascript:void(0)">...</a>
+                </div>
+
+                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
+                    <a class="page-link" @click="pageChange(buttons.length)"
+                       href="javascript:void(0)" v-text="buttons.length"></a>
+                </div>
+            </div>
+            <div class="page-item" @click="NextPage()">
+                <a class="page-link" href="javascript:void(0)">
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- manage blog modal -->
+    <div class="modal fade" id="manageBlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="manageBlog()" class="modal-content px-3 py-2 rounded-3 border-0">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        <span v-if="this.formData.id === undefined"> Create </span>
+                        <span v-if="this.formData.id !== undefined"> Edit </span>
+                        blog
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="manageBlogModalClose"></button>
+                </div>
+                <div class="modal-body border-0">
+
+                    <div class="form-group mb-3">
+                        <label for="upload-image"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                            <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
+                            Click to upload Image
+                        </label>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="title" class="form-label"> Title </label>
+                        <input id="title" v-model="formData.title" type="text" name="title" class="form-control"
+                               autocomplete="new-name">
+                        <div class="error-report" v-if="error != null && error.title !== undefined"> {{error.title[0]}} </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="author_name" class="form-label"> Author name </label>
+                        <input id="author_name" v-model="formData.author_name" type="text" name="author_name" class="form-control"
+                               autocomplete="new-name">
+                        <div class="error-report" v-if="error != null && error.author_name !== undefined"> {{error.author_name[0]}} </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label"> Description </label>
+                        <textarea id="description" class="form-textarea" name="description"
+                                  v-model="formData.description" cols="30" rows="5"
+                                  autocomplete="new-description"></textarea>
+                        <div class="error-report" v-if="error != null && error.description !== undefined"> {{error.description[0]}} </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary wpx-110" @click="manageBlogModalClose">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-theme wpx-110" v-if="!manageBlogLoading">
+                        <span v-if="this.formData.id === undefined"> Save </span>
+                        <span v-if="this.formData.id !== undefined"> Update </span>
+                    </button>
+                    <button type="button" class="btn btn-theme wpx-110" v-if="manageBlogLoading">
+                        <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- delete blog modal -->
+    <div class="modal fade" id="deleteBlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form @submit.prevent="blogDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
+                        Delete blog
+                    </h1>
+                    <button type="button" class="btn-close shadow-none" @click="deleteBlogModalClose"></button>
+                </div>
+                <div class="modal-body border-0 text-center">
+
+                    <div class="text-center">
+                        <i class="bi bi-trash2 fs-1 text-danger"></i>
+                    </div>
+
+                    <div class="text-center">
+                        Are you sure?
+                    </div>
+
+                </div>
+                <div class="modal-footer border-0 d-flex justify-content-between align-items-center">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-secondary rounded-3 w-100" @click="deleteBlogModalClose">
+                            Close
+                        </button>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-theme rounded-3 w-100" v-if="!deleteBlogLoading">
+                            Confirm
+                        </button>
+                        <button type="button" class="btn btn-theme rounded-3 w-100" v-if="deleteBlogLoading">
+                            <span class="spinner-border border-2 wpx-15 hpx-15"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</template>
+
+<script>
+import search from "../components/search.vue";
+import preloader from "../components/preloader.vue";
+import noDataFounded from "../components/no-data-founded.vue";
+import pagination from "../components/pagination.vue";
+import newBtn from "../components/new.vue";
+import tableContent from "../components/table.vue";
+import breadcrumb from '../components/breadcrumb.vue';
+import apiServices from "../../services/apiServices.js";
+import apiRoutes from "../../services/apiRoutes.js";
+
+export default {
+    components: {
+        search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
+    },
+    data() {
+        return {
+            BreadcrumbItems: [
+                { title: 'Dashboard', route: 'dashboard' },
+                { title: 'Blogs', route: 'blogs' },
+            ],
+            formData: {
+                title: '',
+                author_name: '',
+                description: '',
+            },
+            professorDataList: [],
+            loading: false,
+            deleteProfessorParam: {
+                ids: []
+            },
+            tableData: [],
+            listData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            current_page: 1,
+            searchTimeOut: null,
+            responseData: null,
+            selected: [],
+            manageBlogLoading: false,
+            error: null,
+            deleteBlogLoading: false,
+            buttons: [],
+        }
+    },
+    mounted() {
+        this.blogList();
+    },
+    methods: {
+
+        /* Function to toggle check all */
+        toggleCheckAll(e) {
+            if (e.target.checked) {
+                this.tableData.forEach((v) => {
+                    this.selected.push(v.id);
+                });
+            } else {
+                this.selected = [];
+            }
+        },
+
+        /* Function to toggle check */
+        toggleCheck(e, id) {
+            if (e.target.checked) {
+                this.selected.push(id);
+            } else {
+                let index = this.selected.indexOf(id);
+                this.selected.splice(index, 1);
+            }
+        },
+
+        /* Function to check if checked */
+        CheckIfChecked(id) {
+            return this.selected.map(function (id) {
+                return id
+            }).indexOf(id) > -1;
+        },
+
+        /* Function to manage blog modal open */
+        manageBlogModalOpen(data = null) {
+            apiServices.clearErrorHandler()
+            if(data !== null) {
+                this.blogSingle(data);
+            }else {
+                this.formData = {
+                    title: '',
+                    author_name: '',
+                    description: '',
+                }
+            }
+            const myModal = new bootstrap.Modal("#manageBlogModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to manage blog modal close */
+        manageBlogModalClose() {
+            let myModalEl = document.getElementById('manageBlogModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to delete blog modal open */
+        deleteBlogModalOpen(id) {
+            this.deleteProfessorParam.ids.push(id)
+            const myModal = new bootstrap.Modal("#deleteBlogModal", {keyboard: false});
+            myModal.show();
+        },
+
+        /* Function to delete blog modal close */
+        deleteBlogModalClose() {
+            this.selected = [];
+            this.current_page = 1;
+            this.formData = {
+                title: '',
+                author_name: '',
+                description: '',
+            }
+            let myModalEl = document.getElementById('deleteBlogModal');
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        },
+
+        /* Function to blog list api */
+        blogList() {
+            this.loading = true;
+            this.listData.page = this.current_page;
+            apiServices.GET(apiRoutes.blogList, this.listData, (res) => {
+                this.loading = false;
+                if (res.message) {
+                    this.tableData = res.data.data;
+                    this.responseData = res.data;
+                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
+                    this.current_page = res.data.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        /* Function to blog search data */
+        SearchData() {
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.blogList();
+            }, 800);
+        },
+
+        /* Function to blog previous page */
+        PrevPage() {
+            if (this.current_page > 1) {
+                this.current_page = this.current_page - 1;
+                this.blogList()
+            }
+        },
+
+        /* Function to blog next page */
+        NextPage() {
+            if (this.current_page < this.total_pages) {
+                this.current_page = this.current_page + 1;
+                this.blogList()
+            }
+        },
+
+        /* Function to blog change page */
+        pageChange(page) {
+            this.current_page = page;
+            this.blogList();
+        },
+
+        /* Function to blog manage of create and update api */
+        manageBlog() {
+            if(this.formData.id === undefined) {
+                this.blogCreate()
+            }else {
+                this.blogUpdate()
+            }
+        },
+
+        /* Function to blog create api */
+        blogCreate() {
+            this.manageBlogLoading = true;
+            apiServices.POST(apiRoutes.blogCreate, this.formData, (res) => {
+                this.manageBlogLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        title: '',
+                        author_name: '',
+                        description: '',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageBlogModalClose();
+                    this.blogList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to blog update api */
+        blogUpdate() {
+            this.manageBlogLoading = true;
+            apiServices.PATCH(apiRoutes.blogUpdate, this.formData, (res) => {
+                this.manageBlogLoading = false;
+                if(res.message) {
+                    this.formData = {
+                        title: '',
+                        author_name: '',
+                        description: '',
+                    }
+                    this.$toast.success(res.message, { position: "top-right" } );
+                    this.manageBlogModalClose();
+                    this.blogList();
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function to blog single api */
+        blogSingle(data) {
+            apiServices.PUT(apiRoutes.blogSingle, { id: data }, (res) => {
+                if (res.message) {
+                    this.formData = res.data;
+                } else {
+                    this.error = res.errors;
+                }
+            });
+        },
+
+        /* Function to blog delete api */
+        blogDelete() {
+            this.selected.forEach((v) => {
+                this.deleteProfessorParam.ids.push(v);
+            })
+            this.deleteBlogLoading = true;
+            apiServices.DELETE(apiRoutes.blogDelete, this.deleteProfessorParam, (res) => {
+                this.deleteBlogLoading = false;
+                if(res.message) {
+                    this.deleteBlogModalClose();
+                    this.blogList();
+                    this.$toast.success(res.message, { position: "top-right" } );
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+    }
+}
+
+</script>
