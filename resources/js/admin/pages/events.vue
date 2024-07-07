@@ -16,19 +16,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-3 mb-3">
-            <select name="event-type" class="form-select">
-                <option value="select-option">Select event option</option>
-                <option value="conferences">Conferences</option>
-                <option value="trade-shows">Trade shows</option>
-                <option value="networking-events">Networking events</option>
-                <option value="workshops">Workshops</option>
-                <option value="team-building-events">Team building events</option>
-                <option value="product-launch-events">Product launch events</option>
-                <option value="charity-events">Charity events</option>
-                <option value="internal-corporate-events">Internal corporate events</option>
-            </select>
-        </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteEventModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>

@@ -16,16 +16,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-xl-3 mb-3">
-            <select name="event-type" class="form-select">
-                <option value="select-option">Select visible data</option>
-                <option value="10"> 10</option>
-                <option value="20"> 20</option>
-                <option value="30"> 30</option>
-                <option value="40"> 40</option>
-                <option value="50"> 50</option>
-            </select>
-        </div>
         <div class="col-12 col-xl-6 mb-3 d-flex justify-content-end align-items-center">
             <button type="button" class="btn btn-light border-0 mx-2" @click="deleteProfessorModalOpen()" v-if="tableData.length > 0 && loading === false && selected.length > 0">
                 <i class="bi bi-trash2 text-danger"></i>
