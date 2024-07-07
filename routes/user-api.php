@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* --- --- --- --- api user authentication --- --- --- --- */
+/*
+|--------------------------------------------------------------------------
+| API USER AUTHENTICATION
+|--------------------------------------------------------------------------
+*/
+
 Route::group(
     ['middleware' => ['UserAuth'], 'prefix' => 'user-auth'],
     function () {
@@ -25,7 +30,12 @@ Route::group(
     }
 );
 
-/* --- --- --- --- api user profile --- --- --- --- */
+/*
+|--------------------------------------------------------------------------
+| API USER PROFILE
+|--------------------------------------------------------------------------
+*/
+
 Route::group(
     ['middleware' => ['UserAuthReq'], 'prefix' => 'user-profile'],
     function () {
