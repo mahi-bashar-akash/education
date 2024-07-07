@@ -80,9 +80,13 @@
                             {{each.price}}
                         </td>
                         <td class="default-width">
-                            <span v-if="each.department_info != null">
+                            <div v-if="each.status === 1"> In Stock </div>
+                            <div v-if="each.status === 2"> Out of Stock </div>
+                        </td>
+                        <td class="default-width">
+                            <div v-if="each.department_info != null">
                                 {{ each.department_info.name }}
-                            </span>
+                            </div>
                         </td>
                         <td class="action">
                             <div class="dropdown">
@@ -211,6 +215,7 @@
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
+                        <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -248,6 +253,15 @@
                         <input id="price" v-model="formData.price" type="text" name="price" class="form-control"
                                autocomplete="new-price">
                         <div class="error-report" v-if="error != null && error.price !== undefined"> {{error.price[0]}} </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="status" class="form-label"> Status </label>
+                        <select name="status" id="status" class="form-select" autocomplete="new-status" v-model="formData.status">
+                            <option value="1">In Stock</option>
+                            <option value="2">Out of Stock</option>
+                        </select>
+                        <div class="error-report" v-if="error != null && error.status !== undefined"> {{error.status[0]}} </div>
                     </div>
 
                 </div>
