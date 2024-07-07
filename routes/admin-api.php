@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |-------------------------------------------
-| ADMIN API Routes
+| ADMIN API ROUTES
 |-------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -20,7 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(
+
     ['middleware' => ['AdminAuth'], 'prefix' => 'admin-auth'],
+
     function () {
         Route::post('/login', [\App\Http\Controllers\AdminController::class, 'login'])->name('Admin.Auth.Login');
         Route::post('/register', [\App\Http\Controllers\AdminController::class, 'register'])->name('Admin.Auth.Register');
@@ -36,7 +38,9 @@ Route::group(
 */
 
 Route::group(
+
     ['middleware' => ['AdminAuthReq']],
+
     function () {
 
         /* ADMIN PROFILE API ROUTES */
@@ -206,5 +210,18 @@ Route::group(
             }
         );
 
+        /* ADMIN FREQUENTLY ASKING QUESTION API ROUTES */
+        Route::group(
+            ['prefix' => 'faq'],
+            function () {
+                Route::get('/list', [\App\Http\Controllers\FrequentlyAskingQuestionController::class, 'list'])->name('Admin.Faq.List');
+                Route::post('/create', [\App\Http\Controllers\FrequentlyAskingQuestionController::class, 'create'])->name('Admin.Faq.Create');
+                Route::put('/single', [\App\Http\Controllers\FrequentlyAskingQuestionController::class, 'single'])->name('Admin.Faq.Single');
+                Route::patch('/update', [\App\Http\Controllers\FrequentlyAskingQuestionController::class, 'update'])->name('Admin.Faq.Update');
+                Route::delete('/delete', [\App\Http\Controllers\FrequentlyAskingQuestionController::class, 'delete'])->name('Admin.Faq.Delete');
+            }
+        );
+
     }
+
 );

@@ -131,7 +131,7 @@
                         {{ blog_count }}
                     </div>
                     <div class="mb-3">
-                        <i class="bi bi-mortarboard fs-3 text-theme"></i>
+                        <i class="bi bi-file-post-fill fs-3 text-theme"></i>
                     </div>
                     <div class="text-light-gray">
                         Summary blog
@@ -247,6 +247,33 @@
 
         </div>
 
+        <!-- frequently asking question -->
+        <div class="mb-4">
+
+            <div
+                class="bg-white shadow hpx-230 rounded-4 d-flex justify-content-center align-items-center cursor-loading"
+                v-if="loading">
+                <span class="spinner-border spinner-border" aria-hidden="true"></span>
+            </div>
+
+            <router-link :to="{name: 'faq'}" class="text-decoration-none">
+                <div
+                    class="bg-white shadow text-center hpx-230 rounded-4 d-flex justify-content-center align-items-center flex-column"
+                    v-if="!loading">
+                    <div class="fw-bold fs-5 mb-3 text-light-gray">
+                        {{ faq_count }}
+                    </div>
+                    <div class="mb-3">
+                        <i class="bi bi-gift fs-3 text-theme"></i>
+                    </div>
+                    <div class="text-light-gray">
+                        Summary Faq
+                    </div>
+                </div>
+            </router-link>
+
+        </div>
+
         <!-- fees -->
         <div class="mb-4">
 
@@ -300,6 +327,7 @@ export default {
             department_count: '0',
             stuff_count: '0',
             holiday_count: '0',
+            faq_count: '0',
             totalFeesAmount: '0',
             loading: false,
         }
@@ -316,12 +344,13 @@ export default {
         this.getDepartmentCount()
         this.getStuffCount()
         this.getHolidayCount()
+        this.getFAQCount()
         this.getFeesAmount()
     },
 
     methods: {
 
-        /* Function to count event */
+        /* Function of event api */
         getEventCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.eventList, '', (res) => {
@@ -330,7 +359,7 @@ export default {
             })
         },
 
-        /* Function to count professor */
+        /* Function of professor api */
         getProfessorCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.professorList, '', (res) => {
@@ -339,7 +368,7 @@ export default {
             })
         },
 
-        /* Function to count student */
+        /* Function of student api */
         getStudentCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.studentList, '', (res) => {
@@ -348,7 +377,7 @@ export default {
             })
         },
 
-        /* Function to count course */
+        /* Function of course api */
         getCourseCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.courseList, '', (res) => {
@@ -357,7 +386,7 @@ export default {
             })
         },
 
-        /* Function to count blog */
+        /* Function of blog api */
         getBlogCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.blogList, '', (res) => {
@@ -366,7 +395,7 @@ export default {
             })
         },
 
-        /* Function to count library */
+        /* Function of library api */
         getLibraryCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.libraryAssetList, '', (res) => {
@@ -375,7 +404,7 @@ export default {
             })
         },
 
-        /* Function to count department */
+        /* Function of department api */
         getDepartmentCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.departmentList, '', (res) => {
@@ -384,7 +413,7 @@ export default {
             })
         },
 
-        /* Function to count stuff */
+        /* Function of stuff api */
         getStuffCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.stuffList, '', (res) => {
@@ -393,7 +422,7 @@ export default {
             })
         },
 
-        /* Function to count holiday */
+        /* Function of holiday api */
         getHolidayCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.holidayList, '', (res) => {
@@ -402,7 +431,16 @@ export default {
             })
         },
 
-        /* Function to fees */
+        /* Function of holiday api */
+        getFAQCount() {
+            this.loading = true;
+            apiServices.GET(apiRoutes.faqList, '', (res) => {
+                this.loading = false;
+                this.holiday_count = res?.data?.total
+            })
+        },
+
+        /* Function of fees api */
         getFeesAmount() {
             this.loading = true;
             apiServices.GET(apiRoutes.feesList, '', (res) => {

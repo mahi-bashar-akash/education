@@ -103,6 +103,13 @@ const apiRoutes = {
     paymentStatusUpdate: '/admin-secure/payment/status/update',
     paymentStatusDelete: '/admin-secure/payment/status/delete',
 
+    /* --- --- --- --- admin - payment status --- --- --- --- */
+    faqList: '/admin-secure/faq/list',
+    faqCreate: '/admin-secure/faq/create',
+    faqSingle: '/admin-secure/faq/single',
+    faqUpdate: '/admin-secure/faq/update',
+    faqDelete: '/admin-secure/faq/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: '/user-secure/user-auth/login',
     userRegister: '/user-secure/user-auth/register',

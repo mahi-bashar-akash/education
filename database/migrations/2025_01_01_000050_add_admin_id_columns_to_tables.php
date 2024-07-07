@@ -50,6 +50,9 @@ return new class extends Migration
         Schema::table('payment_statuses', function (Blueprint $table) {
             $table->string('admin_id')->after('updated_at');
         });
+        Schema::table('frequently_asking_questions', function (Blueprint $table) {
+            $table->string('admin_id')->after('updated_at');
+        });
     }
 
     /**
@@ -94,6 +97,9 @@ return new class extends Migration
             $table->dropColumn('admin_id');
         });
         Schema::table('payment_statuses', function (Blueprint $table) {
+            $table->dropColumn('admin_id');
+        });
+        Schema::table('frequently_asking_questions', function (Blueprint $table) {
             $table->dropColumn('admin_id');
         });
     }

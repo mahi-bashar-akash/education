@@ -83,6 +83,11 @@
                                 </router-link>
                             </span>
                             <span>
+                                <router-link :to="{name: 'faq'}" class="dropdown-item">
+                                    FAQ.
+                                </router-link>
+                            </span>
+                            <span>
                                 <button type="button" class="dropdown-item" @click="adminLogout()">
                                     Logout
                                 </button>

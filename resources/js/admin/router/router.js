@@ -34,6 +34,7 @@ import stuff from "../pages/stuff.vue";
 import holiday from "../pages/holiday.vue";
 import fees from "../pages/fees.vue";
 import profile from "../pages/profile.vue";
+import faq from "../pages/frequently_asking_question.vue";
 
 const TITLE = window.core.APP_NAME
 const AUTH_ROOT_URL = "/admin/auth/";
@@ -62,6 +63,7 @@ const routes = [
             { path: ROOT_URL + 'holiday', name: 'holiday', component: holiday, meta: { title: TITLE + ' - holiday' } },
             { path: ROOT_URL + 'fees', name: 'fees', component: fees, meta: { title: TITLE + ' - fees' } },
             { path: ROOT_URL + 'profile', name: 'profile', component: profile, meta: { title: TITLE + ' - profile' } },
+            { path: ROOT_URL + 'frequently_asking_question', name: 'faq', component: faq, meta: { title: TITLE + ' - frequently asking question' } },
         ]
     },
 ];
