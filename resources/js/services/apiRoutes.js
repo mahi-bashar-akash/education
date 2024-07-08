@@ -1,127 +1,130 @@
+const adminApi = '/admin-secure';
+const userApi = '/user-secure';
+
 const apiRoutes = {
 
     /* --- --- --- --- admin - auth - access --- --- --- --- */
-    adminLogin: '/admin-secure/admin-auth/login',
-    adminRegister: '/admin-secure/admin-auth/register',
-    adminForget: '/admin-secure/admin-auth/forgot',
-    adminReset: '/admin-secure/admin-auth/reset',
+    adminLogin: adminApi + '/admin-auth/login',
+    adminRegister: adminApi + '/admin-auth/register',
+    adminForget: adminApi + '/admin-auth/forgot',
+    adminReset: adminApi + '/admin-auth/reset',
 
     /* --- --- --- --- admin - profile --- --- --- --- */
-    adminProfile: '/admin-secure/admin-profile/details',
-    adminProfileUpdate: '/admin-secure/admin-profile/update',
-    adminChangePassword: '/admin-secure/admin-profile/update/password',
-    adminLogout: '/admin-secure/admin-profile/logout',
+    adminProfile: adminApi + '/admin-profile/details',
+    adminProfileUpdate: adminApi + '/admin-profile/update',
+    adminChangePassword: adminApi + '/admin-profile/update/password',
+    adminLogout: adminApi + '/admin-profile/logout',
 
     /* --- --- --- --- admin - event --- --- --- --- */
-    eventList: '/admin-secure/event/list',
-    eventCreate: '/admin-secure/event/create',
-    eventSingle: '/admin-secure/event/single',
-    eventUpdate: '/admin-secure/event/update',
-    eventDelete: '/admin-secure/event/delete',
+    eventList: adminApi + '/event/list',
+    eventCreate: adminApi + '/event/create',
+    eventSingle: adminApi + '/event/single',
+    eventUpdate: adminApi + '/event/update',
+    eventDelete: adminApi + '/event/delete',
 
     /* --- --- --- --- admin - department --- --- --- --- */
-    departmentList: '/admin-secure/department/list',
-    departmentCreate: '/admin-secure/department/create',
-    departmentSingle: '/admin-secure/department/single',
-    departmentUpdate: '/admin-secure/department/update',
-    departmentDelete: '/admin-secure/department/delete',
+    departmentList: adminApi + '/department/list',
+    departmentCreate: adminApi + '/department/create',
+    departmentSingle: adminApi + '/department/single',
+    departmentUpdate: adminApi + '/department/update',
+    departmentDelete: adminApi + '/department/delete',
 
     /* --- --- --- --- admin - professor --- --- --- --- */
-    professorList: '/admin-secure/professor/list',
-    professorCreate: '/admin-secure/professor/create',
-    professorSingle: '/admin-secure/professor/single',
-    professorUpdate: '/admin-secure/professor/update',
-    professorDelete: '/admin-secure/professor/delete',
+    professorList: adminApi + '/professor/list',
+    professorCreate: adminApi + '/professor/create',
+    professorSingle: adminApi + '/professor/single',
+    professorUpdate: adminApi + '/professor/update',
+    professorDelete: adminApi + '/professor/delete',
 
     /* --- --- --- --- admin - course --- --- --- --- */
-    courseList: '/admin-secure/course/list',
-    courseCreate: '/admin-secure/course/create',
-    courseSingle: '/admin-secure/course/single',
-    courseUpdate: '/admin-secure/course/update',
-    courseDelete: '/admin-secure/course/delete',
+    courseList: adminApi + '/course/list',
+    courseCreate: adminApi + '/course/create',
+    courseSingle: adminApi + '/course/single',
+    courseUpdate: adminApi + '/course/update',
+    courseDelete: adminApi + '/course/delete',
 
     /* --- --- --- --- admin - blog --- --- --- --- */
-    blogList: '/admin-secure/blog/list',
-    blogCreate: '/admin-secure/blog/create',
-    blogSingle: '/admin-secure/blog/single',
-    blogUpdate: '/admin-secure/blog/update',
-    blogDelete: '/admin-secure/blog/delete',
+    blogList: adminApi + '/blog/list',
+    blogCreate: adminApi + '/blog/create',
+    blogSingle: adminApi + '/blog/single',
+    blogUpdate: adminApi + '/blog/update',
+    blogDelete: adminApi + '/blog/delete',
 
     /* --- --- --- --- admin - student --- --- --- --- */
-    studentList: '/admin-secure/student/list',
-    studentCreate: '/admin-secure/student/create',
-    studentSingle: '/admin-secure/student/single',
-    studentUpdate: '/admin-secure/student/update',
-    studentDelete: '/admin-secure/student/delete',
+    studentList: adminApi + '/student/list',
+    studentCreate: adminApi + '/student/create',
+    studentSingle: adminApi + '/student/single',
+    studentUpdate: adminApi + '/student/update',
+    studentDelete: adminApi + '/student/delete',
 
     /* --- --- --- --- admin - library asset --- --- --- --- */
-    libraryAssetList: '/admin-secure/library/asset/list',
-    libraryAssetCreate: '/admin-secure/library/asset/create',
-    libraryAssetSingle: '/admin-secure/library/asset/single',
-    libraryAssetUpdate: '/admin-secure/library/asset/update',
-    libraryAssetDelete: '/admin-secure/library/asset/delete',
+    libraryAssetList: adminApi + '/library/asset/list',
+    libraryAssetCreate: adminApi + '/library/asset/create',
+    libraryAssetSingle: adminApi + '/library/asset/single',
+    libraryAssetUpdate: adminApi + '/library/asset/update',
+    libraryAssetDelete: adminApi + '/library/asset/delete',
 
     /* --- --- --- --- admin - stuff --- --- --- --- */
-    stuffList: '/admin-secure/stuff/list',
-    stuffCreate: '/admin-secure/stuff/create',
-    stuffSingle: '/admin-secure/stuff/single',
-    stuffUpdate: '/admin-secure/stuff/update',
-    stuffDelete: '/admin-secure/stuff/delete',
+    stuffList: adminApi + '/stuff/list',
+    stuffCreate: adminApi + '/stuff/create',
+    stuffSingle: adminApi + '/stuff/single',
+    stuffUpdate: adminApi + '/stuff/update',
+    stuffDelete: adminApi + '/stuff/delete',
 
     /* --- --- --- --- admin - holiday --- --- --- --- */
-    holidayList: '/admin-secure/holiday/list',
-    holidayCreate: '/admin-secure/holiday/create',
-    holidaySingle: '/admin-secure/holiday/single',
-    holidayUpdate: '/admin-secure/holiday/update',
-    holidayDelete: '/admin-secure/holiday/delete',
+    holidayList: adminApi + '/holiday/list',
+    holidayCreate: adminApi + '/holiday/create',
+    holidaySingle: adminApi + '/holiday/single',
+    holidayUpdate: adminApi + '/holiday/update',
+    holidayDelete: adminApi + '/holiday/delete',
 
     /* --- --- --- --- admin - fees --- --- --- --- */
-    feesList: '/admin-secure/fees/list',
-    feesCreate: '/admin-secure/fees/create',
-    feesSingle: '/admin-secure/fees/single',
-    feesUpdate: '/admin-secure/fees/update',
-    feesDelete: '/admin-secure/fees/delete',
+    feesList: adminApi + '/fees/list',
+    feesCreate: adminApi + '/fees/create',
+    feesSingle: adminApi + '/fees/single',
+    feesUpdate: adminApi + '/fees/update',
+    feesDelete: adminApi + '/fees/delete',
 
     /* --- --- --- --- admin - fees types --- --- --- --- */
-    feesTypesList: '/admin-secure/fees/types/list',
-    feesTypesCreate: '/admin-secure/fees/types/create',
-    feesTypesSingle: '/admin-secure/fees/types/single',
-    feesTypesUpdate: '/admin-secure/fees/types/update',
-    feesTypesDelete: '/admin-secure/fees/types/delete',
+    feesTypesList: adminApi + '/fees/types/list',
+    feesTypesCreate: adminApi + '/fees/types/create',
+    feesTypesSingle: adminApi + '/fees/types/single',
+    feesTypesUpdate: adminApi + '/fees/types/update',
+    feesTypesDelete: adminApi + '/fees/types/delete',
 
     /* --- --- --- --- admin - payment types --- --- --- --- */
-    paymentTypesList: '/admin-secure/payment/types/list',
-    paymentTypesCreate: '/admin-secure/payment/types/create',
-    paymentTypesSingle: '/admin-secure/payment/types/single',
-    paymentTypesUpdate: '/admin-secure/payment/types/update',
-    paymentTypesDelete: '/admin-secure/payment/types/delete',
+    paymentTypesList: adminApi + '/payment/types/list',
+    paymentTypesCreate: adminApi + '/payment/types/create',
+    paymentTypesSingle: adminApi + '/payment/types/single',
+    paymentTypesUpdate: adminApi + '/payment/types/update',
+    paymentTypesDelete: adminApi + '/payment/types/delete',
 
     /* --- --- --- --- admin - payment status --- --- --- --- */
-    paymentStatusList: '/admin-secure/payment/status/list',
-    paymentStatusCreate: '/admin-secure/payment/status/create',
-    paymentStatusSingle: '/admin-secure/payment/status/single',
-    paymentStatusUpdate: '/admin-secure/payment/status/update',
-    paymentStatusDelete: '/admin-secure/payment/status/delete',
+    paymentStatusList: adminApi + '/payment/status/list',
+    paymentStatusCreate: adminApi + '/payment/status/create',
+    paymentStatusSingle: adminApi + '/payment/status/single',
+    paymentStatusUpdate: adminApi + '/payment/status/update',
+    paymentStatusDelete: adminApi + '/payment/status/delete',
 
     /* --- --- --- --- admin - payment status --- --- --- --- */
-    faqList: '/admin-secure/faq/list',
-    faqCreate: '/admin-secure/faq/create',
-    faqSingle: '/admin-secure/faq/single',
-    faqUpdate: '/admin-secure/faq/update',
-    faqDelete: '/admin-secure/faq/delete',
+    faqList: adminApi + '/faq/list',
+    faqCreate: adminApi + '/faq/create',
+    faqSingle: adminApi + '/faq/single',
+    faqUpdate: adminApi + '/faq/update',
+    faqDelete: adminApi + '/faq/delete',
 
     /* --- --- --- --- user auth --- --- --- --- */
-    userLogin: '/user-secure/user-auth/login',
-    userRegister: '/user-secure/user-auth/register',
-    userForget: '/user-secure/user-auth/forgot',
-    userReset: '/user-secure/user-auth/reset',
+    userLogin: userApi + '/user-auth/login',
+    userRegister: userApi + '/user-auth/register',
+    userForget: userApi + '/user-auth/forgot',
+    userReset: userApi + '/user-auth/reset',
 
     /* --- --- --- --- user profile --- --- --- --- */
-    userProfile: '/user-secure/user-profile/details',
-    userProfileUpdate: '/user-secure/user-profile/update',
-    userChangePassword: '/user-secure/user-profile/update/password',
-    userPaymentUpdate: '/user-secure/user-profile/update/payment',
-    userLogout: '/user-secure/user-profile/logout',
+    userProfile: userApi + '/user-profile/details',
+    userProfileUpdate: userApi + '/user-profile/update',
+    userChangePassword: userApi + '/user-profile/update/password',
+    userPaymentUpdate: userApi + '/user-profile/update/payment',
+    userLogout: userApi + '/user-profile/logout',
 
 }
 
