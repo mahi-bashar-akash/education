@@ -220,7 +220,7 @@
                     <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
-                            <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
+                            <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="bg-classroom-1.jpg">
                         </div>
                         <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
@@ -249,7 +249,7 @@
                     <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
-                            <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
+                            <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="bg-classroom-2.jpg">
                         </div>
                         <div class="col-lg-6 order-1 order-lg-0 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
@@ -278,7 +278,7 @@
                     <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
-                            <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
+                            <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="bg-classroom-3.jpg">
                         </div>
                         <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
@@ -307,7 +307,7 @@
                     <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
-                            <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
+                            <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="bg-classroom-4.jpg">
                         </div>
                         <div class="col-lg-6 order-1 order-lg-0 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
@@ -336,7 +336,7 @@
                     <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
-                            <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
+                            <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-250 w-100" alt="bg-classroom-5.jpg">
                         </div>
                         <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
