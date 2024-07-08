@@ -2,8 +2,10 @@
 
     <div class="cursor-content">
 
-        <!-- hero content -->
+        <!-- Hero content -->
         <section class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center" :style="{ background: 'url(' + imageUrl + ')' }">
+
+            <!-- Svg -->
             <div class="svg-content">
                 <svg id="svg" viewBox="0, 0, 400,27.708333333333336" fill="#fff">
                     <g id="svgg">
@@ -12,6 +14,8 @@
                     </g>
                 </svg>
             </div>
+
+            <!-- Content text -->
             <div class="position-relative w-100">
                 <div class="container">
                     <div class="text-center">
@@ -27,16 +31,24 @@
                     </div>
                 </div>
             </div>
+
         </section>
 
-        <!-- category content -->
+        <!-- Category content -->
         <section class="w-100 py-5 d-flex justify-content-center align-items-center flex-column">
+
+            <!-- Title -->
             <h1 class="fs-1"> Popular Categories</h1>
+
+            <!-- Short description -->
             <div class="col-md-4 text-center line-height-2">
                 Join 2,500+ companies and 80% of the Fortune 1000 who use our courses to upskill their teams.
             </div>
+
             <div class="container text-center">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mt-4">
+
+                    <!-- Box content -->
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-buildings fs-1"></i>
@@ -44,6 +56,8 @@
                             <div>Business Administration</div>
                         </div>
                     </div>
+
+                    <!-- Box content -->
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-laptop fs-1"></i>
@@ -51,6 +65,8 @@
                             <div>Computer Application</div>
                         </div>
                     </div>
+
+                    <!-- Box content -->
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-chat-left-text fs-1"></i>
@@ -58,6 +74,8 @@
                             <div>Digital Marketing</div>
                         </div>
                     </div>
+
+                    <!-- Box content -->
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-translate fs-1"></i>
@@ -65,25 +83,38 @@
                             <div>Language</div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- course -->
+        <!-- Course -->
         <section class="w-100 py-5">
             <div class="container py-5">
                 <div class="row">
                     <div class="col-lg-6 mb-4">
+
+                        <!-- Title -->
                         <h1 class="fs-1"> Explore Featured Courses </h1>
+
+                        <!-- Short description -->
                         <div class="line-height-2"> You'll find something to spark your curiosity and enhance </div>
+
                     </div>
                     <div class="col-lg-6 mb-4 text-end">
-                        <a href="javascript:void(0)" class="btn btn-theme rounded-1">
+
+                        <!-- router link -->
+                        <router-link :to="{name: 'courses'}" class="btn btn-theme rounded-1">
                             View more
-                        </a>
+                        </router-link>
+
                     </div>
                 </div>
+
+                <!-- Courses carousel -->
                 <div class="courses-carousel owl-carousel owl-theme">
+
+                    <!-- Course item -->
                     <div class="p-2" v-for="each in courseDataList">
                         <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)"
                                      class="text-decoration-none image-effect">
@@ -136,41 +167,57 @@
                             </div>
                         </router-link>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- certificate -->
+        <!-- Certificate -->
         <section class="w-100 py-5">
             <div class="container">
+
+                <!-- Certificate background -->
                 <div class="border p-5 w-100" :style="{ background: 'url(' + certificateWallpaper + ')' }">
                     <div class="row">
                         <div class="col-lg-5 py-lg-5">
+
+                            <!-- Badge -->
                             <div class="bg-warning py-2 px-4 text-dark rounded-1 d-inline-block fw-medium fs-6">
                                 Professional Certificate
                             </div>
+
+                            <!-- Title -->
                             <h1 class="fs-1 mt-3">
                                 Software development fundamentals for new learner
                             </h1>
+
+                            <!-- Get started -->
                             <div class="mt-3">
-                                <a href="javascript:void(0)" type="button" class="btn btn-warning px-4 rounded-pill">
+                                <router-link :to="{name: 'courses'}" type="button" class="btn btn-warning px-4 rounded-pill">
                                     Get Started
-                                </a>
+                                </router-link>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- event -->
+        <!-- Event -->
         <section class="w-100 py-5">
             <div class="container py-5">
+
+                <!-- Title -->
                 <h1 class="text-center fs-1">Upcoming Events</h1>
                 <div class="px-4">
                     <div class="row justify-content-center">
+
+                        <!-- Short description -->
                         <div class="col-md-6 text-center line-height-2 mb-4"> You'll find something to spark your curiosity and enhance </div>
                     </div>
+
+                    <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
@@ -198,6 +245,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
@@ -225,6 +274,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
@@ -252,6 +303,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
@@ -279,6 +332,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Event Item -->
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
@@ -306,8 +361,11 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="mt-3 d-flex justify-content-center">
+
+                    <!-- Event Route -->
                     <router-link :to="{name: 'events'}" class="btn btn-theme rounded-1 wpx-200">
                         View more
                     </router-link>
@@ -315,14 +373,23 @@
             </div>
         </section>
 
-        <!-- testimonial -->
+        <!-- Testimonial -->
         <section class="w-100 py-5 bg-white">
             <div class="container">
+
+                <!-- Title -->
                 <h1 class="text-center fs-1">Our Testimonial</h1>
                 <div class="row  justify-content-center">
+
+                    <!-- Short description -->
                     <h5 class="fs-5 col-md-6 text-center line-height-2 mb-4"> tutors with students feed </h5>
+
                 </div>
+
+                <!-- Testimonial carousel -->
                 <div class="testimonial-carousel owl-carousel owl-theme">
+
+                    <!-- Testimonial item -->
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
@@ -348,6 +415,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Testimonial item -->
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
@@ -373,6 +442,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Testimonial item -->
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
@@ -398,6 +469,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Testimonial item -->
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7 p-3">
                             <div class="p-3 rounded-3">
@@ -420,23 +493,31 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
-        <!-- get explore -->
+        <!-- Get explore -->
         <section class="w-100 py-5 explore-content" :style="{ background: 'url(' + buildSkillsWallpaper + ')' }">
             <div class="container text-center text-white">
                 <div class="d-flex justify-content-center align-items-center flex-column py-5 position-relative">
+
+                    <!-- Badge -->
                     <div class="bg-theme mb-3 px-3 py-2 rounded-2">
                         Get Instant Access to the Free
                     </div>
+
+                    <!-- Title -->
                     <h2 class="fs-2 col-lg-5 mb-4">
                         Lets build skills with our professional 2500+ courses
                     </h2>
-                    <button type="button" class="btn btn-warning rounded-pill px-4">
+
+                    <!-- Route -->
+                    <router-link :to="{name: 'blogs'}" type="button" class="btn btn-warning rounded-pill px-4">
                         Get Explore
-                    </button>
+                    </router-link>
+
                 </div>
             </div>
         </section>
@@ -445,15 +526,24 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
+
+                    <!-- Title -->
                     <h1 class="fs-1 text-center">
                         Our Students Feedback
                     </h1>
                     <div class="row  justify-content-center">
+
+                        <!-- Short description -->
                         <h5 class="fs-5 col-md-6 text-center line-height-2 mb-4">
                             You'll find something to spark your curiosity and enhance feedback
                         </h5>
+
                     </div>
+
+                    <!-- Blogs carousel -->
                     <div class="blogs-carousel owl-carousel owl-theme">
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect" v-for="each in blogDataList">
                             <div class="border p-0">
                                 <div class="overflow-hidden">
@@ -485,6 +575,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -501,6 +592,7 @@ export default {
     data() {
 
         return {
+            // Data Properties
             imageUrl: '/images/hero-background.jpg',
             certificateWallpaper: '/images/certificate-wallpaper.jpeg',
             buildSkillsWallpaper: '/images/build-skills-background.jpg',
@@ -617,6 +709,7 @@ export default {
 
     methods: {
 
+        // Function of banner carousel
         banners() {
             $('.banner-carousel').owlCarousel({
                 loop: true,
@@ -637,6 +730,7 @@ export default {
             })
         },
 
+        // Function of testimonial carousel
         testimonial() {
             $('.testimonial-carousel').owlCarousel({
                 loop: true,
@@ -657,6 +751,7 @@ export default {
             })
         },
 
+        // Function of blog carousel
         blogs() {
             $('.blogs-carousel').owlCarousel({
                 loop: true,
@@ -678,6 +773,7 @@ export default {
             })
         },
 
+        // Function of blog carousel
         courses() {
             $('.courses-carousel').owlCarousel({
                 loop: true,
@@ -697,7 +793,7 @@ export default {
                     }
                 }
             })
-        }
+        },
 
     }
 

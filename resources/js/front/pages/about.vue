@@ -68,13 +68,19 @@
                 <div class="bg-secondary-subtle">
                     <div class="row">
                         <div class="col-lg-6 p-5">
+
+                            <!-- Title -->
                             <div class="mb-3 fs-1">
                                 We connect people through knowledge.
                             </div>
+
+                            <!-- Short description -->
                             <div class="mb-3 text-light-gray line-height-2">
                                 We help organizations of all types and sizes prepare for the path ahead — wherever it
                                 leads. Our curated collection of business and technical courses.
                             </div>
+
+                            <!-- List -->
                             <div class="text-light-gray">
                                 <div class="line-height-2 d-flex align-items-center">
                                     <i class="bi bi-check-circle-fill text-warning fs-4"></i>
@@ -89,9 +95,13 @@
                                     <span class="ms-2"> Find the right instructor for you </span>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col-lg-6 p-5 d-flex justify-content-center">
+
+                            <!-- About image -->
                             <img :src="`/images/about.jpg`" class="img-fluid object-fit-cover" alt="about">
+
                         </div>
                     </div>
                 </div>
@@ -102,35 +112,50 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
+
+                    <!-- Title -->
                     <div class="mb-3 fs-1 text-center">
                         Trusted by companies of all sizes
                     </div>
+
+                    <!-- Brand carousel -->
                     <div class="brand-carousel owl-carousel owl-theme text-light-gray">
+
+                        <!-- Company item -->
                         <div class="item image-effect">
                             <div class="p-5">
                                 <img :src="`/images/brands/brand-1.png`" class="img-fluid" alt="brand">
                             </div>
                         </div>
+
+                        <!-- Company item -->
                         <div class="item image-effect">
                             <div class="p-5">
                                 <img :src="`/images/brands/brand-2.png`" class="img-fluid" alt="brand">
                             </div>
                         </div>
+
+                        <!-- Company item -->
                         <div class="item image-effect">
                             <div class="p-5">
                                 <img :src="`/images/brands/brand-3.png`" class="img-fluid" alt="brand">
                             </div>
                         </div>
+
+                        <!-- Company item -->
                         <div class="item image-effect">
                             <div class="p-5">
                                 <img :src="`/images/brands/brand-4.png`" class="img-fluid" alt="brand">
                             </div>
                         </div>
+
+                        <!-- Company item -->
                         <div class="item image-effect">
                             <div class="p-5">
                                 <img :src="`/images/brands/brand-5.png`" class="img-fluid" alt="brand">
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -140,10 +165,16 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
+
+                    <!-- Title -->
                     <div class="mb-3 fs-1 text-center">
                         Latest blogs & news
                     </div>
+
+                    <!-- Blogs carousel -->
                     <div class="blogs-carousel owl-carousel owl-theme">
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -173,6 +204,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -202,6 +235,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -231,6 +266,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -260,6 +297,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -289,6 +328,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Blog item -->
                         <div class="item p-3 image-effect">
                             <div class="card rounded-3 overflow-hidden border p-0">
                                 <div class="overflow-hidden">
@@ -318,6 +359,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -327,12 +369,16 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
+
+                    <!-- Title -->
                     <div class="mb-3 fs-1 text-center">
                         Our teams
                     </div>
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
 
                         <div class="p-3" v-for="each in teamDataList">
+
+                            <!-- team -->
                             <div class="border p-0 image-effect">
                                 <div class="overflow-hidden">
                                     <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover" alt="face 1">
@@ -355,10 +401,16 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
+
+                    <!-- Title -->
                     <div class="mb-3 fs-1 text-center">
                         Frequently asked questions
                     </div>
+
+                    <!-- Accordion -->
                     <div class="accordion" id="accordionExample">
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -376,6 +428,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -391,6 +445,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -407,6 +463,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -424,6 +482,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border shadow-none overflow-hidden rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -442,6 +502,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Accordion item -->
                         <div class="accordion-item mb-3 border overflow-hidden shadow-none rounded-3">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -457,6 +519,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -471,6 +534,7 @@
 export default {
     data() {
         return {
+            // Data properties
             teamDataList: [
                 {id: '1', filePath: '/images/faces/team-1.jpg', name: 'Arnold Barnerd'},
                 {id: '2', filePath: '/images/faces/team-2.jpg', name: 'Mike Fermalin'},
@@ -488,6 +552,8 @@ export default {
         this.blogs();
     },
     methods: {
+
+        // Function of brand carousel
         brands() {
             $('.brand-carousel').owlCarousel({
                 loop: true,
@@ -509,6 +575,7 @@ export default {
             })
         },
 
+        // Function of blog carousel
         blogs() {
             $('.blogs-carousel').owlCarousel({
                 loop: true,
@@ -528,7 +595,8 @@ export default {
                     }
                 }
             })
-        }
+        },
+
     }
 }
 

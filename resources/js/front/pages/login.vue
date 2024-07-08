@@ -5,11 +5,13 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center vh-100">
                     <div class="col-12 col-md-7 col-xl-5 bg-white p-3">
-                        <div class="border p-4">
+                        <div class="border p-4 rounded-4">
                             <div class="mb-3 fs-5 text-center">
                                 <img :src="`/images/logo.png`" class="wpx-35 hpx-35" alt="favicon">
                                 {{ APP_NAME }}
                             </div>
+
+                            <!-- Login form -->
                             <form @submit.prevent="userLogin()">
                                 <div class="alert alert-danger rounded-3 mb-3 text-center" v-if="error !== null && error.error !== undefined" v-text="error.error"></div>
                                 <div class="form-group mb-3">
@@ -56,6 +58,7 @@
                                     </router-link>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -73,6 +76,7 @@ import apiRoutes from "../../services/apiRoutes.js";
 export default {
     data() {
         return {
+            // Data Properties
             APP_NAME: window.core.APP_NAME,
             password: '',
             passwordFieldType: 'password',
@@ -92,17 +96,17 @@ export default {
     },
     methods: {
 
-        /* Function to password visibility */
+        // Function of password visibility
         passwordVisibility() {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to remember check */
+        // Function of remember check
         rememberCheck() {
             this.loginParam.remember = this.loginParam.remember !== true;
         },
 
-        /* Function to log in api */
+        // Function of login api
         userLogin() {
             this.loginLoading = true;
             this.error = null;

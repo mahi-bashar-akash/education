@@ -5,11 +5,13 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center vh-100">
                     <div class="col-12 col-md-7 col-xl-5 bg-white p-3">
-                        <div class="border p-4">
+                        <div class="border p-4 rounded-4">
                             <div class="mb-3 fs-5 text-center">
                                 <img :src="`/images/logo.png`" class="wpx-35 hpx-35" alt="favicon">
                                 {{ APP_NAME }}
                             </div>
+
+                            <!-- Forget form -->
                             <form @submit.prevent="userForget()" v-if="tab === 'forget'">
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -17,10 +19,10 @@
                                     <div class="error-report" v-if="error != null && error.email !== undefined"> {{error.email[0]}} </div>
                                 </div>
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-theme wpx-150" v-if="!forgetLoading">
-                                        Forget password
+                                    <button type="submit" class="btn btn-theme wpx-100 px-0" v-if="!forgetLoading">
+                                        Forget
                                     </button>
-                                    <button type="button" class="btn btn-theme wpx-150" v-if="forgetLoading">
+                                    <button type="button" class="btn btn-theme wpx-100 px-0" v-if="forgetLoading">
                                         <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                     </button>
                                 </div>
@@ -32,6 +34,7 @@
                                 </div>
                             </form>
 
+                            <!-- Reset form -->
                             <form @submit.prevent="userReset()" v-if="tab === 'reset'">
                                 <div class="form-group mb-3">
                                     <label for="email" class="form-label">Email</label>
@@ -80,6 +83,7 @@
                                     </router-link>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -97,6 +101,7 @@ import apiRoutes from "../../services/apiRoutes.js";
 export default {
     data() {
         return {
+            // Data Properties
             APP_NAME: window.core.APP_NAME,
             password: '',
             passwordFieldType: 'password',
@@ -124,17 +129,17 @@ export default {
     },
     methods: {
 
-        /* Function to password visibility */
+        // Function of password visibility
         passwordVisibility() {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to password confirm visibility */
+        // Function of password confirm visibility
         passwordConfirmVisibility() {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to forget api */
+        // Function of forget api
         userForget() {
             this.forgetLoading = true;
             this.error = null;
@@ -150,7 +155,7 @@ export default {
             })
         },
 
-        /* Function to reset api */
+        // Function of reset api
         userReset() {
             this.resetLoading = true;
             this.error = null;
@@ -163,7 +168,7 @@ export default {
                     this.error = res.error
                 }
             })
-        }
+        },
 
     }
 }

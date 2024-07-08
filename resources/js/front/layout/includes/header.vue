@@ -61,7 +61,7 @@
                             <ul class="dropdown-menu dropdown-menu-end p-1 overflow-hidden rounded-3 border">
                                 <li>
                                     <router-link :to="{name: 'profile'}" class="dropdown-item px-3 py-2 rounded-2 mb-1" @click="collapse">
-                                        {{profile_data.name}}
+                                        {{userInfo?.email}}
                                     </router-link>
                                 </li>
                                 <li>
@@ -107,7 +107,6 @@ export default {
                 'aria-label': 'Toggle navigation',
             },
             userInfo: window.core.UserInfo,
-            profile_data: '',
         }
 
     },
@@ -123,10 +122,6 @@ export default {
             }
         });
 
-        if(this.userInfo !== null) {
-            this.getUserProfile();
-        }
-
     },
 
     methods: {
@@ -141,19 +136,6 @@ export default {
                     navbarCollapse.classList.add('show');
                 }
             }
-        },
-
-        /* Function to get profile data api */
-        getUserProfile() {
-            this.getProfileLoading = true;
-            apiServices.GET(apiRoutes.userProfile, null, (res) => {
-                this.getProfileLoading = false;
-                if (res.message) {
-                    this.profile_data = res.data
-                }else {
-                    this.$toast.error('Server Error', { position: "top-right" } );
-                }
-            })
         },
 
 

@@ -5,11 +5,13 @@
             <div class="container">
                 <div class="row justify-content-center align-items-center vh-100">
                     <div class="col-12 col-md-7 col-xl-5 bg-white p-3">
-                        <div class="border p-4">
+                        <div class="border p-4 rounded-4">
                             <div class="mb-3 fs-5 text-center">
                                 <img :src="`/images/logo.png`" class="wpx-35 hpx-35" alt="favicon">
                                 {{ APP_NAME }}
                             </div>
+
+                            <!-- Registration form -->
                             <form @submit.prevent="registration()">
                                 <div class="form-group mb-3">
                                     <label for="name" class="form-label">Name</label>
@@ -63,7 +65,9 @@
                                     </router-link>
                                 </div>
                             </form>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -80,6 +84,7 @@ import apiRoutes from "../../services/apiRoutes.js";
 export default {
     data() {
         return {
+            // Data Properties
             APP_NAME: window.core.APP_NAME,
             password: '',
             passwordFieldType: 'password',
@@ -103,17 +108,17 @@ export default {
     },
     methods: {
 
-        /* Function to password visibility */
+        // Function of password visibility
         passwordVisibility() {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to password confirm visibility */
+        // Function of password confirm visibility
         passwordConfirmVisibility() {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to registration api */
+        // Function of registration api
         registration() {
             this.registerLoading = true;
             this.error = null;
