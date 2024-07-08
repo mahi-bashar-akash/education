@@ -6,6 +6,10 @@
     background: var(--theme) !important;
 }
 
+.bg-theme-subtle {
+    background: var(--theme-subtle) !important;
+}
+
 .bg-light-gray-hover {
     transition: 0.3s all ease-in-out;
     color: var(--light-gray) !important;

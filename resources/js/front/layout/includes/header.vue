@@ -30,12 +30,17 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{name: 'events'}" class="nav-link" @click="collapse" :class="{ 'router-link-active' : $route.name === 'singleEvent' }">
+                                Events
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
                             <router-link :to="{name: 'courses'}" class="nav-link" @click="collapse" :class="{ 'router-link-active' : $route.name === 'singleCourse' }">
                                 Courses
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link :to="{name: 'blog'}" class="nav-link" @click="collapse" :class="{ 'router-link-active' : $route.name === 'singleBlog' }">
+                            <router-link :to="{name: 'blogs'}" class="nav-link" @click="collapse" :class="{ 'router-link-active' : $route.name === 'singleBlog' }">
                                 Blogs
                             </router-link>
                         </li>

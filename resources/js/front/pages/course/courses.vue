@@ -1,6 +1,6 @@
 <template>
     <div class="cursor-content margin-top-105">
-        <section class="container">
+        <section class="container py-5">
             <div class="row py-3 align-items-start">
                 <div class="col-xl-3 text-light-gray py-1 px-3">
                     <div class="bg-light shadow-sm rounded-3 p-3">

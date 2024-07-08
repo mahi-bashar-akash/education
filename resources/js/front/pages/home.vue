@@ -3,9 +3,7 @@
     <div class="cursor-content">
 
         <!-- hero content -->
-        <section
-            class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center"
-            :style="{ background: 'url(' + imageUrl + ')' }">
+        <section class="w-100 hero-content img-fluid object-fit-cover figure-img d-flex align-items-center justify-content-center" :style="{ background: 'url(' + imageUrl + ')' }">
             <div class="svg-content">
                 <svg id="svg" viewBox="0, 0, 400,27.708333333333336" fill="#fff">
                     <g id="svgg">
@@ -71,6 +69,77 @@
             </div>
         </section>
 
+        <!-- course -->
+        <section class="w-100 py-5">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="fs-1 text-light-gray"> Explore Featured Courses </div>
+                        <div class="fs-5 line-height-2 text-light-gray"> You'll find something to spark your curiosity and enhance </div>
+                    </div>
+                    <div class="col-lg-6 mb-4 text-end">
+                        <a href="javascript:void(0)" class="btn btn-theme rounded-1">
+                            View more
+                        </a>
+                    </div>
+                </div>
+                <div class="courses-carousel owl-carousel owl-theme">
+                    <div class="p-2" v-for="each in courseDataList">
+                        <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)"
+                                     class="text-decoration-none image-effect">
+                            <div class="card border-0 shadow-sm p-0 overflow-hidden">
+                                <div class="card-body p-0">
+                                    <div class="position-relative">
+                                        <div class="overflow-hidden">
+                                            <img :src="each.filePath" class="img-fluid object-fit-cover"
+                                                 alt="course">
+                                        </div>
+                                        <div class="position-absolute top-0 start-0 p-3">
+                                            <div class="rounded-3 bg-warning text-dark fw-medium py-1 px-3">
+                                                {{ each.price }} TK
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-3">
+                                        <small class="d-block text-light-gray">
+                                            By {{ each.author }}
+                                        </small>
+                                        <div class="fs-4 mt-2 text-light-gray-hover">
+                                            <div class="truncate-to-2-line">
+                                                {{ each.name }}
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="d-flex align-items-center">
+                                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                                <i class="bi bi-star-fill text-warning me-1"></i>
+                                                <span> ( 4.5 ) </span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div class="text-opacity-50 text-secondary">
+                                                    <i class="bi bi-clock me-2"></i>
+                                                    {{ each.duration }}
+                                                </div>
+                                                <div class="text-opacity-50 text-secondary">
+                                                    <i class="bi bi-person me-2"></i>
+                                                    {{ each.enrollCount }} Students
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- certificate -->
         <section class="w-100 py-5">
             <div class="container">
@@ -102,7 +171,7 @@
                     <div class="row justify-content-center">
                         <div class="fs-5 col-md-6 text-center line-height-2 mb-4 text-light-gray"> You'll find something to spark your curiosity and enhance </div>
                     </div>
-                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
                         </div>
@@ -123,13 +192,13 @@
                             </div>
                             <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
                             <div class="px-3 pt-2 pb-4">
-                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
                         </div>
@@ -150,13 +219,13 @@
                             </div>
                             <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
                             <div class="px-3 pt-2 pb-4">
-                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
                         </div>
@@ -177,13 +246,13 @@
                             </div>
                             <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
                             <div class="px-3 pt-2 pb-4">
-                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
                         </div>
@@ -204,13 +273,13 @@
                             </div>
                             <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
                             <div class="px-3 pt-2 pb-4">
-                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
                         </div>
@@ -231,12 +300,17 @@
                             </div>
                             <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
                             <div class="px-3 pt-2 pb-4">
-                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="mt-3 d-flex justify-content-center">
+                    <router-link :to="{name: 'events'}" class="btn btn-theme rounded-1 wpx-200">
+                        View more
+                    </router-link>
                 </div>
             </div>
         </section>
@@ -245,7 +319,9 @@
         <section class="w-100 py-5 bg-white">
             <div class="container">
                 <div class="text-center fs-1 text-light-gray">Our Testimonial</div>
-                <div class="text-center lead text-light-gray mb-4"> tutors with students feed </div>
+                <div class="row  justify-content-center">
+                    <div class="fs-5 col-md-6 text-center line-height-2 mb-4 text-light-gray"> tutors with students feed </div>
+                </div>
                 <div class="testimonial-carousel owl-carousel owl-theme text-light-gray">
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
@@ -465,6 +541,62 @@ export default {
                     date: '01, may, 2030'
                 },
             ],
+            courseDataList: [
+                {
+                    id: '1',
+                    filePath: '/images/course/courses-1.jpg',
+                    author: 'John Smith',
+                    name: '2025 Complete Javascript Bootcamp From Zero to Hero in Javascript',
+                    price: '100',
+                    duration: '1 year 6 month',
+                    enrollCount: '120'
+                },
+                {
+                    id: '2',
+                    filePath: '/images/course/courses-2.jpg',
+                    author: 'Emily Johnson',
+                    name: '2025 Complete responsive website design Bootcamp From Zero to Hero in responsive website design',
+                    price: '200',
+                    duration: '1 year 1 month',
+                    enrollCount: '450'
+                },
+                {
+                    id: '3',
+                    filePath: '/images/course/courses-3.jpg',
+                    author: 'Michael Williams',
+                    name: '2025 Complete VueJs framework Bootcamp From Zero to Hero in VueJs framework',
+                    price: '450',
+                    duration: '8 month',
+                    enrollCount: '670'
+                },
+                {
+                    id: '4',
+                    filePath: '/images/course/courses-4.jpg',
+                    author: 'Sophia Jones',
+                    name: '2025 Complete AngularJs framework Bootcamp From Zero to Hero in AngularJs',
+                    price: '50',
+                    duration: '4 month',
+                    enrollCount: '90'
+                },
+                {
+                    id: '5',
+                    filePath: '/images/course/courses-5.jpg',
+                    author: 'William Brown',
+                    name: '2025 Complete Laravel Framework Bootcamp From Zero to Hero in Laravel Framework',
+                    price: '120',
+                    duration: '2 month',
+                    enrollCount: '740'
+                },
+                {
+                    id: '6',
+                    filePath: '/images/course/courses-6.jpg',
+                    author: 'Emma Miller',
+                    name: '2025 Complete Vanilla Javascript Bootcamp From Zero to Hero in Vanilla Javascript',
+                    price: '140',
+                    duration: '7 month',
+                    enrollCount: '340'
+                },
+            ],
         }
 
     },
@@ -473,6 +605,7 @@ export default {
         this.testimonial();
         this.blogs();
         this.banners();
+        this.courses();
     },
 
     methods: {
@@ -519,6 +652,27 @@ export default {
 
         blogs() {
             $('.blogs-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            })
+        },
+
+        courses() {
+            $('.courses-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
                 nav: false,

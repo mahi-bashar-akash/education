@@ -19,6 +19,8 @@ import contact from "../pages/contact.vue";
 import login from "../pages/login.vue";
 import register from "../pages/register.vue";
 import forget from "../pages/forget.vue";
+import event from "../pages/event/event.vue";
+import singleEvent from "../pages/event/single-event.vue";
 
 /*
 |
@@ -46,8 +48,10 @@ const routes = [
             { path: ROOT_URL + 'about', name: 'about', component: about, meta: { title: TITLE + ' - about' } },
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
             { path: ROOT_URL + 'single-course', name: 'singleCourse', component: singleCourse, meta: { title: TITLE + ' - single course' } },
-            { path: ROOT_URL + 'blogs', name: 'blog', component: blog, meta: { title: TITLE + ' - blog' } },
-            { path: ROOT_URL + 'single-blogs', name: 'singleBlog', component: singleBlog, meta: { title: TITLE + ' - single blog' } },
+            { path: ROOT_URL + 'blogs', name: 'blogs', component: blog, meta: { title: TITLE + ' - blogs' } },
+            { path: ROOT_URL + 'single-blog', name: 'singleBlog', component: singleBlog, meta: { title: TITLE + ' - single blog' } },
+            { path: ROOT_URL + 'events', name: 'events', component: event, meta: { title: TITLE + ' - events' } },
+            { path: ROOT_URL + 'single-event', name: 'singleEvent', component: singleEvent, meta: { title: TITLE + ' - single event' } },
             { path: ROOT_URL + 'contact', name: 'contact', component: contact, meta: { title: TITLE + ' - contact' } },
             { path: ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
             { path: ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
