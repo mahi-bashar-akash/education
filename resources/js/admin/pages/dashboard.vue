@@ -131,7 +131,7 @@
                         {{ blog_count }}
                     </div>
                     <div class="mb-3">
-                        <i class="bi bi-file-post-fill fs-3 text-theme"></i>
+                        <i class="bi bi-book fs-3 text-theme"></i>
                     </div>
                     <div class="text-light-gray">
                         Summary blog

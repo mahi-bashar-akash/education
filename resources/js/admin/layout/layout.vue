@@ -16,14 +16,6 @@
                     <i class="bi bi-speedometer"></i>
                     <span class="ms-2"> Dashboard </span>
                 </router-link>
-                <router-link :to="{name: 'about'}" class="sidebar-link" @click="remove()">
-                    <i class="bi bi-card-text"></i>
-                    <span class="ms-2"> About </span>
-                </router-link>
-                <router-link :to="{name: 'contact'}" class="sidebar-link" @click="remove()">
-                    <i class="bi bi-telephone"></i>
-                    <span class="ms-2"> Contact </span>
-                </router-link>
                 <router-link :to="{name: 'events'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-calendar4-event"></i>
                     <span class="ms-2"> Event management </span>
@@ -41,7 +33,7 @@
                     <span class="ms-2"> Courses </span>
                 </router-link>
                 <router-link :to="{name: 'blogs'}" class="sidebar-link" @click="remove()">
-                    <i class="bi bi-file-post-fill"></i>
+                    <i class="bi bi-book"></i>
                     <span class="ms-2"> Blogs </span>
                 </router-link>
                 <router-link :to="{name: 'students'}" class="sidebar-link" @click="remove()">
