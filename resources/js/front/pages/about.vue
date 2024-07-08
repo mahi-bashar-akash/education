@@ -7,7 +7,7 @@
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
 
                     <!-- Count enrolled learners -->
-                    <div class="p-3">
+                    <div class="p-3 mt-0 mt-xl-5 order-0 order-md-1 order-xl-0">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-backpack4 fs-1"></i>
                             <div class="fs-2 fw-medium">
@@ -20,8 +20,8 @@
                     </div>
 
                     <!-- Count best awards -->
-                    <div class="p-3">
-                        <div class="py-5 border text-center bg-light-gray-hover">
+                    <div class="p-3 order-1 order-md-0 order-xl-1">
+                        <div class="py-5 border text-center bg-theme-hover">
                             <i class="bi bi-award fs-1"></i>
                             <div class="fs-2 fw-medium">
                                 16+
@@ -33,7 +33,7 @@
                     </div>
 
                     <!-- Count video tutorials -->
-                    <div class="p-3">
+                    <div class="p-3 mt-0 mt-xl-5 order-2 order-xl-2">
                         <div class="py-5 border text-center bg-light-gray-hover">
                             <i class="bi bi-laptop fs-1"></i>
                             <div class="fs-2 fw-medium">
@@ -46,8 +46,8 @@
                     </div>
 
                     <!-- Count boost career -->
-                    <div class="p-3">
-                        <div class="py-5 border text-center bg-light-gray-hover">
+                    <div class="p-3 order-3 order-xl-3">
+                        <div class="py-5 border text-center bg-theme-hover">
                             <i class="bi bi-graph-up-arrow fs-1"></i>
                             <div class="fs-2 fw-medium">
                                 321

@@ -15,9 +15,9 @@
             <div class="position-relative w-100">
                 <div class="container">
                     <div class="text-center">
-                        <div class="fs-3 mb-3 text-white">
+                        <h1 class="fs-1 mb-3 text-white">
                             Take good experience from our courses
-                        </div>
+                        </h1>
                         <div class="fs-5 mb-3 text-white">
                             Apply as your dream
                         </div>
@@ -31,7 +31,7 @@
 
         <!-- category content -->
         <section class="w-100 py-5 d-flex justify-content-center align-items-center flex-column">
-            <div class="fs-3"> Popular Categories</div>
+            <h1 class="fs-1"> Popular Categories</h1>
             <div class="col-md-4 text-center line-height-2">
                 Join 2,500+ companies and 80% of the Fortune 1000 who use our courses to upskill their teams.
             </div>
@@ -74,7 +74,7 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-lg-6 mb-4">
-                        <div class="fs-3"> Explore Featured Courses </div>
+                        <h1 class="fs-1"> Explore Featured Courses </h1>
                         <div class="line-height-2"> You'll find something to spark your curiosity and enhance </div>
                     </div>
                     <div class="col-lg-6 mb-4 text-end">
@@ -149,9 +149,9 @@
                             <div class="bg-warning py-2 px-4 text-dark rounded-1 d-inline-block fw-medium fs-6">
                                 Professional Certificate
                             </div>
-                            <div class="fs-3 mt-3">
+                            <h1 class="fs-1 mt-3">
                                 Software development fundamentals for new learner
-                            </div>
+                            </h1>
                             <div class="mt-3">
                                 <a href="javascript:void(0)" type="button" class="btn btn-warning px-4 rounded-pill">
                                     Get Started
@@ -166,16 +166,16 @@
         <!-- event -->
         <section class="w-100 py-5">
             <div class="container py-5">
-                <div class="text-center fs-3">Upcoming Events</div>
+                <h1 class="text-center fs-1">Upcoming Events</h1>
                 <div class="px-4">
                     <div class="row justify-content-center">
                         <div class="col-md-6 text-center line-height-2 mb-4"> You'll find something to spark your curiosity and enhance </div>
                     </div>
-                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
                                 <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
@@ -190,7 +190,7 @@
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <h5 class="fs-5 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</h5>
                             <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
@@ -198,11 +198,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
                         </div>
-                        <div class="col-lg-6 order-1 order-lg-0">
+                        <div class="col-lg-6 order-1 order-lg-0 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
                                 <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
@@ -217,7 +217,7 @@
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <h5 class="fs-5 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</h5>
                             <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
@@ -225,11 +225,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
                                 <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
@@ -244,7 +244,7 @@
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <h5 class="fs-5 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</h5>
                             <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
@@ -252,11 +252,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0 order-0 order-lg-1">
                             <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
                         </div>
-                        <div class="col-lg-6 order-1 order-lg-0">
+                        <div class="col-lg-6 order-1 order-lg-0 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
                                 <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
@@ -271,7 +271,7 @@
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <h5 class="fs-5 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</h5>
                             <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
@@ -279,11 +279,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
+                    <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden scale-effect">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 py-3 pb-lg-0">
                             <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
                                 <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
@@ -298,7 +298,7 @@
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <h5 class="fs-5 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</h5>
                             <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
@@ -318,9 +318,9 @@
         <!-- testimonial -->
         <section class="w-100 py-5 bg-white">
             <div class="container">
-                <div class="text-center fs-1">Our Testimonial</div>
+                <h1 class="text-center fs-1">Our Testimonial</h1>
                 <div class="row  justify-content-center">
-                    <div class="fs-5 col-md-6 text-center line-height-2 mb-4"> tutors with students feed </div>
+                    <h5 class="fs-5 col-md-6 text-center line-height-2 mb-4"> tutors with students feed </h5>
                 </div>
                 <div class="testimonial-carousel owl-carousel owl-theme">
                     <div class="item d-flex justify-content-center">
@@ -431,9 +431,9 @@
                     <div class="bg-theme mb-3 px-3 py-2 rounded-2">
                         Get Instant Access to the Free
                     </div>
-                    <div class="fs-2 col-lg-5 mb-4">
+                    <h2 class="fs-2 col-lg-5 mb-4">
                         Lets build skills with our professional 2500+ courses
-                    </div>
+                    </h2>
                     <button type="button" class="btn btn-warning rounded-pill px-4">
                         Get Explore
                     </button>
@@ -445,13 +445,13 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
-                    <div class="fs-1 text-center">
+                    <h1 class="fs-1 text-center">
                         Our Students Feedback
-                    </div>
+                    </h1>
                     <div class="row  justify-content-center">
-                        <div class="fs-5 col-md-6 text-center line-height-2 mb-4">
+                        <h5 class="fs-5 col-md-6 text-center line-height-2 mb-4">
                             You'll find something to spark your curiosity and enhance feedback
-                        </div>
+                        </h5>
                     </div>
                     <div class="blogs-carousel owl-carousel owl-theme">
                         <div class="item p-3 image-effect" v-for="each in blogDataList">
@@ -470,9 +470,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="fs-3 fw-medium truncate-to-2-line p-3">
-                                    {{each.title}}
-                                </div>
+                                <h4 class="fs-4 fw-medium p-3">
+                                    <div class="truncate-to-2-line">
+                                        {{each.title}}
+                                    </div>
+                                </h4>
                                 <div class="pb-3 px-3">
                                     <router-link :to="{name: 'singleBlog'}" class="text-decoration-none">
                                         <span class="text-secondary">

@@ -18,7 +18,7 @@
                 </router-link>
                 <router-link :to="{name: 'events'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-calendar4-event"></i>
-                    <span class="ms-2"> Event management </span>
+                    <span class="ms-2"> Events </span>
                 </router-link>
                 <router-link :to="{name: 'departments'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-building"></i>
@@ -42,15 +42,15 @@
                 </router-link>
                 <router-link :to="{name: 'library'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-journal-bookmark"></i>
-                    <span class="ms-2"> Library </span>
+                    <span class="ms-2"> Libraries </span>
                 </router-link>
                 <router-link :to="{name: 'stuff'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-people"></i>
-                    <span class="ms-2"> Stuff </span>
+                    <span class="ms-2"> Stuffs </span>
                 </router-link>
                 <router-link :to="{name: 'holiday'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-gift"></i>
-                    <span class="ms-2"> Holiday </span>
+                    <span class="ms-2"> Holidays </span>
                 </router-link>
                 <router-link :to="{name: 'fees'}" class="sidebar-link" @click="remove()">
                     <i class="bi bi-currency-dollar"></i>

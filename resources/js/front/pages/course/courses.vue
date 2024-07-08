@@ -2,21 +2,21 @@
     <div class="cursor-content margin-top-105">
         <section class="container py-5">
             <div class="row py-3 align-items-start">
-                <div class="col-xl-3 text-light-gray py-1 px-3">
-                    <div class="bg-light shadow-sm rounded-3 p-3">
+                <div class="col-xl-3">
+                    <div class="bg-light border rounded-3 p-4">
                         <form>
 
-                            <div>
-                                <div class="h5 mb-3 fw-bold">Type of courses</div>
+                            <div class="mb-4">
+                                <div class="h5 mb-3 fw-medium">Type of courses</div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="free" class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="free" type="checkbox" name="course" class="form-checkbox">
                                         Free ( 11 )
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="paid" class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="paid" type="checkbox" name="course" class="form-checkbox">
                                         Paid ( 14 )
@@ -24,10 +24,10 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <div class="h5 mb-3 fw-bold">Categories</div>
+                            <div class="mb-4">
+                                <div class="h5 mb-3 fw-medium">Categories</div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="technology"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="technology" type="checkbox" name="category" class="form-checkbox">
@@ -35,7 +35,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="business"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="business" type="checkbox" name="category" class="form-checkbox">
@@ -43,7 +43,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="development"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="development" type="checkbox" name="category" class="form-checkbox">
@@ -52,10 +52,10 @@
                                 </div>
                             </div>
 
-                            <div>
-                                <div class="h5 mb-3 fw-bold">Instructor</div>
+                            <div class="mb-4">
+                                <div class="h5 mb-3 fw-medium">Instructor</div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="jimmy-jason"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="jimmy-jason" type="checkbox" name="instructor" class="form-checkbox">
@@ -63,7 +63,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="harnold"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="harnold" type="checkbox" name="instructor" class="form-checkbox">
@@ -71,7 +71,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="eric-madny"
                                            class="form-label d-block cursor-pointer text-light-gray-hover">
                                         <input id="eric-madny" type="checkbox" name="instructor" class="form-checkbox">
@@ -81,10 +81,10 @@
 
                             </div>
 
-                            <div>
-                                <div class="h5 mb-3 fw-bold">Ratings</div>
+                            <div class="mb-4">
+                                <div class="h5 mb-3 fw-medium">Ratings</div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="star-5" class="form-label d-flex align-items-center cursor-pointer">
                                         <input id="star-5" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
@@ -98,7 +98,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="star-3" class="form-label d-flex align-items-center cursor-pointer">
                                         <input id="star-3" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
@@ -112,7 +112,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="star-2" class="form-label d-flex align-items-center cursor-pointer">
                                         <input id="star-2" type="checkbox" name="rating" class="form-checkbox me-2">
                                         <span class="d-flex align-items-center">
@@ -128,9 +128,9 @@
                             </div>
 
                             <div>
-                                <div class="h5 mb-3 fw-bold">Level</div>
+                                <div class="h5 mb-3 fw-medium">Level</div>
 
-                                <div class="mb-3">
+                                <div class="mb-1">
                                     <label for="beginner"
                                            class="form-label d-flex align-items-center cursor-pointer text-light-gray-hover">
                                         <input id="beginner" type="checkbox" name="level" class="form-checkbox me-2">
@@ -139,7 +139,7 @@
                                     </label>
                                 </div>
 
-                                <div class="mb-3">
+                                <div>
                                     <label for="advanced"
                                            class="form-label d-flex align-items-center cursor-pointer text-light-gray-hover">
                                         <input id="advanced" type="checkbox" name="level" class="form-checkbox me-2">
@@ -153,16 +153,16 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-xl-9 py-1 px-3">
+                <div class="col-xl-9">
 
-                    <div class="px-3 py-2 bg-light shadow-sm w-100 rounded-3">
+                    <div class="px-3 py-2 bg-light border w-100 rounded-3">
                         <div class="row align-items-center">
-                            <div class="col-md-7">
+                            <div class="col-md-7 py-1">
                                 <div class="text-light-gray-hover">
                                     We found 78 courses for you
                                 </div>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-5 py-1">
                                 <div class="position-relative">
                                     <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                                         <i class="bi bi-search"></i>
@@ -176,7 +176,7 @@
 
                     <!-- no data founded -->
                     <div
-                        class="course-content p-3 scrollbar d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 mt-3"
+                        class="course-content p-3 scrollbar d-flex justify-content-center align-items-center flex-column bg-light w-100 mt-3 border"
                         v-if="!loading && courseDataList.length === 0">
                         <div class="text-center">
                             <div class="mb-2">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
 
-                    <div class="course-content p-3 scrollbar bg-light mt-3 shadow-sm w-100 rounded-3"
+                    <div class="px-2 mt-3 w-100"
                          v-if="!loading && courseDataList.length > 0">
 
                         <!-- data list -->
@@ -197,7 +197,7 @@
                             <div class="p-2" v-for="each in courseDataList">
                                 <router-link :to="{name: 'singleCourse'}" href="javascript:void(0)"
                                              class="text-decoration-none image-effect">
-                                    <div class="card border-0 shadow-sm p-0 overflow-hidden">
+                                    <div class="card border border-1 p-0 overflow-hidden">
                                         <div class="card-body p-0">
                                             <div class="position-relative">
                                                 <div class="overflow-hidden">
@@ -231,11 +231,11 @@
                                                 </div>
                                                 <div class="mt-3">
                                                     <div class="d-flex align-items-center justify-content-between">
-                                                        <div class="text-opacity-50 text-secondary">
+                                                        <div class="text-secondary">
                                                             <i class="bi bi-clock me-2"></i>
                                                             {{ each.duration }}
                                                         </div>
-                                                        <div class="text-opacity-50 text-secondary">
+                                                        <div class="text-secondary">
                                                             <i class="bi bi-person me-2"></i>
                                                             {{ each.enrollCount }} Students
                                                         </div>

@@ -6,12 +6,10 @@
 
     .header {
         transition: 0.3s all ease-in-out;
-        padding: 12px 0;
 
         &.animated-shadow {
             transition: 0.3s all ease-in-out;
             box-shadow: 0 0 8px 0 var(--bs-gray);
-            padding: 0;
         }
 
         .navbar {
@@ -221,6 +219,17 @@
         width: 100%;
         height: calc(100vh - 260px);
         overflow-y: scroll;
+    }
+
+    .scale-effect {
+        transform: scale(1) !important;
+        transition: 0.3s all ease-in-out !important;
+
+        &:hover {
+            transition: 0.3s all ease-in-out !important;
+            transform: scale(1.05) !important;
+        }
+
     }
 
 }

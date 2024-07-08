@@ -2,14 +2,14 @@
     <div class="cursor-content margin-top-105">
         <section class="container py-5">
 
-            <div class="px-3 py-2 bg-light shadow-sm w-100 rounded-3">
+            <div class="px-3 py-2 bg-light border w-100 rounded-3">
                 <div class="row align-items-center">
-                    <div class="col-md-7">
+                    <div class="col-md-7 py-1">
                         <div class="text-light-gray-hover">
                             60 events
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-5 py-1">
                         <div class="position-relative">
                             <div class="position-absolute top-50 start-0 translate-middle-y ps-3">
                                 <i class="bi bi-search"></i>
@@ -35,11 +35,11 @@
                 </div>
             </div>
 
-            <div class="course-content p-3 scrollbar bg-light mt-3 shadow-sm w-100 rounded-3"
+            <div class="mt-3 w-100 px-1"
                  v-if="!loading && eventDataList.length > 0">
 
                 <!-- data list -->
-                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 px-3">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 
                     <div class="p-2" v-for="each in eventDataList">
                         <div class="bg-white border align-items-center rounded-3 overflow-hidden">
