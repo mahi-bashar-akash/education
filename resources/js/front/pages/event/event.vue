@@ -56,10 +56,6 @@
                                         <i class="bi bi-clock me-1"></i>
                                         {{each.time}}
                                     </div>
-                                    <div class="col-12 p-2">
-                                        <i class="bi bi-geo-alt me-1"></i>
-                                        {{each.location}}
-                                    </div>
                                 </div>
                                 <div class="col-12 px-2">
                                     <div class="h6 fw-bold px-3 pt-2">
@@ -67,7 +63,13 @@
                                             {{each.name}}
                                         </div>
                                     </div>
-                                    <div class="px-3 pt-2 pb-4">
+                                    <div class="px-3 pt-2 pb-4 d-flex justify-content-between">
+                                        <div class="d-flex align-items-center justify-content-start">
+                                            <i class="bi bi-geo-alt me-1"></i>
+                                            <div class="truncate-to-1-line">
+                                                {{each.location}}
+                                            </div>
+                                        </div>
                                         <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-120 rounded-1 border-0">
                                             Get Ticket
                                         </router-link>

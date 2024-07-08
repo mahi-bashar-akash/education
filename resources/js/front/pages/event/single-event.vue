@@ -1,5 +1,6 @@
 <template>
     <div class="cursor-content margin-top-105">
+
         <section class="container py-5">
 
             <div class="w-100 mb-4">
@@ -233,17 +234,189 @@
 
         </section>
     </div>
+
+    <!-- Event Speakers -->
+    <section class="w-100 py-5">
+        <div class="container">
+            <div class="mb-3 fs-3"> Event Speakers </div>
+            <div class="tutor-carousel owl-carousel owl-theme">
+                <div class="p-3" v-for="each in tutorDataList">
+                    <div class="border p-0 image-effect">
+                        <div class="overflow-hidden">
+                            <img :src="each.filePath" class="w-100 hpx-310 object-fit-cover" alt="face 1">
+                        </div>
+                        <div class="fs-4 pt-2 text-center">
+                            {{ each.name }}
+                        </div>
+                        <div class="text-center text-light-gray pb-3">
+                            Instructor, Math
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related events -->
+    <section class="w-100 py-5">
+        <div class="container">
+            <div class="fs-3 mb-3">
+                Related events
+            </div>
+            <div class="event-carousel owl-carousel owl-theme">
+
+                <div class="p-2" v-for="each in eventDataList">
+                    <div class="bg-white border align-items-center rounded-3 overflow-hidden">
+                        <div class="col-12 p-0">
+                            <img :src="each.filePath" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <div class="row px-4">
+                                <div class="col-6 p-2">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    {{each.date}}
+                                </div>
+                                <div class="col-6 p-2">
+                                    <i class="bi bi-clock me-1"></i>
+                                    {{each.time}}
+                                </div>
+                            </div>
+                            <div class="col-12 px-2">
+                                <div class="h6 fw-bold px-3 pt-2">
+                                    <div class="truncate-to-1-line">
+                                        {{each.name}}
+                                    </div>
+                                </div>
+                                <div class="px-3 pt-2 pb-4 d-flex justify-content-between">
+                                    <div class="d-flex align-items-center justify-content-start">
+                                        <i class="bi bi-geo-alt me-1"></i>
+                                        <div class="truncate-to-1-line">
+                                            {{each.location}}
+                                        </div>
+                                    </div>
+                                    <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-120 rounded-1 border-0">
+                                        Get Ticket
+                                    </router-link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 </template>
 
 <script>
 
 export default {
     data() {
-        return {}
+        return {
+            tutorDataList: [
+                {id: '1', filePath: '/images/faces/team-1.jpg', name: 'Arnold Barnerd'},
+                {id: '2', filePath: '/images/faces/team-2.jpg', name: 'Mike Fermalin'},
+                {id: '3', filePath: '/images/faces/team-3.jpg', name: 'Harnold Min'},
+                {id: '4', filePath: '/images/faces/team-4.jpg', name: 'Andrew Inon'},
+                {id: '5', filePath: '/images/faces/team-5.jpg', name: 'kin Joan'},
+                {id: '6', filePath: '/images/faces/team-6.jpg', name: 'Kinda Mona'},
+                {id: '7', filePath: '/images/faces/team-7.jpg', name: 'Aronic Kenan'},
+                {id: '8', filePath: '/images/faces/team-8.jpg', name: 'Mike Fermalin'},
+            ],
+            eventDataList: [
+                {
+                    id: '1',
+                    filePath: '/images/classroom-bg/bg-classroom-1.jpg',
+                    date: 'December 26, 2023',
+                    time: '10:30 am',
+                    location: 'Yarra Park, Melbourne',
+                    name: '2025 Complete Javascript Bootcamp From Zero to Hero in Javascript',
+                },
+                {
+                    id: '2',
+                    filePath: '/images/classroom-bg/bg-classroom-2.jpg',
+                    date: 'December 26, 2023',
+                    time: '10:30 am',
+                    location: 'Yarra Park, Melbourne',
+                    name: '2025 Complete responsive website design Bootcamp From Zero to Hero in responsive website design',
+                },
+                {
+                    id: '3',
+                    filePath: '/images/classroom-bg/bg-classroom-3.jpg',
+                    date: 'December 26, 2023',
+                    time: '10:30 am',
+                    location: 'Yarra Park, Melbourne',
+                    name: '2025 Complete VueJs framework Bootcamp From Zero to Hero in VueJs framework',
+                },
+                {
+                    id: '4',
+                    filePath: '/images/classroom-bg/bg-classroom-4.jpg',
+                    date: 'December 26, 2023',
+                    time: '10:30 am',
+                    location: 'Yarra Park, Melbourne',
+                    name: '2025 Complete AngularJs framework Bootcamp From Zero to Hero in AngularJs',
+                },
+                {
+                    id: '5',
+                    filePath: '/images/classroom-bg/bg-classroom-5.jpg',
+                    date: 'December 26, 2023',
+                    time: '10:30 am',
+                    location: 'Yarra Park, Melbourne',
+                    name: '2025 Complete Laravel Framework Bootcamp From Zero to Hero in Laravel Framework',
+                },
+            ],
+        }
     },
     mounted() {
+        this.tutors();
+        this.relatedEvents();
     },
-    methods: {}
+    methods: {
+
+        tutors() {
+            $('.tutor-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    991: {
+                        items: 4
+                    }
+                }
+            })
+        },
+
+        relatedEvents() {
+            $('.event-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2
+                    },
+                    991: {
+                        items: 3
+                    }
+                }
+            })
+        }
+
+    }
 }
 
 </script>

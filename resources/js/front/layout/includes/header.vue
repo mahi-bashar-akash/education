@@ -3,7 +3,7 @@
     <header class="w-100 bg-white fixed-top header">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <router-link :to="{name: 'home'}" class="navbar-brand fw-bold text-light-gray">
+                <router-link :to="{name: 'home'}" class="navbar-brand fw-bold">
                     <div class="d-flex align-items-center justify-content-start">
                         <img :src="`/images/logo.png`" class="img-fluid wpx-40 hpx-40" alt="logo">
                         {{ app_name }}

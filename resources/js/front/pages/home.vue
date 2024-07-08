@@ -15,10 +15,10 @@
             <div class="position-relative w-100">
                 <div class="container">
                     <div class="text-center">
-                        <div class="fs-1 mb-3 text-white">
+                        <div class="fs-3 mb-3 text-white">
                             Take good experience from our courses
                         </div>
-                        <div class="fs-3 mb-3 text-white">
+                        <div class="fs-5 mb-3 text-white">
                             Apply as your dream
                         </div>
                         <a href="javascript:void(0)" class="btn btn-theme px-4 py-2 rounded-1 border-0">
@@ -30,9 +30,9 @@
         </section>
 
         <!-- category content -->
-        <section class="w-100 py-5 d-flex justify-content-center align-items-center flex-column text-light-gray">
-            <div class="fs-1 mb-3"> Popular Categories</div>
-            <div class="fs-5 col-md-4 text-center line-height-2">
+        <section class="w-100 py-5 d-flex justify-content-center align-items-center flex-column">
+            <div class="fs-3"> Popular Categories</div>
+            <div class="col-md-4 text-center line-height-2">
                 Join 2,500+ companies and 80% of the Fortune 1000 who use our courses to upskill their teams.
             </div>
             <div class="container text-center">
@@ -41,28 +41,28 @@
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-buildings fs-1"></i>
                             <br>
-                            <div class="fs-5">Business Administration</div>
+                            <div>Business Administration</div>
                         </div>
                     </div>
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-laptop fs-1"></i>
                             <br>
-                            <div class="fs-5">Computer Application</div>
+                            <div>Computer Application</div>
                         </div>
                     </div>
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-chat-left-text fs-1"></i>
                             <br>
-                            <div class="fs-5">Digital Marketing</div>
+                            <div>Digital Marketing</div>
                         </div>
                     </div>
                     <div class="p-3">
                         <div class="border py-5 text-center bg-light-gray-hover">
                             <i class="bi bi-translate fs-1"></i>
                             <br>
-                            <div class="fs-5">Language</div>
+                            <div>Language</div>
                         </div>
                     </div>
                 </div>
@@ -74,8 +74,8 @@
             <div class="container py-5">
                 <div class="row">
                     <div class="col-lg-6 mb-4">
-                        <div class="fs-1 text-light-gray"> Explore Featured Courses </div>
-                        <div class="fs-5 line-height-2 text-light-gray"> You'll find something to spark your curiosity and enhance </div>
+                        <div class="fs-3"> Explore Featured Courses </div>
+                        <div class="line-height-2"> You'll find something to spark your curiosity and enhance </div>
                     </div>
                     <div class="col-lg-6 mb-4 text-end">
                         <a href="javascript:void(0)" class="btn btn-theme rounded-1">
@@ -101,10 +101,10 @@
                                         </div>
                                     </div>
                                     <div class="p-3">
-                                        <small class="d-block text-light-gray">
+                                        <small class="d-block">
                                             By {{ each.author }}
                                         </small>
-                                        <div class="fs-4 mt-2 text-light-gray-hover">
+                                        <div class="fs-4 mt-2-hover">
                                             <div class="truncate-to-2-line">
                                                 {{ each.name }}
                                             </div>
@@ -149,7 +149,7 @@
                             <div class="bg-warning py-2 px-4 text-dark rounded-1 d-inline-block fw-medium fs-6">
                                 Professional Certificate
                             </div>
-                            <div class="fs-1 mt-3">
+                            <div class="fs-3 mt-3">
                                 Software development fundamentals for new learner
                             </div>
                             <div class="mt-3">
@@ -166,32 +166,32 @@
         <!-- event -->
         <section class="w-100 py-5">
             <div class="container py-5">
-                <div class="text-center fs-1 text-light-gray">Upcoming Events</div>
+                <div class="text-center fs-3">Upcoming Events</div>
                 <div class="px-4">
                     <div class="row justify-content-center">
-                        <div class="fs-5 col-md-6 text-center line-height-2 mb-4 text-light-gray"> You'll find something to spark your curiosity and enhance </div>
+                        <div class="col-md-6 text-center line-height-2 mb-4"> You'll find something to spark your curiosity and enhance </div>
                     </div>
                     <div class="mb-4 row bg-light border align-items-center rounded-3 overflow-hidden">
                         <div class="col-lg-6 p-0">
                             <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
                         </div>
                         <div class="col-lg-6">
-                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
-                                <div class="p-3">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
+                                <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     December 26, 2023
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-clock me-1"></i>
                                     10:30 am
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-geo-alt me-1"></i>
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
-                            <div class="px-3 pt-2 pb-4">
+                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
                                 </router-link>
@@ -203,22 +203,22 @@
                             <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
                         </div>
                         <div class="col-lg-6 order-1 order-lg-0">
-                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
-                                <div class="p-3">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
+                                <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     December 26, 2023
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-clock me-1"></i>
                                     10:30 am
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-geo-alt me-1"></i>
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
-                            <div class="px-3 pt-2 pb-4">
+                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
                                 </router-link>
@@ -230,22 +230,22 @@
                             <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
                         </div>
                         <div class="col-lg-6">
-                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
-                                <div class="p-3">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
+                                <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     December 26, 2023
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-clock me-1"></i>
                                     10:30 am
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-geo-alt me-1"></i>
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
-                            <div class="px-3 pt-2 pb-4">
+                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
                                 </router-link>
@@ -257,22 +257,22 @@
                             <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
                         </div>
                         <div class="col-lg-6 order-1 order-lg-0">
-                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
-                                <div class="p-3">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
+                                <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     December 26, 2023
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-clock me-1"></i>
                                     10:30 am
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-geo-alt me-1"></i>
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
-                            <div class="px-3 pt-2 pb-4">
+                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
                                 </router-link>
@@ -284,22 +284,22 @@
                             <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
                         </div>
                         <div class="col-lg-6">
-                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
-                                <div class="p-3">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small fw-bold mb-3">
+                                <div class="px-3">
                                     <i class="bi bi-calendar-event me-1"></i>
                                     December 26, 2023
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-clock me-1"></i>
                                     10:30 am
                                 </div>
-                                <div class="p-3">
+                                <div class="px-3">
                                     <i class="bi bi-geo-alt me-1"></i>
                                     Yarra Park, Melbourne
                                 </div>
                             </div>
-                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
-                            <div class="px-3 pt-2 pb-4">
+                            <div class="fs-6 fw-semibold px-3">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 mt-3">
                                 <router-link :to="{name: 'singleEvent'}" class="btn btn-theme wpx-150 rounded-1 border-0">
                                     Get Ticket
                                 </router-link>
@@ -318,15 +318,15 @@
         <!-- testimonial -->
         <section class="w-100 py-5 bg-white">
             <div class="container">
-                <div class="text-center fs-1 text-light-gray">Our Testimonial</div>
+                <div class="text-center fs-1">Our Testimonial</div>
                 <div class="row  justify-content-center">
-                    <div class="fs-5 col-md-6 text-center line-height-2 mb-4 text-light-gray"> tutors with students feed </div>
+                    <div class="fs-5 col-md-6 text-center line-height-2 mb-4"> tutors with students feed </div>
                 </div>
-                <div class="testimonial-carousel owl-carousel owl-theme text-light-gray">
+                <div class="testimonial-carousel owl-carousel owl-theme">
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
-                                <div class="bg-light p-3 text-light-gray text-center">
+                                <div class="bg-light p-3 text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
                                         excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
@@ -351,7 +351,7 @@
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
-                                <div class="bg-light p-3 text-light-gray text-center">
+                                <div class="bg-light p-3 text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
                                         excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
@@ -376,7 +376,7 @@
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
                             <div class="p-3 rounded-3">
-                                <div class="bg-light p-3 text-light-gray text-center">
+                                <div class="bg-light p-3 text-center">
                                     <q>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
                                         excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
@@ -401,7 +401,7 @@
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7 p-3">
                             <div class="p-3 rounded-3">
-                                <div class="bg-light p-3 text-light-gray text-center">
+                                <div class="bg-light p-3 text-center">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor dolorem eligendi
                                     excepturi explicabo facere fugiat harum id impedit incidunt iste iusto laborum
                                     minima
@@ -445,8 +445,13 @@
         <section class="w-100 py-5">
             <div class="container">
                 <div class="py-5">
-                    <div class="mb-3 fs-1 text-center">
-                        Latest blogs & news
+                    <div class="fs-1 text-center">
+                        Our Students Feedback
+                    </div>
+                    <div class="row  justify-content-center">
+                        <div class="fs-5 col-md-6 text-center line-height-2 mb-4">
+                            You'll find something to spark your curiosity and enhance feedback
+                        </div>
                     </div>
                     <div class="blogs-carousel owl-carousel owl-theme">
                         <div class="item p-3 image-effect" v-for="each in blogDataList">
