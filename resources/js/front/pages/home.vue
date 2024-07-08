@@ -94,9 +94,158 @@
             </div>
         </section>
 
+        <!-- event -->
+        <section class="w-100 py-5">
+            <div class="container py-5">
+                <div class="text-center fs-1 text-light-gray">Upcoming Events</div>
+                <div class="px-4">
+                    <div class="row justify-content-center">
+                        <div class="fs-5 col-md-6 text-center line-height-2 mb-4 text-light-gray"> You'll find something to spark your curiosity and enhance </div>
+                    </div>
+                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                        <div class="col-lg-6 p-0">
+                            <img :src="`/images/classroom-bg/bg-classroom-1.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
+                                <div class="p-3">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    December 26, 2023
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-clock me-1"></i>
+                                    10:30 am
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    Yarra Park, Melbourne
+                                </div>
+                            </div>
+                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 pt-2 pb-4">
+                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                    Get Ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                        <div class="col-lg-6 p-0 order-0 order-lg-1">
+                            <img :src="`/images/classroom-bg/bg-classroom-2.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-2.jpg">
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-0">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
+                                <div class="p-3">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    December 26, 2023
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-clock me-1"></i>
+                                    10:30 am
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    Yarra Park, Melbourne
+                                </div>
+                            </div>
+                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 pt-2 pb-4">
+                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                    Get Ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                        <div class="col-lg-6 p-0">
+                            <img :src="`/images/classroom-bg/bg-classroom-3.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-3.jpg">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
+                                <div class="p-3">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    December 26, 2023
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-clock me-1"></i>
+                                    10:30 am
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    Yarra Park, Melbourne
+                                </div>
+                            </div>
+                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 pt-2 pb-4">
+                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                    Get Ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                        <div class="col-lg-6 p-0 order-0 order-lg-1">
+                            <img :src="`/images/classroom-bg/bg-classroom-4.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-4.jpg">
+                        </div>
+                        <div class="col-lg-6 order-1 order-lg-0">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
+                                <div class="p-3">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    December 26, 2023
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-clock me-1"></i>
+                                    10:30 am
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    Yarra Park, Melbourne
+                                </div>
+                            </div>
+                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 pt-2 pb-4">
+                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                    Get Ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 row bg-white shadow align-items-center rounded-3 overflow-hidden">
+                        <div class="col-lg-6 p-0">
+                            <img :src="`/images/classroom-bg/bg-classroom-5.jpg`" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-5.jpg">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="d-flex justify-content-start align-items-center flex-wrap small">
+                                <div class="p-3">
+                                    <i class="bi bi-calendar-event me-1"></i>
+                                    December 26, 2023
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-clock me-1"></i>
+                                    10:30 am
+                                </div>
+                                <div class="p-3">
+                                    <i class="bi bi-geo-alt me-1"></i>
+                                    Yarra Park, Melbourne
+                                </div>
+                            </div>
+                            <div class="h6 fw-bold px-3 pt-2">EduFest 2023: Igniting Minds, Transforming Lives</div>
+                            <div class="px-3 pt-2 pb-4">
+                                <a href="javascript:void(0)" class="btn btn-theme wpx-150 rounded-1 border-0">
+                                    Get Ticket
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- testimonial -->
         <section class="w-100 py-5 bg-white">
             <div class="container">
+                <div class="text-center fs-1 text-light-gray">Our Testimonial</div>
+                <div class="text-center lead text-light-gray mb-4"> tutors with students feed </div>
                 <div class="testimonial-carousel owl-carousel owl-theme text-light-gray">
                     <div class="item d-flex justify-content-center">
                         <div class="col-lg-7">
