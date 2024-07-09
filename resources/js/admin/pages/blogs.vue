@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Blogs"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table data of event list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -90,13 +91,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of list data -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data found when list data is empty -->
     <noDataFounded :text="'blog'" :newModalFunction="manageBlogModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -170,7 +171,7 @@
         </div>
     </div>
 
-    <!-- manage blog modal -->
+    <!-- Modal of manage blog -->
     <div class="modal fade" id="manageBlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageBlog()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -185,12 +186,28 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image"
-                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
-                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                        <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white rounded-4 text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
+                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                            <img :src="uploadedImage" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                    <i class="bi bi-trash2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="position-relative" v-if="uploadLoading">
+                            <div class="w-100 hpx-150 rounded-4 bg-secondary-subtle"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -232,7 +249,7 @@
         </div>
     </div>
 
-    <!-- delete blog modal -->
+    <!-- Modal of Delete blog -->
     <div class="modal fade" id="deleteBlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="blogDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -287,10 +304,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Blogs', route: 'blogs' },
@@ -319,6 +338,9 @@ export default {
             error: null,
             deleteBlogLoading: false,
             buttons: [],
+            uploadLoading: false,
+            uploadedImage: null,
+            uploadedImageId: null,
         }
     },
     mounted() {
@@ -326,7 +348,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -337,7 +359,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -347,14 +369,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage blog modal open */
+        // Function of manage blog modal open
         manageBlogModalOpen(data = null) {
             apiServices.clearErrorHandler()
             if(data !== null) {
@@ -370,21 +392,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage blog modal close */
+        // Function of manage blog modal close
         manageBlogModalClose() {
             let myModalEl = document.getElementById('manageBlogModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete blog modal open */
+        // Function of delete blog modal open
         deleteBlogModalOpen(id) {
             this.deleteProfessorParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteBlogModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete blog modal close */
+        // Function of delete blog modal close
         deleteBlogModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -398,7 +420,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to blog list api */
+        // Function of blog list api callback
         blogList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -416,7 +438,7 @@ export default {
             })
         },
 
-        /* Function to blog search data */
+        // Function of blog search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -424,7 +446,7 @@ export default {
             }, 800);
         },
 
-        /* Function to blog previous page */
+        // Function of blog previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -432,7 +454,7 @@ export default {
             }
         },
 
-        /* Function to blog next page */
+        // Function of blog next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -440,13 +462,13 @@ export default {
             }
         },
 
-        /* Function to blog change page */
+        // Function of blog change page
         pageChange(page) {
             this.current_page = page;
             this.blogList();
         },
 
-        /* Function to blog manage of create and update api */
+        // Function of blog manager of create and update api callback
         manageBlog() {
             if(this.formData.id === undefined) {
                 this.blogCreate()
@@ -455,7 +477,7 @@ export default {
             }
         },
 
-        /* Function to blog create api */
+        // Function of blog create api callback
         blogCreate() {
             this.manageBlogLoading = true;
             apiServices.POST(apiRoutes.blogCreate, this.formData, (res) => {
@@ -475,7 +497,7 @@ export default {
             })
         },
 
-        /* Function to blog update api */
+        // Function of blog update api callback
         blogUpdate() {
             this.manageBlogLoading = true;
             apiServices.PATCH(apiRoutes.blogUpdate, this.formData, (res) => {
@@ -495,7 +517,7 @@ export default {
             })
         },
 
-        /* Function to blog single api */
+        // Function of blog single api callback
         blogSingle(data) {
             apiServices.PUT(apiRoutes.blogSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -506,7 +528,7 @@ export default {
             });
         },
 
-        /* Function to blog delete api */
+        // Function of blog delete api callback
         blogDelete() {
             this.selected.forEach((v) => {
                 this.deleteProfessorParam.ids.push(v);
@@ -522,6 +544,38 @@ export default {
                     this.error = res.errors
                 }
             })
+        },
+
+        // Function of upload file
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.uploadedImage = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        // Function of delete file
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.uploadedImage = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
         },
 
     }
