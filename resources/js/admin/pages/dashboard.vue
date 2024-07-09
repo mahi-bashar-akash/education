@@ -1,14 +1,14 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb moduleName="Dashboard"/>
     </div>
 
-    <!-- dashboard -->
+    <!-- Dashboard -->
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 row-cols-xxl-4">
 
-        <!-- event -->
+        <!-- Event -->
         <div class="mb-4">
 
             <div
@@ -35,7 +35,7 @@
 
         </div>
 
-        <!-- professor -->
+        <!-- Professor -->
         <div class="mb-4">
 
             <div
@@ -62,7 +62,7 @@
 
         </div>
 
-        <!-- student -->
+        <!-- Student -->
         <div class="mb-4">
 
             <div
@@ -88,7 +88,7 @@
             </router-link>
         </div>
 
-        <!-- course -->
+        <!-- Course -->
         <div class="mb-4">
 
             <div
@@ -114,7 +114,7 @@
             </router-link>
         </div>
 
-        <!-- blog -->
+        <!-- Blog -->
         <div class="mb-4">
 
             <div
@@ -140,7 +140,7 @@
             </router-link>
         </div>
 
-        <!-- library -->
+        <!-- Library -->
         <div class="mb-4">
 
             <div
@@ -166,7 +166,7 @@
             </router-link>
         </div>
 
-        <!-- department -->
+        <!-- Department -->
         <div class="mb-4">
 
             <div
@@ -193,7 +193,7 @@
 
         </div>
 
-        <!-- stuff -->
+        <!-- Stuff -->
         <div class="mb-4">
 
             <div
@@ -220,7 +220,7 @@
 
         </div>
 
-        <!-- holiday -->
+        <!-- Holiday -->
         <div class="mb-4">
 
             <div
@@ -247,7 +247,7 @@
 
         </div>
 
-        <!-- frequently asking question -->
+        <!-- Frequently asking question -->
         <div class="mb-4">
 
             <div
@@ -274,7 +274,7 @@
 
         </div>
 
-        <!-- fees -->
+        <!-- Fees -->
         <div class="mb-4">
 
             <div
@@ -312,12 +312,14 @@ import apiRoutes from '../../services/apiRoutes.js';
 export default {
 
     components: {
+        // Component properties
         breadcrumb
     },
 
     data() {
 
         return {
+            // Data properties
             event_count: '0',
             professor_count: '0',
             student_count: '0',
@@ -350,7 +352,7 @@ export default {
 
     methods: {
 
-        /* Function of event api */
+        // Function of event api callback
         getEventCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.eventList, '', (res) => {
@@ -359,7 +361,7 @@ export default {
             })
         },
 
-        /* Function of professor api */
+        // Function of professor api callback
         getProfessorCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.professorList, '', (res) => {
@@ -368,7 +370,7 @@ export default {
             })
         },
 
-        /* Function of student api */
+        // Function of student api callback
         getStudentCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.studentList, '', (res) => {
@@ -377,7 +379,7 @@ export default {
             })
         },
 
-        /* Function of course api */
+        // Function of course api callback
         getCourseCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.courseList, '', (res) => {
@@ -386,7 +388,7 @@ export default {
             })
         },
 
-        /* Function of blog api */
+        // Function of blog api callback
         getBlogCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.blogList, '', (res) => {
@@ -395,7 +397,7 @@ export default {
             })
         },
 
-        /* Function of library api */
+        // Function of library api callback
         getLibraryCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.libraryAssetList, '', (res) => {
@@ -404,7 +406,7 @@ export default {
             })
         },
 
-        /* Function of department api */
+        // Function of department api callback
         getDepartmentCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.departmentList, '', (res) => {
@@ -413,7 +415,7 @@ export default {
             })
         },
 
-        /* Function of stuff api */
+        // Function of stuff api callback
         getStuffCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.stuffList, '', (res) => {
@@ -422,7 +424,7 @@ export default {
             })
         },
 
-        /* Function of holiday api */
+        // Function of holiday api callback
         getHolidayCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.holidayList, '', (res) => {
@@ -431,7 +433,7 @@ export default {
             })
         },
 
-        /* Function of holiday api */
+        // Function of frequently asking question api callback
         getFAQCount() {
             this.loading = true;
             apiServices.GET(apiRoutes.faqList, '', (res) => {
@@ -440,7 +442,7 @@ export default {
             })
         },
 
-        /* Function of fees api */
+        // Function of fees amount api callback
         getFeesAmount() {
             this.loading = true;
             apiServices.GET(apiRoutes.feesList, '', (res) => {
@@ -452,8 +454,7 @@ export default {
                     }, 0);
                 }
             });
-        }
-
+        },
 
     }
 
