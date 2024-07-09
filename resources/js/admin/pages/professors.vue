@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Professors"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,7 +24,7 @@
         </div>
     </div>
 
-
+    <!-- Table data list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -109,13 +109,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table data list -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded as empty screen for table data list -->
     <noDataFounded :text="'professor'" :newModalFunction="manageProfessorModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table data list -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -189,7 +189,7 @@
         </div>
     </div>
 
-    <!-- manage professor modal -->
+    <!-- Modal of manage professor -->
     <div class="modal fade" id="manageProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -281,7 +281,7 @@
         </div>
     </div>
 
-    <!-- delete professor modal -->
+    <!-- Modal of delete professor -->
     <div class="modal fade" id="deleteProfessorModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -339,10 +339,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Professors', route: 'professors' },
@@ -382,7 +384,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -393,7 +395,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -403,14 +405,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage professor modal open */
+        // Function of manage professor modal open
         manageProfessorModalOpen(data = null) {
             this.getDepartment();
             apiServices.clearErrorHandler()
@@ -430,21 +432,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage professor modal close */
+        // Function of manage professor modal close
         manageProfessorModalClose() {
             let myModalEl = document.getElementById('manageProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete professor modal open */
+        // Function of delete professor modal open
         deleteProfessorModalOpen(id) {
             this.deleteProfessorParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteProfessorModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete professor modal close */
+        // Function of delete professor modal close
         deleteProfessorModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -461,7 +463,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to professor joining date */
+        // Function of professor joining date
         flatpickrConfigDate() {
             flatpickr("#joining-date", {
                 altFormat: 'j M Y',
@@ -472,7 +474,7 @@ export default {
             })
         },
 
-        /* Function to professor list api */
+        // Function of professor list api callback
         professorList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -490,7 +492,7 @@ export default {
             })
         },
 
-        /* Function to professor search data */
+        // Function of professor search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -498,7 +500,7 @@ export default {
             }, 800);
         },
 
-        /* Function to professor previous page */
+        // Function of professor previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -506,7 +508,7 @@ export default {
             }
         },
 
-        /* Function to professor next page */
+        // Function of professor next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -514,13 +516,13 @@ export default {
             }
         },
 
-        /* Function to professor change page */
+        // Function of professor change page
         pageChange(page) {
             this.current_page = page;
             this.professorList();
         },
 
-        /* Function to professor manage of create and update api */
+        // Function of professor manage as create and update api callback
         manageProfessor() {
             if(this.formData.id === undefined) {
                 this.professorCreate()
@@ -529,7 +531,7 @@ export default {
             }
         },
 
-        /* Function to professor create api */
+        // Function of professor create api callback
         professorCreate() {
             this.manageProfessorLoading = true;
             apiServices.POST(apiRoutes.professorCreate, this.formData, (res) => {
@@ -552,7 +554,7 @@ export default {
             })
         },
 
-        /* Function to professor update api */
+        // Function of professor update api callback
         professorUpdate() {
             this.manageProfessorLoading = true;
             apiServices.PATCH(apiRoutes.professorUpdate, this.formData, (res) => {
@@ -575,7 +577,7 @@ export default {
             })
         },
 
-        /* Function to professor single api */
+        // Function of professor single api callback
         professorSingle(data) {
             apiServices.PUT(apiRoutes.professorSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -586,7 +588,7 @@ export default {
             });
         },
 
-        /* Function to professor delete api */
+        // Function of professor delete api callback
         professorDelete() {
             this.selected.forEach((v) => {
                 this.deleteProfessorParam.ids.push(v);
@@ -604,7 +606,7 @@ export default {
             })
         },
 
-        /* Function to get department api */
+        // Function of get department api callback
         getDepartment(){
             apiServices.GET(apiRoutes.departmentList, '', (res) => {
                 if(res.message) {

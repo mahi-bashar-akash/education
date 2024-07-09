@@ -1,6 +1,6 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Profile"/>
     </div>
@@ -13,7 +13,7 @@
                         <div class="card rounded-3 border-0">
                             <div class="card-header bg-white rounded-3 border-0">
 
-                                <!-- group of button -->
+                                <!-- Group of button -->
                                 <div
                                     class="card-header bg-white rounded-3 border-0 d-flex justify-content-start align-items-center pt-3">
 
@@ -32,18 +32,35 @@
                                 <div class="d-flex justify-content-center align-items-center">
                                     <form class="pt-3">
 
-                                        <!-- avatar upload -->
-                                        <label for="upload-image" class="form-label wpx-175 hpx-175 border rounded-circle d-flex justify-content-center align-items-center cursor-pointer" v-if="!loading">
-                                            <input id="upload-image" type="file" name="upload-image" class="form-control" hidden="hidden">
-                                            <span class="d-block">
-                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
-                                            </span>
-                                        </label>
+                                        <div class="form-group">
 
-                                        <div class="card-text placeholder-glow" v-if="loading">
-                                            <div class="mb-2">
-                                                <div class="placeholder wpx-175 hpx-175 rounded-circle"></div>
+                                            <!-- Avatar Upload -->
+                                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                                                   class="form-label wpx-200 hpx-200 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                                                <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
+                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
+                                            </label>
+
+                                            <!-- Avatar uploaded -->
+                                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-4" alt="uploaded image">
+                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                                        <i class="bi bi-trash2"></i>
+                                                    </button>
+                                                </div>
                                             </div>
+
+                                            <!-- Avatar preloader -->
+                                            <div class="position-relative" v-if="uploadLoading">
+                                                <div class="wpx-200 hpx-200 rounded-4 bg-secondary-subtle"></div>
+                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                    <div class="spinner-border text-secondary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
 
                                     </form>
@@ -51,7 +68,8 @@
 
                             </div>
                             <div class="card-body">
-                                <!-- profile information -->
+
+                                <!-- Profile information -->
                                 <div class="mt-3 px-3">
                                     <div v-if="!loading">
                                         <div class="mb-2 text-light-gray fw-bold">
@@ -74,6 +92,7 @@
                                         </div>
                                     </div>
 
+                                    <!-- Profile preloader -->
                                     <div class="card-text placeholder-glow" v-if="loading">
                                         <div class="mb-2">
                                             <div class="placeholder wpx-45"></div>
@@ -100,7 +119,7 @@
                     <div class="col-xl-7 p-2">
                         <div class="card rounded-3 border-0 p-3">
 
-                            <!-- update profile -->
+                            <!-- Update profile form -->
                             <div class="card-body" v-if="tab === 1">
                                 <div class="fs-5 mb-3">Edit Profile</div>
                                 <form @submit.prevent="updateAdminProfile()">
@@ -123,17 +142,17 @@
                                         <div class="error-report" v-if="error != null && error.phone !== undefined"> {{error.phone[0]}} </div>
                                     </div>
                                     <div class="w-100">
-                                        <button type="submit" class="btn btn-theme wpx-150" v-if="!updateProfileLoading">
+                                        <button type="submit" class="btn btn-theme wpx-200" v-if="!updateProfileLoading">
                                             Update profile
                                         </button>
-                                        <button type="button" class="btn btn-theme wpx-150" v-if="updateProfileLoading">
+                                        <button type="button" class="btn btn-theme wpx-200" v-if="updateProfileLoading">
                                             <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                         </button>
                                     </div>
                                 </form>
                             </div>
 
-                            <!-- update password -->
+                            <!-- Update password form -->
                             <div class="card-body" v-if="tab === 2">
                                 <div class="fs-5 mb-3">Change password</div>
                                 <form @submit.prevent="changeAdminPassword()">
@@ -177,15 +196,16 @@
                                         <div class="error-report" v-if="error != null && error.password_confirmation !== undefined"> {{error.password_confirmation[0]}} </div>
                                     </div>
                                     <div class="w-100">
-                                        <button type="submit" class="btn btn-theme wpx-150" v-if="!passwordChangeLoading">
+                                        <button type="submit" class="btn btn-theme wpx-200" v-if="!passwordChangeLoading">
                                             Update password
                                         </button>
-                                        <button type="button" class="btn btn-theme wpx-150" v-if="passwordChangeLoading">
+                                        <button type="button" class="btn btn-theme wpx-200" v-if="passwordChangeLoading">
                                             <span class="spinner-border border-2 wpx-15 hpx-15"></span>
                                         </button>
                                     </div>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -202,12 +222,13 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         breadcrumb
     },
 
     data() {
-
         return {
+            // Data properties
             BreadcrumbItems: [
                 {title: 'Dashboard', route: 'dashboard'},
                 {title: 'profile', route: 'profile'},
@@ -231,8 +252,10 @@ export default {
             updateProfileLoading: false,
             passwordChangeLoading: false,
             error: null,
+            uploadLoading: false,
+            uploadedImage: null,
+            uploadedImageId: null,
         }
-
     },
 
     mounted() {
@@ -241,7 +264,7 @@ export default {
 
     methods: {
 
-        /* Function to get profile data api */
+        // Function of get profile data api callback
         getAdminProfile() {
             this.loading = true;
             apiServices.GET(apiRoutes.adminProfile, null, (res) => {
@@ -255,7 +278,7 @@ export default {
             })
         },
 
-        /* Function to update admin profile data api */
+        // Function of update admin profile data api callback
         updateAdminProfile() {
             this.updateProfileLoading = true;
             apiServices.PATCH(apiRoutes.adminProfileUpdate,this.profileParam, (res) => {
@@ -269,7 +292,7 @@ export default {
             })
         },
 
-        /* Function to change password data api */
+        // Function of change password data api callback
         changeAdminPassword() {
             this.passwordChangeLoading = true;
             apiServices.PATCH(apiRoutes.adminChangePassword, this.passwordParam, (res) => {
@@ -283,19 +306,51 @@ export default {
             })
         },
 
-        /* Function to set tab */
+        // Function of set tab
         setTab(tab) {
             this.tab = tab
         },
 
-        /* Function to password visibility */
+        // Function of password visibility
         passwordVisibility() {
             this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
         },
 
-        /* Function to password confirm visibility */
+        // Function of password confirm visibility
         passwordConfirmVisibility() {
             this.passwordConfirmationFieldType = this.passwordConfirmationFieldType === "password" ? "text" : "password";
+        },
+
+        // Function of upload file
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.uploadedImage = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        // Function of delete file
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.uploadedImage = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
         },
 
     }
