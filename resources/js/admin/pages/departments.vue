@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Departments"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table list data -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -106,13 +107,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table list data -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data as empty screen -->
     <noDataFounded :text="'department'" :newModalFunction="manageDepartmentModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -186,7 +187,7 @@
         </div>
     </div>
 
-    <!-- manage department modal -->
+    <!-- Modal of manage department -->
     <div class="modal fade" id="manageDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -260,7 +261,7 @@
         </div>
     </div>
 
-    <!-- delete department modal -->
+    <!-- Modal of delete department -->
     <div class="modal fade" id="deleteDepartmentModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -317,10 +318,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Departments', route: 'departments' },
@@ -359,7 +362,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -370,7 +373,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -380,14 +383,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage department modal open */
+        // Function of manage department modal open
         manageDepartmentModalOpen(data = null) {
             apiServices.clearErrorHandler()
             if(data !== null) {
@@ -406,21 +409,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage department modal close */
+        // Function of manage department modal close
         manageDepartmentModalClose() {
             let myModalEl = document.getElementById('manageDepartmentModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete department modal open */
+        // Function of delete department modal open
         deleteDepartmentModalOpen(id) {
             this.deleteDepartmentParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteDepartmentModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete department modal close */
+        // Function of delete department modal close
         deleteDepartmentModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -437,7 +440,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to department start-date */
+        // Function of department start date as flatpickr config
         flatpickrConfigDate() {
             flatpickr("#start-date", {
                 altFormat: 'j M Y',
@@ -448,7 +451,7 @@ export default {
             })
         },
 
-        /* Function to department list api */
+        // Function of department list api callback
         departmentList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -466,7 +469,7 @@ export default {
             })
         },
 
-        /* Function to department search data */
+        // Function of department search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -474,7 +477,7 @@ export default {
             }, 800);
         },
 
-        /* Function to department previous page */
+        // Function of department previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -482,7 +485,7 @@ export default {
             }
         },
 
-        /* Function to department next page */
+        // Function of department next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -490,13 +493,13 @@ export default {
             }
         },
 
-        /* Function to department change page */
+        // Function of department change page
         pageChange(page) {
             this.current_page = page;
             this.departmentList();
         },
 
-        /* Function to department manage of create and update api */
+        // Function of department manage as create and update api callback
         manageDepartment() {
             if(this.formData.id === undefined) {
                 this.departmentCreate()
@@ -505,7 +508,7 @@ export default {
             }
         },
 
-        /* Function to department create api */
+        // Function of department create api callback
         departmentCreate() {
             this.manageDepartmentLoading = true;
             apiServices.POST(apiRoutes.departmentCreate, this.formData, (res) => {
@@ -528,7 +531,7 @@ export default {
             })
         },
 
-        /* Function to department update api */
+        // Function of department update api callback
         departmentUpdate() {
             this.manageDepartmentLoading = true;
             apiServices.PATCH(apiRoutes.departmentUpdate, this.formData, (res) => {
@@ -551,7 +554,7 @@ export default {
             })
         },
 
-        /* Function to department single api */
+        // Function of department single api callback
         departmentSingle(data) {
             apiServices.PUT(apiRoutes.departmentSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -562,7 +565,7 @@ export default {
             });
         },
 
-        /* Function to department delete api */
+        // Function of department delete api callback
         departmentDelete() {
             this.selected.forEach((v) => {
                 this.deleteDepartmentParam.ids.push(v);
@@ -578,7 +581,7 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
 
     }
 }
