@@ -249,7 +249,7 @@
         </div>
     </div>
 
-    <!-- Modal of Delete blog -->
+    <!-- Modal of delete blog -->
     <div class="modal fade" id="deleteBlogModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="blogDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
