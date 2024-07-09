@@ -140,79 +140,9 @@
     <!-- No data founded of table list data -->
     <noDataFounded :text="'fees'" :newModalFunction="manageFeesModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- Pagination of table list data -->
-    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
-        <div class="pagination admin-pagination">
-            <div class="page-item" @click="PrevPage()">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-            </div>
-            <div v-if="buttons.length <= 6">
-                <div v-for="(page, index) in buttons" class="page-item"
-                     :class="{'active': current_page === page}">
-                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
-                       v-text="page"></a>
-                </div>
-            </div>
-            <div v-if="buttons.length > 6">
-                <div class="page-item" :class="{'active': current_page === 1}">
-                    <a class="page-link" @click="pageChange(1)"
-                       href="javascript:void(0)">1</a>
-                </div>
-
-                <div v-if="current_page > 3" class="page-item">
-                    <a class="page-link" @click="pageChange(current_page - 2)"
-                       href="javascript:void(0)">...</a>
-                </div>
-
-                <div v-if="current_page === buttons.length" class="page-item"
-                     :class="{'active': current_page === (current_page - 2)}">
-                    <a class="page-link" @click="pageChange(current_page - 2)"
-                       href="javascript:void(0)" v-text="current_page - 2"></a>
-                </div>
-
-                <div v-if="current_page > 2" class="page-item"
-                     :class="{'active': current_page === (current_page - 1)}">
-                    <a class="page-link" @click="pageChange(current_page - 1)"
-                       href="javascript:void(0)" v-text="current_page - 1"></a>
-                </div>
-
-                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
-                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
-                       v-text="current_page"></a>
-                </div>
-
-                <div v-if="current_page < buttons.length - 1" class="page-item"
-                     :class="{'active': current_page === (current_page + 1)}">
-                    <a class="page-link" @click="pageChange(current_page + 1)"
-                       href="javascript:void(0)" v-text="current_page + 1"></a>
-                </div>
-
-                <div v-if="current_page === 1" class="page-item"
-                     :class="{'active': current_page === (current_page + 2)}">
-                    <a class="page-link" @click="pageChange(current_page + 2)"
-                       href="javascript:void(0)" v-text="current_page + 2"></a>
-                </div>
-
-                <div v-if="current_page < buttons.length - 2" class="page-item">
-                    <a class="page-link" @click="pageChange(current_page + 2)"
-                       href="javascript:void(0)">...</a>
-                </div>
-
-                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
-                    <a class="page-link" @click="pageChange(buttons.length)"
-                       href="javascript:void(0)" v-text="buttons.length"></a>
-                </div>
-            </div>
-            <div class="page-item" @click="NextPage()">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </div>
-
-        </div>
-    </div>
+    <!-- Pagination of list data -->
+    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                @page-change="feesHandlePageChange" v-if="!loading && tableData.length > 0"/>
 
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
     <!-- --- --- Fees --- --- -->
@@ -405,6 +335,10 @@
                         </div>
                     </div>
 
+                    <!-- Pagination of list data -->
+                    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                                @page-change="feesTypeHandlePageChange" v-if="!feesTypeListLoading && feesTypeTableData.length > 0"/>
+
                 </div>
             </div>
         </div>
@@ -553,6 +487,10 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Pagination of list data -->
+                    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                                @page-change="paymentTypeHandlePageChange" v-if="!paymentTypeListLoading && paymentTypeTableData.length > 0"/>
 
                 </div>
             </div>
@@ -703,6 +641,10 @@
 
                         </div>
                     </div>
+
+                    <!-- Pagination of list data -->
+                    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                                @page-change="paymentStatusHandlePageChange" v-if="!paymentStatusListLoading && paymentStatusTableData.length > 0"/>
 
                 </div>
             </div>
@@ -881,11 +823,14 @@ export default {
             },
             paymentStatusError: null,
 
-            current_page: 1,
             searchTimeOut: null,
             responseData: null,
             selected: [],
+            total_pages: 0,
+            current_page: 1,
             buttons: [],
+            last_page: 0,
+
         }
     },
     mounted() {
@@ -895,6 +840,30 @@ export default {
         this.paymentStatusList();
     },
     methods: {
+
+        // Function of fees handle page change
+        feesHandlePageChange(page) {
+            this.current_page = page;
+            this.feesList();
+        },
+
+        // Function of fees type handle page change
+        feesTypeHandlePageChange(page) {
+            this.current_page = page;
+            this.feesTypeList();
+        },
+
+        // Function of payment type handle page change
+        paymentTypeHandlePageChange(page) {
+            this.current_page = page;
+            this.paymentTypeList();
+        },
+
+        // Function of payment status handle page change
+        paymentStatusHandlePageChange(page) {
+            this.current_page = page;
+            this.paymentStatusList();
+        },
 
         // ---- ---- ---- ---- ---- ---- ----
         // ---- Fees
@@ -984,11 +953,11 @@ export default {
             apiServices.GET(apiRoutes.feesList, this.listData, (res) => {
                 this.loading = false;
                 if (res.message) {
-                    this.tableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                    this.tableData = res?.data?.data;
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }
@@ -1205,11 +1174,11 @@ export default {
             apiServices.GET(apiRoutes.feesTypesList, this.feesTypesListData, (res) => {
                 this.feesTypeListLoading = false;
                 if (res.message) {
-                    this.feesTypeTableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                    this.feesTypeTableData = res?.data?.data;
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }
@@ -1359,10 +1328,10 @@ export default {
                 this.paymentTypeListLoading = false;
                 if (res.message) {
                     this.paymentTypeTableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }
@@ -1512,10 +1481,10 @@ export default {
                 this.paymentStatusListLoading = false;
                 if (res.message) {
                     this.paymentStatusTableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }

@@ -92,79 +92,9 @@
     <!-- No data founded of table list data -->
     <noDataFounded :text="'holiday'" :newModalFunction="manageHolidayModalOpen" v-if="!loading && tableData.length === 0"/>
 
-    <!-- Pagination of table list data -->
-    <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
-        <div class="pagination admin-pagination">
-            <div class="page-item" @click="PrevPage()">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-left"></i>
-                </a>
-            </div>
-            <div v-if="buttons.length <= 6">
-                <div v-for="(page, index) in buttons" class="page-item"
-                     :class="{'active': current_page === page}">
-                    <a class="page-link" @click="pageChange(page)" href="javascript:void(0)"
-                       v-text="page"></a>
-                </div>
-            </div>
-            <div v-if="buttons.length > 6">
-                <div class="page-item" :class="{'active': current_page === 1}">
-                    <a class="page-link" @click="pageChange(1)"
-                       href="javascript:void(0)">1</a>
-                </div>
-
-                <div v-if="current_page > 3" class="page-item">
-                    <a class="page-link" @click="pageChange(current_page - 2)"
-                       href="javascript:void(0)">...</a>
-                </div>
-
-                <div v-if="current_page === buttons.length" class="page-item"
-                     :class="{'active': current_page === (current_page - 2)}">
-                    <a class="page-link" @click="pageChange(current_page - 2)"
-                       href="javascript:void(0)" v-text="current_page - 2"></a>
-                </div>
-
-                <div v-if="current_page > 2" class="page-item"
-                     :class="{'active': current_page === (current_page - 1)}">
-                    <a class="page-link" @click="pageChange(current_page - 1)"
-                       href="javascript:void(0)" v-text="current_page - 1"></a>
-                </div>
-
-                <div v-if="current_page !== 1 && current_page !== buttons.length" class="page-item active">
-                    <a class="page-link" @click="pageChange(current_page)" href="javascript:void(0)"
-                       v-text="current_page"></a>
-                </div>
-
-                <div v-if="current_page < buttons.length - 1" class="page-item"
-                     :class="{'active': current_page === (current_page + 1)}">
-                    <a class="page-link" @click="pageChange(current_page + 1)"
-                       href="javascript:void(0)" v-text="current_page + 1"></a>
-                </div>
-
-                <div v-if="current_page === 1" class="page-item"
-                     :class="{'active': current_page === (current_page + 2)}">
-                    <a class="page-link" @click="pageChange(current_page + 2)"
-                       href="javascript:void(0)" v-text="current_page + 2"></a>
-                </div>
-
-                <div v-if="current_page < buttons.length - 2" class="page-item">
-                    <a class="page-link" @click="pageChange(current_page + 2)"
-                       href="javascript:void(0)">...</a>
-                </div>
-
-                <div class="page-item" :class="{'active': current_page === (current_page - buttons.length)}">
-                    <a class="page-link" @click="pageChange(buttons.length)"
-                       href="javascript:void(0)" v-text="buttons.length"></a>
-                </div>
-            </div>
-            <div class="page-item" @click="NextPage()">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-chevron-right"></i>
-                </a>
-            </div>
-
-        </div>
-    </div>
+    <!-- Pagination of list data -->
+    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                @page-change="handlePageChange" v-if="!loading && tableData.length > 0"/>
 
     <!-- Modal of manage holiday -->
     <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -308,14 +238,16 @@ export default {
                 limit: 10,
                 page: 1,
             },
+            total_pages: 0,
             current_page: 1,
+            buttons: [],
+            last_page: 0,
             searchTimeOut: null,
             responseData: null,
             selected: [],
             manageHolidayLoading: false,
             error: null,
             deleteHolidayLoading: false,
-            buttons: [],
             manageHolidayTypeLoading: false,
             holidayTypeParam: {
                 name: '',
@@ -328,6 +260,12 @@ export default {
         this.flatpickrConfigEndDate();
     },
     methods: {
+
+        // Function of handle page change
+        handlePageChange(page) {
+            this.current_page = page;
+            this.holidayList();
+        },
 
         // Function to toggle check all
         toggleCheckAll(e) {
@@ -433,10 +371,10 @@ export default {
                 this.loading = false;
                 if (res.message) {
                     this.tableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }
@@ -449,28 +387,6 @@ export default {
             this.searchTimeout = setTimeout(() => {
                 this.holidayList();
             }, 800);
-        },
-
-        // Function to holiday previous page
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.holidayList()
-            }
-        },
-
-        // Function to holiday next page
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.holidayList()
-            }
-        },
-
-        // Function to holiday change page
-        pageChange(page) {
-            this.current_page = page;
-            this.holidayList();
         },
 
         // Function to holiday manage of create and update api callback

@@ -365,7 +365,6 @@ export default {
             apiServices.GET(apiRoutes.blogList, this.listData, (res) => {
                 this.loading = false;
                 if (res) {
-                    console.log(res?.data)
                     this.tableData = res?.data?.data;
                     this.last_page = res?.data?.last_page
                     this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
