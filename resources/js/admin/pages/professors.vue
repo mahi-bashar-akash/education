@@ -204,17 +204,36 @@
                 </div>
                 <div class="modal-body border-0">
 
-                    <div class="form-group">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <label for="upload-image"
-                                   class="form-label wpx-175 hpx-175 rounded-circle border d-flex justify-content-center align-items-center flex-column cursor-pointer">
-                                <input id="upload-image" type="file" name="upload-image" class="form-control"
-                                       hidden="hidden">
-                                <span class="d-block">
-                                    <i class="bi bi-cloud-arrow-down-fill fs-3"></i>
-                                </span>
-                                Click to upload image
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group">
+
+                            <!-- Avatar Upload -->
+                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                                   class="form-label wpx-170 hpx-170 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                                <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
+                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
                             </label>
+
+                            <!-- Avatar uploaded -->
+                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-170 hpx-170 rounded-circle" alt="uploaded image">
+                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                    <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                        <i class="bi bi-trash2"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Avatar preloader -->
+                            <div class="position-relative" v-if="uploadLoading">
+                                <div class="wpx-170 hpx-170 rounded-4 bg-secondary-subtle"></div>
+                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                    <div class="spinner-border text-secondary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -376,6 +395,9 @@ export default {
             error: null,
             deleteProfessorLoading: false,
             buttons: [],
+            uploadLoading: false,
+            uploadedImage: null,
+            uploadedImageId: null,
         }
     },
     mounted() {
@@ -615,7 +637,39 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
+
+        // Function of upload file
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.uploadedImage = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        // Function of delete file
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.uploadedImage = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
+        },
 
     }
 }

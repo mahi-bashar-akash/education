@@ -43,7 +43,7 @@
 
                                             <!-- Avatar uploaded -->
                                             <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-4" alt="uploaded image">
+                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
                                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                                     <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                                         <i class="bi bi-trash2"></i>
@@ -53,7 +53,7 @@
 
                                             <!-- Avatar preloader -->
                                             <div class="position-relative" v-if="uploadLoading">
-                                                <div class="wpx-200 hpx-200 rounded-4 bg-secondary-subtle"></div>
+                                                <div class="wpx-200 hpx-200 rounded-circle bg-secondary-subtle"></div>
                                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                                     <div class="spinner-border text-secondary" role="status">
                                                         <span class="visually-hidden">Loading...</span>

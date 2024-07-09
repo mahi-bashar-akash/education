@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Stuffs"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table data list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -102,13 +103,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table data list -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded screen when list data empty -->
     <noDataFounded :text="'stuff'" :newModalFunction="manageStuffModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination if table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -182,7 +183,7 @@
         </div>
     </div>
 
-    <!-- manage stuff modal -->
+    <!-- Modal of manage stuff -->
     <div class="modal fade" id="manageStuffModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageStuff()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -258,7 +259,7 @@
         </div>
     </div>
 
-    <!-- delete stuff modal -->
+    <!-- Modal of delete stuff -->
     <div class="modal fade" id="deleteStuffModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="stuffDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -314,10 +315,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Stuffs', route: 'stuff' },
@@ -357,7 +360,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -368,7 +371,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -378,14 +381,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage stuff modal open */
+        // Function of manage stuff modal open
         manageStuffModalOpen(data = null) {
             this.getDepartment();
             apiServices.clearErrorHandler()
@@ -405,21 +408,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage stuff modal close */
+        // Function of manage stuff modal close
         manageStuffModalClose() {
             let myModalEl = document.getElementById('manageStuffModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete stuff modal open */
+        // Function of delete stuff modal open
         deleteStuffModalOpen(id) {
             this.deleteStuffParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteStuffModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete stuff modal close */
+        // Function of delete stuff modal close
         deleteStuffModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -436,7 +439,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to stuff joining date */
+        // Function of stuff joining date as flatpickr config
         flatpickrConfigDate() {
             flatpickr("#joining-date", {
                 altFormat: 'j M Y',
@@ -447,7 +450,7 @@ export default {
             })
         },
 
-        /* Function to stuff list api */
+        // Function of stuff list api callback
         stuffList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -465,7 +468,7 @@ export default {
             })
         },
 
-        /* Function to stuff search data */
+        // Function of stuff search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -473,7 +476,7 @@ export default {
             }, 800);
         },
 
-        /* Function to stuff previous page */
+        // Function of stuff previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -481,7 +484,7 @@ export default {
             }
         },
 
-        /* Function to stuff next page */
+        // Function of stuff next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -489,13 +492,13 @@ export default {
             }
         },
 
-        /* Function to stuff change page */
+        // Function of stuff change page
         pageChange(page) {
             this.current_page = page;
             this.stuffList();
         },
 
-        /* Function to stuff manage of create and update api */
+        // Function of stuff manage as create and update api callback
         manageStuff() {
             if(this.formData.id === undefined) {
                 this.stuffCreate()
@@ -504,7 +507,7 @@ export default {
             }
         },
 
-        /* Function to stuff create api */
+        // Function of stuff create api callback
         stuffCreate() {
             this.manageStuffLoading = true;
             apiServices.POST(apiRoutes.stuffCreate, this.formData, (res) => {
@@ -527,7 +530,7 @@ export default {
             })
         },
 
-        /* Function to stuff update api */
+        // Function of stuff update api callback
         stuffUpdate() {
             this.manageStuffLoading = true;
             apiServices.PATCH(apiRoutes.stuffUpdate, this.formData, (res) => {
@@ -550,7 +553,7 @@ export default {
             })
         },
 
-        /* Function to stuff single api */
+        // Function of stuff single api callback
         stuffSingle(data) {
             apiServices.PUT(apiRoutes.stuffSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -561,7 +564,7 @@ export default {
             });
         },
 
-        /* Function to stuff delete api */
+        // Function of stuff delete api callback
         stuffDelete() {
             this.selected.forEach((v) => {
                 this.deleteStuffParam.ids.push(v);
@@ -579,7 +582,7 @@ export default {
             })
         },
 
-        /* Function to get department api */
+        // Function of get department api callback
         getDepartment(){
             apiServices.GET(apiRoutes.departmentList, '', (res) => {
                 if(res.message) {
