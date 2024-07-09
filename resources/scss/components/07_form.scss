@@ -1,5 +1,5 @@
 .form-label {
-    color: var(--light-gray) !important;
+    color: var(--bs-black) !important;
 }
 
 .form-control {
@@ -9,6 +9,9 @@
     box-shadow: 0 0 0 0 !important;
     border-radius: 12px !important;
     font-weight: 500 !important;
+    font-size: 14px !important;
+    height: 45px !important;
+    padding: 0 20px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;
@@ -24,6 +27,9 @@
     box-shadow: 0 0 0 0 !important;
     border-radius: 12px !important;
     font-weight: 500 !important;
+    font-size: 14px !important;
+    height: 45px !important;
+    padding: 0 20px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;
@@ -39,6 +45,7 @@
     padding: 10px 15px;
     border-radius: 12px !important;
     font-weight: 500 !important;
+    font-size: 13px !important;
 
     &:focus, &:active {
         transition: 0.3s all ease-in-out;
