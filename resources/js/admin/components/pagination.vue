@@ -57,10 +57,10 @@
                        v-text="buttons.length"></a>
                 </div>
             </div>
-            <div class="page-item" @click="NextPage">
-                <a class="page-link" href="javascript:void(0)">
+            <div class="page-item">
+                <button type="button" class="page-link" @click="NextPage" :disabled="buttons.length === currentPage">
                     <i class="bi bi-caret-right"></i>
-                </a>
+                </button>
             </div>
         </ul>
     </nav>
@@ -80,26 +80,30 @@ export default {
             currentPage: this.current_page,
         }
     },
-    mounted() {
-    },
+    mounted() {  },
     methods: {
-        prevPage() {
+
+        // Function of previous page
+        PrevPage() {
             if (this.currentPage > 1) {
                 this.currentPage = this.currentPage - 1;
                 this.emitPageChange();
             }
         },
-        nextPage() {
-            if (this.currentPage > 1) {
-                this.currentPage = this.currentPage + 1;
-                this.emitPageChange();
-            }
+
+        // Function of next page
+        NextPage() {
+            this.currentPage = this.currentPage + 1;
+            this.emitPageChange();
         },
+
+        // Function of page change
         pageChange(page) {
             this.currentPage = page;
             this.emitPageChange();
         },
 
+        // Emit page callback from another page
         emitPageChange() {
             this.$emit('page-change', this.currentPage);
         },

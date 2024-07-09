@@ -257,11 +257,11 @@ export default {
             tableData: [],
             listData: {
                 keyword: '',
-                limit: 2,
+                limit: 10,
                 page: 1,
             },
             total_pages: 0,
-            current_page: 0,
+            current_page: 1,
             buttons: [],
             last_page: 0,
             searchTimeOut: null,
