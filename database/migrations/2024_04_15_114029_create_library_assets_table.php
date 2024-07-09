@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('subject');
             $table->string('price');
             $table->string('department_id');
+            $table->string('avatar')->nullable();
             $table->tinyInteger('status')->comment('1. In Stock, 2.Out of Stock');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();

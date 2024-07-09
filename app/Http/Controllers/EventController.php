@@ -56,6 +56,7 @@ class EventController extends BaseController
             }
             $event = new Event();
             $admin_id = Auth::guard('admins')->id();
+            $event->avatar = $request->avatar ?? null;
             $event->name = $request->name;
             $event->date = $request->date;
             $event->start_time = $request->start_time;
@@ -118,6 +119,7 @@ class EventController extends BaseController
             if($event == null){
                 return ['status' => 500, 'errors' => 'Event not found'];
             }
+            $event->avatar = $request->avatar ?? null;
             $event->name = $request->name;
             $event->date = $request->date;
             $event->start_time = $request->start_time;

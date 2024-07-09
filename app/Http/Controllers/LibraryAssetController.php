@@ -16,7 +16,7 @@ class LibraryAssetController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $libraryAsset = LibraryAsset::with('department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $libraryAsset = LibraryAsset::with( 'department_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $libraryAsset->where(
@@ -55,6 +55,7 @@ class LibraryAssetController extends BaseController
             }
             $libraryAsset = new LibraryAsset();
             $admin_id = Auth::guard('admins')->id();
+            $libraryAsset->avatar = $request->avatar ?? null;
             $libraryAsset->author = $request->author;
             $libraryAsset->name = $request->name;
             $libraryAsset->subject = $request->subject;
@@ -115,6 +116,7 @@ class LibraryAssetController extends BaseController
             if($libraryAsset == null){
                 return ['status' => 500, 'errors' => 'Library asset data not found'];
             }
+            $libraryAsset->avatar = $request->avatar ?? null;
             $libraryAsset->author = $request->author;
             $libraryAsset->name = $request->name;
             $libraryAsset->subject = $request->subject;

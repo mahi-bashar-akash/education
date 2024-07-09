@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('department_id');
             $table->string('phone');
             $table->string('joining_date');
+            $table->string('avatar')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

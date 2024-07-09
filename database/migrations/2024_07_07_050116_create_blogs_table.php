@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('author_name');
             $table->string('description');
+            $table->string('avatar')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

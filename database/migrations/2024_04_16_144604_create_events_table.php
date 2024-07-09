@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('guest');
             $table->string('location');
+            $table->string('avatar')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

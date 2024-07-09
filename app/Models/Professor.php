@@ -11,4 +11,9 @@ class Professor extends Model
     public function department_info(){
         return  $this->hasOne(Department::class, 'id', 'department_id');
     }
+
+    public function media() {
+        return $this->hasOne( Media::class, 'id', 'avatar' );
+    }
+
 }

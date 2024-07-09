@@ -52,6 +52,7 @@ class BlogController extends BaseController
             $blog = new Blog();
             $admin_id = Auth::guard('admins')->id();
             $blog->title = $request->title;
+            $blog->avatar = $request->avatar ?? null;
             $blog->author_name = $request->author_name;
             $blog->description = $request->description;
             $blog->admin_id = $admin_id;
@@ -105,6 +106,7 @@ class BlogController extends BaseController
                 return ['status' => 500, 'errors' => 'Blog data not found'];
             }
             $blog->title = $request->title;
+            $blog->avatar = $request->avatar ?? null;
             $blog->author_name = $request->author_name;
             $blog->description = $request->description;
             $blog->save();

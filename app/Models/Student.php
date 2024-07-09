@@ -13,4 +13,8 @@ class Student extends Model
         return  $this->hasOne(Course::class, 'id', 'course_id');
     }
 
+    public function media() {
+        return $this->hasOne( Media::class, 'id', 'avatar' );
+    }
+
 }

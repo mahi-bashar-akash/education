@@ -13,4 +13,8 @@ class LibraryAsset extends Model
         return  $this->hasOne(Department::class, 'id', 'department_id');
     }
 
+    public function media() {
+        return $this->hasOne( Media::class, 'id', 'avatar' );
+    }
+
 }

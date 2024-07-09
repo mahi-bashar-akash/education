@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('course_id');
             $table->string('phone');
+            $table->string('avatar')->nullable();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

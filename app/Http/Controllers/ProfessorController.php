@@ -54,6 +54,7 @@ class ProfessorController extends BaseController
             }
             $professor = new Professor();
             $admin_id = Auth::guard('admins')->id();
+            $professor->avatar = $request->avatar ?? null;
             $professor->name = $request->name;
             $professor->email = $request->email;
             $professor->educational_qualification = $request->educational_qualification;
@@ -114,6 +115,7 @@ class ProfessorController extends BaseController
             if($professor == null){
                 return ['status' => 500, 'errors' => 'Professor data not found'];
             }
+            $professor->avatar = $request->avatar ?? null;
             $professor->name = $request->name;
             $professor->email = $request->email;
             $professor->educational_qualification = $request->educational_qualification;

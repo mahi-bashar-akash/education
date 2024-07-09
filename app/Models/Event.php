@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    public function media() {
+        return $this->hasOne( Media::class, 'id', 'avatar' );
+    }
+
 }

@@ -16,7 +16,7 @@ class StudentController extends BaseController
             $admin_id = Auth::guard('admins')->id();
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $students = Student::with('course_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
+            $students = Student::with( 'course_info')->where('admin_id', $admin_id)->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $students->where(
@@ -56,6 +56,7 @@ class StudentController extends BaseController
             $student = new Student();
             $admin_id = Auth::guard('admins')->id();
             $student->admission_date = $request->admission_date;
+            $student->avatar = $request->avatar ?? null;
             $student->name = $request->name;
             $student->roll_or_id = $request->roll_or_id;
             $student->phone = $request->phone;
@@ -115,6 +116,7 @@ class StudentController extends BaseController
             if($student == null){
                 return ['status' => 500, 'errors' => 'Student data not found'];
             }
+            $student->avatar = $request->avatar ?? null;
             $student->admission_date = $request->admission_date;
             $student->name = $request->name;
             $student->roll_or_id = $request->roll_or_id;
