@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Events"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table list data -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -106,13 +107,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table list data -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data -->
     <noDataFounded :text="'course'" :newModalFunction="manageEventModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -186,7 +187,7 @@
         </div>
     </div>
 
-    <!-- manage event modal -->
+    <!-- Modal of manage event -->
     <div class="modal fade" id="manageEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageEvent()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -291,7 +292,7 @@
         </div>
     </div>
 
-    <!-- delete event modal -->
+    <!-- Modal of delete event -->
     <div class="modal fade" id="deleteEventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="eventDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -347,10 +348,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Events', route: 'events' },
@@ -395,7 +398,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -406,7 +409,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -416,14 +419,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage event modal open */
+        // Function of manage event modal open
         manageEventModalOpen(data = null) {
             apiServices.clearErrorHandler()
             if(data !== null) {
@@ -443,21 +446,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage event modal close */
+        // Function of manage event modal close
         manageEventModalClose() {
             let myModalEl = document.getElementById('manageEventModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete event modal open */
+        // Function of delete event modal open
         deleteEventModalOpen(id) {
             this.deleteEventParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteEventModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete event modal close */
+        // Function of delete event modal close
         deleteEventModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -475,7 +478,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to event-date */
+        // Function of event date flatpickr config
         flatpickrConfigDate() {
             flatpickr("#event-date", {
                 altFormat: 'j M Y',
@@ -486,7 +489,7 @@ export default {
             })
         },
 
-        /* Function to event-start-time */
+        // Function of event start time flatpickr config
         flatpickrConfigStartTime() {
             flatpickr("#event-start-time", {
                 enableTime: true,
@@ -497,7 +500,7 @@ export default {
             })
         },
 
-        /* Function to event-end-time */
+        // Function of event end time flatpickr config
         flatpickrConfigEndTime() {
             flatpickr("#event-end-time", {
                 enableTime: true,
@@ -508,7 +511,7 @@ export default {
             })
         },
 
-        /* Function to event list api */
+        // Function of event list api callback
         eventList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -526,7 +529,7 @@ export default {
             })
         },
 
-        /* Function to event search data */
+        // Function of event search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -534,7 +537,7 @@ export default {
             }, 800);
         },
 
-        /* Function to event previous page */
+        // Function of event previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -542,7 +545,7 @@ export default {
             }
         },
 
-        /* Function to event next page */
+        // Function of event next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -550,13 +553,13 @@ export default {
             }
         },
 
-        /* Function to event change page */
+        // Function of event change page
         pageChange(page) {
             this.current_page = page;
             this.eventList();
         },
 
-        /* Function to event manage of create and update api */
+        // Function of event manage of create and update api callback
         manageEvent() {
             if(this.formData.id === undefined) {
                 this.eventCreate()
@@ -565,7 +568,7 @@ export default {
             }
         },
 
-        /* Function to event create api */
+        // Function of event create api callback
         eventCreate() {
             this.manageEventLoading = true;
             apiServices.POST(apiRoutes.eventCreate, this.formData, (res) => {
@@ -589,7 +592,7 @@ export default {
             })
         },
 
-        /* Function to event update api */
+        // Function of event update api callback
         eventUpdate() {
             this.manageEventLoading = true;
             apiServices.PATCH(apiRoutes.eventUpdate, this.formData, (res) => {
@@ -613,7 +616,7 @@ export default {
             })
         },
 
-        /* Function to event single api */
+        // Function of event single api callback
         eventSingle(data) {
             apiServices.PUT(apiRoutes.eventSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -624,7 +627,7 @@ export default {
             });
         },
 
-        /* Function to event delete api */
+        // Function of event delete api callback
         eventDelete() {
             this.selected.forEach((v) => {
                 this.deleteEventParam.ids.push(v);
@@ -642,7 +645,7 @@ export default {
             })
         },
 
-        /* Function of upload file */
+        // Function of upload file
         uploadFile(event) {
             this.uploadLoading = true;
             let file = event.target.files[0];
@@ -661,7 +664,7 @@ export default {
             })
         },
 
-        /* Function of delete file */
+        // Function of delete file
         deleteFile() {
             this.uploadLoading = true;
             apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
