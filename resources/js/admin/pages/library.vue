@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Library Assets"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table data list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
             <table class="table">
@@ -103,13 +104,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table data list -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data -->
     <noDataFounded :text="'library asset'" :newModalFunction="manageLibraryAssetModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -183,7 +184,7 @@
         </div>
     </div>
 
-    <!-- manage library asset modal -->
+    <!-- Modal of manage library asset -->
     <div class="modal fade" id="manageLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -271,7 +272,7 @@
         </div>
     </div>
 
-    <!-- delete library asset modal -->
+    <!-- Modal of delete library asset -->
     <div class="modal fade" id="deleteLibraryAssetModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -328,10 +329,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Library', route: 'library' },
@@ -369,7 +372,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -380,7 +383,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -390,14 +393,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage library asset modal open */
+        // Function of manage library asset modal open
         manageLibraryAssetModalOpen(data = null) {
             this.getDepartment()
             apiServices.clearErrorHandler()
@@ -416,21 +419,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage library asset modal close */
+        // Function of manage library asset modal close
         manageLibraryAssetModalClose() {
             let myModalEl = document.getElementById('manageLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete library asset modal open */
+        // Function of delete library asset modal open
         deleteLibraryAssetModalOpen(id) {
             this.deleteLibraryAssetParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteLibraryAssetModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete library asset modal close */
+        // Function of delete library asset modal close
         deleteLibraryAssetModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -446,7 +449,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to library asset list api */
+        // Function of library asset list api callback
         libraryAssetList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -464,7 +467,7 @@ export default {
             })
         },
 
-        /* Function to library asset search data */
+        // Function of library asset search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -472,7 +475,7 @@ export default {
             }, 800);
         },
 
-        /* Function to library asset previous page */
+        // Function of library asset previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -480,7 +483,7 @@ export default {
             }
         },
 
-        /* Function to library asset next page */
+        // Function of library asset next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -488,13 +491,13 @@ export default {
             }
         },
 
-        /* Function to library asset change page */
+        // Function of library asset change page
         pageChange(page) {
             this.current_page = page;
             this.libraryAssetList();
         },
 
-        /* Function to library asset manage of create and update api */
+        // Function of library asset manage as create and update api callback
         manageLibraryAsset() {
             if(this.formData.id === undefined) {
                 this.libraryAssetCreate()
@@ -503,7 +506,7 @@ export default {
             }
         },
 
-        /* Function to library asset create api */
+        // Function of library asset create api callback
         libraryAssetCreate() {
             this.manageLibraryAssetLoading = true;
             apiServices.POST(apiRoutes.libraryAssetCreate, this.formData, (res) => {
@@ -525,7 +528,7 @@ export default {
             })
         },
 
-        /* Function to library asset update api */
+        // Function of library asset update api callback
         libraryAssetUpdate() {
             this.manageLibraryAssetLoading = true;
             apiServices.PATCH(apiRoutes.libraryAssetUpdate, this.formData, (res) => {
@@ -547,7 +550,7 @@ export default {
             })
         },
 
-        /* Function to library asset single api */
+        // Function of library asset single api callback
         libraryAssetSingle(data) {
             apiServices.PUT(apiRoutes.libraryAssetSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -558,7 +561,7 @@ export default {
             });
         },
 
-        /* Function to library asset delete api */
+        // Function of library asset delete api callback
         libraryAssetDelete() {
             this.selected.forEach((v) => {
                 this.deleteLibraryAssetParam.ids.push(v);
@@ -576,7 +579,7 @@ export default {
             })
         },
 
-        /* Function to department list api */
+        // Function of department list api callback
         getDepartment() {
             apiServices.GET(apiRoutes.departmentList, '', (res) => {
                 if(res.message) {
@@ -585,7 +588,7 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
 
     }
 }

@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Fees"/>
     </div>
 
-    <!-- fees search and new -->
+    <!-- Fees search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -50,6 +50,7 @@
         </div>
     </div>
 
+    <!-- Table list data -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -133,13 +134,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of list data -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data -->
     <noDataFounded :text="'fees'" :newModalFunction="manageFeesModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -213,7 +214,11 @@
         </div>
     </div>
 
-    <!-- manage fees modal -->
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+    <!-- --- --- Fees --- --- -->
+    <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
+
+    <!-- Modal of manage fees -->
     <div class="modal fade" id="manageFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageFees()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -291,7 +296,7 @@
         </div>
     </div>
 
-    <!-- delete fees modal -->
+    <!-- Modal of delete fees -->
     <div class="modal fade" id="deleteFeesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="feesDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -331,12 +336,11 @@
         </div>
     </div>
 
-
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
-    <!-- Fees type -->
+    <!-- --- --- Fees type --- --- -->
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
 
-    <!-- fees type list modal -->
+    <!-- Modal of fees type list -->
     <div class="modal fade" id="feesTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content py-2 rounded-3 border-0">
@@ -406,7 +410,7 @@
         </div>
     </div>
 
-    <!-- Manage fees type modal -->
+    <!-- Modal of Manage fees type -->
     <div class="modal fade" id="manageFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageFeesType()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -441,7 +445,7 @@
         </div>
     </div>
 
-    <!-- delete fees type modal -->
+    <!-- Modal of delete fees type -->
     <div class="modal fade" id="deleteFeesTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="feesTypeDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -482,10 +486,10 @@
     </div>
 
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
-    <!-- Payment type -->
+    <!-- --- --- Payment type --- --- -->
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
 
-    <!-- payment type list modal -->
+    <!-- Modal of payment type list -->
     <div class="modal fade" id="paymentTypeListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content py-2 rounded-3 border-0">
@@ -555,7 +559,7 @@
         </div>
     </div>
 
-    <!-- Manage payment type modal -->
+    <!-- Modal of manage payment type -->
     <div class="modal fade" id="managePaymentTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="managePaymentType()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -590,7 +594,7 @@
         </div>
     </div>
 
-    <!-- delete payment type modal -->
+    <!-- Modal of delete payment type -->
     <div class="modal fade" id="deletePaymentTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="paymentTypeDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -631,10 +635,10 @@
     </div>
 
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
-    <!-- Payment status -->
+    <!-- --- --- Payment status --- --- -->
     <!-- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- -->
 
-    <!-- payment status list modal -->
+    <!-- Modal of payment status list -->
     <div class="modal fade" id="paymentStatusListModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content px-3 py-2 rounded-3 border-0">
@@ -705,7 +709,7 @@
         </div>
     </div>
 
-    <!-- Manage payment status modal -->
+    <!-- Modal of manage payment status -->
     <div class="modal fade" id="managePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="managePaymentStatus()" class="modal-content border-0 px-3 py-2 rounded-3">
@@ -740,7 +744,7 @@
         </div>
     </div>
 
-    <!-- delete payment status modal -->
+    <!-- Modal of delete payment status -->
     <div class="modal fade" id="deletePaymentStatusModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="paymentStatusDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -795,10 +799,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Fees', route: 'fees' },
@@ -825,7 +831,7 @@ export default {
                 ids: []
             },
 
-            /* fees type */
+            // Fees type
             manageFeesTypeLoading: false,
             feesTypeParam: { name: '' },
             feesTypeListLoading: false,
@@ -839,7 +845,7 @@ export default {
                 page: 1,
             },
 
-            /* payment type */
+            // Payment type
             managePaymentTypeLoading: false,
             paymentTypeParam: {
                 name: '',
@@ -857,7 +863,7 @@ export default {
             },
             paymentTypeError: null,
 
-            /* payment status */
+            // Payment status
             managePaymentStatusLoading: false,
             paymentStatusListLoading: false,
             deletePaymentStatusLoading: false,
@@ -875,7 +881,6 @@ export default {
             },
             paymentStatusError: null,
 
-            // pagination
             current_page: 1,
             searchTimeOut: null,
             responseData: null,
@@ -891,9 +896,11 @@ export default {
     },
     methods: {
 
-        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- fees ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+        // ---- ---- ---- ---- ---- ---- ----
+        // ---- Fees
+        // ---- ---- ---- ---- ---- ---- ----
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -904,7 +911,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -914,14 +921,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage fees modal open */
+        // Function to manage fees modal open
         manageFeesModalOpen(data = null) {
             this.getStudent();
             apiServices.clearErrorHandler()
@@ -940,21 +947,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage fees modal close */
+        // Function of manage fees modal close
         manageFeesModalClose() {
             let myModalEl = document.getElementById('manageFeesModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete fees modal open */
+        // Function of delete fees modal open
         deleteFeesModalOpen(id) {
             this.deleteFeesParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteFeesModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete fees modal close */
+        // Function of delete fees modal close
         deleteFeesModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -970,7 +977,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to fees list api */
+        // Function of fees list api callback
         feesList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -988,7 +995,7 @@ export default {
             })
         },
 
-        /* Function to fees search data */
+        // Function of fees search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -996,7 +1003,7 @@ export default {
             }, 800);
         },
 
-        /* Function to fees previous page */
+        // Function of fees previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -1004,7 +1011,7 @@ export default {
             }
         },
 
-        /* Function to fees next page */
+        // Function of fees next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -1012,13 +1019,13 @@ export default {
             }
         },
 
-        /* Function to fees change page */
+        // Function of fees change page
         pageChange(page) {
             this.current_page = page;
             this.feesList();
         },
 
-        /* Function to fees manage of create and update api */
+        // Function of fees manage as create and update api callback
         manageFees() {
             if(this.formData.id === undefined) {
                 this.feesCreate()
@@ -1027,7 +1034,7 @@ export default {
             }
         },
 
-        /* Function to fees create api */
+        // Function of fees create api callback
         feesCreate() {
             this.manageFeesLoading = true;
             apiServices.POST(apiRoutes.feesCreate, this.formData, (res) => {
@@ -1049,7 +1056,7 @@ export default {
             })
         },
 
-        /* Function to fees update api */
+        // Function of fees update api callback
         feesUpdate() {
             this.manageFeesLoading = true;
             apiServices.PATCH(apiRoutes.feesUpdate, this.formData, (res) => {
@@ -1071,7 +1078,7 @@ export default {
             })
         },
 
-        /* Function to fees single api */
+        // Function of fees single api callback
         feesSingle(data) {
             apiServices.PUT(apiRoutes.feesSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -1082,7 +1089,7 @@ export default {
             });
         },
 
-        /* Function to fees delete api */
+        // Function of fees delete api callback
         feesDelete() {
             this.selected.forEach((v) => {
                 this.deleteFeesParam.ids.push(v);
@@ -1100,7 +1107,7 @@ export default {
             })
         },
 
-        /* Function to get professor api */
+        // Function of get professor api callback
         getStudent(){
             apiServices.GET(apiRoutes.studentList, '', (res) => {
                 if(res.message) {
@@ -1111,9 +1118,11 @@ export default {
             })
         },
 
-        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- fees type ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+        // ---- ---- ---- ---- ---- ---- ----
+        // ---- Fees type
+        // ---- ---- ---- ---- ---- ---- ----
 
-        /* Function to manage fees type modal open */
+        // Function of manage fees type modal open
         manageFeesTypeModalOpen(data = null) {
             this.feesTypeModalListClose();
             apiServices.clearErrorHandler();
@@ -1126,7 +1135,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to fees type single api */
+        // Function of fees type single api callback
         feesTypeSingle(data) {
             apiServices.PUT(apiRoutes.feesTypesSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -1137,7 +1146,7 @@ export default {
             });
         },
 
-        /* Function to manage fees type modal close */
+        // Function of manage fees type modal close
         manageFeesTypeModalClose() {
             this.feesTypeModalListOpen();
             let myModalEl = document.getElementById('manageFeesTypeModal');
@@ -1145,7 +1154,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to manage fees type */
+        // Function of manage fees type api callback
         manageFeesType() {
             if(this.feesTypeParam.id === undefined) {
                 this.createFeesType();
@@ -1154,7 +1163,7 @@ export default {
             }
         },
 
-        /* Function to create fees type */
+        // Function of create fees type api callback
         createFeesType() {
             this.manageFeesTypeLoading = true;
             apiServices.POST(apiRoutes.feesTypesCreate, this.feesTypeParam, (res) => {
@@ -1172,7 +1181,7 @@ export default {
             })
         },
 
-        /* Function to update fees type */
+        // Function of update fees type api callback
         updateFeesType() {
             this.manageFeesTypeLoading = true;
             apiServices.PATCH(apiRoutes.feesTypesUpdate, this.feesTypeParam, (res) => {
@@ -1190,7 +1199,7 @@ export default {
             })
         },
 
-        /* Function to fees type list */
+        // Function of fees type list api callback
         feesTypeList() {
             this.feesTypeListLoading = true;
             apiServices.GET(apiRoutes.feesTypesList, this.feesTypesListData, (res) => {
@@ -1207,7 +1216,7 @@ export default {
             })
         },
 
-        /* Function to fees type search data */
+        // Function of fees type search data
         feesTypeSearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -1215,20 +1224,20 @@ export default {
             }, 800);
         },
 
-        /* Function to fees type modal list open */
+        // Function of fees type modal list open
         feesTypeModalListOpen() {
             const myModal = new bootstrap.Modal("#feesTypeListModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to fees type modal list open */
+        // Function of fees type modal list close
         feesTypeModalListClose() {
             let myModalEl = document.getElementById('feesTypeListModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete fees type modal open */
+        // Function of delete fees type modal open
         deleteFeesTypeModalOpen(id) {
             this.feesTypeModalListClose();
             this.deleteFeesTypeParam.ids.push(id);
@@ -1236,7 +1245,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to delete fees type modal close */
+        // Function of delete fees type modal close
         deleteFeesTypeModalClose() {
             this.feesTypeModalListOpen();
             let myModalEl = document.getElementById('deleteFeesTypeModal');
@@ -1244,7 +1253,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to fees type delete api */
+        // Function of fees type delete api callback
         feesTypeDelete() {
             this.selected.forEach((v) => {
                 this.deleteFeesTypeParam.ids.push(v);
@@ -1262,9 +1271,11 @@ export default {
             })
         },
 
-        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment type ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+        // ---- ---- ---- ---- ---- ---- ----
+        // ---- Payment type
+        // ---- ---- ---- ---- ---- ---- ----
 
-        /* Function to manage payment type modal open */
+        // Function of manage payment type modal open
         managePaymentTypeModalOpen(data = null) {
             this.paymentTypeListClose();
             apiServices.clearErrorHandler()
@@ -1277,7 +1288,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to payment type single api */
+        // Function of payment type single api callback
         paymentTypeSingle(data) {
             apiServices.PUT(apiRoutes.paymentTypesSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -1288,7 +1299,7 @@ export default {
             });
         },
 
-        /* Function to manage payment type modal close */
+        // Function of manage payment type modal close
         managePaymentTypeModalClose() {
             this.paymentTypeListOpen();
             let myModalEl = document.getElementById('managePaymentTypeModal');
@@ -1296,7 +1307,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to manage payment type */
+        // Function of manage payment type api callback
         managePaymentType() {
             if(this.paymentTypeParam.id === undefined) {
                 this.createPaymentType();
@@ -1305,7 +1316,7 @@ export default {
             }
         },
 
-        /* Function to create payment type */
+        // Function of create payment type api callback
         createPaymentType() {
             this.managePaymentTypeLoading = true;
             apiServices.POST(apiRoutes.paymentTypesCreate, this.paymentTypeParam, (res) => {
@@ -1323,7 +1334,7 @@ export default {
             })
         },
 
-        /* Function to update payment type */
+        // Function of update payment type api callback
         updatePaymentType() {
             this.managePaymentTypeLoading = true;
             apiServices.PATCH(apiRoutes.paymentTypesUpdate, this.paymentTypeParam, (res) => {
@@ -1341,7 +1352,7 @@ export default {
             })
         },
 
-        /* Function to payment type list */
+        // Function of payment type list api callback
         paymentTypeList() {
             this.paymentTypeListLoading = true;
             apiServices.GET(apiRoutes.paymentTypesList, this.paymentTypesListData, (res) => {
@@ -1358,7 +1369,7 @@ export default {
             })
         },
 
-        /* Function to payment type search data */
+        // Function of payment type search data
         paymentTypeSearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -1366,20 +1377,20 @@ export default {
             }, 800);
         },
 
-        /* Function to payment type modal list open */
+        // Function of payment type modal list open
         paymentTypeListOpen() {
             const myModal = new bootstrap.Modal("#paymentTypeListModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to payment type modal list open */
+        // Function of payment type modal list close
         paymentTypeListClose() {
             let myModalEl = document.getElementById('paymentTypeListModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete payment type modal open */
+        // Function of delete payment type modal open
         deletePaymentTypeModalOpen(id) {
             this.paymentTypeListClose();
             this.deletePaymentTypeParam.ids.push(id);
@@ -1387,7 +1398,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to delete payment type modal close */
+        // Function of delete payment type modal close
         deletePaymentTypeModalClose() {
             this.paymentTypeListOpen();
             let myModalEl = document.getElementById('deletePaymentTypeModal');
@@ -1395,7 +1406,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to payment type delete api */
+        // Function of payment type delete api callback
         paymentTypeDelete() {
             this.selected.forEach((v) => {
                 this.deletePaymentTypeParam.ids.push(v);
@@ -1413,9 +1424,11 @@ export default {
             })
         },
 
-        /* ---- ---- ---- ---- ---- ---- ---- ---- ---- payment status ---- ---- ---- ---- ---- ---- ---- ---- ---- */
+        // ---- ---- ---- ---- ---- ---- ----
+        // ---- Payment status
+        // ---- ---- ---- ---- ---- ---- ----
 
-        /* Function to manage payment status modal open */
+        // Function of manage payment status modal open
         managePaymentStatusModalOpen(data = null) {
             this.paymentStatusListClose();
             apiServices.clearErrorHandler();
@@ -1428,7 +1441,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to payment status single api */
+        // Function of payment status single api callback
         paymentStatusSingle(data) {
             apiServices.PUT(apiRoutes.paymentStatusSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -1439,7 +1452,7 @@ export default {
             });
         },
 
-        /* Function to manage payment status modal close */
+        // Function of manage payment status modal close
         managePaymentStatusModalClose() {
             this.paymentStatusListOpen();
             let myModalEl = document.getElementById('managePaymentStatusModal');
@@ -1447,7 +1460,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to manage payment status */
+        // Function of manage payment status api callback
         managePaymentStatus() {
             if(this.paymentStatusParam.id === undefined) {
                 this.createPaymentStatus();
@@ -1456,7 +1469,7 @@ export default {
             }
         },
 
-        /* Function to create payment status */
+        // Function of create payment status api callback
         createPaymentStatus() {
             this.managePaymentStatusLoading = true;
             apiServices.POST(apiRoutes.paymentStatusCreate, this.paymentStatusParam, (res) => {
@@ -1474,7 +1487,7 @@ export default {
             })
         },
 
-        /* Function to update payment status */
+        // Function of update payment status api callback
         updatePaymentStatus() {
             this.managePaymentStatusLoading = true;
             apiServices.PATCH(apiRoutes.paymentStatusUpdate, this.paymentStatusParam, (res) => {
@@ -1492,7 +1505,7 @@ export default {
             })
         },
 
-        /* Function to payment status list */
+        // Function of payment status list api callback
         paymentStatusList() {
             this.paymentStatusListLoading = true;
             apiServices.GET(apiRoutes.paymentStatusList, this.paymentStatusListData, (res) => {
@@ -1509,20 +1522,20 @@ export default {
             })
         },
 
-        /* Function to payment status modal list open */
+        // Function of payment status modal list open
         paymentStatusListOpen() {
             const myModal = new bootstrap.Modal("#paymentStatusListModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to payment status modal list open */
+        // Function of payment status modal list close
         paymentStatusListClose() {
             let myModalEl = document.getElementById('paymentStatusListModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to payment type search data */
+        // Function of payment type search data
         paymentStatusSearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -1530,7 +1543,7 @@ export default {
             }, 800);
         },
 
-        /* Function to delete payment status modal open */
+        // Function of delete payment status modal open
         deletePaymentStatusModalOpen(id) {
             this.paymentStatusListClose();
             this.deletePaymentStatusParam.ids.push(id);
@@ -1538,7 +1551,7 @@ export default {
             myModal.show();
         },
 
-        /* Function to delete payment status modal close */
+        // Function of delete payment status modal close
         deletePaymentStatusModalClose() {
             this.paymentStatusListOpen();
             let myModalEl = document.getElementById('deletePaymentStatusModal');
@@ -1546,7 +1559,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to payment status delete api */
+        // Function of payment status delete api callback
         paymentStatusDelete() {
             this.selected.forEach((v) => {
                 this.deletePaymentStatusParam.ids.push(v);

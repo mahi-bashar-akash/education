@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Holidays"/>
     </div>
 
-    <!-- holiday search and new -->
+    <!-- Holiday search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -21,6 +21,7 @@
         </div>
     </div>
 
+    <!-- Table data list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -85,13 +86,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of list data -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data -->
     <noDataFounded :text="'holiday'" :newModalFunction="manageHolidayModalOpen" v-if="!loading && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -165,7 +166,7 @@
         </div>
     </div>
 
-    <!-- manage holiday modal -->
+    <!-- Modal of manage holiday -->
     <div class="modal fade" id="manageHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -224,7 +225,7 @@
         </div>
     </div>
 
-    <!-- delete holiday modal -->
+    <!-- Modal of delete holiday -->
     <div class="modal fade" id="deleteHolidayModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <form @submit.prevent="holidayDelete()" class="modal-dialog modal-dialog-centered">
@@ -281,10 +282,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Holidays', route: 'holiday' },
@@ -326,7 +329,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function to toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -337,7 +340,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function to toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -347,14 +350,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function to check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage holiday modal open */
+        // Function to manage holiday modal open
         manageHolidayModalOpen(data = null) {
             apiServices.clearErrorHandler()
             if(data !== null) {
@@ -371,21 +374,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage holiday modal close */
+        // Function to manage holiday modal close
         manageHolidayModalClose() {
             let myModalEl = document.getElementById('manageHolidayModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete holiday modal open */
+        // Function to delete holiday modal open
         deleteHolidayModalOpen(id) {
             this.deleteHolidayParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteHolidayModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete holiday modal close */
+        // Function to delete holiday modal close
         deleteHolidayModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -400,7 +403,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to holiday start date */
+        // Function to holiday start date as flatpickr config
         flatpickrConfigStartDate() {
             flatpickr("#start-date", {
                 altFormat: 'j M Y',
@@ -411,7 +414,7 @@ export default {
             })
         },
 
-        /* Function to holiday end date */
+        // Function to holiday end date as flatpickr config
         flatpickrConfigEndDate() {
             flatpickr("#end-date", {
                 altFormat: 'j M Y',
@@ -422,7 +425,7 @@ export default {
             })
         },
 
-        /* Function to holiday list api */
+        // Function to holiday list api callback
         holidayList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -440,7 +443,7 @@ export default {
             })
         },
 
-        /* Function to holiday search data */
+        // Function to holiday search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -448,7 +451,7 @@ export default {
             }, 800);
         },
 
-        /* Function to holiday previous page */
+        // Function to holiday previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -456,7 +459,7 @@ export default {
             }
         },
 
-        /* Function to holiday next page */
+        // Function to holiday next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -464,13 +467,13 @@ export default {
             }
         },
 
-        /* Function to holiday change page */
+        // Function to holiday change page
         pageChange(page) {
             this.current_page = page;
             this.holidayList();
         },
 
-        /* Function to holiday manage of create and update api */
+        // Function to holiday manage of create and update api callback
         manageHoliday() {
             if(this.formData.id === undefined) {
                 this.holidayCreate()
@@ -479,7 +482,7 @@ export default {
             }
         },
 
-        /* Function to holiday create api */
+        // Function to holiday create api callback
         holidayCreate() {
             this.manageHolidayLoading = true;
             apiServices.POST(apiRoutes.holidayCreate, this.formData, (res) => {
@@ -500,7 +503,7 @@ export default {
             })
         },
 
-        /* Function to holiday update api */
+        // Function to holiday update api callback
         holidayUpdate() {
             this.manageHolidayLoading = true;
             apiServices.PATCH(apiRoutes.holidayUpdate, this.formData, (res) => {
@@ -521,7 +524,7 @@ export default {
             })
         },
 
-        /* Function to holiday single api */
+        // Function to holiday single api callback
         holidaySingle(data) {
             apiServices.PUT(apiRoutes.holidaySingle, { id: data }, (res) => {
                 if (res.message) {
@@ -532,7 +535,7 @@ export default {
             });
         },
 
-        /* Function to holiday delete api */
+        // Function to holiday delete api callback
         holidayDelete() {
             this.selected.forEach((v) => {
                 this.deleteHolidayParam.ids.push(v);

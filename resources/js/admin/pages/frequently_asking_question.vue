@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Frequently Asking Question"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table list data -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -86,13 +87,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of table data list -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded of table list data -->
     <noDataFounded :text="'Frequently Asking Question'" :newModalFunction="manageFrequentlyAskingQuestionModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of table list data -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -166,7 +167,7 @@
         </div>
     </div>
 
-    <!-- manage frequently asking question modal -->
+    <!-- Modal of manage frequently asking question -->
     <div class="modal fade" id="manageFrequentlyAskingQuestionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageFrequentlyAskingQuestion()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -210,7 +211,7 @@
         </div>
     </div>
 
-    <!-- delete frequently asking question modal -->
+    <!-- Modal of delete frequently asking question -->
     <div class="modal fade" id="deleteFrequentlyAskingQuestionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="FrequentlyAskingQuestionDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -265,10 +266,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Frequently Asking Questions', route: 'faq' },
@@ -304,7 +307,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -315,7 +318,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -325,14 +328,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage frequently asking question modal open */
+        // Function of manage frequently asking question modal open
         manageFrequentlyAskingQuestionModalOpen(data = null) {
             apiServices.clearErrorHandler()
             if(data !== null) {
@@ -348,21 +351,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage frequently asking question modal close */
+        // Function of manage frequently asking question modal close
         manageFrequentlyAskingQuestionModalClose() {
             let myModalEl = document.getElementById('manageFrequentlyAskingQuestionModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete Frequently asking question modal open */
+        // Function of delete Frequently asking question modal open
         deleteFrequentlyAskingQuestionModalOpen(id) {
             this.deleteProfessorParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteFrequentlyAskingQuestionModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete frequently asking question modal close */
+        // Function of delete frequently asking question modal close
         deleteFrequentlyAskingQuestionModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -376,7 +379,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to frequently asking question list api */
+        // Function of frequently asking question list api callback
         FrequentlyAskingQuestionList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -394,7 +397,7 @@ export default {
             })
         },
 
-        /* Function to frequently asking question search data */
+        // Function of frequently asking question search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -402,7 +405,7 @@ export default {
             }, 800);
         },
 
-        /* Function to frequently asking question previous page */
+        // Function of frequently asking question previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -410,7 +413,7 @@ export default {
             }
         },
 
-        /* Function to frequently asking question next page */
+        // Function of frequently asking question next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -418,13 +421,13 @@ export default {
             }
         },
 
-        /* Function to frequently asking question change page */
+        // Function of frequently asking question change page
         pageChange(page) {
             this.current_page = page;
             this.FrequentlyAskingQuestionList();
         },
 
-        /* Function to frequently asking question manage of create and update api */
+        // Function of frequently asking question manage of create and update api callback
         manageFrequentlyAskingQuestion() {
             if(this.formData.id === undefined) {
                 this.FrequentlyAskingQuestionCreate()
@@ -433,7 +436,7 @@ export default {
             }
         },
 
-        /* Function to frequently asking question create api */
+        // Function of frequently asking question create api callback
         FrequentlyAskingQuestionCreate() {
             this.manageFrequentlyAskingQuestionLoading = true;
             apiServices.POST(apiRoutes.faqCreate, this.formData, (res) => {
@@ -453,7 +456,7 @@ export default {
             })
         },
 
-        /* Function to frequently asking question update api */
+        // Function of frequently asking question update api callback
         FrequentlyAskingQuestionUpdate() {
             this.manageFrequentlyAskingQuestionLoading = true;
             apiServices.PATCH(apiRoutes.faqUpdate, this.formData, (res) => {
@@ -473,7 +476,7 @@ export default {
             })
         },
 
-        /* Function to frequently asking question single api */
+        // Function of frequently asking question single api callback
         FrequentlyAskingQuestionSingle(data) {
             apiServices.PUT(apiRoutes.faqSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -484,7 +487,7 @@ export default {
             });
         },
 
-        /* Function to frequently asking question delete api */
+        // Function of frequently asking question delete api callback
         FrequentlyAskingQuestionDelete() {
             this.selected.forEach((v) => {
                 this.deleteProfessorParam.ids.push(v);
