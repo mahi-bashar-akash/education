@@ -1,7 +1,7 @@
 <template>
 
     <div class="cursor-content margin-top-105">
-        <div class="container">
+        <div class="container py-5">
             <div class="row">
                 <div class="col-xl-9 py-4">
 
