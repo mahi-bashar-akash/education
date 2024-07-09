@@ -257,9 +257,13 @@ export default {
             tableData: [],
             listData: {
                 keyword: '',
-                limit: 10,
+                limit: 2,
                 page: 1,
             },
+            total_pages: 0,
+            current_page: 0,
+            buttons: [],
+            last_page: 0,
             searchTimeOut: null,
             responseData: null,
             selected: [],
@@ -269,15 +273,18 @@ export default {
             uploadLoading: false,
             uploadedImage: null,
             uploadedImageId: null,
-            total_pages: 0,
-            current_page: 0,
-            buttons: [],
         }
     },
     mounted() {
         this.blogList();
     },
     methods: {
+
+        // Function of handle page change
+        handlePageChange(page) {
+            this.current_page = page;
+            this.blogList();
+        },
 
         // Function of toggle check all
         toggleCheckAll(e) {
@@ -357,12 +364,13 @@ export default {
             this.listData.page = this.current_page;
             apiServices.GET(apiRoutes.blogList, this.listData, (res) => {
                 this.loading = false;
-                if (res.message) {
-                    this.tableData = res.data.data;
-                    this.responseData = res.data;
-                    this.total_pages = res.data.total < res.data.per_page ? 1 : Math.ceil((res.data.total / res.data.per_page))
-                    this.current_page = res.data.current_page;
-                    this.buttons = [...Array(this.total_pages).keys()].map(i => i + 1);
+                if (res) {
+                    console.log(res?.data)
+                    this.tableData = res?.data?.data;
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
                 } else {
                     apiServices.clearErrorHandler(res.error)
                 }
@@ -375,28 +383,6 @@ export default {
             this.searchTimeout = setTimeout(() => {
                 this.blogList();
             }, 800);
-        },
-
-        // Function of blog previous page
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.blogList()
-            }
-        },
-
-        // Function of blog next page
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.blogList()
-            }
-        },
-
-        // Function of blog change page
-        pageChange(page) {
-            this.current_page = page;
-            this.blogList();
         },
 
         // Function of blog manager of create and update api callback
@@ -507,12 +493,6 @@ export default {
                     this.error = res.errors
                 }
             });
-        },
-
-        // Function of handle page change
-        handlePageChange(page) {
-            this.current_page = page;
-            this.blogList();
         },
 
     }

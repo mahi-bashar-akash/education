@@ -22,8 +22,9 @@
             border-radius: 8px !important;
             font-size: 12px;
             box-shadow: 0 0 0 0 !important;
+            background-color: var(--bs-white) !important;
 
-            &:hover, &:active {
+            &:hover, &:active, &:focus {
                 transition: 0.3s all ease-in-out;
                 background-color: var(--theme) !important;
                 border: 1px solid var(--theme) !important;

@@ -23,7 +23,7 @@
     "src": "node_modules/bootstrap-icons/font/fonts/bootstrap-icons.woff2"
   },
   "resources/js/admin/app.js": {
-    "file": "assets/app-BVF20XiJ.js",
+    "file": "assets/app-DdFR7kpb.js",
     "name": "app",
     "src": "resources/js/admin/app.js",
     "isEntry": true,
@@ -44,7 +44,7 @@
     ]
   },
   "resources/scss/stylesheet.scss": {
-    "file": "assets/stylesheet-DrH6G810.css",
+    "file": "assets/stylesheet-DQL_YkU1.css",
     "src": "resources/scss/stylesheet.scss",
     "isEntry": true
   }
