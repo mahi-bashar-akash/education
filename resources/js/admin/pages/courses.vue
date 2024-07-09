@@ -1,11 +1,11 @@
 <template>
 
-    <!-- breadcrumb -->
+    <!-- Breadcrumb -->
     <div class="d-sm-flex justify-content-between align-items-center">
         <breadcrumb :items="BreadcrumbItems" moduleName="Courses"/>
     </div>
 
-    <!-- search and new -->
+    <!-- Search and new -->
     <div class="row justify-content-between">
         <div class="col-sm-6 col-xl-3 mb-3">
             <div class="position-relative">
@@ -24,6 +24,7 @@
         </div>
     </div>
 
+    <!-- Table data list -->
     <div class="card rounded-3 border-0 shadow" v-if="!loading  && tableData.length > 0">
         <div class="card-body card-list scrollbar">
 
@@ -102,13 +103,13 @@
         </div>
     </div>
 
-    <!-- preloader -->
+    <!-- Preloader of data list -->
     <preloader v-if="loading"/>
 
-    <!-- no data -->
+    <!-- No data founded to show empty screen -->
     <noDataFounded :text="'course'" :newModalFunction="manageCourseModalOpen" v-if="!loading  && tableData.length === 0"/>
 
-    <!-- pagination -->
+    <!-- Pagination of data list -->
     <div class="d-flex justify-content-center mt-3" v-if="!loading && tableData.length > 0">
         <div class="pagination admin-pagination">
             <div class="page-item" @click="PrevPage()">
@@ -182,7 +183,7 @@
         </div>
     </div>
 
-    <!-- manage course modal -->
+    <!-- Modal of manage course -->
     <div class="modal fade" id="manageCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="manageCourse()" class="modal-content px-3 py-2 rounded-3 border-0">
@@ -197,12 +198,28 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image"
-                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
-                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                        <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white rounded-4 text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
+                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                            <img :src="uploadedImage" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                    <i class="bi bi-trash2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="position-relative" v-if="uploadLoading">
+                            <div class="w-100 hpx-150 rounded-4 bg-secondary-subtle"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -270,7 +287,7 @@
         </div>
     </div>
 
-    <!-- delete course modal -->
+    <!-- Modal of delete course -->
     <div class="modal fade" id="deleteCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <form @submit.prevent="courseDelete()" class="modal-content rounded-3 border-0 py-2 px-3">
@@ -325,10 +342,12 @@ import apiRoutes from "../../services/apiRoutes.js";
 
 export default {
     components: {
+        // Component properties
         search, preloader, noDataFounded, pagination, newBtn, tableContent, breadcrumb
     },
     data() {
         return {
+            // Data properties
             BreadcrumbItems: [
                 { title: 'Dashboard', route: 'dashboard' },
                 { title: 'Courses', route: 'courses' },
@@ -367,7 +386,7 @@ export default {
     },
     methods: {
 
-        /* Function to toggle check all */
+        // Function of toggle check all
         toggleCheckAll(e) {
             if (e.target.checked) {
                 this.tableData.forEach((v) => {
@@ -378,7 +397,7 @@ export default {
             }
         },
 
-        /* Function to toggle check */
+        // Function of toggle check
         toggleCheck(e, id) {
             if (e.target.checked) {
                 this.selected.push(id);
@@ -388,14 +407,14 @@ export default {
             }
         },
 
-        /* Function to check if checked */
+        // Function of check if checked
         CheckIfChecked(id) {
             return this.selected.map(function (id) {
                 return id
             }).indexOf(id) > -1;
         },
 
-        /* Function to manage course modal open */
+        // Function of manage course modal open
         manageCourseModalOpen(data = null) {
             this.getProfessor();
             apiServices.clearErrorHandler()
@@ -415,21 +434,21 @@ export default {
             myModal.show();
         },
 
-        /* Function to manage course modal close */
+        // Function of manage course modal close
         manageCourseModalClose() {
             let myModalEl = document.getElementById('manageCourseModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
             modal.hide();
         },
 
-        /* Function to delete course modal open */
+        // Function of delete course modal open
         deleteCourseModalOpen(id) {
             this.deleteProfessorParam.ids.push(id)
             const myModal = new bootstrap.Modal("#deleteCourseModal", {keyboard: false});
             myModal.show();
         },
 
-        /* Function to delete course modal close */
+        // Function of delete course modal close
         deleteCourseModalClose() {
             this.selected = [];
             this.current_page = 1;
@@ -446,7 +465,7 @@ export default {
             modal.hide();
         },
 
-        /* Function to course list api */
+        // Function of course list api callback
         courseList() {
             this.loading = true;
             this.listData.page = this.current_page;
@@ -464,7 +483,7 @@ export default {
             })
         },
 
-        /* Function to course search data */
+        // Function of course search data
         SearchData() {
             clearTimeout(this.searchTimeout);
             this.searchTimeout = setTimeout(() => {
@@ -472,7 +491,7 @@ export default {
             }, 800);
         },
 
-        /* Function to course previous page */
+        // Function of course previous page
         PrevPage() {
             if (this.current_page > 1) {
                 this.current_page = this.current_page - 1;
@@ -480,7 +499,7 @@ export default {
             }
         },
 
-        /* Function to course next page */
+        // Function of course next page
         NextPage() {
             if (this.current_page < this.total_pages) {
                 this.current_page = this.current_page + 1;
@@ -488,13 +507,13 @@ export default {
             }
         },
 
-        /* Function to course change page */
+        // Function of course change page
         pageChange(page) {
             this.current_page = page;
             this.courseList();
         },
 
-        /* Function to course manage of create and update api */
+        // Function of course manage as create and update api callback
         manageCourse() {
             if(this.formData.id === undefined) {
                 this.courseCreate()
@@ -503,7 +522,7 @@ export default {
             }
         },
 
-        /* Function to course create api */
+        // Function of course create api callback
         courseCreate() {
             this.manageCourseLoading = true;
             apiServices.POST(apiRoutes.courseCreate, this.formData, (res) => {
@@ -526,7 +545,7 @@ export default {
             })
         },
 
-        /* Function to course update api */
+        // Function of course update api callback
         courseUpdate() {
             this.manageCourseLoading = true;
             apiServices.PATCH(apiRoutes.courseUpdate, this.formData, (res) => {
@@ -549,7 +568,7 @@ export default {
             })
         },
 
-        /* Function to course single api */
+        // Function of course single api callback
         courseSingle(data) {
             apiServices.PUT(apiRoutes.courseSingle, { id: data }, (res) => {
                 if (res.message) {
@@ -560,7 +579,7 @@ export default {
             });
         },
 
-        /* Function to course delete api */
+        // Function of course delete api callback
         courseDelete() {
             this.selected.forEach((v) => {
                 this.deleteProfessorParam.ids.push(v);
@@ -578,7 +597,7 @@ export default {
             })
         },
 
-        /* Function to get professor api */
+        // Function of get professor api callback
         getProfessor(){
             apiServices.GET(apiRoutes.professorList, '', (res) => {
                 if(res.message) {
@@ -587,7 +606,7 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
 
     }
 }
