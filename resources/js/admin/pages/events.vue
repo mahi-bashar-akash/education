@@ -201,12 +201,20 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image"
+                        <label for="upload-image" v-if="this.uploadedImage === null"
                                class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
-                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
+                        <div class="position-relative" v-if="this.uploadedImage != null">
+                            <img :src="uploadedImage" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                    <i class="bi bi-trash2"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -366,6 +374,9 @@ export default {
             error: null,
             deleteEventLoading: false,
             buttons: [],
+            uploadLoading: false,
+            uploadedImage: null,
+            uploadedImageId: null,
         }
     },
     mounted() {
@@ -621,7 +632,39 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
+
+        /* Function of upload file */
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.uploadedImage = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        /* Function of delete file */
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.uploadedImage = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
+        },
 
     }
 }

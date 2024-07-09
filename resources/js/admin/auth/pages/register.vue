@@ -99,6 +99,7 @@ export default {
                 if (res.message) {
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.registerParam = { name: '', email: '', phone: '', password: '', password_confirmation: '', }
+                    this.$router.push({name: 'login'});
                 } else {
                     this.error = res.errors
                 }

@@ -113,6 +113,10 @@ const apiRoutes = {
     faqUpdate: adminApi + '/faq/update',
     faqDelete: adminApi + '/faq/delete',
 
+    /* --- --- --- --- admin - file upload --- --- --- --- */
+    fileUpload: adminApi + '/file/upload',
+    fileDelete: adminApi + '/file/delete',
+
     /* --- --- --- --- user auth --- --- --- --- */
     userLogin: userApi + '/user-auth/login',
     userRegister: userApi + '/user-auth/register',

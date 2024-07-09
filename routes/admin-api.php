@@ -222,6 +222,15 @@ Route::group(
             }
         );
 
+        /* ADMIN File ATTACHMENT API ROUTES */
+        Route::group(
+            ['prefix' => 'file'],
+            function () {
+                Route::post('/upload', [\App\Http\Controllers\UploadFileController::class, 'uploadFile'])->name('Admin.File.Upload');
+                Route::delete('/delete/{id}', [\App\Http\Controllers\UploadFileController::class, 'deleteFile'])->name('Admin.File.Delete');
+            }
+        );
+
     }
 
 );
