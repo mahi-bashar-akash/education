@@ -2,9 +2,9 @@
 
     <nav class="mt-3">
         <ul class="admin-pagination pagination justify-content-center">
-            <div class="page-item" @click="PrevPage">
-                <a class="page-link" href="javascript:void(0)">
-                    <i class="bi bi-caret-left"></i>
+            <div class="page-item">
+                <a class="page-link" href="javascript:void(0)" @click="PrevPage">
+                    <i class="bi bi-caret-left-fill"></i>
                 </a>
             </div>
             <div v-if="buttons.length <= 6" class="d-flex me-1">
@@ -58,9 +58,9 @@
                 </div>
             </div>
             <div class="page-item">
-                <button type="button" class="page-link" @click="NextPage" :disabled="buttons.length === currentPage">
-                    <i class="bi bi-caret-right"></i>
-                </button>
+                <a href="javascript:void(0)" class="page-link" @click="NextPage">
+                    <i class="bi bi-caret-right-fill"></i>
+                </a>
             </div>
         </ul>
     </nav>
@@ -93,8 +93,10 @@ export default {
 
         // Function of next page
         NextPage() {
-            this.currentPage = this.currentPage + 1;
-            this.emitPageChange();
+            if(this.buttons.length === this.currentPage) {  }else {
+                this.currentPage = this.currentPage + 1;
+                this.emitPageChange();
+            }
         },
 
         // Function of page change
