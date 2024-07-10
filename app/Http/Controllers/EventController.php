@@ -48,6 +48,7 @@ class EventController extends BaseController
                     'description' => 'required|string',
                     'guest' => 'required|string',
                     'location' => 'required|string',
+                    'avatar' => 'required',
                 ]
             );
 
@@ -56,7 +57,7 @@ class EventController extends BaseController
             }
             $event = new Event();
             $admin_id = Auth::guard('admins')->id();
-            $event->avatar = $request->avatar ?? null;
+            $event->avatar = $request->avatar;
             $event->name = $request->name;
             $event->date = $request->date;
             $event->start_time = $request->start_time;

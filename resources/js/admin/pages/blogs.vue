@@ -116,14 +116,14 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                        <label for="upload-image" v-if="this.formData.avatar === null && !uploadLoading"
                                class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white rounded-4 text-center cursor-pointer border">
                             <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
-                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                            <img :src="uploadedImage" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                        <div class="position-relative" v-if="this.formData.avatar != null && !uploadLoading">
+                            <img :src="formData.avatar" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                 <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                     <i class="bi bi-trash2"></i>
@@ -245,6 +245,7 @@ export default {
                 { title: 'Blogs', route: 'blogs' },
             ],
             formData: {
+                avatar: null,
                 title: '',
                 author_name: '',
                 description: '',
@@ -324,6 +325,7 @@ export default {
                     title: '',
                     author_name: '',
                     description: '',
+                    avatar: null,
                 }
             }
             const myModal = new bootstrap.Modal("#manageBlogModal", {keyboard: false});
@@ -352,6 +354,7 @@ export default {
                 title: '',
                 author_name: '',
                 description: '',
+                avatar: null,
             }
             let myModalEl = document.getElementById('deleteBlogModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -403,6 +406,7 @@ export default {
                         title: '',
                         author_name: '',
                         description: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageBlogModalClose();
@@ -423,6 +427,7 @@ export default {
                         title: '',
                         author_name: '',
                         description: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageBlogModalClose();
@@ -474,7 +479,7 @@ export default {
                 this.uploadLoading = false
                 if (res) {
                     this.uploadedImageId = res?.data?.id
-                    this.uploadedImage = res?.data?.full_file_path
+                    this.formData.avatar = res?.data?.full_file_path
                 } else {
                     this.error = res.errors
                 }
@@ -487,7 +492,7 @@ export default {
             apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
                 if(res) {
                     this.uploadLoading = false;
-                    this.uploadedImage = null;
+                    this.formData.avatar = null;
                 } else {
                     this.error = res.errors
                 }

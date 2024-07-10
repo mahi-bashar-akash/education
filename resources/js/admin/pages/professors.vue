@@ -138,15 +138,15 @@
                         <div class="form-group">
 
                             <!-- Avatar Upload -->
-                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                            <label for="upload-image" v-if="this.formData.avatar === null && !uploadLoading"
                                    class="form-label wpx-170 hpx-170 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
                                 <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                                 <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
                             </label>
 
                             <!-- Avatar uploaded -->
-                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-170 hpx-170 rounded-circle" alt="uploaded image">
+                            <div class="position-relative" v-if="this.formData.avatar != null && !uploadLoading">
+                                <img :src="formData.avatar" class="img-fluid object-fit-cover wpx-170 hpx-170 rounded-circle" alt="uploaded image">
                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                     <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                         <i class="bi bi-trash2"></i>
@@ -305,6 +305,7 @@ export default {
                 department_id: 'select-department-option',
                 educational_qualification: '',
                 joining_date: '',
+                avatar: null,
             },
             departmentDataList: [],
             loading: false,
@@ -386,6 +387,7 @@ export default {
                     department_id: 'select-department-option',
                     educational_qualification: '',
                     joining_date: '',
+                    avatar: null,
                 }
             }
             const myModal = new bootstrap.Modal("#manageProfessorModal", {keyboard: false});
@@ -417,6 +419,7 @@ export default {
                 department_id: 'select-department-option',
                 educational_qualification: '',
                 joining_date: '',
+                avatar: null,
             }
             let myModalEl = document.getElementById('deleteProfessorModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -482,6 +485,7 @@ export default {
                         department_id: 'select-department-option',
                         educational_qualification: '',
                         joining_date: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageProfessorModalClose();
@@ -505,6 +509,7 @@ export default {
                         department_id: 'select-department-option',
                         educational_qualification: '',
                         joining_date: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageProfessorModalClose();
@@ -567,7 +572,7 @@ export default {
                 this.uploadLoading = false
                 if (res) {
                     this.uploadedImageId = res?.data?.id
-                    this.uploadedImage = res?.data?.full_file_path
+                    this.formData.avatar = res?.data?.full_file_path
                 } else {
                     this.error = res.errors
                 }
@@ -580,7 +585,7 @@ export default {
             apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
                 if(res) {
                     this.uploadLoading = false;
-                    this.uploadedImage = null;
+                    this.formData.avatar = null;
                 } else {
                     this.error = res.errors
                 }

@@ -30,40 +30,33 @@
                                 </div>
 
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <form class="pt-3">
+                                    <div class="form-group mb-3">
 
-                                        <div class="form-group">
-
-                                            <!-- Avatar Upload -->
-                                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
-                                                   class="form-label wpx-200 hpx-200 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
-                                                <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
-                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
-                                            </label>
-
-                                            <!-- Avatar uploaded -->
-                                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
-                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
-                                                    <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
-                                                        <i class="bi bi-trash2"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-
-                                            <!-- Avatar preloader -->
-                                            <div class="position-relative" v-if="uploadLoading">
-                                                <div class="wpx-200 hpx-200 rounded-circle bg-secondary-subtle"></div>
-                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
-                                                    <div class="spinner-border text-secondary" role="status">
-                                                        <span class="visually-hidden">Loading...</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
+                                        <div class="wpx-200 h-200 d-flex justify-content-center align-items-center fs-1">
+                                            {{profile_data?.name}}
                                         </div>
 
-                                    </form>
+                                        <!-- Avatar uploaded -->
+                                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                                            <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
+                                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                                    <i class="bi bi-trash2"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Avatar preloader -->
+                                        <div class="position-relative" v-if="uploadLoading">
+                                            <div class="wpx-200 hpx-200 rounded-circle bg-secondary-subtle"></div>
+                                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                <div class="spinner-border text-secondary" role="status">
+                                                    <span class="visually-hidden">Loading...</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
@@ -76,19 +69,19 @@
                                             Name:
                                         </div>
                                         <div class="mb-2 text-light-gray-hover">
-                                            {{profile_data.name}}
+                                            {{profile_data?.name}}
                                         </div>
                                         <div class="mb-2 text-light-gray fw-bold">
                                             Email:
                                         </div>
                                         <div class="mb-2 text-light-gray-hover">
-                                            {{profile_data.email}}
+                                            {{profile_data?.email}}
                                         </div>
                                         <div class="mb-2 text-light-gray fw-bold">
                                             Phone Number:
                                         </div>
                                         <div class="mb-2 text-light-gray-hover">
-                                            {{profile_data.phone}}
+                                            {{profile_data?.phone}}
                                         </div>
                                     </div>
 
@@ -123,6 +116,38 @@
                             <div class="card-body" v-if="tab === 1">
                                 <div class="fs-5 mb-3">Edit Profile</div>
                                 <form @submit.prevent="updateAdminProfile()">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <div class="form-group mb-3">
+
+                                            <!-- Avatar Upload -->
+                                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                                                   class="form-label wpx-200 hpx-200 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
+                                                <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
+                                                <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
+                                            </label>
+
+                                            <!-- Avatar uploaded -->
+                                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
+                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
+                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                    <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                                        <i class="bi bi-trash2"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Avatar preloader -->
+                                            <div class="position-relative" v-if="uploadLoading">
+                                                <div class="wpx-200 hpx-200 rounded-circle bg-secondary-subtle"></div>
+                                                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                                    <div class="spinner-border text-secondary" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                     <div class="form-group mb-3">
                                         <label for="name" class="form-label">Name</label>
                                         <input id="name" type="text" name="name" class="form-control"

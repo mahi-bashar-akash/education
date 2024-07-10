@@ -130,13 +130,28 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image"
-                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
-                            <input id="upload-image" type="file" name="update-image" hidden="hidden">
+                        <label for="upload-image" v-if="this.formData.avatar === null && !uploadLoading"
+                               class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white rounded-4 text-center cursor-pointer border">
+                            <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
-                        <div class="error-report" v-if="error != null && error.name !== undefined"> {{error.name[0]}} </div>
+                        <div class="position-relative" v-if="this.formData.avatar != null && !uploadLoading">
+                            <img :src="formData.avatar" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
+                                    <i class="bi bi-trash2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="position-relative" v-if="uploadLoading">
+                            <div class="w-100 hpx-150 rounded-4 bg-secondary-subtle"></div>
+                            <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
+                                <div class="spinner-border text-secondary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group mb-3">
@@ -275,6 +290,7 @@ export default {
                 author: '',
                 department_id: '0',
                 price: '',
+                avatar: null
             },
             departmentListData: [],
             deleteLibraryAssetParam: {
@@ -297,6 +313,7 @@ export default {
             manageLibraryAssetLoading: false,
             error: null,
             deleteLibraryAssetLoading: false,
+            uploadLoading: false,
         }
     },
     mounted() {
@@ -351,6 +368,7 @@ export default {
                     author: '',
                     department_id: '0',
                     price: '',
+                    avatar: null,
                 }
             }
             const myModal = new bootstrap.Modal("#manageLibraryAssetModal", {keyboard: false});
@@ -381,6 +399,7 @@ export default {
                 author: '',
                 department_id: '0',
                 price: '',
+                avatar: null,
             }
             let myModalEl = document.getElementById('deleteLibraryAssetModal');
             let modal = bootstrap.Modal.getInstance(myModalEl)
@@ -434,6 +453,7 @@ export default {
                         author: '',
                         department_id: '0',
                         price: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageLibraryAssetModalClose();
@@ -456,6 +476,7 @@ export default {
                         author: '',
                         department_id: '0',
                         price: '',
+                        avatar: null,
                     }
                     this.$toast.success(res.message, { position: "top-right" } );
                     this.manageLibraryAssetModalClose();
@@ -504,6 +525,38 @@ export default {
                     this.error = res.errors
                 }
             })
+        },
+
+        // Function of upload file
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.formData.avatar = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        // Function of delete file
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.formData.avatar = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
         },
 
     }
