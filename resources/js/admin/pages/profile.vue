@@ -32,13 +32,13 @@
                                 <div class="d-flex justify-content-center align-items-center">
                                     <div class="form-group mb-3">
 
-                                        <div class="wpx-200 h-200 d-flex justify-content-center align-items-center fs-1">
-                                            {{profile_data?.name}}
+                                        <div class="wpx-200 h-200 d-flex justify-content-center align-items-center fs-1" v-if="profileParam.avatar === null">
+                                            {{nameControl()}}
                                         </div>
 
                                         <!-- Avatar uploaded -->
-                                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                                            <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
+                                        <div class="position-relative" v-if="this.profileParam.avatar != null && !uploadLoading">
+                                            <img :src="this.profileParam.avatar" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
                                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                                 <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                                     <i class="bi bi-trash2"></i>
@@ -120,15 +120,15 @@
                                         <div class="form-group mb-3">
 
                                             <!-- Avatar Upload -->
-                                            <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                                            <label for="upload-image" v-if="this.profileParam.avatar === null && !uploadLoading"
                                                    class="form-label wpx-200 hpx-200 rounded-circle d-flex justify-content-center align-items-center flex-column bg-white text-center cursor-pointer border">
                                                 <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                                                 <i class="bi bi-person-plus text-success text-opacity-75 fs-1"></i>
                                             </label>
 
                                             <!-- Avatar uploaded -->
-                                            <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                                                <img :src="uploadedImage" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
+                                            <div class="position-relative" v-if="this.profileParam.avatar != null && !uploadLoading">
+                                                <img :src="profileParam.avatar" class="img-fluid object-fit-cover wpx-200 hpx-200 rounded-circle" alt="uploaded image">
                                                 <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                                     <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                                         <i class="bi bi-trash2"></i>
@@ -268,6 +268,7 @@ export default {
                 password_confirmation: '',
             },
             profileParam: {
+                avatar: '',
                 name: '',
                 email: '',
                 phone: '',
@@ -358,7 +359,7 @@ export default {
                 this.uploadLoading = false
                 if (res) {
                     this.uploadedImageId = res?.data?.id
-                    this.uploadedImage = res?.data?.full_file_path
+                    this.profileParam.avatar = res?.data?.full_file_path
                 } else {
                     this.error = res.errors
                 }
@@ -371,12 +372,25 @@ export default {
             apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
                 if(res) {
                     this.uploadLoading = false;
-                    this.uploadedImage = null;
+                    this.profileParam.avatar = null;
                 } else {
                     this.error = res.errors
                 }
             });
         },
+
+        // Function of name control
+        nameControl() {
+            if (this.profile_data && this.profile_data.name) {
+                let fullName = this.profile_data.name;
+                let words = fullName.split(' ');
+                let initials = '';
+                words.forEach(word => {
+                    initials += word.charAt(0).toUpperCase();
+                });
+                return initials;
+            }
+        }
 
     }
 
