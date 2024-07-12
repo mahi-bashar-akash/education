@@ -132,4 +132,51 @@ class FrequentlyAskingQuestionController extends BaseController
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
+
+    public static function faqList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $blogs = FrequentlyAskingQuestion::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $blogs->where(
+                    function ($q) use ($keyword) {
+                        $q->where('title', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('author_name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('description', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $blogs = $blogs->paginate($limit);
+
+            return ['message' => 'Show all blog list data successfully.' ,'data' => $blogs];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function faqDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $blog = FrequentlyAskingQuestion::where('id', $request->id)->first();
+            if($blog == null){
+                return ['status' => 500, 'errors' => 'Blog details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $blog];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

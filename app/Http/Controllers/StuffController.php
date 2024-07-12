@@ -149,4 +149,50 @@ class StuffController extends BaseController
             return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
         }
     }
+
+    public static function stuffList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $stuffs = Stuff::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $stuffs->where(
+                    function ($q) use ($keyword) {
+                        $q->where('title', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('author_name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('description', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $stuffs = $stuffs->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $stuffs];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function stuffDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $stuff = Stuff::where('id', $request->id)->first();
+            if($stuff == null){
+                return ['status' => 500, 'errors' => 'Stuff details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $stuff];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
 }

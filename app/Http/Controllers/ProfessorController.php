@@ -151,4 +151,50 @@ class ProfessorController extends BaseController
         }
     }
 
+    public static function professorList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $professors = Professor::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $professors->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $professors = $professors->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $professors];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function professorDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $professor = Professor::where('id', $request->id)->first();
+            if($professor == null){
+                return ['status' => 500, 'errors' => 'Professor details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $professor];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

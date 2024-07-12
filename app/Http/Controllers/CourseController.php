@@ -146,4 +146,50 @@ class CourseController extends BaseController
         }
     }
 
+    public static function courseList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $courses = Course::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $courses->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('price', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('duration', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $courses = $courses->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $courses];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function courseDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $course = Course::where('id', $request->id)->first();
+            if($course == null){
+                return ['status' => 500, 'errors' => 'Course details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $course];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

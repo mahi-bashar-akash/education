@@ -117,18 +117,28 @@ const apiRoutes = {
     fileUpload: adminApi + '/file/upload',
     fileDelete: adminApi + '/file/delete',
 
-    /* --- --- --- --- user auth --- --- --- --- */
+    /* --- --- --- --- user - auth - access --- --- --- --- */
     userLogin: userApi + '/user-auth/login',
     userRegister: userApi + '/user-auth/register',
     userForget: userApi + '/user-auth/forgot',
     userReset: userApi + '/user-auth/reset',
 
-    /* --- --- --- --- user profile --- --- --- --- */
+    /* --- --- --- --- user - profile --- --- --- --- */
     userProfile: userApi + '/user-profile/details',
     userProfileUpdate: userApi + '/user-profile/update',
     userChangePassword: userApi + '/user-profile/update/password',
     userPaymentUpdate: userApi + '/user-profile/update/payment',
     userLogout: userApi + '/user-profile/logout',
+
+    /* --- --- --- --- global - content --- --- --- --- */
+    getBlog: userApi + '/global/blogs',
+    getEvent: userApi + '/global/events',
+    getCourse: userApi + '/global/courses',
+    getProfessor: userApi + '/global/professors',
+    getStudent: userApi + '/global/students',
+    getDepartment: userApi + '/global/departments',
+    getLibraryAsset: userApi + '/global/library-assets',
+    getStuff: userApi + '/global/stuffs',
 
 }
 

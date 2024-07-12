@@ -152,4 +152,51 @@ class StudentController extends BaseController
         }
     }
 
+    public static function studentList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $students = Student::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $students->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('roll_or_id', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $students = $students->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $students];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function studentDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $blog = Student::where('id', $request->id)->first();
+            if($blog == null){
+                return ['status' => 500, 'errors' => 'Student details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $blog];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

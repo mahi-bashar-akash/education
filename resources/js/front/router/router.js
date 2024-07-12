@@ -13,7 +13,7 @@ import home from "../pages/home.vue";
 import about from "../pages/about.vue";
 import courses from "../pages/course/courses.vue";
 import singleCourse from "../pages/course/single-course.vue";
-import blog from "../pages/blog/blog.vue";
+import blogs from "../pages/blog/blogs.vue";
 import singleBlog from "../pages/blog/single-blog.vue";
 import contact from "../pages/contact.vue";
 import login from "../pages/login.vue";
@@ -48,7 +48,7 @@ const routes = [
             { path: ROOT_URL + 'about', name: 'about', component: about, meta: { title: TITLE + ' - about' } },
             { path: ROOT_URL + 'courses', name: 'courses', component: courses, meta: { title: TITLE + ' - courses' } },
             { path: ROOT_URL + 'single-course', name: 'singleCourse', component: singleCourse, meta: { title: TITLE + ' - single course' } },
-            { path: ROOT_URL + 'blogs', name: 'blogs', component: blog, meta: { title: TITLE + ' - blogs' } },
+            { path: ROOT_URL + 'blogs', name: 'blogs', component: blogs, meta: { title: TITLE + ' - blogs' } },
             { path: ROOT_URL + 'single-blog', name: 'singleBlog', component: singleBlog, meta: { title: TITLE + ' - single blog' } },
             { path: ROOT_URL + 'events', name: 'events', component: event, meta: { title: TITLE + ' - events' } },
             { path: ROOT_URL + 'single-event', name: 'singleEvent', component: singleEvent, meta: { title: TITLE + ' - single event' } },

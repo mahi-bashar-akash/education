@@ -157,4 +157,50 @@ class EventController extends BaseController
         }
     }
 
+    public static function eventList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $events = Event::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $events->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('guest', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('location', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $events = $events->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $events];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function eventDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $event = Event::where('id', $request->id)->first();
+            if($event == null){
+                return ['status' => 500, 'errors' => 'Event details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $event];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

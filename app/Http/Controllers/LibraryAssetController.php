@@ -152,4 +152,50 @@ class LibraryAssetController extends BaseController
         }
     }
 
+    public static function libraryAssetList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $libraryAssets = LibraryAsset::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $libraryAssets->where(
+                    function ($q) use ($keyword) {
+                        $q->where('title', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('author_name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('description', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $libraryAssets = $libraryAssets->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $libraryAssets];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function libraryAssetDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $libraryAsset = LibraryAsset::where('id', $request->id)->first();
+            if($libraryAsset == null){
+                return ['status' => 500, 'errors' => 'Library asset details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $libraryAsset];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }

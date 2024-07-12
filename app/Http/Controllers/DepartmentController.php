@@ -149,4 +149,50 @@ class DepartmentController extends BaseController
         }
     }
 
+    public static function departmentList(Request $request)
+    {
+        try {
+            $limit = $request->limit ?? 10;
+            $keyword = $request->keyword ?? '';
+            $departments = Department::orderby('id', 'asc');
+
+            if (isset($keyword) && !empty($keyword)) {
+                $departments->where(
+                    function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('email', 'LIKE', '%' . $keyword . '%');
+                        $q->orWhere('phone', 'LIKE', '%' . $keyword . '%');
+                    }
+                );
+            }
+            $departments = $departments->paginate($limit);
+
+            return ['message' => 'Show all data list successfully.' ,'data' => $departments];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
+    public static function departmentDetails(Request $request) {
+        try {
+            $validator = Validator::make(
+                $request->all(),
+                [
+                    'id' => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+                return ['status' => 500, 'errors' => $validator->errors()];
+            }
+            $department = Department::where('id', $request->id)->first();
+            if($department == null){
+                return ['status' => 500, 'errors' => 'Department details data not found.'];
+            }
+            return ['message' => 'Show single data successfully','data' => $department];
+        } catch (\Exception $e) {
+            return ['status' => 500, 'errors' => $e->getMessage(), 'line' => $e->getLine()];
+        }
+    }
+
 }
