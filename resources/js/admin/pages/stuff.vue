@@ -414,28 +414,6 @@ export default {
             }, 800);
         },
 
-        // Function of stuff previous page
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.stuffList()
-            }
-        },
-
-        // Function of stuff next page
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.stuffList()
-            }
-        },
-
-        // Function of stuff change page
-        pageChange(page) {
-            this.current_page = page;
-            this.stuffList();
-        },
-
         // Function of stuff manage as create and update api callback
         manageStuff() {
             if(this.formData.id === undefined) {
@@ -529,7 +507,7 @@ export default {
                     this.error = res.errors
                 }
             })
-        }
+        },
 
     }
 }

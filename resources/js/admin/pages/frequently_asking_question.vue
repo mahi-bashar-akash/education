@@ -343,28 +343,6 @@ export default {
             }, 800);
         },
 
-        // Function of frequently asking question previous page
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.FrequentlyAskingQuestionList()
-            }
-        },
-
-        // Function of frequently asking question next page
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.FrequentlyAskingQuestionList()
-            }
-        },
-
-        // Function of frequently asking question change page
-        pageChange(page) {
-            this.current_page = page;
-            this.FrequentlyAskingQuestionList();
-        },
-
         // Function of frequently asking question manage of create and update api callback
         manageFrequentlyAskingQuestion() {
             if(this.formData.id === undefined) {

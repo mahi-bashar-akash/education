@@ -459,28 +459,6 @@ export default {
             }, 800);
         },
 
-        // Function of student previous page
-        PrevPage() {
-            if (this.current_page > 1) {
-                this.current_page = this.current_page - 1;
-                this.studentList()
-            }
-        },
-
-        // Function of student next page
-        NextPage() {
-            if (this.current_page < this.total_pages) {
-                this.current_page = this.current_page + 1;
-                this.studentList()
-            }
-        },
-
-        // Function of student change page
-        pageChange(page) {
-            this.current_page = page;
-            this.studentList();
-        },
-
         // Function of student manage as create and update api callback
         manageStudent() {
             if(this.formData.id === undefined) {
