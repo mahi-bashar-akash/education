@@ -128,14 +128,14 @@
                 <div class="modal-body border-0">
 
                     <div class="form-group mb-3">
-                        <label for="upload-image" v-if="this.uploadedImage === null && !uploadLoading"
+                        <label for="upload-image" v-if="this.formData.avatar === null && !uploadLoading"
                                class="form-label hpx-150 d-flex justify-content-center align-items-center flex-column bg-white rounded-4 text-center cursor-pointer border">
                             <input id="upload-image" type="file" name="update-image" hidden="hidden" @change="uploadFile($event)">
                             <i class="bi bi-cloud-arrow-down-fill fs-1"></i>
                             Click to upload Image
                         </label>
-                        <div class="position-relative" v-if="this.uploadedImage != null && !uploadLoading">
-                            <img :src="uploadedImage" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
+                        <div class="position-relative" v-if="this.formData.avatar != null && !uploadLoading">
+                            <img :src="formData.avatar" class="img-fluid object-fit-cover w-100 hpx-150 rounded-4" alt="uploaded image">
                             <div class="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center">
                                 <button type="button" class="btn btn-danger wpx-35 hpx-35 d-flex justify-content-center align-items-center rounded-circle p-0" @click="deleteFile">
                                     <i class="bi bi-trash2"></i>
@@ -283,6 +283,7 @@ export default {
                 { title: 'Courses', route: 'courses' },
             ],
             formData: {
+                avatar: null,
                 student_enroll_capacity: '',
                 name: '',
                 professor_id: '0',
@@ -311,6 +312,9 @@ export default {
             manageCourseLoading: false,
             error: null,
             deleteCourseLoading: false,
+            uploadLoading: false,
+            uploadedImage: null,
+            uploadedImageId: null,
         }
     },
     mounted() {
@@ -360,6 +364,7 @@ export default {
                 this.courseSingle(data);
             }else {
                 this.formData = {
+                    avatar: null,
                     student_enroll_capacity: '',
                     name: '',
                     professor_id: '0',
@@ -391,6 +396,7 @@ export default {
             this.selected = [];
             this.current_page = 1;
             this.formData = {
+                avatar: null,
                 student_enroll_capacity: '',
                 name: '',
                 professor_id: '0',
@@ -445,6 +451,7 @@ export default {
                 this.manageCourseLoading = false;
                 if(res.message) {
                     this.formData = {
+                        avatar: null,
                         student_enroll_capacity: '',
                         name: '',
                         professor_id: '0',
@@ -468,6 +475,7 @@ export default {
                 this.manageCourseLoading = false;
                 if(res.message) {
                     this.formData = {
+                        avatar: null,
                         student_enroll_capacity: '',
                         name: '',
                         professor_id: '0',
@@ -522,6 +530,38 @@ export default {
                     this.error = res.errors
                 }
             })
+        },
+
+        // Function of upload file
+        uploadFile(event) {
+            this.uploadLoading = true;
+            let file = event.target.files[0];
+            let formData = new FormData();
+            formData.append("file", file)
+            formData.append("media_type", 1);
+            apiServices.UPLOAD(apiRoutes.fileUpload, formData, (res) => {
+                event.target.value = ''
+                this.uploadLoading = false
+                if (res) {
+                    this.uploadedImageId = res?.data?.id
+                    this.formData.avatar = res?.data?.full_file_path
+                } else {
+                    this.error = res.errors
+                }
+            })
+        },
+
+        // Function of delete file
+        deleteFile() {
+            this.uploadLoading = true;
+            apiServices.DELETE(apiRoutes.fileDelete+`/${this.uploadedImageId}`, {}, (res) => {
+                if(res) {
+                    this.uploadLoading = false;
+                    this.formData.avatar = null;
+                } else {
+                    this.error = res.errors
+                }
+            });
         },
 
     }

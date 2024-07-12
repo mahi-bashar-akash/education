@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('date');
             $table->string('start_time');
             $table->string('end_time');
-            $table->string('description');
+            $table->char('description');
             $table->string('guest');
             $table->string('location');
             $table->string('avatar')->nullable();

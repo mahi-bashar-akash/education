@@ -53,6 +53,7 @@ class CourseController extends BaseController
             }
             $course = new Course();
             $admin_id = Auth::guard('admins')->id();
+            $course->avatar = $request->avatar ?? null;
             $course->student_enroll_capacity = $request->student_enroll_capacity;
             $course->name = $request->name;
             $course->professor_id = $request->professor_id;

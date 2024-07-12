@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('start_date');
             $table->string('end_date');
-            $table->string('description');
+            $table->char('description');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });

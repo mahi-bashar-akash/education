@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('frequently_asking_questions', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->string('answer');
+            $table->char('answer');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
