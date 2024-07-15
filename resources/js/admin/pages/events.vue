@@ -435,9 +435,10 @@ export default {
             flatpickr("#event-start-time", {
                 enableTime: true,
                 noCalendar: true,
-                dateFormat: "H:i",
                 defaultDate: "",
                 disableMobile: true,
+                dateFormat: "h:i K",
+                time_24hr: false,
             })
         },
 
@@ -446,9 +447,10 @@ export default {
             flatpickr("#event-end-time", {
                 enableTime: true,
                 noCalendar: true,
-                dateFormat: "H:i",
                 defaultDate: "",
                 disableMobile: true,
+                dateFormat: "h:i K",
+                time_24hr: false,
             })
         },
 

@@ -46,23 +46,27 @@
                             <div class="col-12 p-0">
                                 <img :src="each.avatar" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
                             </div>
-                            <div class="col-12 mt-3">
-                                <div class="row px-4">
-                                    <div class="col-6 p-2">
+                            <div class="col-12 mt-3 px-2">
+                                <div class="row px-3">
+                                    <div class="col-6 ps-3">
                                         <i class="bi bi-calendar-event me-1"></i>
                                         {{ formatCreatedAt(each.date) }}
                                     </div>
-                                    <div class="col-6 p-2">
+                                    <div class="col-6 pe-3 text-end">
                                         <i class="bi bi-clock me-1"></i>
                                         {{each.start_time}}
                                     </div>
                                 </div>
-                                <div class="col-12 px-2">
-                                    <div class="h6 fw-bold px-3 pt-2">
-                                        <div class="truncate-to-1-line">
+                            </div>
+                            <div class="col-12 px-3 pt-3">
+                                <div class="row">
+                                    <div class="fs-4 text-light-gray-hover px-4">
+                                        <div class="truncate-to-2-line">
                                             {{each.name}}
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row px-2">
                                     <div class="px-3 pt-2 pb-4 d-flex justify-content-between">
                                         <div class="d-flex align-items-center justify-content-start">
                                             <i class="bi bi-geo-alt me-1"></i>
