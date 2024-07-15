@@ -6,11 +6,11 @@
                 <div class="col-xl-9">
                     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 
-                        <div class="p-3" v-for="each in tableData" v-if="!blogLoading  && tableData.length > 0">
+                        <div class="p-3" v-for="each in tableData" v-if="!loading  && tableData.length > 0">
                             <div class="card shadow rounded-3 overflow-hidden bg-light border-0 p-0 image-effect">
                                 <div class="card-body p-0 rounded-3">
-                                    <div class="overflow-hidden hpx-200">
-                                        <img :src="each.avatar" class="img-fluid object-fit-cover w-100" alt="brand 2">
+                                    <div class="overflow-hidden">
+                                        <img :src="each.avatar" class="img-fluid object-fit-cover w-100 hpx-200" alt="brand 2">
                                     </div>
                                     <div class="pt-3 px-3">
                                         <div class="w-100 d-flex justify-content-between align-items-center">
@@ -42,7 +42,7 @@
                     <!-- no data founded -->
                     <div
                         class="vh-100 p-3 d-flex justify-content-center align-items-center flex-column bg-light w-100 mt-3 border"
-                        v-if="!blogLoading && tableData.length === 0">
+                        v-if="!loading && tableData.length === 0">
                         <div class="text-center">
                             <div class="mb-2">
                                 <i class="bi bi-database-exclamation fs-2 text-theme"></i>
@@ -53,11 +53,12 @@
                         </div>
                     </div>
 
-                    <!-- pagination -->
-                    <pagination v-if="!blogLoading && tableData.length > 0"/>
+                    <!-- Pagination of list data -->
+                    <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                                @page-change="handlePageChange" v-if="!loading && tableData.length > 0"/>
 
                     <!-- loading -->
-                    <div class="vh-100 d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 rounded-3" v-if="blogLoading">
+                    <div class="vh-100 d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 rounded-3" v-if="loading">
                         <span class="spinner-border spinner-border" aria-hidden="true"></span>
                     </div>
 
@@ -86,7 +87,7 @@ export default {
     },
     data() {
         return {
-            blogLoading: false,
+            loading: false,
             tableData: [],
             listData: {
                 keyword: '',
@@ -104,14 +105,19 @@ export default {
     },
     methods: {
 
+        // Function of handle page change
+        handlePageChange(page) {
+            this.current_page = page;
+            this.getBlogs();
+        },
+
         // Function of get blogs api callback
         getBlogs() {
-            this.blogLoading = true;
+            this.loading = true;
             this.listData.page = this.current_page;
             apiServices.GET(apiRoutes.getBlog, this.listData, (res) => {
-                this.blogLoading = false;
                 if (res) {
-                    console.log(res)
+                    this.loading = false;
                     this.tableData = res?.data?.data;
                     this.last_page = res?.data?.last_page
                     this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));

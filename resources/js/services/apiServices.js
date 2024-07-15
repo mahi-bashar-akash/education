@@ -3,6 +3,15 @@ import axios from "axios";
 let headers = {};
 
 const apiService = {
+
+    headerContent: {
+        'Content-Type': 'application/json; charset=utf-8',
+    },
+
+    mediaHeaderContent: {
+        "Content-Type": "multipart/form-data",
+    },
+
     POST: (url, param, callback) => {
         headers = {
             'Content-Type': 'application/json; charset=utf-8',

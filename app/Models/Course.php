@@ -13,4 +13,8 @@ class Course extends Model
         return  $this->hasOne(Professor::class, 'id', 'professor_id');
     }
 
+    public $hidden = [
+        'admin_id'
+    ];
+
 }

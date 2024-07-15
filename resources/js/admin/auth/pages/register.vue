@@ -59,6 +59,11 @@
 <script>
 import apiServices from "../../../services/apiServices.js";
 import apiRoutes from "../../../services/apiRoutes.js";
+import axios from "axios";
+import {createToaster} from "@meforma/vue-toaster";
+const toaster = createToaster({
+    position: 'top-right',
+});
 export default {
     data() {
         return {
@@ -94,14 +99,14 @@ export default {
         registration() {
             this.registerLoading = true;
             this.error = null;
-            apiServices.POST(apiRoutes.adminRegister, this.registerParam, (res) => {
-                this.registerLoading = false
-                if (res.message) {
-                    this.$toast.success(res.message, { position: "top-right" } );
+            axios.post(apiRoutes.adminRegister, this.registerParam, {headers: apiServices.headerContent}).then((response) => {
+                if(response?.data?.errors){
+                    this.registerLoading = false;
+                    this.error = response?.data?.errors;
+                } else {
+                    toaster.info('Registration successfully');
                     this.registerParam = { name: '', email: '', phone: '', password: '', password_confirmation: '', }
                     this.$router.push({name: 'login'});
-                } else {
-                    this.error = res.errors
                 }
             })
         },

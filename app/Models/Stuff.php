@@ -13,4 +13,9 @@ class Stuff extends Model
         return  $this->hasOne(Department::class, 'id', 'department_id');
     }
 
+    public $hidden = [
+        'admin_id'
+    ];
+
+
 }

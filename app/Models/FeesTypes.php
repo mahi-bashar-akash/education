@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class FeesTypes extends Model
 {
     use HasFactory;
+
+    public $hidden = [
+        'admin_id'
+    ];
+
 }

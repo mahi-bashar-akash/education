@@ -24,7 +24,7 @@
             <!-- no data founded -->
             <div
                 class="course-content p-3 scrollbar d-flex justify-content-center align-items-center flex-column bg-light shadow-sm w-100 mt-3"
-                v-if="!loading && eventDataList.length === 0">
+                v-if="!loading && tableData.length === 0">
                 <div class="text-center">
                     <div class="mb-2">
                         <i class="bi bi-database-exclamation fs-2 text-theme"></i>
@@ -36,25 +36,25 @@
             </div>
 
             <div class="mt-3 w-100 px-1"
-                 v-if="!loading && eventDataList.length > 0">
+                 v-if="!loading && tableData.length > 0">
 
                 <!-- data list -->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3">
 
-                    <div class="p-2" v-for="each in eventDataList">
+                    <div class="p-2" v-for="each in tableData">
                         <div class="bg-white border align-items-center rounded-3 overflow-hidden">
                             <div class="col-12 p-0">
-                                <img :src="each.filePath" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
+                                <img :src="each.avatar" class="img-fluid object-fit-cover hpx-190 w-100" alt="bg-classroom-1.jpg">
                             </div>
                             <div class="col-12 mt-3">
                                 <div class="row px-4">
                                     <div class="col-6 p-2">
                                         <i class="bi bi-calendar-event me-1"></i>
-                                        {{each.date}}
+                                        {{ formatCreatedAt(each.date) }}
                                     </div>
                                     <div class="col-6 p-2">
                                         <i class="bi bi-clock me-1"></i>
-                                        {{each.time}}
+                                        {{each.start_time}}
                                     </div>
                                 </div>
                                 <div class="col-12 px-2">
@@ -83,8 +83,9 @@
 
             </div>
 
-            <!-- pagination -->
-            <pagination v-if="!loading && eventDataList.length > 0"/>
+            <!-- Pagination of list data -->
+            <pagination :total_pages="total_pages" :current_page="current_page" :buttons="buttons"
+                        @page-change="handlePageChange" v-if="!loading && tableData.length > 0"/>
 
             <!-- loading -->
             <div
@@ -99,6 +100,8 @@
 </template>
 
 <script>
+import apiServices from "../../../services/apiServices.js";
+import apiRoutes from "../../../services/apiRoutes.js";
 import pagination from "../../components/pagination.vue";
 
 export default {
@@ -107,57 +110,59 @@ export default {
     },
     data() {
         return {
-            eventDataList: [
-                {
-                    id: '1',
-                    filePath: '/images/classroom-bg/bg-classroom-1.jpg',
-                    date: 'December 26, 2023',
-                    time: '10:30 am',
-                    location: 'Yarra Park, Melbourne',
-                    name: '2025 Complete Javascript Bootcamp From Zero to Hero in Javascript',
-                },
-                {
-                    id: '2',
-                    filePath: '/images/classroom-bg/bg-classroom-2.jpg',
-                    date: 'December 26, 2023',
-                    time: '10:30 am',
-                    location: 'Yarra Park, Melbourne',
-                    name: '2025 Complete responsive website design Bootcamp From Zero to Hero in responsive website design',
-                },
-                {
-                    id: '3',
-                    filePath: '/images/classroom-bg/bg-classroom-3.jpg',
-                    date: 'December 26, 2023',
-                    time: '10:30 am',
-                    location: 'Yarra Park, Melbourne',
-                    name: '2025 Complete VueJs framework Bootcamp From Zero to Hero in VueJs framework',
-                },
-                {
-                    id: '4',
-                    filePath: '/images/classroom-bg/bg-classroom-4.jpg',
-                    date: 'December 26, 2023',
-                    time: '10:30 am',
-                    location: 'Yarra Park, Melbourne',
-                    name: '2025 Complete AngularJs framework Bootcamp From Zero to Hero in AngularJs',
-                },
-                {
-                    id: '5',
-                    filePath: '/images/classroom-bg/bg-classroom-5.jpg',
-                    date: 'December 26, 2023',
-                    time: '10:30 am',
-                    location: 'Yarra Park, Melbourne',
-                    name: '2025 Complete Laravel Framework Bootcamp From Zero to Hero in Laravel Framework',
-                },
-            ],
+            tableData: [],
             loading: true,
+            listData: {
+                keyword: '',
+                limit: 10,
+                page: 1,
+            },
+            total_pages: 0,
+            current_page: 1,
+            buttons: [],
+            last_page: 0,
         }
     },
     mounted() {
-        setTimeout(() => {
-            this.loading = false
-        }, 3000)
+        this.getEvent();
     },
-    methods: {}
+    methods: {
+
+        // Function of handle page change
+        handlePageChange(page) {
+            this.current_page = page;
+            this.getEvent();
+        },
+
+        // Function of get event api callback
+        getEvent() {
+            this.loading = true;
+            this.listData.page = this.current_page;
+            apiServices.GET(apiRoutes.getEvent, this.listData, (res) => {
+                console.log(res)
+                if (res) {
+                    this.loading = false;
+                    this.tableData = res?.data?.data;
+                    this.last_page = res?.data?.last_page
+                    this.total_pages = res?.data?.total < res?.data?.per_page ? 1 : Math.ceil((res?.data?.total / res?.data?.per_page));
+                    this.current_page = res?.data?.current_page;
+                    this.buttons = [...Array(this.total_pages).keys()].map((i) => i + 1);
+                } else {
+                    apiServices.clearErrorHandler(res.error)
+                }
+            })
+        },
+
+        // Function of format created at
+        formatCreatedAt(datetime) {
+            const date = new Date(datetime);
+            const day = date.getDate();
+            const month = date.toLocaleString('default', { month: 'long' });
+            const year = date.getFullYear();
+            return `${day}, ${month}, ${year}`;
+        },
+
+    }
 }
 
 </script>

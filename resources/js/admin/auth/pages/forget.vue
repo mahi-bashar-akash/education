@@ -9,7 +9,7 @@
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-theme wpx-150" v-if="!forgetLoading">
-                Forget password
+                Forget
             </button>
             <button type="button" class="btn btn-theme wpx-150" v-if="forgetLoading">
                 <span class="spinner-border border-2 wpx-15 hpx-15"></span>
@@ -80,6 +80,11 @@
 import apiServices from "../../../services/apiServices.js";
 import apiRoutes from "../../../services/apiRoutes.js";
 import forget from "../../../front/pages/forget.vue";
+import axios from "axios";
+import {createToaster} from "@meforma/vue-toaster";
+const toaster = createToaster({
+    position: 'top-right',
+});
 
 export default {
     computed: {
@@ -125,14 +130,15 @@ export default {
         adminForget() {
             this.forgetLoading = true;
             this.error = null;
-            apiServices.POST(apiRoutes.adminForget, this.forgetParam, (res) => {
-                this.forgetLoading = false
-                if (res.message) {
-                    this.$toast.success(res.message, { position: "top-right" } );
-                    this.resetParam.email = this.forgetParam.email
-                    this.tab = 'reset'
+            axios.post(apiRoutes.adminForget, this.forgetParam, {headers: apiServices.headerContent}).then((response) => {
+                if(response?.data?.error){
+                    this.forgetLoading = false;
+                    this.error = response?.data?.error;
                 } else {
-                    this.error = res.error
+                    toaster.info('Reset code send successfully');
+                    this.forgetLoading = false;
+                    this.tab = 'reset';
+                    this.resetParam.email = this.forgetParam.email
                 }
             })
         },
@@ -141,16 +147,17 @@ export default {
         adminReset() {
             this.resetLoading = true;
             this.error = null;
-            apiServices.POST(apiRoutes.adminReset, this.resetParam, (res) => {
-                this.resetLoading = false
-                if (res.message) {
-                    this.$toast.success(res.message, { position: "top-right" } );
-                    this.$router.push( { name: 'login' } )
+            axios.post(apiRoutes.adminReset, this.resetParam, {headers: apiServices.headerContent}).then((response) => {
+                if(response?.data?.error){
+                    this.resetLoading = false;
+                    this.error = response?.data?.error;
                 } else {
-                    this.error = res.error
+                    toaster.info('Reset account successfully');
+                    this.resetLoading = false;
+                    this.$router.push({name: 'login'});
                 }
             })
-        }
+        },
 
     }
 }

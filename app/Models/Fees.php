@@ -25,4 +25,8 @@ class Fees extends Model
         return  $this->hasOne(PaymentStatus::class, 'id', 'payment_status_id');
     }
 
+    public $hidden = [
+        'admin_id'
+    ];
+
 }

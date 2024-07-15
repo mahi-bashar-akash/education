@@ -54,6 +54,11 @@
 <script>
 import apiServices from "../../../services/apiServices.js";
 import apiRoutes from "../../../services/apiRoutes.js";
+import axios from "axios";
+import {createToaster} from "@meforma/vue-toaster";
+const toaster = createToaster({
+    position: 'top-right',
+});
 
 export default {
     data() {
@@ -82,13 +87,14 @@ export default {
         login() {
             this.loginLoading = true;
             this.error = null;
-            apiServices.POST(apiRoutes.adminLogin, this.loginParam, (res) => {
-                this.loginLoading = false
-                if (res.message) {
-                    this.$toast.success(res.message, { position: "top-right" } );
-                    window.location.reload()
+            axios.post(apiRoutes.adminLogin, this.loginParam, {headers: apiServices.headerContent}).then((response) => {
+                if(response?.data?.errors){
+                    this.loginLoading = false;
+                    this.error = response?.data?.errors;
                 } else {
-                    this.error = res.errors
+                    this.loginLoading = false;
+                    window.location.reload();
+                    toaster.info('Login Successfully');
                 }
             })
         },

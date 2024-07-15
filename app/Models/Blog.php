@@ -13,4 +13,8 @@ class Blog extends Model
         return $this->hasOne( Media::class, 'id', 'avatar' );
     }
 
+    public $hidden = [
+        'admin_id'
+    ];
+
 }

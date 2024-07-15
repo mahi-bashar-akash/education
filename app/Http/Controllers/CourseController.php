@@ -152,7 +152,7 @@ class CourseController extends BaseController
         try {
             $limit = $request->limit ?? 10;
             $keyword = $request->keyword ?? '';
-            $courses = Course::orderby('id', 'asc');
+            $courses = Course::with('professor_info')->orderby('id', 'asc');
 
             if (isset($keyword) && !empty($keyword)) {
                 $courses->where(
