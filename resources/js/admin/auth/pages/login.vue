@@ -27,7 +27,7 @@
                     </label>
                 </div>
                 <div class="col-6 text-end">
-                    <router-link :to="{name: 'forget'}" class="text-decoration-none text-danger">
+                    <router-link :to="{name: 'recovery'}" class="text-decoration-none text-danger">
                         Forget password?
                     </router-link>
                 </div>

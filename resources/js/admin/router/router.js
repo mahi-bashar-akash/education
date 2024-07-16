@@ -11,7 +11,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import authLayout from "../auth/layout/layout.vue";
 import login from "../auth/pages/login.vue";
 import register from "../auth/pages/register.vue";
-import forget from "../auth/pages/forget.vue";
+import recovery from "../auth/pages/recovery.vue";
 
 /*
 |
@@ -45,7 +45,7 @@ const routes = [
         children: [
             { path: AUTH_ROOT_URL + 'login', name: 'login', component: login, meta: { title: TITLE + ' - login' } },
             { path: AUTH_ROOT_URL + 'register', name: 'register', component: register, meta: { title: TITLE + ' - register' } },
-            { path: AUTH_ROOT_URL + 'forget', name: 'forget', component: forget, meta: { title: TITLE + ' - forget' } },
+            { path: AUTH_ROOT_URL + 'recovery', name: 'recovery', component: recovery, meta: { title: TITLE + ' - forget' } },
         ]
     },
 
